@@ -1196,9 +1196,9 @@ const GAME_DATABASE = {
 
 
 const PROVIDER_ORDER = [
-    'pragmatic', 'jili', 'mega888', '918kiss', 'joker', 'cq9',
-    'fachai', 'jdb', 'playtech', 'spadegaming', 'evoplay', 'gameplay',
-    'pussy888', 'asiagaming', 'nextspin', 'live22'
+    'pragmatic', 'jili', 'mega888', '918kiss', 'pgsoft', 'joker',
+    'spadegaming', 'playtech', 'fachai', 'habanero', 'cq9', 'redtiger',
+    'netent', 'microgaming', 'pussy888', 'live22'
 ];
 
 // ==========================================
