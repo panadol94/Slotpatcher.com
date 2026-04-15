@@ -1265,12 +1265,12 @@ function initMatrixRain() {
     resize();
     window.addEventListener('resize', resize);
     setInterval(function() {
-        ctx.fillStyle = 'rgba(5, 10, 15, 0.08)';
+        ctx.fillStyle = 'rgba(10, 5, 21, 0.08)';
         ctx.fillRect(0, 0, canvas.width, canvas.height);
         for (var i = 0; i < columns; i++) {
             var c = chars[Math.floor(Math.random() * chars.length)];
             var b = Math.random();
-            ctx.fillStyle = b > 0.7 ? 'rgba(255,107,0,0.35)' : b > 0.4 ? 'rgba(255,140,66,0.2)' : 'rgba(255,80,0,0.1)';
+            ctx.fillStyle = b > 0.7 ? 'rgba(0,240,255,0.35)' : b > 0.4 ? 'rgba(0,240,255,0.2)' : 'rgba(0,240,255,0.1)';
             ctx.font = fontSize + 'px monospace';
             ctx.fillText(c, i * fontSize, drops[i] * fontSize);
             if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) drops[i] = 0;
