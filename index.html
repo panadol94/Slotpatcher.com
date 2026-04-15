@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>SQUEEN668 — RTP Live Scanner</title>
+    <meta name="description" content="SQUEEN668 AI-Powered RTP Scanner — Analisis data slot real-time untuk MEGA888, 918KISS, JILI, Pragmatic Play dan lebih.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=Orbitron:wght@500;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Matrix Rain Canvas -->
+    <canvas id="matrixCanvas" class="matrix-canvas"></canvas>
+
+    <!-- Scan Flash Overlay -->
+    <div id="scanFlash" class="scan-flash"></div>
+
+    <!-- Scanner Header -->
+    <header class="scanner-header">
+        <div class="header-glow"></div>
+        <h1 class="glitch-title" data-text="SQUEEN668_RTP_SCANNER.sys">
+            <span class="glitch-icon">⚡</span>
+            SQUEEN668_RTP_SCANNER.sys
+        </h1>
+        <p class="header-sub">
+            <span class="terminal-prefix">&gt;_</span>
+            <span id="typedText" class="typed-text"></span><span class="blink-cursor">▊</span>
+        </p>
+        <div class="status-bar">
+            <div class="status-item live">
+                <span class="live-dot"></span>LIVE
+            </div>
+            <div class="status-item">
+                <span>🎰</span> <span id="statProviders">8</span> Providers
+            </div>
+            <div class="status-item">
+                <span>⏱️</span> <span id="lastUpdate">--:--</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Stats Bar -->
+    <section class="stats-bar">
+        <div class="stat-card hot">
+            <div class="stat-icon">🔥</div>
+            <div class="stat-value" id="statHot">0</div>
+            <div class="stat-label">HOT</div>
+        </div>
+        <div class="stat-card warm">
+            <div class="stat-icon">⚡</div>
+            <div class="stat-value" id="statWarm">0</div>
+            <div class="stat-label">WARM</div>
+        </div>
+        <div class="stat-card cold">
+            <div class="stat-icon">❄️</div>
+            <div class="stat-value" id="statCold">0</div>
+            <div class="stat-label">COLD</div>
+        </div>
+        <div class="stat-card total">
+            <div class="stat-icon">📊</div>
+            <div class="stat-value" id="totalGames">0</div>
+            <div class="stat-label">TOTAL</div>
+        </div>
+    </section>
+
+    <!-- Device Intelligence Panel -->
+    <section id="deviceIntel" class="device-intel"></section>
+
+    <!-- Provider Grid -->
+    <section class="provider-section">
+        <h2 class="section-title">
+            <span class="section-icon">🎮</span>
+            PILIH TARGET
+        </h2>
+        <div id="providerGrid" class="provider-grid">
+            <!-- Populated dynamically by JS from 99laju.net data -->
+        </div>
+    </section>
+
+    <!-- Scanning Section (Terminal Log) -->
+    <section id="scanningSection" class="scanning-section" style="display:none;">
+        <div class="hacker-terminal">
+            <div class="terminal-header">
+                <span class="term-dot red"></span>
+                <span class="term-dot yellow"></span>
+                <span class="term-dot green"></span>
+                <span class="terminal-title" id="termPercent">sq668_scanner.exe — 0%</span>
+            </div>
+            <div class="terminal-progress">
+                <div class="terminal-progress-fill" id="termProgressBar" style="width:0%"></div>
+            </div>
+            <div class="terminal-body" id="terminalLog">
+                <!-- Lines injected by JS -->
+            </div>
+        </div>
+        <p id="scanDetail" class="scan-detail">Scanning...</p>
+    </section>
+
+    <!-- Results Section -->
+    <section id="resultsSection" class="results-section">
+        <!-- Top 3 Podium -->
+        <div id="top3Section" class="top3-section"></div>
+
+        <!-- Filter & Sort -->
+        <div class="controls-bar">
+            <div class="filter-controls">
+                <button class="filter-tab active" data-filter="all">🎮 ALL</button>
+                <button class="filter-tab" data-filter="hot">🔥 HOT</button>
+                <button class="filter-tab" data-filter="warm">⚡ WARM</button>
+                <button class="filter-tab" data-filter="cold">❄️ COLD</button>
+            </div>
+            <select id="sortSelect" class="sort-select">
+                <option value="rtp-desc">RTP ▼ Tertinggi</option>
+                <option value="rtp-asc">RTP ▲ Terendah</option>
+                <option value="name">Nama A-Z</option>
+            </select>
+        </div>
+
+        <!-- Game List -->
+        <div id="gameList" class="game-list"></div>
+
+        <!-- Share Section -->
+        <div class="share-section">
+            <h4 class="share-title">📤 Share Result</h4>
+            <p class="share-desc">Kongsi scan result dengan kawan!</p>
+            <div class="share-buttons">
+                <button class="share-btn share-btn-wa" onclick="shareResults('whatsapp')"><span>💬</span> WhatsApp</button>
+                <button class="share-btn share-btn-tg" onclick="shareResults('telegram')"><span>✈️</span> Telegram</button>
+                <button class="share-btn share-btn-copy" onclick="shareResults('copy')"><span>📋</span> Copy</button>
+            </div>
+        </div>
+
+        <!-- Disclaimer -->
+        <div class="results-footer">
+            <p>⏱️ Data dikemaskini setiap 60 minit • Percentage berubah mengikut masa</p>
+        </div>
+    </section>
+
+    <!-- Floating SCAN Button -->
+    <button class="floating-scan" onclick="startScan()" id="floatingScan">
+        <span class="scan-pulse"></span>
+        <span class="scan-text">▶ SCAN</span>
+    </button>
+
+    <!-- Bottom Navigation -->
+    <nav class="bottom-nav">
+        <a href="#" class="nav-item active">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+            <span>Scanner</span>
+        </a>
+        <a href="#" class="nav-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 8v4l3 3"/><circle cx="12" cy="12" r="10"/></svg>
+            <span>History</span>
+        </a>
+        <a href="#" class="nav-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+            <span>Promo</span>
+        </a>
+        <a href="#" class="nav-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+            <span>LiveChat</span>
+        </a>
+        <a href="#" class="nav-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+            <span>Setting</span>
+        </a>
+    </nav>
+
+    <script src="script.js"></script>
+</body>
+</html>
