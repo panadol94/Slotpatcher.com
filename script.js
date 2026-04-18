@@ -225,12 +225,12 @@ function updateScanButtonState() {
     if (!scanButton || !scanButtonLabel) return;
     if (provider) {
         scanButton.classList.remove('disabled');
-        scanButtonLabel.textContent = 'SCAN NOW';
-        scanButton.setAttribute('aria-label', 'Scan ' + provider.name + ' sekarang');
+        scanButtonLabel.textContent = 'PATCHER SLOT';
+        scanButton.setAttribute('aria-label', 'Patcher Slot ready untuk scan ' + provider.name);
     } else {
         scanButton.classList.add('disabled');
-        scanButtonLabel.textContent = 'PILIH PROVIDER';
-        scanButton.setAttribute('aria-label', 'Pilih provider dulu');
+        scanButtonLabel.textContent = 'PATCHER SLOT';
+        scanButton.setAttribute('aria-label', 'Patcher Slot, pilih provider dulu');
     }
 }
 
