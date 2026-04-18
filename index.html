@@ -4,35 +4,27 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>SQUEEN668 — RTP Live Scanner</title>
-    <meta name="description" content="SQUEEN668 AI-Powered RTP Scanner — Analisis data slot real-time untuk MEGA888, 918KISS, JILI, Pragmatic Play dan lebih.">
+    <meta name="description" content="SQUEEN668 RTP Scanner — Analisis data slot real-time untuk MEGA888, 918KISS, JILI, Pragmatic Play dan lebih.">
     <link rel="icon" type="image/x-icon" href="favicon.ico">
     <link rel="icon" type="image/png" sizes="32x32" href="favicon.png">
     <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
     <link rel="icon" type="image/png" sizes="512x512" href="icon-512.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=Orbitron:wght@500;700;900&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <!-- Matrix Rain Canvas -->
-    <canvas id="matrixCanvas" class="matrix-canvas"></canvas>
-
-    <!-- Scan Flash Overlay -->
-    <div id="scanFlash" class="scan-flash"></div>
-
     <!-- Scanner Header -->
     <header class="scanner-header">
         <div class="header-glow"></div>
-        <h1 class="glitch-title" data-text="SQUEEN668_RTP_SCANNER.sys">
-            <span class="glitch-icon">⚡</span>
-            SQUEEN668_RTP_SCANNER.sys
+        <h1 class="header-title">
+            <span class="header-icon">⚡</span>
+            SQUEEN668 RTP SCANNER
         </h1>
-        <p class="header-sub">
-            <span class="terminal-prefix">&gt;_</span>
-            <span id="typedText" class="typed-text"></span><span class="blink-cursor">▊</span>
-        </p>
+        <p class="header-sub" id="scanStatusText">Live RTP Analysis • 16 Providers</p>
         <div class="status-bar">
             <div class="status-item live">
                 <span class="live-dot"></span>LIVE
@@ -103,45 +95,37 @@
         <button class="carousel-arrow carousel-arrow-right" id="carouselNext">❯</button>
     </section>
 
-    <!-- Device Intelligence Panel -->
+    <!-- Device Info Panel -->
     <section id="deviceIntel" class="device-intel"></section>
 
     <!-- Provider Grid -->
     <section class="provider-section">
         <h2 class="section-title">
             <span class="section-icon">🎮</span>
-            PILIH TARGET
+            PILIH PROVIDER
         </h2>
-        <div id="providerGrid" class="provider-grid">
-            <!-- Populated dynamically by JS from 99laju.net data -->
-        </div>
+        <div id="providerGrid" class="provider-grid"></div>
     </section>
 
-    <!-- Scanning Section (Terminal Log) -->
+    <!-- Scanning Section (Clean Progress) -->
     <section id="scanningSection" class="scanning-section" style="display:none;">
-        <div class="hacker-terminal">
-            <div class="terminal-header">
-                <span class="term-dot red"></span>
-                <span class="term-dot yellow"></span>
-                <span class="term-dot green"></span>
-                <span class="terminal-title" id="termPercent">sq668_scanner.exe — 0%</span>
+        <div class="scan-panel">
+            <div class="scan-panel-header">
+                <span class="scan-panel-icon">⚙️</span>
+                <span class="scan-panel-title" id="scanPanelTitle">Scanning...</span>
+                <span class="scan-panel-percent" id="scanPanelPercent">0%</span>
             </div>
-            <div class="terminal-progress">
-                <div class="terminal-progress-fill" id="termProgressBar" style="width:0%"></div>
+            <div class="scan-progress-bar">
+                <div class="scan-progress-fill" id="scanProgressBar" style="width:0%"></div>
             </div>
-            <div class="terminal-body" id="terminalLog">
-                <!-- Lines injected by JS -->
-            </div>
+            <div class="scan-log-body" id="terminalLog"></div>
         </div>
         <p id="scanDetail" class="scan-detail">Scanning...</p>
     </section>
 
     <!-- Results Section -->
     <section id="resultsSection" class="results-section">
-        <!-- Top 3 Podium -->
         <div id="top3Section" class="top3-section"></div>
-
-        <!-- Filter & Sort -->
         <div class="controls-bar">
             <div class="filter-controls">
                 <button class="filter-tab active" data-filter="all">🎮 ALL</button>
@@ -151,15 +135,11 @@
             </div>
             <select id="sortSelect" class="sort-select">
                 <option value="rtp-desc">RTP ▼ Tertinggi</option>
-                <option value="rtp-asc">RTP ▲ Terendah</option>
+                <option value="rtp-asc">RTP ▼ Terendah</option>
                 <option value="name">Nama A-Z</option>
             </select>
         </div>
-
-        <!-- Game List -->
         <div id="gameList" class="game-list"></div>
-
-        <!-- Share Section -->
         <div class="share-section">
             <h4 class="share-title">📤 Share Result</h4>
             <p class="share-desc">Kongsi scan result dengan kawan!</p>
@@ -169,16 +149,11 @@
                 <button class="share-btn share-btn-copy" onclick="shareResults('copy')"><span>📋</span> Copy</button>
             </div>
         </div>
-
-        <!-- Disclaimer -->
         <div class="results-footer">
             <p>⏱️ Data dikemaskini setiap 60 minit • Percentage berubah mengikut masa</p>
         </div>
     </section>
 
-    
-
-    
     <!-- Bottom Navigation -->
     <nav class="bottom-nav">
         <a href="#" class="nav-item">
@@ -189,15 +164,12 @@
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
             <span>Tips</span>
         </a>
-        
-        <!-- Center Hack Slot Button -->
         <a href="#" class="nav-item center-hack-btn" onclick="startScan()">
             <div class="hack-btn-inner">
-                <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+                <svg viewBox="0 0 24 24" fill="none" stroke="#1A0A2E" stroke-width="2.5"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
             </div>
-            <span style="color:var(--primary); font-weight:700;">HACK SLOT</span>
+            <span>SCAN SLOT</span>
         </a>
-
         <a href="#" class="nav-item">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
             <span>LiveChat</span>
@@ -207,7 +179,6 @@
             <span>Profile</span>
         </a>
     </nav>
-
 
     <script src="game-data.js"></script>
     <script src="script.js"></script>
