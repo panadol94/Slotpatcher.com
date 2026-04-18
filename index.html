@@ -13,6 +13,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -57,7 +59,7 @@
         </header>
 
         <section class="hero-section">
-            <div class="hero-copy">
+            <div class="hero-copy" data-aos="fade-up" data-aos-delay="0">
                 <span class="hero-kicker">Trusted casino intelligence for Malaysia players</span>
                 <h1 class="hero-title">Scan provider dulu, baru unlock live result paling hot.</h1>
                 <p class="hero-text" id="scanStatusText">Slotpatcher bagi flow premium macam landing casino besar, tapi scanner function kekal padu. Pilih provider, tekan scan, terus dapat live RTP analysis.</p>
@@ -107,33 +109,33 @@
                 </div>
             </div>
 
-            <div class="hero-media">
+            <div class="hero-media" data-aos="fade-up" data-aos-delay="120">
                 <div class="hero-media-frame">
                     <div class="hero-media-topline">
                         <span class="hero-frame-badge">LIVE CASINO SCANNER</span>
                         <span class="hero-frame-pill">PREMIUM FLOW</span>
                     </div>
 
-                    <section class="banner-carousel hero-carousel">
-                        <div class="carousel-track" id="carouselTrack">
-                            <div class="carousel-slide">
-                                <img src="https://static.kiyupa.com/media/9e755e6f88d965cd7f1bf.png" alt="Welcome bonus banner">
+                    <section class="banner-carousel hero-carousel swiper" id="heroSwiper">
+                        <div class="carousel-track swiper-wrapper" id="carouselTrack">
+                            <div class="carousel-slide swiper-slide">
+                                <img class="lazyload" data-src="https://static.kiyupa.com/media/9e755e6f88d965cd7f1bf.png" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==" alt="Welcome bonus banner">
                                 <div class="slide-overlay">
                                     <div class="slide-badge">WELCOME</div>
                                     <div class="slide-title">Premium Lobby Experience</div>
                                     <div class="slide-desc">Layout lebih clean, mewah, dan terus fokus pada scan flow</div>
                                 </div>
                             </div>
-                            <div class="carousel-slide">
-                                <img src="https://static.kiyupa.com/media/bf47b17f88d96c3b8cfb1.png" alt="Scanner banner">
+                            <div class="carousel-slide swiper-slide">
+                                <img class="lazyload" data-src="https://static.kiyupa.com/media/bf47b17f88d96c3b8cfb1.png" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==" alt="Scanner banner">
                                 <div class="slide-overlay">
                                     <div class="slide-badge">SCANNER</div>
                                     <div class="slide-title">Provider First Scanner</div>
                                     <div class="slide-desc">User pilih provider dulu, baru popup scan dan result keluar</div>
                                 </div>
                             </div>
-                            <div class="carousel-slide">
-                                <img src="https://static.kiyupa.com/media/2e96457f88d962c9a7e04.png" alt="Live result banner">
+                            <div class="carousel-slide swiper-slide">
+                                <img class="lazyload" data-src="https://static.kiyupa.com/media/2e96457f88d962c9a7e04.png" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==" alt="Live result banner">
                                 <div class="slide-overlay">
                                     <div class="slide-badge">RESULT</div>
                                     <div class="slide-title">Top 3 Hot Games</div>
@@ -141,9 +143,9 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="carousel-dots" id="carouselDots"></div>
-                        <button class="carousel-arrow carousel-arrow-left" id="carouselPrev">❮</button>
-                        <button class="carousel-arrow carousel-arrow-right" id="carouselNext">❯</button>
+                        <div class="carousel-dots swiper-pagination" id="carouselDots"></div>
+                        <button class="carousel-arrow carousel-arrow-left swiper-button-prev" id="carouselPrev">❮</button>
+                        <button class="carousel-arrow carousel-arrow-right swiper-button-next" id="carouselNext">❯</button>
                     </section>
 
                     <div class="hero-mini-panels">
@@ -161,17 +163,17 @@
         </section>
 
         <section class="promo-strip">
-            <article class="promo-card">
+            <article class="promo-card" data-aos="fade-up" data-aos-delay="0">
                 <span class="promo-chip">FAST FLOW</span>
                 <h3>Pilih provider, terus scan</h3>
                 <p>Tak auto-scan lagi. User control penuh untuk start bila dah ready.</p>
             </article>
-            <article class="promo-card">
+            <article class="promo-card" data-aos="fade-up" data-aos-delay="80">
                 <span class="promo-chip">TRUST LOOK</span>
                 <h3>Landing style lebih premium</h3>
                 <p>Layout baru nampak macam casino brand besar, bukan tool lama yang noob.</p>
             </article>
-            <article class="promo-card">
+            <article class="promo-card" data-aos="fade-up" data-aos-delay="160">
                 <span class="promo-chip">LIVE RESULT</span>
                 <h3>Top 3 + full lobby breakdown</h3>
                 <p>Result section kekal lengkap dengan ranking, filter, sort dan share.</p>
@@ -190,7 +192,7 @@
     </div>
 
     <!-- Provider Grid -->
-    <section class="provider-section" id="providerSection">
+    <section class="provider-section" id="providerSection" data-aos="fade-up">
         <div class="section-heading-wrap">
             <h2 class="section-title">
                 <span class="section-icon">🎮</span>
@@ -205,7 +207,7 @@
     </section>
 
     <!-- Scanning Section (Clean Progress) -->
-    <section id="scanningSection" class="scanning-section" style="display:none;">
+    <section id="scanningSection" class="scanning-section" style="display:none;" data-aos="fade-up">
         <div class="scan-panel">
             <div class="scan-panel-header">
                 <div class="scan-radar" aria-hidden="true">
@@ -253,7 +255,7 @@
     </div>
 
     <!-- Results Section -->
-    <section id="resultsSection" class="results-section" style="display:none;">
+    <section id="resultsSection" class="results-section" style="display:none;" data-aos="fade-up">
         <div class="section-heading-wrap results-heading-wrap">
             <h2 class="section-title">
                 <span class="section-icon">📈</span>
@@ -263,6 +265,13 @@
         </div>
         <!-- Top 3 Podium -->
         <div id="top3Section" class="top3-section"></div>
+        <div class="rtp-chart-panel">
+            <div class="rtp-chart-head">
+                <h3>📊 RTP Momentum</h3>
+                <p>Snapshot ringkas 8 game teratas untuk provider yang baru discan.</p>
+            </div>
+            <canvas id="rtpChart" height="120"></canvas>
+        </div>
         <div class="controls-bar">
             <div class="filter-controls">
                 <button class="filter-tab active" data-filter="all">🎮 ALL</button>
@@ -304,7 +313,7 @@
         </div>
     </section>
 
-    <footer class="site-footer">
+    <footer class="site-footer" data-aos="fade-up">
         <div class="site-footer-grid">
             <div class="site-footer-brand">
                 <div class="brand-logo footer-logo">SP</div>
@@ -365,6 +374,12 @@
         </a>
     </nav>
 
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js" async></script>
     <script src="game-data.js"></script>
     <script src="script.js"></script>
 </body>

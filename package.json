@@ -1,0 +1,21 @@
+{
+  "name": "slotpatcher-web",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite --host 0.0.0.0 --port 4173",
+    "build": "vite build",
+    "preview": "vite preview --host 0.0.0.0 --port 4173",
+    "lint": "eslint .",
+    "test:e2e": "cypress run",
+    "test:e2e:open": "cypress open",
+    "minify:js": "terser script.js -o script.min.js --compress --mangle"
+  },
+  "devDependencies": {
+    "cypress": "^14.5.4",
+    "eslint": "^9.25.1",
+    "terser": "^5.39.0",
+    "vite": "^5.4.18"
+  }
+}

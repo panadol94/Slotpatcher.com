@@ -4,3 +4,5 @@ __pycache__/
 *.pyc
 Dockerfile.bak
 *.log
+cypress/screenshots/
+cypress/videos/

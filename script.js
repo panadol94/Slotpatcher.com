@@ -46,6 +46,7 @@ var currentGames = [];
 var isScanning = false;
 var currentDeviceIntel = null;
 var scanModalTimer = null;
+var currentRtpChart = null;
 
 // ==========================================
 // INIT
@@ -57,6 +58,7 @@ document.addEventListener('DOMContentLoaded', function() {
     initBottomNav();
     initDeviceIntel();
     initCarousel();
+    initEnhancements();
     updateScanButtonState();
     updateProviderHint();
     updateTimestamp();
@@ -74,14 +76,35 @@ var carouselTotal = 0;
 var carouselTimer = null;
 
 function initCarousel() {
+    var carousel = document.getElementById('heroSwiper');
+    if (carousel && window.Swiper) {
+        new window.Swiper(carousel, {
+            loop: true,
+            speed: 700,
+            autoplay: {
+                delay: 4200,
+                disableOnInteraction: false
+            },
+            pagination: {
+                el: '#carouselDots',
+                clickable: true,
+                bulletClass: 'carousel-dot',
+                bulletActiveClass: 'active'
+            },
+            navigation: {
+                nextEl: '#carouselNext',
+                prevEl: '#carouselPrev'
+            }
+        });
+        return;
+    }
+
     var track = document.getElementById('carouselTrack');
     var dotsContainer = document.getElementById('carouselDots');
     if (!track || !dotsContainer) return;
-
     var slides = track.querySelectorAll('.carousel-slide');
     carouselTotal = slides.length;
     if (carouselTotal === 0) return;
-
     dotsContainer.innerHTML = '';
     for (var i = 0; i < carouselTotal; i++) {
         var dot = document.createElement('button');
@@ -92,25 +115,33 @@ function initCarousel() {
         });
         dotsContainer.appendChild(dot);
     }
-
     var prevBtn = document.getElementById('carouselPrev');
     var nextBtn = document.getElementById('carouselNext');
     if (prevBtn) prevBtn.addEventListener('click', function() { goToSlide(carouselCurrent - 1); });
     if (nextBtn) nextBtn.addEventListener('click', function() { goToSlide(carouselCurrent + 1); });
-
-    var carousel = document.querySelector('.banner-carousel');
-    if (carousel) {
-        var startX = 0;
-        carousel.addEventListener('touchstart', function(e) { startX = e.touches[0].clientX; }, { passive: true });
-        carousel.addEventListener('touchend', function(e) {
-            var diff = startX - e.changedTouches[0].clientX;
-            if (Math.abs(diff) > 40) {
-                goToSlide(diff > 0 ? carouselCurrent + 1 : carouselCurrent - 1);
-            }
-        }, { passive: true });
-    }
-
     startCarouselTimer();
+}
+
+function initEnhancements() {
+    if (window.AOS) {
+        window.AOS.init({
+            duration: 700,
+            once: true,
+            offset: 20,
+            easing: 'ease-out-cubic'
+        });
+    }
+    if (window.gsap) {
+        window.gsap.from('.topbar', { y: -18, opacity: 0, duration: 0.55, ease: 'power2.out' });
+        window.gsap.from('.hero-title, .hero-text, .hero-actions', {
+            y: 20,
+            opacity: 0,
+            duration: 0.7,
+            stagger: 0.08,
+            ease: 'power2.out',
+            delay: 0.1
+        });
+    }
 }
 
 function goToSlide(index) {
@@ -147,7 +178,7 @@ function buildProviderGrid() {
         var btn = document.createElement('button');
         btn.className = 'provider-card' + (currentProvider === key ? ' active' : '');
         btn.setAttribute('data-provider', key);
-        btn.innerHTML = '<div class="provider-icon"><img src="' + p.logo + '" alt="' + p.name + '" onerror="this.onerror=null; this.src=window.getFallbackImage(\'' + p.name + '\')"></div><span class="provider-name">' + p.name + '</span><span class="provider-check">✓</span>';
+        btn.innerHTML = '<div class="provider-icon"><img loading="lazy" src="' + p.logo + '" alt="' + p.name + '" onerror="this.onerror=null; this.src=window.getFallbackImage(\'' + p.name + '\')"></div><span class="provider-name">' + p.name + '</span><span class="provider-check">✓</span>';
         btn.addEventListener('click', function() {
             var resultsSection = document.getElementById('resultsSection');
             if (isScanning) return;
@@ -292,6 +323,10 @@ function closeScanModal() {
 }
 
 function openScanModal(providerName, onDone) {
+    if (window.Swal) {
+        openScanModalSweet(providerName, onDone);
+        return;
+    }
     var modal = document.getElementById('scanModal');
     var modalStatus = document.getElementById('scanModalStatus');
     var progressBar = document.getElementById('scanModalProgressBar');
@@ -339,6 +374,77 @@ function openScanModal(providerName, onDone) {
     }
 
     nextStep();
+}
+
+function openScanModalSweet(providerName, onDone) {
+    if (scanModalTimer) clearTimeout(scanModalTimer);
+    var info = currentDeviceIntel || createBaseDeviceIntel();
+    var steps = [
+        { text: 'Provider selected, locking ' + providerName + ' session...', progress: 24, key: 'provider' },
+        { text: 'IP address detected, connecting secure node...', progress: 52, key: 'ip' },
+        { text: 'Fetching RTP data and building hot game list...', progress: 82, key: 'rtp' },
+        { text: 'Scan complete. Preparing live result board...', progress: 100, key: 'done' }
+    ];
+
+    var html = '' +
+        '<div class="scan-swal">' +
+            '<div class="scan-swal-progress"><div id="scanSwalProgress" class="scan-swal-progress-fill" style="width:8%"></div></div>' +
+            '<div id="scanSwalStatus" class="scan-swal-status">Preparing secure scan...</div>' +
+            '<div class="scan-swal-steps">' +
+                '<div class="scan-swal-step" data-step="provider"><span></span><b>Provider selected</b></div>' +
+                '<div class="scan-swal-step" data-step="ip"><span></span><b>IP address detected</b></div>' +
+                '<div class="scan-swal-step" data-step="rtp"><span></span><b>Fetching RTP data</b></div>' +
+                '<div class="scan-swal-step" data-step="done"><span></span><b>Scan complete</b></div>' +
+            '</div>' +
+            '<div class="scan-swal-grid">' +
+                '<div><small>Provider</small><strong>' + escapeHtml(providerName) + '</strong></div>' +
+                '<div><small>IP Address</small><strong>' + escapeHtml(info.publicIp || info.ip) + '</strong></div>' +
+                '<div><small>Device</small><strong>' + escapeHtml(info.device) + '</strong></div>' +
+                '<div><small>Network</small><strong>' + escapeHtml(info.network) + '</strong></div>' +
+            '</div>' +
+        '</div>';
+
+    window.Swal.fire({
+        title: 'SCANNING ' + providerName,
+        html: html,
+        showConfirmButton: false,
+        allowEscapeKey: false,
+        allowOutsideClick: false,
+        customClass: {
+            popup: 'scan-swal-popup'
+        },
+        didOpen: function() {
+            var statusEl = document.getElementById('scanSwalStatus');
+            var progressEl = document.getElementById('scanSwalProgress');
+            var stepEls = document.querySelectorAll('.scan-swal-step');
+            var idx = 0;
+            function tick() {
+                if (idx >= steps.length) {
+                    scanModalTimer = setTimeout(function() {
+                        window.Swal.close();
+                        onDone();
+                    }, 250);
+                    return;
+                }
+                var step = steps[idx++];
+                if (statusEl) statusEl.textContent = step.text;
+                if (progressEl) progressEl.style.width = step.progress + '%';
+                stepEls.forEach(function(el) {
+                    var key = el.getAttribute('data-step');
+                    el.classList.toggle('active', key === step.key);
+                    if (steps.findIndex(function(s) { return s.key === key; }) < idx - 1) el.classList.add('done');
+                });
+                scanModalTimer = setTimeout(tick, step.key === 'rtp' ? 560 : 430);
+            }
+            tick();
+        },
+        willClose: function() {
+            if (scanModalTimer) {
+                clearTimeout(scanModalTimer);
+                scanModalTimer = null;
+            }
+        }
+    });
 }
 
 // ==========================================
@@ -488,6 +594,7 @@ function loadGames(providerKey) {
     currentGames.forEach(function(g, i) { g.rank = i + 1; });
     updateStats();
     renderTop3();
+    renderRtpChart();
     renderGames();
 }
 
@@ -511,7 +618,7 @@ function renderTop3() {
     var medals = ['👑', '🥈', '🥉'], classes = ['gold', 'silver', 'bronze'];
     var html = '<h3 class="top3-heading">🏆 Top 3 Game Terpanas</h3><div class="top3-cards">';
     top3.forEach(function(game, i) {
-        html += '<div class="top3-card top3-' + classes[i] + '" style="animation-delay:' + (i * 0.15) + 's"><span class="top3-medal">' + medals[i] + '</span><div class="top3-thumb"><img src="' + game.img + '" alt="' + game.name + '" onerror="this.onerror=null; this.src=window.getFallbackImage(this.alt)"></div><span class="top3-name">' + game.name + '</span>' + createRtpGauge(game.rtp, 50) + '<span class="top3-status top3-status-' + game.status + '">' + getStatusLabel(game.status) + '</span></div>';
+        html += '<div class="top3-card top3-' + classes[i] + '" style="animation-delay:' + (i * 0.15) + 's"><span class="top3-medal">' + medals[i] + '</span><div class="top3-thumb"><img loading="lazy" src="' + game.img + '" alt="' + game.name + '" onerror="this.onerror=null; this.src=window.getFallbackImage(this.alt)"></div><span class="top3-name">' + game.name + '</span>' + createRtpGauge(game.rtp, 50) + '<span class="top3-status top3-status-' + game.status + '">' + getStatusLabel(game.status) + '</span></div>';
     });
     section.innerHTML = html + '</div>';
 }
@@ -561,9 +668,72 @@ function renderGames() {
         card.className = 'game-card ' + game.status;
         card.style.animationDelay = (index * 0.04) + 's';
         var rankNum = currentFilter === 'all' ? index + 4 : index + 1;
-        card.innerHTML = '<div class="game-rank">#' + rankNum + '</div><div class="game-thumb"><img src="' + game.img + '" alt="' + game.name + '" onerror="this.onerror=null; this.src=window.getFallbackImage(this.alt)"></div><div class="game-info"><div class="game-name">' + game.name + '</div><div class="game-provider-name">' + game.provider + '</div><div class="game-rtp-bar"><div class="game-rtp-fill ' + game.status + '" style="width:0%"></div></div></div><div class="game-rtp-value">' + createRtpGauge(game.rtp, 48) + '<span class="rtp-label ' + game.status + '">' + getStatusEmoji(game.status) + ' ' + game.status.toUpperCase() + '</span></div>';
+        card.innerHTML = '<div class="game-rank">#' + rankNum + '</div><div class="game-thumb"><img loading="lazy" src="' + game.img + '" alt="' + game.name + '" onerror="this.onerror=null; this.src=window.getFallbackImage(this.alt)"></div><div class="game-info"><div class="game-name">' + game.name + '</div><div class="game-provider-name">' + game.provider + '</div><div class="game-rtp-bar"><div class="game-rtp-fill ' + game.status + '" style="width:0%"></div></div></div><div class="game-rtp-value">' + createRtpGauge(game.rtp, 48) + '<span class="rtp-label ' + game.status + '">' + getStatusEmoji(game.status) + ' ' + game.status.toUpperCase() + '</span></div>';
         gameList.appendChild(card);
         setTimeout(function() { var fill = card.querySelector('.game-rtp-fill'); if (fill) fill.style.width = Math.max(0, Math.min(100, ((game.rtp - 25) / 75) * 100)) + '%'; }, 100 + index * 60);
+    });
+}
+
+function renderRtpChart() {
+    var canvas = document.getElementById('rtpChart');
+    if (!canvas || !window.Chart) return;
+    var source = currentFilter === 'all'
+        ? currentGames.slice(0, 8)
+        : currentGames.filter(function(g) { return g.status === currentFilter; }).slice(0, 8);
+    if (!source.length) source = currentGames.slice(0, 8);
+    if (currentRtpChart) {
+        currentRtpChart.destroy();
+        currentRtpChart = null;
+    }
+    currentRtpChart = new window.Chart(canvas, {
+        type: 'bar',
+        data: {
+            labels: source.map(function(g) { return g.name.length > 14 ? g.name.slice(0, 14) + '…' : g.name; }),
+            datasets: [{
+                label: 'RTP %',
+                data: source.map(function(g) { return g.rtp; }),
+                borderRadius: 10,
+                backgroundColor: source.map(function(g) {
+                    if (g.status === 'hot') return 'rgba(88, 208, 109, 0.85)';
+                    if (g.status === 'warm') return 'rgba(240, 181, 72, 0.88)';
+                    return 'rgba(255, 138, 61, 0.82)';
+                }),
+                borderColor: source.map(function(g) {
+                    if (g.status === 'hot') return '#58D06D';
+                    if (g.status === 'warm') return '#F0B548';
+                    return '#FF8A3D';
+                }),
+                borderWidth: 1.2
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            animation: { duration: 650 },
+            plugins: {
+                legend: { display: false },
+                tooltip: {
+                    callbacks: {
+                        label: function(ctx) { return ctx.parsed.y + '% RTP'; }
+                    }
+                }
+            },
+            scales: {
+                x: {
+                    ticks: { color: 'rgba(255,255,255,0.72)', font: { size: 10 } },
+                    grid: { display: false }
+                },
+                y: {
+                    min: 30,
+                    max: 100,
+                    ticks: {
+                        color: 'rgba(255,255,255,0.62)',
+                        callback: function(value) { return value + '%'; }
+                    },
+                    grid: { color: 'rgba(255,255,255,0.08)' }
+                }
+            }
+        }
     });
 }
 
@@ -574,7 +744,7 @@ function initFilterTabs() {
     document.querySelectorAll('.filter-tab').forEach(function(tab) {
         tab.addEventListener('click', function() {
             document.querySelectorAll('.filter-tab').forEach(function(t) { t.classList.remove('active'); });
-            this.classList.add('active'); currentFilter = this.getAttribute('data-filter'); renderGames();
+            this.classList.add('active'); currentFilter = this.getAttribute('data-filter'); renderRtpChart(); renderGames();
         });
     });
 }
@@ -584,7 +754,7 @@ function initSortSelect() {
         if (this.value === 'rtp-desc') currentGames.sort(function(a, b) { return b.rtp - a.rtp; });
         else if (this.value === 'rtp-asc') currentGames.sort(function(a, b) { return a.rtp - b.rtp; });
         else if (this.value === 'name') currentGames.sort(function(a, b) { return a.name.localeCompare(b.name); });
-        currentGames.forEach(function(g, i) { g.rank = i + 1; }); renderTop3(); renderGames();
+        currentGames.forEach(function(g, i) { g.rank = i + 1; }); renderTop3(); renderRtpChart(); renderGames();
     });
 }
 function initBottomNav() {

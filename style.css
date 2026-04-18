@@ -1136,6 +1136,40 @@ body.scan-modal-open {
     margin-bottom: 12px;
 }
 
+.rtp-chart-panel {
+    margin: 0 14px 22px;
+    padding: 18px;
+    border-radius: 24px;
+    background: linear-gradient(180deg, rgba(22, 25, 15, 0.94), rgba(15, 17, 10, 0.96));
+    border: 1px solid rgba(240, 181, 72, 0.10);
+    box-shadow: 0 20px 45px rgba(0,0,0,0.18);
+}
+
+.rtp-chart-head {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 14px;
+    margin-bottom: 12px;
+}
+
+.rtp-chart-head h3 {
+    margin: 0;
+    font-size: 18px;
+}
+
+.rtp-chart-head p {
+    margin: 0;
+    color: rgba(255,255,255,0.64);
+    font-size: 12px;
+    max-width: 380px;
+}
+
+#rtpChart {
+    width: 100%;
+    max-height: 300px;
+}
+
 .top3-cards {
     display: grid;
     grid-template-columns: 1fr 1.1fr 1fr;
@@ -2469,6 +2503,20 @@ body.scan-modal-open {
     box-shadow: none;
 }
 
+.hero-carousel .carousel-track {
+    width: 100%;
+}
+
+.hero-carousel .carousel-slide {
+    flex: 0 0 100%;
+    width: 100%;
+}
+
+.hero-carousel .swiper-button-prev::after,
+.hero-carousel .swiper-button-next::after {
+    display: none;
+}
+
 .hero-carousel .slide-overlay {
     padding: 26px 20px 38px;
 }
@@ -2791,6 +2839,128 @@ body.scan-modal-open {
 
 .nav-item svg {
     opacity: 0.92;
+}
+
+.scan-swal-popup {
+    border-radius: 28px !important;
+    background: linear-gradient(180deg, rgba(22, 26, 16, 0.99), rgba(11, 13, 9, 0.99)) !important;
+    border: 1px solid rgba(240, 181, 72, 0.14) !important;
+    color: var(--text-bright) !important;
+    box-shadow: 0 30px 70px rgba(0, 0, 0, 0.4) !important;
+    padding: 24px 24px 18px !important;
+}
+
+.scan-swal-popup .swal2-title {
+    color: var(--text-bright) !important;
+    font-family: var(--font-display);
+    font-size: 26px !important;
+    letter-spacing: 0.6px;
+}
+
+.scan-swal {
+    text-align: left;
+}
+
+.scan-swal-progress {
+    height: 10px;
+    border-radius: 999px;
+    background: rgba(255,255,255,0.08);
+    overflow: hidden;
+    margin-bottom: 14px;
+}
+
+.scan-swal-progress-fill {
+    height: 100%;
+    border-radius: inherit;
+    background: linear-gradient(90deg, #58D06D, #F0B548, #FF8A3D);
+    box-shadow: 0 0 16px rgba(240, 181, 72, 0.22);
+    transition: width 0.35s ease;
+}
+
+.scan-swal-status {
+    color: rgba(255,255,255,0.84);
+    font-size: 13px;
+    font-weight: 700;
+    margin-bottom: 14px;
+}
+
+.scan-swal-steps {
+    display: grid;
+    gap: 8px;
+    margin-bottom: 14px;
+}
+
+.scan-swal-step {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 12px;
+    border-radius: 14px;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.05);
+    color: rgba(255,255,255,0.58);
+    font-size: 12px;
+}
+
+.scan-swal-step span {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.2);
+    flex-shrink: 0;
+}
+
+.scan-swal-step.active {
+    color: var(--text-bright);
+    border-color: rgba(240,181,72,0.22);
+    background: rgba(240,181,72,0.10);
+}
+
+.scan-swal-step.active span {
+    background: var(--accent);
+    box-shadow: 0 0 10px var(--gold-glow);
+}
+
+.scan-swal-step.done {
+    color: #9de6aa;
+    border-color: rgba(88,208,109,0.18);
+    background: rgba(88,208,109,0.08);
+}
+
+.scan-swal-step.done span {
+    background: #58D06D;
+    box-shadow: 0 0 10px rgba(88,208,109,0.28);
+}
+
+.scan-swal-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+}
+
+.scan-swal-grid > div {
+    padding: 12px;
+    border-radius: 16px;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.06);
+}
+
+.scan-swal-grid small {
+    display: block;
+    color: rgba(255,255,255,0.52);
+    font-size: 10px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 6px;
+}
+
+.scan-swal-grid strong {
+    display: block;
+    color: var(--text-bright);
+    font-size: 13px;
+    line-height: 1.45;
+    word-break: break-word;
 }
 
 @media (min-width: 768px) {
