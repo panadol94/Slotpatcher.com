@@ -39,12 +39,13 @@
     </svg>
 
     <div class="page-shell" id="home">
-        <header class="topbar">
+        <header class="topbar winners-topbar">
+            <button class="menu-toggle" type="button" aria-label="Buka menu">☰</button>
             <div class="brand-mark">
                 <div class="brand-logo">SP</div>
                 <div>
                     <div class="brand-name">Slotpatcher.com</div>
-                    <div class="brand-tagline">Malaysia Trusted Live Scanner</div>
+                    <div class="brand-tagline">Winners style live scanner</div>
                 </div>
             </div>
             <nav class="topbar-menu" aria-label="Primary">
@@ -53,8 +54,7 @@
                 <a href="#resultsSection" class="topbar-link">Results</a>
             </nav>
             <div class="topbar-actions">
-                <a href="#resultsSection" class="topbar-ghost">LOGIN</a>
-                <a href="#providerSection" class="topbar-action">SCAN NOW</a>
+                <span class="lang-pill">🇬🇧 EN</span>
             </div>
         </header>
 
@@ -111,11 +111,6 @@
 
             <div class="hero-media" data-aos="fade-up" data-aos-delay="120">
                 <div class="hero-media-frame">
-                    <div class="hero-media-topline">
-                        <span class="hero-frame-badge">LIVE CASINO SCANNER</span>
-                        <span class="hero-frame-pill">PREMIUM FLOW</span>
-                    </div>
-
                     <section class="banner-carousel hero-carousel swiper" id="heroSwiper">
                         <div class="carousel-track swiper-wrapper" id="carouselTrack">
                             <div class="carousel-slide swiper-slide">
@@ -148,43 +143,39 @@
                         <button class="carousel-arrow carousel-arrow-right swiper-button-next" id="carouselNext">❯</button>
                     </section>
 
-                    <div class="hero-mini-panels">
-                        <div class="hero-mini-card">
-                            <span class="mini-label">Secure Scan Popup</span>
-                            <strong>IP + device intel masa tekan button</strong>
-                        </div>
-                        <div class="hero-mini-card">
-                            <span class="mini-label">Real-time Style</span>
-                            <strong>Inspired by premium casino landing page</strong>
-                        </div>
+                    <div class="winners-cta-row">
+                        <a href="#providerSection" class="winners-cta winners-cta-primary">Pilih Provider</a>
+                        <a href="#resultsSection" class="winners-cta winners-cta-secondary">Login</a>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section class="promo-strip">
-            <article class="promo-card" data-aos="fade-up" data-aos-delay="0">
-                <span class="promo-chip">FAST FLOW</span>
-                <h3>Pilih provider, terus scan</h3>
-                <p>Tak auto-scan lagi. User control penuh untuk start bila dah ready.</p>
-            </article>
-            <article class="promo-card" data-aos="fade-up" data-aos-delay="80">
-                <span class="promo-chip">TRUST LOOK</span>
-                <h3>Landing style lebih premium</h3>
-                <p>Layout baru nampak macam casino brand besar, bukan tool lama yang noob.</p>
-            </article>
-            <article class="promo-card" data-aos="fade-up" data-aos-delay="160">
-                <span class="promo-chip">LIVE RESULT</span>
-                <h3>Top 3 + full lobby breakdown</h3>
-                <p>Result section kekal lengkap dengan ranking, filter, sort dan share.</p>
-            </article>
+        <section class="featured-provider-section" data-aos="fade-up">
+            <div class="winners-section-head">
+                <h2>Recommended Provider</h2>
+                <a href="#providerSection">View All</a>
+            </div>
+            <div id="featuredProviderGrid" class="featured-provider-grid"></div>
         </section>
 
-        <section class="trust-ribbon" aria-label="Trust badges">
-            <div class="trust-pill">✔ Provider-first scan flow</div>
-            <div class="trust-pill">✔ Secure popup before scan</div>
-            <div class="trust-pill">✔ Live RTP board</div>
-            <div class="trust-pill">✔ Premium casino look</div>
+        <section class="scan-mission-section" data-aos="fade-up">
+            <div class="winners-section-head">
+                <h2>Scan</h2>
+                <a href="#providerSection">View All</a>
+            </div>
+            <div class="scan-mission-card">
+                <div class="scan-mission-figure">⚡</div>
+                <div class="scan-mission-body">
+                    <div class="scan-mission-chip">More Rewards</div>
+                    <h3 id="scanMissionTitle">Pilih provider untuk mula scan</h3>
+                    <p id="scanMissionText">Provider first, lepas tu tekan button scan untuk buka live result.</p>
+                    <div class="scan-mission-progress">
+                        <span id="scanMissionProgress"></span>
+                    </div>
+                </div>
+                <button class="scan-mission-go" type="button" onclick="startScan()">Go</button>
+            </div>
         </section>
 
         <!-- Device Intel (hidden, used for scan modal) -->
@@ -195,10 +186,10 @@
     <section class="provider-section" id="providerSection" data-aos="fade-up">
         <div class="section-heading-wrap">
             <h2 class="section-title">
-                <span class="section-icon">🎮</span>
-                PILIH PROVIDER LOBBY
+                <span class="section-icon">🔥</span>
+                ALL PROVIDER
             </h2>
-            <p class="section-subtitle">Langkah pertama, pilih provider yang kau nak intai. Lepas tu baru tekan HACK SLOT untuk mula secure scan.</p>
+            <p class="section-subtitle">Recommended provider dekat atas. Kalau nak lebih banyak pilihan, pilih mana-mana provider dekat sini sebelum mula scan.</p>
         </div>
         <div id="providerGrid" class="provider-grid">
             <!-- Populated dynamically by JS from 99laju.net data -->

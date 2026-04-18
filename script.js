@@ -53,6 +53,7 @@ var currentRtpChart = null;
 // ==========================================
 document.addEventListener('DOMContentLoaded', function() {
     buildProviderGrid();
+    buildFeaturedProviders();
     initFilterTabs();
     initSortSelect();
     initBottomNav();
@@ -180,17 +181,40 @@ function buildProviderGrid() {
         btn.setAttribute('data-provider', key);
         btn.innerHTML = '<div class="provider-icon"><img loading="lazy" src="' + p.logo + '" alt="' + p.name + '" onerror="this.onerror=null; this.src=window.getFallbackImage(\'' + p.name + '\')"></div><span class="provider-name">' + p.name + '</span><span class="provider-check">✓</span>';
         btn.addEventListener('click', function() {
-            var resultsSection = document.getElementById('resultsSection');
-            if (isScanning) return;
-            grid.querySelectorAll('.provider-card').forEach(function(c) { c.classList.remove('active'); });
-            btn.classList.add('active');
-            currentProvider = key;
-            if (resultsSection) resultsSection.style.display = 'none';
-            updateScanButtonState();
-            updateProviderHint();
+            selectProvider(key);
         });
         grid.appendChild(btn);
     });
+}
+
+function buildFeaturedProviders() {
+    var grid = document.getElementById('featuredProviderGrid');
+    if (!grid) return;
+    grid.innerHTML = '';
+    PROVIDER_ORDER.slice(0, 3).forEach(function(key) {
+        var p = GAME_DATABASE[key];
+        if (!p) return;
+        var btn = document.createElement('button');
+        btn.className = 'featured-provider-card' + (currentProvider === key ? ' active' : '');
+        btn.setAttribute('data-provider', key);
+        btn.innerHTML = '<div class="featured-provider-thumb"><img loading="lazy" src="' + p.logo + '" alt="' + p.name + '" onerror="this.onerror=null; this.src=window.getFallbackImage(\'' + p.name + '\')"></div><span class="featured-provider-name">' + p.name + '</span>';
+        btn.addEventListener('click', function() {
+            selectProvider(key);
+        });
+        grid.appendChild(btn);
+    });
+}
+
+function selectProvider(key) {
+    var resultsSection = document.getElementById('resultsSection');
+    if (isScanning || !GAME_DATABASE[key]) return;
+    currentProvider = key;
+    document.querySelectorAll('.provider-card, .featured-provider-card').forEach(function(card) {
+        card.classList.toggle('active', card.getAttribute('data-provider') === key);
+    });
+    if (resultsSection) resultsSection.style.display = 'none';
+    updateScanButtonState();
+    updateProviderHint();
 }
 
 function updateScanButtonState() {
@@ -209,16 +233,25 @@ function updateScanButtonState() {
 
 function updateProviderHint(message, isError) {
     var hint = document.getElementById('providerHint');
+    var missionTitle = document.getElementById('scanMissionTitle');
+    var missionText = document.getElementById('scanMissionText');
+    var missionProgress = document.getElementById('scanMissionProgress');
     var provider = GAME_DATABASE[currentProvider];
     if (!hint) return;
     hint.classList.toggle('error', !!isError);
     if (message) {
         hint.textContent = message;
+        if (missionText) missionText.textContent = message;
         return;
     }
     hint.textContent = provider
         ? 'Provider dipilih: ' + provider.name + '. Tekan HACK SLOT untuk mula scan.'
         : 'Sila pilih provider dulu, lepas tu tekan HACK SLOT untuk mula scan.';
+    if (missionTitle) missionTitle.textContent = provider ? 'Scan ' + provider.name + ' sekarang' : 'Pilih provider untuk mula scan';
+    if (missionText) missionText.textContent = provider
+        ? provider.name + ' dah ready. Tekan Go atau button scan bawah untuk teruskan.'
+        : 'Pilih provider dekat Recommended Provider atau All Provider, lepas tu tekan Go.';
+    if (missionProgress) missionProgress.style.width = provider ? '100%' : '36%';
 }
 
 function escapeHtml(value) {
