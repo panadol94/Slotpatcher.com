@@ -215,6 +215,7 @@ function selectProvider(key) {
     if (resultsSection) resultsSection.style.display = 'none';
     updateScanButtonState();
     updateProviderHint();
+    updateBottomNavVisibility();
 }
 
 function updateScanButtonState() {
@@ -595,6 +596,7 @@ function startScan() {
             resultsSection.style.display = 'block';
             isScanning = false;
             loadGames(currentProvider);
+            updateBottomNavVisibility();
             resultsSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
         });
     });
@@ -790,6 +792,20 @@ function initSortSelect() {
         currentGames.forEach(function(g, i) { g.rank = i + 1; }); renderTop3(); renderRtpChart(); renderGames();
     });
 }
+function updateBottomNavVisibility() {
+    var nav = document.querySelector('.bottom-nav');
+    if (!nav) return;
+    if (window.innerWidth > 560) {
+        nav.classList.remove('nav-hidden');
+        return;
+    }
+    var resultsSection = document.getElementById('resultsSection');
+    var resultsVisible = resultsSection && resultsSection.style.display !== 'none';
+    var threshold = Math.max(520, Math.round(window.innerHeight * 0.92));
+    var shouldShow = window.scrollY > threshold || resultsVisible;
+    nav.classList.toggle('nav-hidden', !shouldShow);
+}
+
 function initBottomNav() {
     document.querySelectorAll('.nav-item').forEach(function(item) {
         item.addEventListener('click', function(e) {
@@ -805,6 +821,9 @@ function initBottomNav() {
             }
         });
     });
+    updateBottomNavVisibility();
+    window.addEventListener('scroll', updateBottomNavVisibility, { passive: true });
+    window.addEventListener('resize', updateBottomNavVisibility);
 }
 function updateTimestamp() {
     var el = document.getElementById('lastUpdate'); if (el) el.textContent = new Date().toLocaleTimeString('ms-MY', { hour: '2-digit', minute: '2-digit' });
