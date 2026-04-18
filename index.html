@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>SQUEEN668 — RTP Live Scanner</title>
-    <meta name="description" content="SQUEEN668 RTP Scanner — Analisis data slot real-time untuk MEGA888, 918KISS, JILI, Pragmatic Play dan lebih.">
+    <title>Slotpatcher.com — Live Casino Scanner</title>
+    <meta name="description" content="Slotpatcher.com ialah live casino scanner dengan analisis RTP real-time, provider selection, dan scan flow premium untuk pemain Malaysia.">
     <link rel="icon" type="image/x-icon" href="favicon.ico">
     <link rel="icon" type="image/png" sizes="32x32" href="favicon.png">
     <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
@@ -36,94 +36,153 @@
         </defs>
     </svg>
 
-    <!-- Scanner Header -->
-    <header class="scanner-header">
-        <div class="header-glow"></div>
-        <div class="header-scanline" aria-hidden="true"></div>
-        <h1 class="header-title">
-            <span class="header-icon">⚡</span>
-            SQUEEN668 RTP SCANNER
-        </h1>
-        <p class="header-sub" id="scanStatusText">Live RTP Analysis • 16 Providers</p>
-        <div class="status-bar">
-            <div class="status-item live">
-                <span class="live-dot"></span>LIVE
-            </div>
-            <div class="status-item">
-                <span>🎰</span> <span id="statProviders">16</span> Providers
-            </div>
-            <div class="status-item">
-                <span>⏱️</span> <span id="lastUpdate">--:--</span>
-            </div>
-        </div>
-    </header>
-
-    <!-- Stats Bar -->
-    <section class="stats-bar">
-        <div class="stat-card hot">
-            <div class="stat-icon">🔥</div>
-            <div class="stat-value" id="statHot">0</div>
-            <div class="stat-label">HOT</div>
-        </div>
-        <div class="stat-card warm">
-            <div class="stat-icon">⚡</div>
-            <div class="stat-value" id="statWarm">0</div>
-            <div class="stat-label">WARM</div>
-        </div>
-        <div class="stat-card cold">
-            <div class="stat-icon">❄️</div>
-            <div class="stat-value" id="statCold">0</div>
-            <div class="stat-label">COLD</div>
-        </div>
-        <div class="stat-card total">
-            <div class="stat-icon">📊</div>
-            <div class="stat-value" id="totalGames">0</div>
-            <div class="stat-label">TOTAL</div>
-        </div>
-    </section>
-
-    <!-- Banner Carousel -->
-    <section class="banner-carousel">
-        <div class="carousel-track" id="carouselTrack">
-            <div class="carousel-slide">
-                <img src="https://static.kiyupa.com/media/9e755e6f88d965cd7f1bf.png" alt="Banner 1">
-                <div class="slide-overlay">
-                    <div class="slide-badge">🔥 PROMO</div>
-                    <div class="slide-title">Welcome Bonus 100%</div>
-                    <div class="slide-desc">Deposit pertama dapat bonus sehingga RM500</div>
+    <div class="page-shell">
+        <header class="topbar">
+            <div class="brand-mark">
+                <div class="brand-logo">SP</div>
+                <div>
+                    <div class="brand-name">Slotpatcher.com</div>
+                    <div class="brand-tagline">Malaysia Trusted Live Scanner</div>
                 </div>
             </div>
-            <div class="carousel-slide">
-                <img src="https://static.kiyupa.com/media/bf47b17f88d96c3b8cfb1.png" alt="Banner 2">
-                <div class="slide-overlay">
-                    <div class="slide-badge">🎰 HOT</div>
-                    <div class="slide-title">RTP Scanner Live</div>
-                    <div class="slide-desc">Scan slot gacor real-time 16 providers</div>
-                </div>
-            </div>
-            <div class="carousel-slide">
-                <img src="https://static.kiyupa.com/media/2e96457f88d962c9a7e04.png" alt="Banner 3">
-                <div class="slide-overlay">
-                    <div class="slide-badge">💎 VIP</div>
-                    <div class="slide-title">Free Credit RM20</div>
-                    <div class="slide-desc">Daftar sekarang & terus claim!</div>
-                </div>
-            </div>
-        </div>
-        <div class="carousel-dots" id="carouselDots"></div>
-        <button class="carousel-arrow carousel-arrow-left" id="carouselPrev">❮</button>
-        <button class="carousel-arrow carousel-arrow-right" id="carouselNext">❯</button>
-    </section>
+            <a href="#providerSection" class="topbar-action">START SCAN</a>
+        </header>
 
-    <!-- Device Intel (hidden, used for scan modal) -->
-    <section id="deviceIntel" class="device-intel" hidden></section>
+        <section class="hero-section">
+            <div class="hero-copy">
+                <span class="hero-kicker">Trusted casino intelligence for Malaysia players</span>
+                <h1 class="hero-title">Scan provider dulu, baru unlock live result paling hot.</h1>
+                <p class="hero-text" id="scanStatusText">Slotpatcher bagi flow premium macam landing casino besar, tapi scanner function kekal padu. Pilih provider, tekan scan, terus dapat live RTP analysis.</p>
+
+                <div class="hero-actions">
+                    <a href="#providerSection" class="hero-btn hero-btn-primary">PILIH PROVIDER</a>
+                    <a href="#resultsSection" class="hero-btn hero-btn-secondary">VIEW RESULT</a>
+                </div>
+
+                <div class="hero-points">
+                    <div class="hero-point"><span>✔</span> Provider selection dulu sebelum scan</div>
+                    <div class="hero-point"><span>✔</span> Popup secure scan + IP detect</div>
+                    <div class="hero-point"><span>✔</span> Top 3 result, filter, dan game list live</div>
+                </div>
+
+                <div class="hero-stats-grid">
+                    <div class="hero-stat-card highlight">
+                        <div class="hero-stat-label">LIVE STATUS</div>
+                        <div class="hero-stat-value"><span class="live-dot"></span>ONLINE</div>
+                        <div class="hero-stat-sub">Update <span id="lastUpdate">--:--</span></div>
+                    </div>
+                    <div class="hero-stat-card">
+                        <div class="hero-stat-label">PROVIDER</div>
+                        <div class="hero-stat-value" id="statProviders">16</div>
+                        <div class="hero-stat-sub">Lobby aktif</div>
+                    </div>
+                    <div class="hero-stat-card hot">
+                        <div class="hero-stat-label">HOT</div>
+                        <div class="hero-stat-value" id="statHot">0</div>
+                        <div class="hero-stat-sub">Game panas</div>
+                    </div>
+                    <div class="hero-stat-card warm">
+                        <div class="hero-stat-label">WARM</div>
+                        <div class="hero-stat-value" id="statWarm">0</div>
+                        <div class="hero-stat-sub">Mid trend</div>
+                    </div>
+                    <div class="hero-stat-card cold">
+                        <div class="hero-stat-label">COLD</div>
+                        <div class="hero-stat-value" id="statCold">0</div>
+                        <div class="hero-stat-sub">Low heat</div>
+                    </div>
+                    <div class="hero-stat-card total">
+                        <div class="hero-stat-label">TOTAL GAMES</div>
+                        <div class="hero-stat-value" id="totalGames">0</div>
+                        <div class="hero-stat-sub">Scannable sekarang</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="hero-media">
+                <div class="hero-media-frame">
+                    <div class="hero-media-topline">
+                        <span class="hero-frame-badge">LIVE CASINO SCANNER</span>
+                        <span class="hero-frame-pill">PREMIUM FLOW</span>
+                    </div>
+
+                    <section class="banner-carousel hero-carousel">
+                        <div class="carousel-track" id="carouselTrack">
+                            <div class="carousel-slide">
+                                <img src="https://static.kiyupa.com/media/9e755e6f88d965cd7f1bf.png" alt="Welcome bonus banner">
+                                <div class="slide-overlay">
+                                    <div class="slide-badge">WELCOME</div>
+                                    <div class="slide-title">Premium Lobby Experience</div>
+                                    <div class="slide-desc">Layout lebih clean, mewah, dan terus fokus pada scan flow</div>
+                                </div>
+                            </div>
+                            <div class="carousel-slide">
+                                <img src="https://static.kiyupa.com/media/bf47b17f88d96c3b8cfb1.png" alt="Scanner banner">
+                                <div class="slide-overlay">
+                                    <div class="slide-badge">SCANNER</div>
+                                    <div class="slide-title">Provider First Scanner</div>
+                                    <div class="slide-desc">User pilih provider dulu, baru popup scan dan result keluar</div>
+                                </div>
+                            </div>
+                            <div class="carousel-slide">
+                                <img src="https://static.kiyupa.com/media/2e96457f88d962c9a7e04.png" alt="Live result banner">
+                                <div class="slide-overlay">
+                                    <div class="slide-badge">RESULT</div>
+                                    <div class="slide-title">Top 3 Hot Games</div>
+                                    <div class="slide-desc">RTP ranking, share result, dan senarai game yang nampak premium</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="carousel-dots" id="carouselDots"></div>
+                        <button class="carousel-arrow carousel-arrow-left" id="carouselPrev">❮</button>
+                        <button class="carousel-arrow carousel-arrow-right" id="carouselNext">❯</button>
+                    </section>
+
+                    <div class="hero-mini-panels">
+                        <div class="hero-mini-card">
+                            <span class="mini-label">Secure Scan Popup</span>
+                            <strong>IP + device intel masa tekan button</strong>
+                        </div>
+                        <div class="hero-mini-card">
+                            <span class="mini-label">Real-time Style</span>
+                            <strong>Inspired by premium casino landing page</strong>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="promo-strip">
+            <article class="promo-card">
+                <span class="promo-chip">FAST FLOW</span>
+                <h3>Pilih provider, terus scan</h3>
+                <p>Tak auto-scan lagi. User control penuh untuk start bila dah ready.</p>
+            </article>
+            <article class="promo-card">
+                <span class="promo-chip">TRUST LOOK</span>
+                <h3>Landing style lebih premium</h3>
+                <p>Layout baru nampak macam casino brand besar, bukan tool lama yang noob.</p>
+            </article>
+            <article class="promo-card">
+                <span class="promo-chip">LIVE RESULT</span>
+                <h3>Top 3 + full lobby breakdown</h3>
+                <p>Result section kekal lengkap dengan ranking, filter, sort dan share.</p>
+            </article>
+        </section>
+
+        <!-- Device Intel (hidden, used for scan modal) -->
+        <section id="deviceIntel" class="device-intel" hidden></section>
+    </div>
 
     <!-- Provider Grid -->
     <section class="provider-section" id="providerSection">
-        <h2 class="section-title">
-            <span class="section-icon">🎮</span>
-            PILIH PROVIDER
-        </h2>
+        <div class="section-heading-wrap">
+            <h2 class="section-title">
+                <span class="section-icon">🎮</span>
+                PILIH PROVIDER LOBBY
+            </h2>
+            <p class="section-subtitle">Langkah pertama, pilih provider yang kau nak intai. Lepas tu baru tekan HACK SLOT untuk mula secure scan.</p>
+        </div>
         <div id="providerGrid" class="provider-grid">
             <!-- Populated dynamically by JS from 99laju.net data -->
         </div>
@@ -174,6 +233,13 @@
 
     <!-- Results Section -->
     <section id="resultsSection" class="results-section" style="display:none;">
+        <div class="section-heading-wrap results-heading-wrap">
+            <h2 class="section-title">
+                <span class="section-icon">📈</span>
+                LIVE RESULT BOARD
+            </h2>
+            <p class="section-subtitle">Ranking semasa untuk provider yang baru discan. Fokus pada Top 3 dan tapis ikut status panas game.</p>
+        </div>
         <!-- Top 3 Podium -->
         <div id="top3Section" class="top3-section"></div>
         <div class="controls-bar">
