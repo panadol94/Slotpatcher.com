@@ -295,22 +295,28 @@ function openScanModal(providerName, onDone) {
     var modal = document.getElementById('scanModal');
     var modalStatus = document.getElementById('scanModalStatus');
     var progressBar = document.getElementById('scanModalProgressBar');
+    var modalTitle = document.getElementById('scanModalTitle');
+    var stepItems = document.querySelectorAll('#scanModalSteps .scan-step-item');
     if (!modal || !modalStatus || !progressBar) {
         onDone();
         return;
     }
 
     renderScanModal(providerName);
+    if (modalTitle) modalTitle.textContent = 'SCANNING ' + providerName;
     modal.classList.add('active');
     modal.setAttribute('aria-hidden', 'false');
     document.body.classList.add('scan-modal-open');
     progressBar.style.width = '8%';
+    stepItems.forEach(function(item) {
+        item.classList.remove('active', 'done');
+    });
 
     var steps = [
-        { text: 'Mengunci session ' + providerName + '...', progress: 28, delay: 350 },
-        { text: 'Mengesan IP address awam...', progress: 56, delay: 450 },
-        { text: 'Menyambung ke nod analisis...', progress: 82, delay: 500 },
-        { text: 'Access granted. Scanner dimulakan...', progress: 100, delay: 450 }
+        { text: 'Provider selected, locking ' + providerName + ' session...', progress: 24, delay: 420 },
+        { text: 'IP address detected, connecting secure node...', progress: 52, delay: 500 },
+        { text: 'Fetching RTP data and building hot game list...', progress: 82, delay: 560 },
+        { text: 'Scan complete. Preparing live result board...', progress: 100, delay: 460 }
     ];
 
     var index = 0;
@@ -325,6 +331,10 @@ function openScanModal(providerName, onDone) {
         var step = steps[index++];
         modalStatus.textContent = step.text;
         progressBar.style.width = step.progress + '%';
+        stepItems.forEach(function(item, itemIndex) {
+            item.classList.toggle('done', itemIndex < index - 1);
+            item.classList.toggle('active', itemIndex === index - 1);
+        });
         scanModalTimer = setTimeout(nextStep, step.delay);
     }
 

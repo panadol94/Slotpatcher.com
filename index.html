@@ -235,13 +235,19 @@
                 <span class="scan-modal-live">● LIVE</span>
             </div>
             <div class="scan-modal-title-row">
-                <h3 id="scanModalTitle">MENGUNCI SESSION</h3>
+                <h3 id="scanModalTitle">SCANNING PROVIDER</h3>
                 <span class="scan-modal-provider" id="scanModalProvider">PROVIDER</span>
             </div>
             <div class="scan-modal-progress">
                 <div id="scanModalProgressBar" class="scan-modal-progress-fill" style="width:0%"></div>
             </div>
             <p id="scanModalStatus" class="scan-modal-status">Menganalisis rangkaian peranti...</p>
+            <div class="scan-modal-steps" id="scanModalSteps">
+                <div class="scan-step-item" data-step="0"><span class="scan-step-dot"></span><span>Provider selected</span></div>
+                <div class="scan-step-item" data-step="1"><span class="scan-step-dot"></span><span>IP address detected</span></div>
+                <div class="scan-step-item" data-step="2"><span class="scan-step-dot"></span><span>Fetching RTP data</span></div>
+                <div class="scan-step-item" data-step="3"><span class="scan-step-dot"></span><span>Scan complete</span></div>
+            </div>
             <div id="scanModalGrid" class="scan-modal-grid"></div>
         </div>
     </div>
