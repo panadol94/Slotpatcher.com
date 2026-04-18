@@ -225,10 +225,12 @@ function updateScanButtonState() {
     if (!scanButton || !scanButtonLabel) return;
     if (provider) {
         scanButton.classList.remove('disabled');
-        scanButtonLabel.textContent = 'SCAN ' + provider.name;
+        scanButtonLabel.textContent = 'SCAN NOW';
+        scanButton.setAttribute('aria-label', 'Scan ' + provider.name + ' sekarang');
     } else {
         scanButton.classList.add('disabled');
         scanButtonLabel.textContent = 'PILIH PROVIDER';
+        scanButton.setAttribute('aria-label', 'Pilih provider dulu');
     }
 }
 
@@ -795,15 +797,7 @@ function initSortSelect() {
 function updateBottomNavVisibility() {
     var nav = document.querySelector('.bottom-nav');
     if (!nav) return;
-    if (window.innerWidth > 560) {
-        nav.classList.remove('nav-hidden');
-        return;
-    }
-    var resultsSection = document.getElementById('resultsSection');
-    var resultsVisible = resultsSection && resultsSection.style.display !== 'none';
-    var threshold = Math.max(520, Math.round(window.innerHeight * 0.92));
-    var shouldShow = window.scrollY > threshold || resultsVisible;
-    nav.classList.toggle('nav-hidden', !shouldShow);
+    nav.classList.remove('nav-hidden');
 }
 
 function initBottomNav() {
