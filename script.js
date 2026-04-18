@@ -223,6 +223,12 @@ function runScanProgress(providerName, onComplete) {
     if (!logBody) { onComplete(); return; }
 
     titleEl.textContent = 'Scanning ' + providerName + '...';
+    var radarFill = document.getElementById('scanRadarFill');
+    var radarCircumference = 2 * Math.PI * 15; // r=15 → ~94.25
+    if (radarFill) {
+        radarFill.setAttribute('stroke-dasharray', radarCircumference);
+        radarFill.setAttribute('stroke-dashoffset', radarCircumference);
+    }
     var gameCount = Math.floor(Math.random() * 10 + 15);
     var lines = [
         { text: 'Initializing scanner...', type: 'info', delay: 300 },
@@ -256,6 +262,7 @@ function runScanProgress(providerName, onComplete) {
             var pct = Math.round(((i + 1) / lines.length) * 100);
             if (progressBar) progressBar.style.width = pct + '%';
             if (percentEl) percentEl.textContent = pct + '%';
+            if (radarFill) radarFill.setAttribute('stroke-dashoffset', radarCircumference * (1 - pct / 100));
             if (i === lines.length - 1) setTimeout(onComplete, 500);
         }, cumDelay);
     });
@@ -362,7 +369,20 @@ function animateCounter(id, target) {
     var el = document.getElementById(id); if (!el) return;
     var cur = parseInt(el.textContent) || 0; if (cur === target) return;
     var step = target > cur ? 1 : -1;
-    var t = setInterval(function() { cur += step; el.textContent = cur; if (cur === target) clearInterval(t); }, 50);
+    var card = el.closest('.stat-card');
+    var t = setInterval(function() {
+        cur += step;
+        el.textContent = cur;
+        if (cur === target) {
+            clearInterval(t);
+            if (card) {
+                card.classList.remove('flash');
+                void card.offsetWidth;
+                card.classList.add('flash');
+                setTimeout(function() { card.classList.remove('flash'); }, 700);
+            }
+        }
+    }, 50);
 }
 
 // ==========================================

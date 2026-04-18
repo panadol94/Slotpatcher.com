@@ -17,9 +17,29 @@
 </head>
 <body>
 
+    <!-- Ambient Particle Field -->
+    <div class="particle-field" aria-hidden="true">
+        <span></span><span></span><span></span><span></span><span></span>
+        <span></span><span></span><span></span><span></span><span></span>
+        <span></span><span></span><span></span><span></span><span></span>
+        <span></span><span></span><span></span><span></span><span></span>
+    </div>
+
+    <!-- Shared SVG defs for gauges -->
+    <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+        <defs>
+            <linearGradient id="radarGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#22D3EE"/>
+                <stop offset="50%" stop-color="#D4AF37"/>
+                <stop offset="100%" stop-color="#FFD700"/>
+            </linearGradient>
+        </defs>
+    </svg>
+
     <!-- Scanner Header -->
     <header class="scanner-header">
         <div class="header-glow"></div>
+        <div class="header-scanline" aria-hidden="true"></div>
         <h1 class="header-title">
             <span class="header-icon">⚡</span>
             SQUEEN668 RTP SCANNER
@@ -111,7 +131,13 @@
     <section id="scanningSection" class="scanning-section" style="display:none;">
         <div class="scan-panel">
             <div class="scan-panel-header">
-                <span class="scan-panel-icon">⚙️</span>
+                <div class="scan-radar" aria-hidden="true">
+                    <svg viewBox="0 0 36 36">
+                        <circle class="radar-track" cx="18" cy="18" r="15"/>
+                        <circle class="radar-fill" id="scanRadarFill" cx="18" cy="18" r="15"
+                                stroke-dasharray="94.2" stroke-dashoffset="94.2"/>
+                    </svg>
+                </div>
                 <span class="scan-panel-title" id="scanPanelTitle">Scanning...</span>
                 <span class="scan-panel-percent" id="scanPanelPercent">0%</span>
             </div>
@@ -165,6 +191,7 @@
             <span>Tips</span>
         </a>
         <a href="#" class="nav-item center-hack-btn" onclick="startScan()">
+            <span class="hack-btn-ring" aria-hidden="true"></span>
             <div class="hack-btn-inner">
                 <svg viewBox="0 0 24 24" fill="none" stroke="#1A0A2E" stroke-width="2.5"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
             </div>
