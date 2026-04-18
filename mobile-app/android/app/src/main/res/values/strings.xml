@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">SQUEEN668 RTP Scanner</string>
+    <string name="title_activity_main">SQUEEN668 RTP Scanner</string>
+    <string name="package_name">com.squeen668.rtpscanner</string>
+    <string name="custom_url_scheme">com.squeen668.rtpscanner</string>
+</resources>
