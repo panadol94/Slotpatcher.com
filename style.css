@@ -348,7 +348,7 @@ body::after {
    ============================================= */
 .provider-section {
     padding: 0 14px;
-    margin-bottom: 28px;
+    margin-bottom: 32px;
     position: relative;
     z-index: 1;
 }
@@ -371,7 +371,7 @@ body::after {
 .provider-grid {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 10px;
+    gap: 12px;
 }
 
 .provider-card {
@@ -379,7 +379,7 @@ body::after {
     background: var(--bg-card);
     border: 1px solid var(--border-dim);
     border-radius: var(--radius);
-    padding: 14px 8px 12px;
+    padding: 16px 10px 13px;
     text-align: center;
     cursor: pointer;
     transition: all 0.25s ease;
@@ -541,7 +541,7 @@ body::after {
    ============================================= */
 .top3-section {
     padding: 0 14px;
-    margin-bottom: 20px;
+    margin-bottom: 24px;
     position: relative;
     z-index: 1;
 }
@@ -681,7 +681,7 @@ body::after {
     align-items: center;
     gap: 8px;
     padding: 0 14px;
-    margin-bottom: 14px;
+    margin-bottom: 16px;
     flex-wrap: wrap;
 }
 
@@ -852,7 +852,7 @@ body::after {
    SHARE SECTION
    ============================================= */
 .share-section {
-    margin: 24px 14px 20px;
+    margin: 28px 14px 24px;
     padding: 16px;
     background: var(--bg-card);
     border: 1px solid var(--border-dim);
@@ -965,14 +965,25 @@ body::after {
     display: flex;
     justify-content: space-evenly;
     align-items: center;
-    background: rgba(10, 14, 20, 0.95);
+    background: linear-gradient(180deg, rgba(18, 25, 34, 0.96), rgba(10, 14, 20, 0.98));
     border: 1px solid var(--border-dim);
     border-radius: 22px;
     margin: 28px 14px 18px;
     padding: 8px 6px calc(14px + env(safe-area-inset-bottom, 0px));
     min-height: auto;
     backdrop-filter: blur(16px);
-    box-shadow: 0 -8px 30px rgba(0, 0, 0, 0.28);
+    box-shadow: 0 16px 36px rgba(0, 0, 0, 0.32), inset 0 1px 0 rgba(255,255,255,0.03);
+    overflow: hidden;
+}
+
+.bottom-nav::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 10%;
+    width: 80%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(255,107,0,0.45), transparent);
 }
 
 .nav-item {
@@ -985,8 +996,9 @@ body::after {
     color: var(--text-dim);
     text-decoration: none;
     font-size: 9px;
-    padding: 4px 8px;
-    transition: color 0.2s;
+    padding: 8px 8px 6px;
+    border-radius: 16px;
+    transition: color 0.2s, background 0.2s, transform 0.2s;
 }
 
 .nav-item span {
@@ -996,13 +1008,21 @@ body::after {
 .nav-item svg {
     width: 20px;
     height: 20px;
+    padding: 4px;
+    border-radius: 10px;
+    background: rgba(255,255,255,0.03);
 }
 
 .nav-item.active {
     color: var(--accent);
+    background: rgba(255,107,0,0.08);
 }
 
-.nav-item:hover { color: var(--accent); }
+.nav-item:hover {
+    color: var(--accent);
+    background: rgba(255,255,255,0.03);
+    transform: translateY(-1px);
+}
 
 /* =============================================
    RESPONSIVE
@@ -1086,11 +1106,12 @@ body::after {
     position: relative;
     top: -14px;
     flex: 1.15;
+    z-index: 1;
 }
 .hack-btn-inner {
     width: 52px;
     height: 52px;
-    background: var(--accent);
+    background: linear-gradient(180deg, #ff8b2c, var(--accent));
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -1109,4 +1130,6 @@ body::after {
     font-size: 10px !important;
     text-transform: uppercase;
     letter-spacing: 1px;
+    color: var(--text-bright) !important;
+    text-shadow: 0 0 12px rgba(255, 107, 0, 0.35);
 }
