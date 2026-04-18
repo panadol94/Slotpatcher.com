@@ -36,7 +36,7 @@
         </defs>
     </svg>
 
-    <div class="page-shell">
+    <div class="page-shell" id="home">
         <header class="topbar">
             <div class="brand-mark">
                 <div class="brand-logo">SP</div>
@@ -45,7 +45,15 @@
                     <div class="brand-tagline">Malaysia Trusted Live Scanner</div>
                 </div>
             </div>
-            <a href="#providerSection" class="topbar-action">START SCAN</a>
+            <nav class="topbar-menu" aria-label="Primary">
+                <a href="#home" class="topbar-link">Home</a>
+                <a href="#providerSection" class="topbar-link">Providers</a>
+                <a href="#resultsSection" class="topbar-link">Results</a>
+            </nav>
+            <div class="topbar-actions">
+                <a href="#resultsSection" class="topbar-ghost">LOGIN</a>
+                <a href="#providerSection" class="topbar-action">REGISTER / SCAN</a>
+            </div>
         </header>
 
         <section class="hero-section">
@@ -170,6 +178,13 @@
             </article>
         </section>
 
+        <section class="trust-ribbon" aria-label="Trust badges">
+            <div class="trust-pill">✔ Provider-first scan flow</div>
+            <div class="trust-pill">✔ Secure popup before scan</div>
+            <div class="trust-pill">✔ Live RTP board</div>
+            <div class="trust-pill">✔ Premium casino look</div>
+        </section>
+
         <!-- Device Intel (hidden, used for scan modal) -->
         <section id="deviceIntel" class="device-intel" hidden></section>
     </div>
@@ -266,9 +281,39 @@
             </div>
         </div>
         <div class="results-footer">
-            <p>⏱️ Data dikemaskini setiap 60 minit • Percentage berubah mengikut masa</p>
+            <div class="results-footer-grid">
+                <div>
+                    <span class="results-footer-label">Refresh Cycle</span>
+                    <strong>Setiap 60 minit</strong>
+                </div>
+                <div>
+                    <span class="results-footer-label">Scan Mode</span>
+                    <strong>Provider First</strong>
+                </div>
+                <div>
+                    <span class="results-footer-label">Output</span>
+                    <strong>Top 3 + Full Lobby</strong>
+                </div>
+            </div>
         </div>
     </section>
+
+    <footer class="site-footer">
+        <div class="site-footer-grid">
+            <div class="site-footer-brand">
+                <div class="brand-logo footer-logo">SP</div>
+                <div>
+                    <div class="brand-name">Slotpatcher.com</div>
+                    <p class="site-footer-copy">Premium live scanner experience dengan flow provider selection, secure popup scan, dan result board yang nampak lebih solid.</p>
+                </div>
+            </div>
+            <div class="site-footer-links">
+                <a href="#providerSection">Pilih Provider</a>
+                <a href="#resultsSection">Live Result</a>
+                <a href="#home">Top Page</a>
+            </div>
+        </div>
+    </footer>
 
     <!-- Bottom Navigation -->
     <nav class="bottom-nav">
@@ -277,7 +322,7 @@
                 <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
                 <path d="M8.5 12l2.5 2.5L15.5 10" stroke-width="2" class="icon-accent"/>
             </svg>
-            <span style="font-size: 9px;">Trusted<br>Company</span>
+            <span style="font-size: 9px;">Trusted<br>Brand</span>
         </a>
         <a href="#" class="nav-item">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
@@ -286,7 +331,7 @@
                 <path d="M12 2.5a6 6 0 0 0-4 10.5c1 1 1.5 2 1.5 3.5h5c0-1.5 .5-2.5 1.5-3.5A6 6 0 0 0 12 2.5z"/>
                 <path d="M10 9.5l2 2 2-2" stroke-width="1.4" class="icon-accent"/>
             </svg>
-            <span>Tips</span>
+            <span>Promo</span>
         </a>
         <a href="#" id="scanButton" class="nav-item center-hack-btn disabled" onclick="startScan()">
             <span class="hack-btn-ring" aria-hidden="true"></span>
@@ -302,7 +347,7 @@
                 <path d="M4 13H3a1 1 0 0 0-1 1v3a2 2 0 0 0 2 2h1v-6z"/>
                 <path d="M10 19a2 2 0 0 0 2 2h2" class="icon-accent"/>
             </svg>
-            <span>LiveChat</span>
+            <span>Support</span>
         </a>
         <a href="#" class="nav-item">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
@@ -310,7 +355,7 @@
                 <path d="M4 21v-1a6 6 0 0 1 6-6h4a6 6 0 0 1 6 6v1"/>
                 <path d="M18 3l.8 1.6L20.5 5l-1.2 1.1.3 1.7L18 7l-1.6.8.3-1.7L15.5 5l1.7-.4L18 3z" stroke-width="1.3" class="icon-accent"/>
             </svg>
-            <span>Profile</span>
+            <span>VIP</span>
         </a>
     </nav>
 

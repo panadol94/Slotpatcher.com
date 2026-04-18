@@ -378,7 +378,7 @@ function runScanProgress(providerName, onComplete) {
         { text: 'Connection established', type: 'success', delay: 400 },
         { text: 'Authenticating session...', type: 'normal', delay: 500 },
         { text: 'Session verified ✓', type: 'success', delay: 300 },
-        { text: 'Target: ' + providerName + ' • SQUEEN668', type: 'info', delay: 400 },
+        { text: 'Target: ' + providerName + ' • SLOTPATCHER', type: 'info', delay: 400 },
         { text: 'Reading RTP data block...', type: 'normal', delay: 500 },
         { text: 'Accessing slot tables...', type: 'normal', delay: 400 },
         { text: gameCount + ' games found', type: 'success', delay: 500 },
@@ -437,7 +437,7 @@ function startScan() {
         if (top3Section) top3Section.innerHTML = '';
 
         var sd = document.getElementById('scanDetail');
-        if (sd) sd.textContent = 'Provider: ' + pName + ' • SQUEEN668';
+        if (sd) sd.textContent = 'Provider: ' + pName + ' • SLOTPATCHER';
 
         scanSection.scrollIntoView({ behavior: 'smooth', block: 'center' });
 
@@ -521,7 +521,7 @@ function animateCounter(id, target) {
     var el = document.getElementById(id); if (!el) return;
     var cur = parseInt(el.textContent) || 0; if (cur === target) return;
     var step = target > cur ? 1 : -1;
-    var card = el.closest('.stat-card');
+    var card = el.closest('.stat-card, .hero-stat-card');
     var t = setInterval(function() {
         cur += step;
         el.textContent = cur;
@@ -594,9 +594,9 @@ function shareResults(method) {
     var pName = GAME_DATABASE[currentProvider] ? GAME_DATABASE[currentProvider].name : currentProvider;
     var now = new Date().toLocaleString('ms-MY');
     var top5 = currentGames.slice(0, 5);
-    var text = '🛡️ *SQUEEN668 SCAN RESULT*\n🎮 Provider: ' + pName + '\n📅 ' + now + '\n────────────────────\n\n🏆 *TOP 5 GAME:*\n\n';
+    var text = '🛡️ *SLOTPATCHER SCAN RESULT*\n🎮 Provider: ' + pName + '\n📅 ' + now + '\n────────────────────\n\n🏆 *TOP 5 GAME:*\n\n';
     top5.forEach(function(g, i) { text += (i+1) + '. ' + g.name + '\n   RTP: ' + g.rtp + '% ' + getStatusEmoji(g.status) + ' ' + g.status.toUpperCase() + '\n\n'; });
-    text += '────────────────────\n🚀 Scan PERCUMA di SQUEEN668!\n';
+    text += '────────────────────\n🚀 Scan premium di Slotpatcher.com!\n';
     if (method === 'whatsapp') window.open('https://wa.me/?text=' + encodeURIComponent(text), '_blank');
     else if (method === 'telegram') window.open('https://t.me/share/url?url=' + encodeURIComponent(location.href) + '&text=' + encodeURIComponent(text), '_blank');
     else navigator.clipboard.writeText(text).then(function() { var btn = document.querySelector('.share-btn-copy span'); if (btn) { btn.textContent = '✅'; setTimeout(function() { btn.textContent = '📋'; }, 2000); } });
@@ -604,4 +604,4 @@ function shareResults(method) {
 
 window.startScan = startScan;
 window.shareResults = shareResults;
-console.log('%c SQUEEN668 RTP Scanner ', 'background: linear-gradient(135deg, #D4AF37, #FFD700); color: #1A0A2E; font-weight: bold; padding: 5px 10px; border-radius: 5px;');
+console.log('%c Slotpatcher Live Scanner ', 'background: linear-gradient(135deg, #D4AF37, #FFD700); color: #1A0A2E; font-weight: bold; padding: 5px 10px; border-radius: 5px;');
