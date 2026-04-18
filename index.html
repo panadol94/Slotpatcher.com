@@ -124,8 +124,8 @@
                             </div>
                         </div>
                         <div class="carousel-dots swiper-pagination" id="carouselDots"></div>
-                        <button class="carousel-arrow carousel-arrow-left swiper-button-prev" id="carouselPrev">❮</button>
-                        <button class="carousel-arrow carousel-arrow-right swiper-button-next" id="carouselNext">❯</button>
+                        <button class="carousel-arrow carousel-arrow-left swiper-button-prev" id="carouselPrev" type="button" aria-label="Banner sebelumnya"><span aria-hidden="true">❮</span></button>
+                        <button class="carousel-arrow carousel-arrow-right swiper-button-next" id="carouselNext" type="button" aria-label="Banner seterusnya"><span aria-hidden="true">❯</span></button>
                     </section>
 
                 </div>
@@ -287,16 +287,16 @@
     </footer>
 
     <!-- Bottom Navigation -->
-    <nav class="bottom-nav">
-        <a href="#home" class="nav-item active">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+    <nav class="bottom-nav" aria-label="Navigasi utama">
+        <a href="#home" class="nav-item active" aria-label="Trusted — ke atas">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                 <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"/>
                 <path d="m9.5 12 1.8 1.8 3.8-4.1" class="icon-accent"/>
             </svg>
             <span>Trusted</span>
         </a>
-        <a href="#providerSection" class="nav-item">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+        <a href="#providerSection" class="nav-item" aria-label="Download — pilih provider">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                 <path d="M12 3v11" class="icon-accent"/>
                 <path d="m7.5 9.5 4.5 4.5 4.5-4.5"/>
                 <path d="M4 18.5h16"/>
@@ -305,14 +305,14 @@
             </svg>
             <span>Download</span>
         </a>
-        <a href="#" id="scanButton" class="nav-item center-hack-btn disabled" onclick="startScan()">
-            <div class="hack-btn-inner">
+        <a href="#" id="scanButton" class="nav-item center-hack-btn disabled" onclick="startScan()" role="button" aria-label="Mula scan">
+            <div class="hack-btn-inner" aria-hidden="true">
                 <span class="scan-medallion-mark">SP</span>
             </div>
             <span id="scanButtonLabel">SCAN</span>
         </a>
-        <a href="#resultsSection" class="nav-item">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+        <a href="#resultsSection" class="nav-item" aria-label="Tutorial — lihat hasil">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                 <path d="M5 5.5h14"/>
                 <path d="M7.5 9h9"/>
                 <path d="M9 12.5h6"/>
@@ -320,8 +320,8 @@
             </svg>
             <span>Tutorial</span>
         </a>
-        <a href="#home" class="nav-item">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+        <a href="#home" class="nav-item" aria-label="Profile">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                 <circle cx="12" cy="8" r="4"/>
                 <path d="M4 21v-1a6 6 0 0 1 6-6h4a6 6 0 0 1 6 6v1"/>
                 <path d="M18 3l.8 1.6L20.5 5l-1.2 1.1.3 1.7L18 7l-1.6.8.3-1.7L15.5 5l1.7-.4L18 3z" stroke-width="1.3" class="icon-accent"/>
@@ -330,13 +330,13 @@
         </a>
     </nav>
 
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
-    <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js" defer></script>
+    <script src="https://unpkg.com/aos@2.3.4/dist/aos.js" defer></script>
     <script src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js" async></script>
-    <script src="game-data.js"></script>
-    <script src="script.js"></script>
+    <script src="game-data.js" defer></script>
+    <script src="script.js" defer></script>
 </body>
 </html>

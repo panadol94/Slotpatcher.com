@@ -23,7 +23,7 @@
     --warm: #FF9B4A;
     --cold: #EF4444;
     --text-primary: #F0ECE2;
-    --text-dim: rgba(240, 236, 226, 0.4);
+    --text-dim: rgba(240, 236, 226, 0.62);
     --text-bright: #FFFFFF;
     --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
     --font-display: 'Plus Jakarta Sans', 'Inter', sans-serif;
@@ -4912,4 +4912,53 @@ body {
 .bottom-nav .nav-item > svg {
     width: 22px;
     height: 22px;
+}
+
+/* =============================================
+   Accessibility — focus rings + reduced motion
+   ============================================= */
+
+/* Baseline: kill default outline, rely on focus-visible */
+:focus { outline: none; }
+
+/* Visible focus ring only for keyboard users */
+a:focus-visible,
+button:focus-visible,
+select:focus-visible,
+[role="button"]:focus-visible,
+.filter-tab:focus-visible,
+.share-btn:focus-visible,
+.carousel-arrow:focus-visible,
+.nav-item:focus-visible,
+.hero-btn:focus-visible,
+.flow-step > a:focus-visible,
+.flow-step > button:focus-visible {
+    outline: 2px solid var(--accent-light);
+    outline-offset: 3px;
+    border-radius: 10px;
+}
+
+/* Higher-specificity ring for round controls so it hugs the shape */
+.carousel-arrow:focus-visible,
+.bottom-nav .center-hack-btn:focus-visible {
+    outline-offset: 4px;
+    border-radius: 50%;
+}
+
+.share-btn:focus-visible,
+.filter-tab:focus-visible {
+    outline-offset: 2px;
+    border-radius: 999px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+    .particle-field { display: none; }
 }
