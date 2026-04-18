@@ -63,7 +63,7 @@ body {
     color: var(--text-primary);
     min-height: 100vh;
     overflow-x: hidden;
-    padding-bottom: 24px;
+    padding-bottom: calc(110px + env(safe-area-inset-bottom, 0px));
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     position: relative;
@@ -1420,9 +1420,10 @@ body::after {
    BOTTOM NAV
    ============================================= */
 .bottom-nav {
-    position: relative;
-    left: auto;
-    right: auto;
+    position: fixed;
+    left: 14px;
+    right: 14px;
+    bottom: calc(14px + env(safe-area-inset-bottom, 0px));
     z-index: 200;
     display: flex;
     justify-content: space-evenly;
@@ -1430,12 +1431,14 @@ body::after {
     background: rgba(16, 12, 40, 0.95);
     border: 1px solid var(--border-subtle);
     border-radius: 22px;
-    margin: 28px 14px 18px;
-    padding: 8px 6px calc(14px + env(safe-area-inset-bottom, 0px));
+    margin: 0;
+    padding: 8px 6px 14px;
     min-height: auto;
     backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
     box-shadow: 0 16px 36px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255,255,255,0.03);
-    overflow: hidden;
+    overflow: visible;
+    transform: translateZ(0); /* force compositor for Safari backdrop-filter */
 }
 
 .bottom-nav::before {
@@ -1460,19 +1463,55 @@ body::after {
     font-size: 9px;
     padding: 8px 8px 6px;
     border-radius: 16px;
-    transition: color 0.2s, background 0.2s, transform 0.2s;
+    transition: color 0.25s, background 0.25s, transform 0.25s;
+    position: relative;
+    min-height: 52px;
 }
 
 .nav-item span {
     line-height: 1.2;
 }
 
-.nav-item svg {
+.nav-item > svg {
     width: 20px;
     height: 20px;
-    padding: 4px;
+    padding: 5px;
+    border-radius: 9px;
+    background: linear-gradient(145deg, rgba(34,211,238,0.04), rgba(212,175,55,0.04));
+    border: 1px solid rgba(255,255,255,0.06);
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.05), 0 2px 6px rgba(0,0,0,0.3);
+    background-size: 200% 200%;
+    transition: all 0.25s ease;
+}
+
+/* Cyan scan sweep on hover (desktop) */
+.nav-item::after {
+    content: '';
+    position: absolute;
+    top: 6px;
+    left: 50%;
+    width: 32px;
+    height: 32px;
+    margin-left: -16px;
+    background: linear-gradient(180deg, transparent, rgba(34,211,238,0.20), transparent);
     border-radius: 10px;
-    background: rgba(255,255,255,0.03);
+    transform: translateY(-120%);
+    opacity: 0;
+    pointer-events: none;
+}
+
+/* Neon underline bar when active */
+.nav-item.active::before {
+    content: '';
+    position: absolute;
+    bottom: 3px;
+    left: 25%;
+    width: 50%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--accent), var(--neon-cyan), transparent);
+    border-radius: 2px;
+    box-shadow: 0 0 6px var(--gold-glow);
+    pointer-events: none;
 }
 
 .nav-item.active {
@@ -1480,10 +1519,45 @@ body::after {
     background: rgba(212,175,55,0.06);
 }
 
-.nav-item:hover {
-    color: var(--accent);
-    background: rgba(255,255,255,0.02);
-    transform: translateY(-1px);
+.nav-item.active > svg {
+    border-color: rgba(212,175,55,0.55);
+    background: linear-gradient(145deg, rgba(212,175,55,0.18), rgba(34,211,238,0.06));
+    background-size: 200% 200%;
+    filter: drop-shadow(0 0 5px var(--gold-glow)) drop-shadow(0 0 10px rgba(34,211,238,0.3));
+    animation: holoEdge 3s linear infinite;
+}
+
+.nav-item.active span {
+    background: linear-gradient(90deg, var(--accent), #FFF4C4, var(--accent));
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    -webkit-text-fill-color: transparent;
+    animation: goldShimmer 2.5s linear infinite;
+}
+
+@media (hover: hover) {
+    .nav-item:hover {
+        color: var(--accent);
+        background: rgba(255,255,255,0.02);
+        transform: translateY(-1px);
+    }
+    .nav-item:hover > svg {
+        border-color: rgba(34,211,238,0.45);
+        background: linear-gradient(145deg, rgba(34,211,238,0.12), rgba(34,211,238,0.04));
+        filter: drop-shadow(0 0 6px var(--neon-cyan-glow));
+        transform: translateY(-1px);
+    }
+    .nav-item:hover::after {
+        opacity: 1;
+        animation: navScan 0.8s ease-out;
+    }
+}
+
+/* Tap feedback */
+.nav-item:active > svg {
+    transform: scale(0.92);
 }
 
 /* =============================================
@@ -1733,6 +1807,12 @@ body::after {
 @keyframes medalBob {
     0%, 100% { transform: translateY(0) rotate(-2deg); }
     50%      { transform: translateY(-4px) rotate(2deg); }
+}
+
+@keyframes navScan {
+    0%   { transform: translateY(-120%); opacity: 0; }
+    40%  { opacity: 1; }
+    100% { transform: translateY(120%); opacity: 0; }
 }
 
 /* =============================================
