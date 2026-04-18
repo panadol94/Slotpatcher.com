@@ -6,3 +6,5 @@ Dockerfile.bak
 *.log
 cypress/screenshots/
 cypress/videos/
+dist/
+package-lock.json
