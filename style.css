@@ -5151,3 +5151,42 @@ body.provider-modal-open {
         min-width: 0 !important;
     }
 }
+
+/* =============================================
+   EMERGENCY OVERRIDE - FORCE ALL 5 NAV ITEMS VISIBLE
+   ============================================= */
+html body .page-shell .bottom-nav,
+body > .bottom-nav,
+body > nav.bottom-nav {
+    position: fixed !important;
+    left: 4px !important;
+    right: 4px !important;
+    width: calc(100% - 8px) !important;
+    max-width: calc(100vw - 8px) !important;
+    min-width: unset !important;
+    transform: none !important;
+    display: flex !important;
+    flex-direction: row !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    box-sizing: border-box !important;
+}
+@media (max-width: 480px) {
+    html body .page-shell .bottom-nav .nav-item,
+    body > .bottom-nav > .nav-item {
+        flex: 1 1 20% !important;
+        max-width: 20% !important;
+        min-width: 0 !important;
+        padding: 4px 1px !important;
+        margin: 0 !important;
+        box-sizing: border-box !important;
+    }
+    html body .page-shell .bottom-nav .nav-item > span,
+    body > .bottom-nav > .nav-item > span {
+        font-size: 7px !important;
+        white-space: nowrap !important;
+        overflow: hidden !important;
+        text-overflow: ellipsis !important;
+        max-width: 95% !important;
+    }
+}
