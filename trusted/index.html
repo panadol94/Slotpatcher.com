@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="../style.css">
     <style>
         .trusted-page {
-            padding-top: 80px;
+            padding-top: 24px;
             padding-bottom: 108px;
             min-height: 100vh;
             background:
@@ -74,31 +74,6 @@
             line-height: 1.7;
         }
         
-        .back-btn {
-            position: fixed;
-            top: 20px;
-            left: 20px;
-            z-index: 100;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            padding: 12px 16px;
-            background: rgba(13, 17, 24, 0.86);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            border-radius: var(--radius-sm);
-            color: var(--text-primary);
-            text-decoration: none;
-            font-size: 14px;
-            font-weight: 600;
-            backdrop-filter: blur(10px);
-            transition: all 0.3s ease;
-        }
-        
-        .back-btn:hover {
-            background: rgba(18, 23, 33, 0.96);
-            border-color: rgba(240, 181, 72, 0.24);
-        }
-        
         .trusted-content {
             max-width: var(--content-max-width);
             margin: 0 auto;
@@ -117,15 +92,51 @@
         }
 
         .trusted-bottom-nav .nav-item.active {
-            color: var(--accent);
+            color: #fff;
+            isolation: isolate;
+        }
+
+        .trusted-bottom-nav .nav-item.active::before {
+            content: '';
+            position: absolute;
+            left: 8px;
+            right: 8px;
+            top: 2px;
+            bottom: -2px;
+            border-radius: 16px;
+            background: linear-gradient(180deg, rgba(197, 31, 31, 0.24), rgba(115, 7, 7, 0.12));
+            border: 1px solid rgba(240, 181, 72, 0.22);
+            box-shadow: 0 10px 24px rgba(0, 0, 0, 0.24), inset 0 1px 0 rgba(255, 255, 255, 0.12);
+            z-index: -1;
+        }
+
+        .trusted-bottom-nav .nav-item.active::after {
+            content: '';
+            position: absolute;
+            top: 5px;
+            left: 50%;
+            width: 24px;
+            height: 3px;
+            border-radius: 999px;
+            background: linear-gradient(90deg, rgba(255, 228, 172, 0.35), rgba(255, 228, 172, 0.95), rgba(255, 228, 172, 0.35));
+            transform: translateX(-50%);
+            box-shadow: 0 0 12px rgba(255, 214, 141, 0.32);
+        }
+
+        .trusted-bottom-nav .nav-item.active > svg {
+            color: #fff;
+            filter: drop-shadow(0 0 10px rgba(240, 181, 72, 0.26));
+            transform: translateY(-1px);
+        }
+
+        .trusted-bottom-nav .nav-item.active span:not(#scanButtonLabel) {
+            color: #fff;
+            font-weight: 700;
+            letter-spacing: 0.02em;
         }
     </style>
 </head>
 <body>
-    <a href="/" class="back-btn">
-        <span>←</span> Back
-    </a>
-
     <div class="trusted-page">
         <header class="trusted-header">
             <div class="trusted-kicker">Trusted Directory · Live Sync</div>
@@ -328,14 +339,14 @@
     </footer>
 
     <nav class="bottom-nav trusted-bottom-nav" aria-label="Trusted page navigation">
-        <a href="/trusted" class="nav-item active" aria-label="Trusted companies list">
+        <a href="/trusted" class="nav-item active" aria-label="Trusted companies">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                 <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"></path>
                 <path d="m9.5 12 1.8 1.8 3.8-4.1" class="icon-accent"></path>
             </svg>
             <span>Trusted</span>
         </a>
-        <a href="/#providerSection" class="nav-item" aria-label="Pilih provider">
+        <a href="/#providerSection" class="nav-item" aria-label="Download — pilih provider">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                 <path d="M12 3v11" class="icon-accent"></path>
                 <path d="m7.5 9.5 4.5 4.5 4.5-4.5"></path>
@@ -343,7 +354,7 @@
                 <path d="M6.5 14.5v4"></path>
                 <path d="M17.5 14.5v4"></path>
             </svg>
-            <span>Provider</span>
+            <span>Download</span>
         </a>
         <a href="/#providerSection" class="nav-item center-hack-btn" aria-label="Pergi ke scan utama">
             <div class="hack-btn-inner" aria-hidden="true">
@@ -368,22 +379,22 @@
             </div>
             <span id="scanButtonLabel">SCAN</span>
         </a>
-        <a href="/#resultsSection" class="nav-item" aria-label="Jump to live results">
+        <a href="/#resultsSection" class="nav-item" aria-label="Tutorial — lihat hasil">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                 <path d="M5 5.5h14"></path>
                 <path d="M7.5 9h9"></path>
                 <path d="M9 12.5h6"></path>
                 <path d="M12 16.5h.01" class="icon-accent"></path>
             </svg>
-            <span>Results</span>
+            <span>Tutorial</span>
         </a>
-        <a href="/" class="nav-item" aria-label="Back to home">
+        <a href="/" class="nav-item" aria-label="Profile">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                 <circle cx="12" cy="8" r="4"></circle>
                 <path d="M4 21v-1a6 6 0 0 1 6-6h4a6 6 0 0 1 6 6v1"></path>
                 <path d="M18 3l.8 1.6L20.5 5l-1.2 1.1.3 1.7L18 7l-1.6.8.3-1.7L15.5 5l1.7-.4L18 3z" stroke-width="1.3" class="icon-accent"></path>
             </svg>
-            <span>Home</span>
+            <span>Profile</span>
         </a>
     </nav>
 

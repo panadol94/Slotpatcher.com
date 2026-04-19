@@ -35,4 +35,29 @@ assert.match(
   'expected trusted page bottom nav to keep the same SCAN medallion label'
 );
 
+assert.doesNotMatch(
+  trustedHtml,
+  /class="back-btn"/,
+  'expected trusted page to remove the old floating back button once bottom nav is the primary navigation'
+);
+
+const labels = [...navHtml.matchAll(/<span(?: id="scanButtonLabel")?>([^<]+)<\/span>/g)].map((match) => match[1].trim());
+assert.deepEqual(
+  labels,
+  ['Trusted', 'Download', 'SCAN', 'Tutorial', 'Profile'],
+  'expected trusted page nav labels to match the homepage bottom nav exactly'
+);
+
+assert.match(
+  trustedHtml,
+  /\.trusted-bottom-nav \.nav-item\.active::before/,
+  'expected trusted page to add a dedicated active-state accent layer for clearer current-page highlighting'
+);
+
+assert.match(
+  trustedHtml,
+  /\.trusted-bottom-nav \.nav-item\.active > svg/,
+  'expected trusted page to boost the active icon treatment beyond the base nav style'
+);
+
 console.log('Trusted bottom-nav consistency checks passed.');
