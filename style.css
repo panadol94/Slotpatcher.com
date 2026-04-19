@@ -2377,6 +2377,22 @@ body.scan-modal-open { overflow: hidden; }
     text-align: center;
 }
 
+.site-footer-meta {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 4px;
+    padding-top: 10px;
+    border-top: 1px dashed rgba(149, 6, 6, 0.20);
+    font-family: 'SF Mono', 'JetBrains Mono', Consolas, monospace;
+    font-size: 10px;
+    color: var(--ink-muted);
+    letter-spacing: 0.02em;
+}
+.site-footer-meta .sep { opacity: 0.45; }
+
 /* =============================================================
    15. BOTTOM NAV + CENTER SCAN BUTTON
    ============================================================= */
