@@ -116,6 +116,7 @@ function renderGamesEmpty(message) {
 document.addEventListener('DOMContentLoaded', function() {
     setFlowStep('provider');
     initProviderModal();
+    initProviderEntryLinks();
     updatePickerTrigger();
     buildProviderGrid();
     buildFeaturedProviders();
@@ -128,6 +129,12 @@ document.addEventListener('DOMContentLoaded', function() {
     updateScanButtonState();
     updateProviderHint();
     updateTimestamp();
+    if (location.hash === '#providerSection') {
+        if (window.history && window.history.replaceState) {
+            window.history.replaceState(null, '', location.pathname + location.search);
+        }
+        openProviderModal();
+    }
     setInterval(updateTimestamp, 60000);
     setInterval(function() {
         if (currentProvider && currentGames.length) loadGames(currentProvider);
@@ -323,6 +330,15 @@ function initProviderModal() {
     });
     document.addEventListener('keydown', function(e) {
         if (e.key === 'Escape') closeProviderModal();
+    });
+}
+
+function initProviderEntryLinks() {
+    document.querySelectorAll('a[href="#providerSection"]').forEach(function(link) {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            openProviderModal();
+        });
     });
 }
 
@@ -934,6 +950,11 @@ function initBottomNav() {
             var href = this.getAttribute('href') || '';
             document.querySelectorAll('.nav-item').forEach(function(i) { i.classList.remove('active'); });
             this.classList.add('active');
+            if (href === '#providerSection') {
+                e.preventDefault();
+                openProviderModal();
+                return;
+            }
             if (href && href !== '#') {
                 e.preventDefault();
                 var target = document.querySelector(href);
