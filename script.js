@@ -681,7 +681,7 @@ function startScan() {
 // GENERATE RTP (time-seeded)
 // ==========================================
 function isNonSlotGame(rawName) {
-    return /roulette|fish|fishin/i.test(String(rawName || ''));
+    return /roulette|fish|fishin|baccarat|blackjack|sic ?bo|poker|hi ?lo|dragon ?tiger|niu ?niu|bull ?bull/i.test(String(rawName || ''));
 }
 
 function generateResults(providerKey) {
