@@ -2322,3 +2322,34 @@ body.scan-modal-open {
         margin-left: -22px !important;
     }
 }
+
+/* =============================================
+   MOBILE NAV - GRID LAYOUT (5 EQUAL COLUMNS)
+   ============================================= */
+@media (max-width: 480px) {
+    .bottom-nav {
+        display: grid !important;
+        grid-template-columns: repeat(5, 1fr) !important;
+        gap: 2px !important;
+        left: 2px !important;
+        right: 2px !important;
+        width: calc(100% - 4px) !important;
+        padding: 6px 2px !important;
+    }
+    
+    .nav-item {
+        min-width: 0 !important;
+        overflow: hidden !important;
+    }
+    
+    .nav-item span {
+        font-size: 6px !important;
+        white-space: nowrap !important;
+        overflow: hidden !important;
+        text-overflow: ellipsis !important;
+    }
+    
+    .center-hack-btn {
+        margin-top: -6px !important;
+    }
+}
