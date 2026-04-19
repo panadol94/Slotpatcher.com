@@ -142,13 +142,26 @@ body::after {
 .particle-field span:nth-child(20) { left: 88%; animation-duration: 18s; animation-delay: 11s;  }
 
 /* =============================================
-   BANNER CAROUSEL
+   PAGE SHELL & BASE LAYOUT FIXES
    ============================================= */
+.page-shell {
+    width: 100%;
+    max-width: 100vw;
+    overflow-x: hidden;
+    position: relative;
+}
+
+body {
+    overflow-x: hidden;
+    max-width: 100vw;
+}
 .banner-carousel {
     position: relative;
-    width: 100%;
+    width: calc(100% - 16px);
     max-width: var(--content-max-width);
     margin: 16px auto 0;
+    left: 0;
+    right: 0;
     border-radius: var(--radius);
     overflow: hidden;
     z-index: 1;
@@ -273,7 +286,7 @@ body::after {
 .carousel-arrow-right { right: 8px; }
 
 @media (max-width: 600px) {
-    .banner-carousel { aspect-ratio: 16 / 9; margin: 10px 8px 0; border-radius: 12px; }
+    .banner-carousel { aspect-ratio: 16 / 9; margin: 10px 8px 0; border-radius: 12px; width: calc(100% - 16px); max-width: none; }
     .slide-title { font-size: 13px; }
     .slide-desc { font-size: 10px; }
     .slide-overlay { padding: 14px 12px 12px; }
@@ -4364,11 +4377,12 @@ body {
 
 @media (max-width: 480px) {
     .bottom-nav {
-        left: 50% !important;
-        right: auto !important;
-        width: 92vw !important;
-        padding: 6px 5px calc(8px + env(safe-area-inset-bottom, 0px));
-        transform: translateX(-50%) scale(0.88) !important;
+        left: 8px !important;
+        right: 8px !important;
+        width: auto !important;
+        padding: 8px 6px calc(10px + env(safe-area-inset-bottom, 0px));
+        transform: none !important;
+        margin: 0;
     }
 
     .nav-item {
