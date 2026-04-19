@@ -12,6 +12,12 @@ assert.match(
   'expected trusted page to keep rendering cards through a dedicated helper'
 );
 
+assert.match(
+  trustedHtml,
+  /renderCompanyThumb\(/,
+  'expected trusted cards to render a small real logo/image treatment helper'
+);
+
 assert.doesNotMatch(
   trustedHtml,
   /getCompanyAccentStyle\(/,
@@ -22,6 +28,12 @@ assert.doesNotMatch(
   styleCss,
   /\.trusted-company-brand-panel\s*\{/,
   'expected trusted cards to remove the loud gradient brand panel from the comparison-style redesign'
+);
+
+assert.doesNotMatch(
+  trustedHtml,
+  /trusted-company-leading-note/,
+  'expected trusted cards to reduce extra filler copy in the leading column'
 );
 
 assert.match(
@@ -39,13 +51,19 @@ assert.match(
 assert.match(
   styleCss,
   /\.trusted-company-identity\s*\{/,
-  'expected trusted cards to include a refined identity block for company initials and trust signal'
+  'expected trusted cards to include a refined identity block for company thumb and trust signal'
+);
+
+assert.match(
+  styleCss,
+  /\.trusted-company-thumb\s*\{/,
+  'expected trusted cards to include a compact real-image thumb treatment'
 );
 
 assert.match(
   styleCss,
   /\.trusted-company-signal\s*\{/,
-  'expected trusted cards to include a subtle trust/live signal treatment'
+  'expected trusted cards to include a subtle trust\/live signal treatment'
 );
 
 assert.match(
