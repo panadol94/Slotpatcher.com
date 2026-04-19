@@ -5112,3 +5112,13 @@ body.provider-modal-open {
         padding: 16px 20px 12px;
     }
 }
+
+/* =============================================
+   EMERGENCY MOBILE ALIGNMENT FIXES
+   ============================================= */
+@media (max-width: 480px) {
+    body { overflow-x: hidden !important; max-width: 100vw !important; }
+    .page-shell { width: 100% !important; max-width: 100vw !important; overflow-x: hidden !important; }
+    .bottom-nav { position: fixed !important; left: 8px !important; right: 8px !important; width: auto !important; transform: none !important; }
+    .banner-carousel, .hero-carousel { width: calc(100% - 16px) !important; margin-left: 8px !important; margin-right: 8px !important; }
+}
