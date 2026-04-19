@@ -9,49 +9,55 @@ const styleCss = fs.readFileSync(path.join(repoRoot, 'style.css'), 'utf8');
 assert.match(
   trustedHtml,
   /renderTrustedCompanyCard\(/,
-  'expected trusted page to render cards through a dedicated review-card helper'
+  'expected trusted page to keep rendering cards through a dedicated helper'
 );
 
 assert.doesNotMatch(
   trustedHtml,
-  /preload="metadata"/,
-  'expected trusted page to stop preloading video metadata for every listing card'
+  /getCompanyAccentStyle\(/,
+  'expected trusted cards to stop using per-card promo gradients that clash with the main site theme'
 );
 
-assert.match(
-  styleCss,
-  /\.trusted-company-review-card\s*\{/,
-  'expected trusted cards to expose a review-card shell class'
-);
-
-assert.match(
+assert.doesNotMatch(
   styleCss,
   /\.trusted-company-brand-panel\s*\{/,
-  'expected trusted cards to include a left brand panel inspired by comparison/review sites'
+  'expected trusted cards to remove the loud gradient brand panel from the comparison-style redesign'
 );
 
 assert.match(
   styleCss,
-  /\.trusted-company-rank\s*\{/,
-  'expected trusted cards to include a compact rank panel in the left column'
+  /\.trusted-company-leading\s*\{/,
+  'expected trusted cards to define a subdued leading column that fits the premium dark theme'
 );
 
 assert.match(
   styleCss,
-  /\.trusted-company-main\s*\{/,
-  'expected trusted cards to define a main copy column'
+  /\.trusted-company-index-badge\s*\{/,
+  'expected trusted cards to use a smaller premium index badge instead of a promo leaderboard block'
 );
 
 assert.match(
   styleCss,
-  /\.trusted-company-facts\s*\{/,
-  'expected trusted cards to render a bottom facts row similar to review/comparison cards'
+  /\.trusted-company-identity\s*\{/,
+  'expected trusted cards to include a refined identity block for company initials and trust signal'
 );
 
 assert.match(
   styleCss,
-  /\.trusted-company-cta\s*\{/,
-  'expected trusted cards to expose a strong right-side CTA block'
+  /\.trusted-company-signal\s*\{/,
+  'expected trusted cards to include a subtle trust/live signal treatment'
+);
+
+assert.match(
+  styleCss,
+  /\.trusted-company-meta-row\s*\{/,
+  'expected trusted cards to add a compact metadata row inside the main content area'
+);
+
+assert.match(
+  styleCss,
+  /\.trusted-company-cta\s*\{[\s\S]*border:\s*1px solid rgba\(197, 31, 31, 0\.22\)/,
+  'expected trusted CTA to become a subtler bordered action that matches Slotpatcher theme better'
 );
 
 console.log('Trusted card redesign checks passed.');

@@ -339,36 +339,12 @@
                 return (parts[0].charAt(0) + parts[1].charAt(0)).toUpperCase();
             }
 
-            function getCompanyRankTier(index) {
-                if (index === 0) return 'Top';
-                if (index < 3) return 'Fresh';
-                return 'Live';
-            }
-
             function extractDomain(link) {
                 try {
                     return new URL(link).hostname.replace(/^www\./i, '');
                 } catch (error) {
                     return 'direct link';
                 }
-            }
-
-            function getCompanyAccentStyle(company, index) {
-                var palettes = [
-                    ['#f99d1b', '#bc0000'],
-                    ['#8b5cf6', '#c51f1f'],
-                    ['#0ea5e9', '#1d4ed8'],
-                    ['#16a34a', '#065f46'],
-                    ['#d97706', '#7f1d1d'],
-                    ['#f43f5e', '#7f1d1d']
-                ];
-                var seed = String((company && (company.name || company.id)) || index || 'trusted');
-                var hash = 0;
-                for (var i = 0; i < seed.length; i++) {
-                    hash = (hash * 31 + seed.charCodeAt(i)) % 2147483647;
-                }
-                var palette = palettes[Math.abs(hash) % palettes.length];
-                return '--trusted-accent:' + palette[0] + ';--trusted-accent-soft:' + palette[1] + ';';
             }
 
             function renderTrustedCompanyCard(company, index) {
@@ -382,37 +358,38 @@
                 var domain = escapeHtml(extractDomain(company.link || ''));
                 var initials = escapeHtml(getCompanyInitials(company.name || company.id || 'Trusted Company'));
                 var rankNumber = escapeHtml('#' + String(index + 1).padStart(2, '0'));
-                var rankTier = escapeHtml(getCompanyRankTier(index));
                 var chips = getCompanyChips(company, index);
+                var signalText = mediaType === 'PHOTO' ? 'Photo verified' : 'Live verified';
 
-                return '<a href="' + href + '" target="_blank" rel="noopener" class="trusted-company-card trusted-company-review-card" style="' + getCompanyAccentStyle(company, index) + '">'
+                return '<a href="' + href + '" target="_blank" rel="noopener" class="trusted-company-card trusted-company-review-card">'
                     + '<div class="trusted-company-shell">'
-                    + '<div class="trusted-company-brand-panel">'
-                    + '<span class="trusted-company-brand-badge">' + mediaType + '</span>'
-                    + '<div class="trusted-company-brand-mark">' + initials + '</div>'
-                    + '<div class="trusted-company-rank">'
-                    + '<span class="trusted-company-rank-label">Live Rank</span>'
-                    + '<div class="trusted-company-rank-value">'
-                    + '<span class="trusted-company-rank-number">' + rankNumber + '</span>'
-                    + '<span class="trusted-company-rank-tier">' + rankTier + '</span>'
-                    + '</div>'
+                    + '<div class="trusted-company-leading">'
+                    + '<span class="trusted-company-index-badge">' + rankNumber + '</span>'
+                    + '<div class="trusted-company-identity">'
+                    + '<div class="trusted-company-logo-mark">' + initials + '</div>'
+                    + '<div class="trusted-company-signal"><span class="trusted-company-signal-dot"></span>' + signalText + '</div>'
+                    + '<div class="trusted-company-leading-note">Synced terus dari trusted feed semasa.</div>'
                     + '</div>'
                     + '</div>'
                     + '<div class="trusted-company-main">'
-                    + '<div class="trusted-company-eyebrow">Trusted Offer</div>'
-                    + '<div class="trusted-company-name-row">'
-                    + '<div class="trusted-company-name">' + name + '</div>'
+                    + '<div class="trusted-company-topline">'
+                    + '<span class="trusted-company-eyebrow">Trusted Company</span>'
                     + '<div class="trusted-company-chip-row">'
                     + chips.map(function (chip) {
                         return '<span class="trusted-company-chip">' + escapeHtml(chip) + '</span>';
                     }).join('')
                     + '</div>'
                     + '</div>'
+                    + '<div class="trusted-company-name">' + name + '</div>'
                     + '<div class="trusted-company-caption">' + caption + '</div>'
-                    + '<div class="trusted-company-subcopy">Live sync dari TipsMega888 · ' + updatedLabel + '</div>'
+                    + '<div class="trusted-company-subcopy">Direct trusted link synced dari TipsMega888 · ' + updatedLabel + '</div>'
+                    + '<div class="trusted-company-meta-row">'
+                    + '<span class="trusted-company-meta-pill">Domain · ' + domain + '</span>'
+                    + '<span class="trusted-company-meta-pill">Status · ACTIVE</span>'
+                    + '</div>'
                     + '</div>'
                     + '<div class="trusted-company-actions">'
-                    + '<span class="trusted-company-cta">Open Link</span>'
+                    + '<span class="trusted-company-cta">Open Site</span>'
                     + '</div>'
                     + '<div class="trusted-company-facts">'
                     + '<div class="trusted-company-fact"><span class="trusted-company-fact-head">Domain</span><span class="trusted-company-fact-body">' + domain + '</span></div>'
