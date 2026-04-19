@@ -544,6 +544,22 @@ function openScanModalSweet(providerName, onDone) {
 function getStatusLabel(s) { return s === 'hot' ? '🔥 HOT' : s === 'warm' ? '⚡ WARM' : '❄️ COLD'; }
 function getStatusEmoji(s) { return s === 'hot' ? '🔥' : s === 'warm' ? '⚡' : '❄️'; }
 
+function formatGameName(raw) {
+    if (!raw) return '';
+    var name = String(raw);
+    name = name.replace(/\.(png|jpe?g|webp|gif)$/i, '');
+    name = name.replace(/Icon\d*$/i, '');
+    name = name.replace(/_\d+$/, '');
+    name = name.replace(/([A-Za-z])[01]$/, '$1');
+    name = name.replace(/[_\-]+/g, ' ');
+    name = name.replace(/([a-z])([A-Z])/g, '$1 $2');
+    name = name.replace(/([A-Z]+)([A-Z][a-z])/g, '$1 $2');
+    name = name.replace(/([a-zA-Z])(\d)/g, '$1 $2').replace(/(\d)([a-zA-Z])/g, '$1 $2');
+    name = name.replace(/\s+/g, ' ').trim();
+    name = name.replace(/\b([a-z])/g, function(_, ch) { return ch.toUpperCase(); });
+    return name || raw;
+}
+
 window.getFallbackImage = function(gameName) {
     if (!gameName) gameName = "GAME";
     var words = gameName.split(' ');
@@ -679,7 +695,7 @@ function generateResults(providerKey) {
         if (tierRoll < cfg.hotPercent) { rtp = Math.floor(gameRand() * (cfg.maxRtp - cfg.hotThreshold + 1) + cfg.hotThreshold); status = 'hot'; }
         else if (tierRoll < cfg.hotPercent + cfg.warmPercent) { rtp = Math.floor(gameRand() * (cfg.hotThreshold - cfg.warmThreshold) + cfg.warmThreshold); status = 'warm'; }
         else { rtp = Math.floor(gameRand() * (cfg.warmThreshold - cfg.minRtp) + cfg.minRtp); status = 'cold'; }
-        return { name: g.name, img: g.img, provider: provider.name, rtp: rtp, status: status };
+        return { name: formatGameName(g.name), img: g.img, provider: provider.name, rtp: rtp, status: status };
     }).sort(function(a, b) { return b.rtp - a.rtp; });
 }
 
