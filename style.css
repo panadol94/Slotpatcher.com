@@ -2561,6 +2561,8 @@ body.scan-modal-open { overflow: hidden; }
         0 6px 18px rgba(149, 6, 6, 0.50),
         0 0 24px rgba(255, 140, 100, 0.40);
     animation: discGlitch 4.2s steps(1, end) infinite;
+    /* Ensure center is always true center */
+    margin-left: -36px;
 }
 
 .center-hack-btn > #scanButtonLabel {
@@ -2572,12 +2574,12 @@ body.scan-modal-open { overflow: hidden; }
 }
 
 @keyframes discGlitch {
-    0%, 100%  { transform: translate(0, 0); }
-    94%       { transform: translate(0, 0); filter: none; }
-    95%       { transform: translate(-1.5px, 1px); filter: hue-rotate(25deg) saturate(1.4); }
-    96%       { transform: translate(2px, -1px); filter: hue-rotate(-18deg) saturate(1.3); }
-    97%       { transform: translate(-1px, 1.5px); filter: hue-rotate(12deg); }
-    98%       { transform: translate(1px, 0); filter: none; }
+    0%, 100%  { filter: none; }
+    94%       { filter: none; }
+    95%       { filter: hue-rotate(25deg) saturate(1.4); }
+    96%       { filter: hue-rotate(-18deg) saturate(1.3); }
+    97%       { filter: hue-rotate(12deg); }
+    98%       { filter: none; }
 }
 
 .center-hack-btn.disabled .hack-btn-inner {
@@ -2591,7 +2593,7 @@ body.scan-modal-open { overflow: hidden; }
 .center-hack-btn::after {
     content: '';
     position: absolute;
-    top: -4px;
+    top: -40px; /* aligned with hack-btn-inner (top: -36px minus offset) */
     left: 50%;
     transform: translateX(-50%);
     width: 74px;
@@ -2601,6 +2603,7 @@ body.scan-modal-open { overflow: hidden; }
     z-index: -1;
     pointer-events: none;
     animation: haloPulse 2.4s ease-in-out infinite;
+    margin-left: -37px; /* Ensure center alignment */
 }
 @keyframes haloPulse {
     0%, 100% { transform: translateX(-50%) scale(1); opacity: 0.85; }
