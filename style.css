@@ -324,7 +324,7 @@ body {
     margin: 14px auto 0;
     max-width: 340px;
     width: calc(100% - 24px);
-    aspect-ratio: 1 / 1;
+    aspect-ratio: 16 / 9;
     border-radius: 12px;
     border: 0;
     background: #000;
