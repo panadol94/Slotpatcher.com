@@ -436,23 +436,29 @@ function initDeviceIntel() {
     }).catch(function() {});
 }
 
-function renderScanModal(providerName) {
+function renderScanModal(providerName, scanData) {
     var modalGrid = document.getElementById('scanModalGrid');
     var modalProvider = document.getElementById('scanModalProvider');
-    var info = currentDeviceIntel || createBaseDeviceIntel();
+    var stepLabels = document.querySelectorAll('#scanModalSteps .scan-step-item span:last-child');
     if (modalProvider) modalProvider.textContent = providerName;
+    if (stepLabels.length >= 4) {
+        stepLabels[0].textContent = 'Secure session linked';
+        stepLabels[1].textContent = 'Catalog manifest staged';
+        stepLabels[2].textContent = 'Live console primed';
+        stepLabels[3].textContent = 'Result stream ready';
+    }
     if (!modalGrid) return;
-    var rows = [
-        { icon: '📱', label: 'Device', value: info.device },
-        { icon: '🌐', label: 'ISP', value: info.isp },
-        { icon: '📍', label: 'Location', value: info.location },
-        { icon: '📶', label: 'Network', value: info.network },
-        { icon: '🖥️', label: 'Screen', value: info.screen },
-        { icon: '🕐', label: 'Timezone', value: info.timezone },
-        { icon: '🔒', label: 'IP Address', value: info.publicIp || info.ip, highlight: true },
-        { icon: '🎯', label: 'Target', value: providerName }
-    ];
-    modalGrid.innerHTML = rows.map(function(row) {
+
+    modalGrid.innerHTML = [
+        { icon: '🎯', label: 'Provider', value: providerName },
+        { icon: '🧬', label: 'Session', value: scanData.sessionId, highlight: true },
+        { icon: '🎰', label: 'Titles', value: scanData.totalTitles + ' indexed' },
+        { icon: '📶', label: 'Latency', value: scanData.latencyMs + ' ms' },
+        { icon: '📊', label: 'RTP Band', value: scanData.signalBandMin + '–' + scanData.signalBandMax + '%' },
+        { icon: '🛡️', label: 'Integrity', value: 'Verified' },
+        { icon: '📈', label: 'Confidence', value: scanData.confidence + '%' },
+        { icon: '🧠', label: 'Mode', value: 'Live RTP Intelligence' }
+    ].map(function(row) {
         return '<div class="scan-modal-row">' +
             '<span class="scan-modal-icon">' + row.icon + '</span>' +
             '<span class="scan-modal-label">' + escapeHtml(row.label) + '</span>' +
@@ -473,11 +479,7 @@ function closeScanModal() {
     document.body.classList.remove('scan-modal-open');
 }
 
-function openScanModal(providerName, onDone) {
-    if (window.Swal) {
-        openScanModalSweet(providerName, onDone);
-        return;
-    }
+function openScanModal(providerName, scanData, onDone) {
     var modal = document.getElementById('scanModal');
     var modalStatus = document.getElementById('scanModalStatus');
     var progressBar = document.getElementById('scanModalProgressBar');
@@ -488,21 +490,21 @@ function openScanModal(providerName, onDone) {
         return;
     }
 
-    renderScanModal(providerName);
-    if (modalTitle) modalTitle.textContent = 'SCANNING ' + providerName;
+    renderScanModal(providerName, scanData);
+    if (modalTitle) modalTitle.textContent = 'Initializing live scan';
     modal.classList.add('active');
     modal.setAttribute('aria-hidden', 'false');
     document.body.classList.add('scan-modal-open');
-    progressBar.style.width = '8%';
+    progressBar.style.width = '10%';
     stepItems.forEach(function(item) {
         item.classList.remove('active', 'done');
     });
 
     var steps = [
-        { text: 'Provider selected, locking ' + providerName + ' session...', progress: 24, delay: 420 },
-        { text: 'IP address detected, connecting secure node...', progress: 52, delay: 500 },
-        { text: 'Fetching RTP data and building hot game list...', progress: 82, delay: 560 },
-        { text: 'Scan complete. Preparing live result board...', progress: 100, delay: 460 }
+        { text: 'Secure session verified for ' + providerName + '.', progress: 24, delay: 300 },
+        { text: scanData.totalTitles + ' title manifest staged for live indexing.', progress: 52, delay: 360 },
+        { text: 'Premium console ready. Warming RTP signal bands.', progress: 82, delay: 320 },
+        { text: 'Launching event stream and live metrics...', progress: 100, delay: 240 }
     ];
 
     var index = 0;
@@ -511,7 +513,7 @@ function openScanModal(providerName, onDone) {
             scanModalTimer = setTimeout(function() {
                 closeScanModal();
                 onDone();
-            }, 220);
+            }, 180);
             return;
         }
         var step = steps[index++];
@@ -527,315 +529,396 @@ function openScanModal(providerName, onDone) {
     nextStep();
 }
 
-function openScanModalSweet(providerName, onDone) {
-    if (scanModalTimer) clearTimeout(scanModalTimer);
-    var info = currentDeviceIntel || createBaseDeviceIntel();
-    var steps = [
-        { text: 'Provider selected, locking ' + providerName + ' session...', progress: 24, key: 'provider' },
-        { text: 'IP address detected, connecting secure node...', progress: 52, key: 'ip' },
-        { text: 'Fetching RTP data and building hot game list...', progress: 82, key: 'rtp' },
-        { text: 'Scan complete. Preparing live result board...', progress: 100, key: 'done' }
-    ];
+var scanRuntimeTimers = [];
+var scanRuntimeIntervals = [];
+var scanStageOrder = ['handshake', 'catalog', 'rtp', 'pattern', 'report'];
 
-    var html = '' +
-        '<div class="scan-swal">' +
-            '<div class="scan-swal-progress"><div id="scanSwalProgress" class="scan-swal-progress-fill" style="width:8%"></div></div>' +
-            '<div id="scanSwalStatus" class="scan-swal-status">Preparing secure scan...</div>' +
-            '<div class="scan-swal-steps">' +
-                '<div class="scan-swal-step" data-step="provider"><span></span><b>Provider selected</b></div>' +
-                '<div class="scan-swal-step" data-step="ip"><span></span><b>IP address detected</b></div>' +
-                '<div class="scan-swal-step" data-step="rtp"><span></span><b>Fetching RTP data</b></div>' +
-                '<div class="scan-swal-step" data-step="done"><span></span><b>Scan complete</b></div>' +
-            '</div>' +
-            '<div class="scan-swal-grid">' +
-                '<div><small>Provider</small><strong>' + escapeHtml(providerName) + '</strong></div>' +
-                '<div><small>IP Address</small><strong>' + escapeHtml(info.publicIp || info.ip) + '</strong></div>' +
-                '<div><small>Device</small><strong>' + escapeHtml(info.device) + '</strong></div>' +
-                '<div><small>Network</small><strong>' + escapeHtml(info.network) + '</strong></div>' +
-            '</div>' +
-        '</div>';
-
-    window.Swal.fire({
-        title: 'SCANNING ' + providerName,
-        html: html,
-        showConfirmButton: false,
-        allowEscapeKey: false,
-        allowOutsideClick: false,
-        customClass: {
-            popup: 'scan-swal-popup'
-        },
-        didOpen: function() {
-            var statusEl = document.getElementById('scanSwalStatus');
-            var progressEl = document.getElementById('scanSwalProgress');
-            var stepEls = document.querySelectorAll('.scan-swal-step');
-            var idx = 0;
-            function tick() {
-                if (idx >= steps.length) {
-                    scanModalTimer = setTimeout(function() {
-                        window.Swal.close();
-                        onDone();
-                    }, 250);
-                    return;
-                }
-                var step = steps[idx++];
-                if (statusEl) statusEl.textContent = step.text;
-                if (progressEl) progressEl.style.width = step.progress + '%';
-                stepEls.forEach(function(el) {
-                    var key = el.getAttribute('data-step');
-                    el.classList.toggle('active', key === step.key);
-                    if (steps.findIndex(function(s) { return s.key === key; }) < idx - 1) el.classList.add('done');
-                });
-                scanModalTimer = setTimeout(tick, step.key === 'rtp' ? 560 : 430);
-            }
-            tick();
-        },
-        willClose: function() {
-            if (scanModalTimer) {
-                clearTimeout(scanModalTimer);
-                scanModalTimer = null;
-            }
-        }
-    });
+function trackScanTimer(id) {
+    scanRuntimeTimers.push(id);
+    return id;
 }
 
-// ==========================================
-// HELPERS
-// ==========================================
-function getStatusLabel(s) { return s === 'hot' ? '🔥 HOT' : s === 'warm' ? '⚡ WARM' : '❄️ COLD'; }
-function getStatusEmoji(s) { return s === 'hot' ? '🔥' : s === 'warm' ? '⚡' : '❄️'; }
-
-function formatGameName(raw) {
-    if (!raw) return '';
-    var name = String(raw);
-    name = name.replace(/\.(png|jpe?g|webp|gif)$/i, '');
-    name = name.replace(/Icon\d*$/i, '');
-    name = name.replace(/_\d+$/, '');
-    name = name.replace(/([A-Za-z])[01]$/, '$1');
-    name = name.replace(/[_\-]+/g, ' ');
-    name = name.replace(/([a-z])([A-Z])/g, '$1 $2');
-    name = name.replace(/([A-Z]+)([A-Z][a-z])/g, '$1 $2');
-    name = name.replace(/([a-zA-Z])(\d)/g, '$1 $2').replace(/(\d)([a-zA-Z])/g, '$1 $2');
-    name = name.replace(/\s+/g, ' ').trim();
-    name = name.replace(/\b([a-z])/g, function(_, ch) { return ch.toUpperCase(); });
-    return name || raw;
+function trackScanInterval(id) {
+    scanRuntimeIntervals.push(id);
+    return id;
 }
 
-window.getFallbackImage = function(gameName) {
-    if (!gameName) gameName = "GAME";
-    var words = gameName.split(' ');
-    var initials = words.length > 1 ? (words[0][0] + words[1][0]) : gameName.substring(0, 2);
-    initials = initials.toUpperCase();
-    var hash = 0;
-    for (var i = 0; i < gameName.length; i++) hash = gameName.charCodeAt(i) + ((hash << 5) - hash);
-    var colors = ['#D4AF37', '#F59E0B', '#22C55E', '#8B5CF6', '#EC4899', '#14B8A6'];
-    var color = colors[Math.abs(hash) % colors.length];
-    var svg = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">' +
-        '<rect width="100" height="100" fill="#1A1638" />' +
-        '<circle cx="50" cy="50" r="35" fill="none" stroke="' + color + '" stroke-width="2" stroke-dasharray="4 4" opacity="0.2" />' +
-        '<text x="50%" y="54%" font-family="sans-serif" font-weight="900" font-size="34" fill="#FFFFFF" text-anchor="middle" dominant-baseline="middle" letter-spacing="2">' + initials + '</text>' +
-        '</svg>';
-    return 'data:image/svg+xml;base64,' + btoa(svg);
-};
+function clearScanRuntime() {
+    scanRuntimeTimers.forEach(function(id) { clearTimeout(id); });
+    scanRuntimeIntervals.forEach(function(id) { clearInterval(id); });
+    scanRuntimeTimers = [];
+    scanRuntimeIntervals = [];
+}
 
-// ==========================================
-// SCAN PROGRESS (hacker HUD flow: target-lock -> typewriter -> glitch)
-// ==========================================
-var _hudTicker = null;
-function randHex(len) {
-    var c = '0123456789ABCDEF';
-    var out = '';
-    for (var i = 0; i < len; i++) out += c.charAt(Math.floor(Math.random() * 16));
-    return out;
+function formatScanElapsed(ms) {
+    var seconds = Math.max(0, Math.floor(ms / 1000));
+    var mins = String(Math.floor(seconds / 60)).padStart(2, '0');
+    var secs = String(seconds % 60).padStart(2, '0');
+    return mins + ':' + secs;
 }
-function randIp() {
-    return (10 + Math.floor(Math.random() * 245)) + '.' +
-           Math.floor(Math.random() * 256) + '.' +
-           Math.floor(Math.random() * 256) + '.' +
-           Math.floor(Math.random() * 256);
+
+function formatScanEventTime(date) {
+    return [date.getHours(), date.getMinutes(), date.getSeconds()].map(function(value) {
+        return String(value).padStart(2, '0');
+    }).join(':');
 }
-function randMac() {
-    var parts = [];
-    for (var i = 0; i < 6; i++) parts.push(randHex(2));
-    return parts.join(':');
-}
-function startHudTicker() {
-    stopHudTicker();
-    var panel = document.getElementById('scanPanelRoot');
-    if (!panel) return;
-    var ipEl   = panel.querySelector('[data-hud="ip"]');
-    var macEl  = panel.querySelector('[data-hud="mac"]');
-    var encrEl = panel.querySelector('[data-hud="encr"]');
-    var latEl  = panel.querySelector('[data-hud="lat"]');
-    var encrPool = ['AES-256', 'RSA-4096', 'SHA-512', 'XCHACHA20', 'KYBER-1024'];
-    function tick() {
-        if (ipEl)   ipEl.textContent   = randIp();
-        if (macEl)  macEl.textContent  = randMac();
-        if (encrEl) encrEl.textContent = encrPool[Math.floor(Math.random() * encrPool.length)];
-        if (latEl)  latEl.textContent  = (6 + Math.floor(Math.random() * 48)) + ' ms';
+
+function tweenScanValue(options) {
+    var from = Number(options.from || 0);
+    var to = Number(options.to || 0);
+    var duration = Math.max(120, Number(options.duration || 300));
+    var start = Date.now();
+    var delta = to - from;
+    if (!delta) {
+        if (typeof options.onUpdate === 'function') options.onUpdate(to);
+        if (typeof options.onDone === 'function') options.onDone(to);
+        return;
     }
-    tick();
-    _hudTicker = setInterval(tick, 420);
-}
-function stopHudTicker() {
-    if (_hudTicker) { clearInterval(_hudTicker); _hudTicker = null; }
-}
-
-function typeInto(el, text, perChar, done) {
-    var i = 0;
-    el.textContent = '';
-    var cursor = document.createElement('span');
-    cursor.className = 'tl-cursor';
-    el.appendChild(cursor);
-    (function step() {
-        if (i >= text.length) {
-            if (typeof done === 'function') done();
-            return;
+    if (typeof options.onUpdate === 'function') options.onUpdate(from);
+    var interval = trackScanInterval(setInterval(function() {
+        var progress = Math.min(1, (Date.now() - start) / duration);
+        var eased = 1 - Math.pow(1 - progress, 3);
+        var value = from + (delta * eased);
+        if (typeof options.onUpdate === 'function') options.onUpdate(value);
+        if (progress >= 1) {
+            clearInterval(interval);
+            if (typeof options.onDone === 'function') options.onDone(to);
         }
-        var ch = document.createTextNode(text.charAt(i++));
-        el.insertBefore(ch, cursor);
-        setTimeout(step, perChar + (Math.random() * 20 - 10));
-    })();
+    }, 50));
 }
 
-function runTargetLock(providerName, onDone) {
-    var overlay = document.getElementById('targetLockOverlay');
-    var textEl  = document.getElementById('targetLockText');
-    if (!overlay || !textEl) { onDone(); return; }
-    overlay.classList.remove('is-closing');
-    overlay.classList.add('is-active');
-    textEl.textContent = '';
-    var phase1 = '> LOCKING TARGET';
-    typeInto(textEl, phase1, 40, function() {
-        // dots
-        var dots = 0;
-        var dotInt = setInterval(function() {
-            textEl.firstChild && (textEl.childNodes[textEl.childNodes.length - 2]); // noop
-            var cursor = textEl.querySelector('.tl-cursor');
-            if (cursor) {
-                var dot = document.createTextNode('.');
-                textEl.insertBefore(dot, cursor);
-            }
-            if (++dots >= 3) {
-                clearInterval(dotInt);
-                setTimeout(function() {
-                    // acquired line
-                    var br = document.createElement('br');
-                    textEl.insertBefore(br, textEl.querySelector('.tl-cursor'));
-                    var ack = document.createElement('span');
-                    ack.className = 'tl-acquired';
-                    textEl.insertBefore(ack, textEl.querySelector('.tl-cursor'));
-                    typeInto(ack, '✓ ACQUIRED: ' + providerName, 26, function() {
-                        setTimeout(function() {
-                            overlay.classList.add('is-closing');
-                            setTimeout(function() {
-                                overlay.classList.remove('is-active', 'is-closing');
-                                onDone();
-                            }, 260);
-                        }, 500);
-                    });
-                }, 220);
-            }
-        }, 220);
+function createProviderScanSnapshot(providerKey) {
+    var provider = GAME_DATABASE[providerKey];
+    var results = generateResults(providerKey);
+    var totalTitles = results.length;
+    var topBand = results.slice(0, Math.min(8, results.length));
+    var signalBandMin = topBand.length ? topBand[topBand.length - 1].rtp : 0;
+    var signalBandMax = topBand.length ? topBand[0].rtp : 0;
+    var hotCount = results.filter(function(game) { return game.status === 'hot'; }).length;
+    var seed = Math.abs(getTimeSeed(providerKey, SCANNER_CONFIG.seedInterval));
+    var confidence = Math.max(88, Math.min(96, 87 + Math.round(totalTitles / 20) + (seed % 3)));
+    var outliers = Math.max(1, Math.min(4, Math.round(hotCount / 3) + (signalBandMax >= 96 ? 1 : 0)));
+    var prefix = String(providerKey || 'SCAN').toUpperCase().replace(/[^A-Z0-9]/g, '').slice(0, 4);
+    return {
+        providerKey: providerKey,
+        providerName: provider ? provider.name : providerKey,
+        totalTitles: totalTitles,
+        signalBandMin: signalBandMin,
+        signalBandMax: signalBandMax,
+        hotCount: hotCount,
+        confidence: confidence,
+        outliers: outliers,
+        latencyMs: 14 + (seed % 18),
+        sessionId: (prefix || 'SCAN').padEnd(4, 'X') + '-' + seed.toString(16).toUpperCase().slice(-4),
+        results: results
+    };
+}
+
+function appendScanEvent(message, type) {
+    var logBody = document.getElementById('terminalLog');
+    var logCount = document.getElementById('scanLogCount');
+    if (!logBody) return;
+    var item = document.createElement('div');
+    item.className = 'log-line log-' + (type || 'normal');
+    item.innerHTML = '<span class="log-line-time">' + formatScanEventTime(new Date()) + '</span>' +
+        '<span class="log-line-text">' + escapeHtml(message) + '</span>';
+    logBody.appendChild(item);
+    logBody.scrollTop = logBody.scrollHeight;
+    if (logCount) {
+        var count = logBody.querySelectorAll('.log-line').length;
+        logCount.textContent = count + ' event' + (count === 1 ? '' : 's');
+    }
+}
+
+function updateScanStageVisuals(activeKey) {
+    var activeIndex = scanStageOrder.indexOf(activeKey);
+    document.querySelectorAll('#scanStageTrack [data-scan-stage]').forEach(function(item) {
+        var index = scanStageOrder.indexOf(item.getAttribute('data-scan-stage'));
+        item.classList.toggle('is-active', index === activeIndex);
+        item.classList.toggle('is-done', index > -1 && index < activeIndex);
+    });
+    document.querySelectorAll('#scanStageList [data-stage-row]').forEach(function(item) {
+        var index = scanStageOrder.indexOf(item.getAttribute('data-stage-row'));
+        var statusEl = item.querySelector('.scan-stage-row-status');
+        item.classList.toggle('is-active', index === activeIndex);
+        item.classList.toggle('is-done', index > -1 && index < activeIndex);
+        if (!statusEl) return;
+        if (index < activeIndex) statusEl.textContent = 'Done';
+        else if (index === activeIndex) statusEl.textContent = 'Live';
+        else statusEl.textContent = 'Waiting';
     });
 }
 
-function typeLogLine(lineEl, text, perChar, onDone) {
-    var i = 0;
-    lineEl.textContent = '';
-    var cursor = document.createElement('span');
-    cursor.className = 'log-cursor';
-    lineEl.appendChild(cursor);
-    (function step() {
-        if (i >= text.length) {
-            cursor.remove();
-            if (typeof onDone === 'function') onDone();
-            return;
-        }
-        var ch = document.createTextNode(text.charAt(i++));
-        lineEl.insertBefore(ch, cursor);
-        setTimeout(step, perChar);
-    })();
+function updateScanStageCopy(stageKey, detailText) {
+    var row = document.querySelector('#scanStageList [data-stage-row="' + stageKey + '"]');
+    if (!row) return;
+    var detail = row.querySelector('.scan-stage-row-copy span');
+    if (detail && detailText) detail.textContent = detailText;
 }
 
-function runScanProgress(providerName, onComplete) {
-    var logBody    = document.getElementById('terminalLog');
+function resetScanConsole(scanData) {
+    var logBody = document.getElementById('terminalLog');
+    if (logBody) logBody.innerHTML = '';
+    var logCount = document.getElementById('scanLogCount');
+    if (logCount) logCount.textContent = '0 events';
+    var stageMeta = document.getElementById('scanProgressMeta');
+    var progressLabel = document.getElementById('scanProgressLabel');
     var progressBar = document.getElementById('scanProgressBar');
-    var percentEl  = document.getElementById('scanPanelPercent');
-    var titleEl    = document.getElementById('scanPanelTitle');
-    var panel      = document.getElementById('scanPanelRoot');
-    if (!logBody) { onComplete(); return; }
+    var percentEl = document.getElementById('scanPanelPercent');
+    var providerBadge = document.getElementById('scanProviderBadge');
+    var sessionEl = document.getElementById('scanSessionId');
+    var latencyEl = document.getElementById('scanLatencyMs');
+    var subtitleEl = document.getElementById('scanPanelSubtitle');
+    var elapsedEl = document.getElementById('scanElapsed');
+    var integrityEl = document.getElementById('scanIntegrityBadge');
+    var detailEl = document.getElementById('scanDetail');
+    var titleEl = document.getElementById('scanPanelTitle');
 
-    if (titleEl) titleEl.textContent = 'Scanning ' + providerName + '...';
-    var radarFill = document.getElementById('scanRadarFill');
-    var radarCircumference = 2 * Math.PI * 15;
-    if (radarFill) {
-        radarFill.setAttribute('stroke-dasharray', radarCircumference);
-        radarFill.setAttribute('stroke-dashoffset', radarCircumference);
+    if (providerBadge) providerBadge.textContent = scanData.providerName;
+    if (sessionEl) sessionEl.textContent = scanData.sessionId;
+    if (latencyEl) latencyEl.textContent = scanData.latencyMs + ' ms';
+    if (subtitleEl) subtitleEl.textContent = 'Initializing live provider console...';
+    if (elapsedEl) elapsedEl.textContent = '00:00';
+    if (stageMeta) stageMeta.textContent = 'Stage 0 / 5';
+    if (progressLabel) progressLabel.textContent = 'Initializing secure scan...';
+    if (progressBar) progressBar.style.width = '0%';
+    if (percentEl) percentEl.textContent = '0%';
+    if (integrityEl) integrityEl.textContent = 'Integrity Check';
+    if (detailEl) detailEl.textContent = 'Provider ' + scanData.providerName + ' • session ' + scanData.sessionId;
+    if (titleEl) titleEl.textContent = 'Provider Scan';
+
+    var titlesEl = document.getElementById('scanMetricTitles');
+    var titlesMeta = document.getElementById('scanMetricTitlesMeta');
+    var coverageEl = document.getElementById('scanMetricCoverage');
+    var coverageMeta = document.getElementById('scanMetricCoverageMeta');
+    var rtpEl = document.getElementById('scanMetricRtpRange');
+    var rtpMeta = document.getElementById('scanMetricRtpMeta');
+    var confidenceEl = document.getElementById('scanMetricConfidence');
+    var confidenceMeta = document.getElementById('scanMetricConfidenceMeta');
+    var outliersEl = document.getElementById('scanMetricOutliers');
+    var outliersMeta = document.getElementById('scanMetricOutliersMeta');
+
+    if (titlesEl) titlesEl.textContent = '0';
+    if (titlesMeta) titlesMeta.textContent = '0 discovered';
+    if (coverageEl) coverageEl.textContent = '0%';
+    if (coverageMeta) coverageMeta.textContent = '0 / ' + scanData.totalTitles + ' indexed';
+    if (rtpEl) rtpEl.textContent = '--';
+    if (rtpMeta) rtpMeta.textContent = 'Normalizing bands';
+    if (confidenceEl) confidenceEl.textContent = '0%';
+    if (confidenceMeta) confidenceMeta.textContent = 'Awaiting signal';
+    if (outliersEl) outliersEl.textContent = '0';
+    if (outliersMeta) outliersMeta.textContent = 'No variance flagged';
+
+    document.querySelectorAll('#scanStageTrack [data-scan-stage]').forEach(function(item) {
+        item.classList.remove('is-active', 'is-done');
+    });
+    document.querySelectorAll('#scanStageList [data-stage-row]').forEach(function(row) {
+        row.classList.remove('is-active', 'is-done');
+        var status = row.querySelector('.scan-stage-row-status');
+        if (status) status.textContent = 'Waiting';
+    });
+}
+
+function setScanProgress(value) {
+    var pct = Math.max(0, Math.min(100, Math.round(value)));
+    var progressBar = document.getElementById('scanProgressBar');
+    var percentEl = document.getElementById('scanPanelPercent');
+    if (progressBar) progressBar.style.width = pct + '%';
+    if (percentEl) percentEl.textContent = pct + '%';
+}
+
+function runScanProgress(scanData, onComplete) {
+    clearScanRuntime();
+    resetScanConsole(scanData);
+
+    var progressLabel = document.getElementById('scanProgressLabel');
+    var progressMeta = document.getElementById('scanProgressMeta');
+    var subtitleEl = document.getElementById('scanPanelSubtitle');
+    var elapsedEl = document.getElementById('scanElapsed');
+    var integrityEl = document.getElementById('scanIntegrityBadge');
+    var detailEl = document.getElementById('scanDetail');
+    var titlesEl = document.getElementById('scanMetricTitles');
+    var titlesMeta = document.getElementById('scanMetricTitlesMeta');
+    var coverageEl = document.getElementById('scanMetricCoverage');
+    var coverageMeta = document.getElementById('scanMetricCoverageMeta');
+    var rtpEl = document.getElementById('scanMetricRtpRange');
+    var rtpMeta = document.getElementById('scanMetricRtpMeta');
+    var confidenceEl = document.getElementById('scanMetricConfidence');
+    var confidenceMeta = document.getElementById('scanMetricConfidenceMeta');
+    var outliersEl = document.getElementById('scanMetricOutliers');
+    var outliersMeta = document.getElementById('scanMetricOutliersMeta');
+
+    var startedAt = Date.now();
+    var currentProgress = 0;
+    if (elapsedEl) {
+        trackScanInterval(setInterval(function() {
+            elapsedEl.textContent = formatScanElapsed(Date.now() - startedAt);
+        }, 250));
     }
 
-    // Reset panel state
-    if (panel) panel.classList.remove('is-glitching');
-    logBody.innerHTML = '';
-    startHudTicker();
-
-    var gameCount = Math.floor(Math.random() * 10 + 15);
-    var lines = [
-        { text: '> Initializing scanner module...', type: 'info' },
-        { text: '> Connecting to ' + providerName + ' server...', type: 'normal' },
-        { text: '[ OK ] Connection established', type: 'success' },
-        { text: '> Authenticating session token...', type: 'normal' },
-        { text: '[ OK ] Session verified', type: 'success' },
-        { text: '> Target: ' + providerName + ' // SLOTPATCHER', type: 'info' },
-        { text: '> Bypassing RTP read lock...', type: 'normal' },
-        { text: '> Accessing slot tables [0x' + randHex(8) + ']', type: 'normal' },
-        { text: '[ + ] ' + gameCount + ' games discovered', type: 'success' },
-        { text: '> Decrypting RTP values...', type: 'normal' },
-        { text: '> Mapping RTP distribution matrix...', type: 'normal' },
-        { text: '> Cross-referencing hot patterns...', type: 'normal' },
-        { text: '> Running probability analysis...', type: 'normal' },
-        { text: '> Compiling results [##########] 100%', type: 'info' },
-        { text: '[ DONE ] Scan complete — ' + gameCount + ' games analyzed', type: 'success' }
+    var stages = [
+        {
+            key: 'handshake',
+            progress: 18,
+            duration: 950,
+            label: 'Verifying secure provider session...',
+            subtitle: 'Establishing trusted handshake and validating scan route.',
+            badge: 'Secure Session',
+            rowDetail: 'Verifying provider signature and route integrity',
+            onStart: function() {
+                appendScanEvent('Provider manifest requested from ' + scanData.providerName + '.', 'info');
+                trackScanTimer(setTimeout(function() {
+                    appendScanEvent('Secure session verified for ' + scanData.providerName + '.', 'success');
+                }, 420));
+            }
+        },
+        {
+            key: 'catalog',
+            progress: 42,
+            duration: 1500,
+            label: 'Indexing provider title catalog...',
+            subtitle: 'Reading manifest coverage and staging scannable titles.',
+            badge: 'Catalog Locked',
+            rowDetail: 'Indexing ' + scanData.totalTitles + ' titles into live scan memory',
+            onStart: function() {
+                tweenScanValue({
+                    from: 0,
+                    to: scanData.totalTitles,
+                    duration: 1180,
+                    onUpdate: function(value) {
+                        var rounded = Math.round(value);
+                        if (titlesEl) titlesEl.textContent = rounded;
+                        if (titlesMeta) titlesMeta.textContent = rounded + ' discovered';
+                        var coveragePct = scanData.totalTitles ? Math.round((rounded / scanData.totalTitles) * 100) : 0;
+                        if (coverageEl) coverageEl.textContent = coveragePct + '%';
+                        if (coverageMeta) coverageMeta.textContent = rounded + ' / ' + scanData.totalTitles + ' indexed';
+                    }
+                });
+                trackScanTimer(setTimeout(function() {
+                    appendScanEvent(scanData.totalTitles + ' titles indexed from provider catalog.', 'success');
+                }, 980));
+            }
+        },
+        {
+            key: 'rtp',
+            progress: 66,
+            duration: 1450,
+            label: 'Normalizing RTP signal bands...',
+            subtitle: 'Stabilizing high-signal RTP cluster for live result confidence.',
+            badge: 'RTP Signal',
+            rowDetail: 'Normalizing payout ranges and RTP signal bands',
+            onStart: function() {
+                tweenScanValue({
+                    from: 0,
+                    to: Math.max(62, scanData.confidence - 18),
+                    duration: 1020,
+                    onUpdate: function(value) {
+                        var rounded = Math.round(value);
+                        if (confidenceEl) confidenceEl.textContent = rounded + '%';
+                        if (confidenceMeta) confidenceMeta.textContent = rounded < 50 ? 'Learning provider rhythm' : 'Signal confidence rising';
+                    }
+                });
+                trackScanTimer(setTimeout(function() {
+                    if (rtpEl) rtpEl.textContent = scanData.signalBandMin + '–--';
+                    if (rtpMeta) rtpMeta.textContent = 'Band stabilizing';
+                }, 360));
+                trackScanTimer(setTimeout(function() {
+                    if (rtpEl) rtpEl.textContent = scanData.signalBandMin + '–' + scanData.signalBandMax + '%';
+                    if (rtpMeta) rtpMeta.textContent = 'RTP band normalized';
+                    appendScanEvent('RTP band stabilized at ' + scanData.signalBandMin + '–' + scanData.signalBandMax + '%.', 'success');
+                }, 980));
+            }
+        },
+        {
+            key: 'pattern',
+            progress: 86,
+            duration: 1450,
+            label: 'Mapping volatility clusters...',
+            subtitle: 'Cross-referencing hot pockets and flagging variance outliers.',
+            badge: 'Pattern Map',
+            rowDetail: 'Clustering volatility signatures across live titles',
+            onStart: function() {
+                tweenScanValue({
+                    from: Math.max(62, scanData.confidence - 18),
+                    to: scanData.confidence,
+                    duration: 1120,
+                    onUpdate: function(value) {
+                        var rounded = Math.round(value);
+                        if (confidenceEl) confidenceEl.textContent = rounded + '%';
+                        if (confidenceMeta) confidenceMeta.textContent = rounded >= scanData.confidence ? 'Confidence locked' : 'Cross-referencing patterns';
+                    }
+                });
+                tweenScanValue({
+                    from: 0,
+                    to: scanData.outliers,
+                    duration: 980,
+                    onUpdate: function(value) {
+                        var rounded = Math.round(value);
+                        if (outliersEl) outliersEl.textContent = rounded;
+                        if (outliersMeta) outliersMeta.textContent = rounded ? rounded + ' variance pockets flagged' : 'No variance flagged';
+                    }
+                });
+                trackScanTimer(setTimeout(function() {
+                    appendScanEvent(scanData.outliers + ' outlier cluster' + (scanData.outliers === 1 ? '' : 's') + ' flagged for report.', 'warning');
+                }, 900));
+            }
+        },
+        {
+            key: 'report',
+            progress: 100,
+            duration: 1200,
+            label: 'Building live result board...',
+            subtitle: 'Assembling ranked report and locking final scan confidence.',
+            badge: 'Integrity Verified',
+            rowDetail: 'Compiling ranked board and final scan output',
+            onStart: function() {
+                if (titlesMeta) titlesMeta.textContent = scanData.totalTitles + ' ready for result board';
+                if (coverageMeta) coverageMeta.textContent = scanData.totalTitles + ' / ' + scanData.totalTitles + ' indexed';
+                if (rtpMeta) rtpMeta.textContent = 'Band locked for live board';
+                if (outliersMeta) outliersMeta.textContent = scanData.outliers + ' variance pocket' + (scanData.outliers === 1 ? '' : 's') + ' flagged';
+                trackScanTimer(setTimeout(function() {
+                    appendScanEvent('Live report assembled • ' + scanData.totalTitles + ' titles ready.', 'success');
+                    if (detailEl) detailEl.textContent = scanData.providerName + ' • ' + scanData.totalTitles + ' titles • ' + scanData.confidence + '% confidence';
+                }, 720));
+            }
+        }
     ];
 
-    function runLines() {
-        var i = 0;
-        function nextLine() {
-            if (i >= lines.length) {
-                // E: glitch reveal on completion
-                if (panel) {
-                    panel.classList.add('is-glitching');
-                    setTimeout(function() {
-                        panel.classList.remove('is-glitching');
-                        stopHudTicker();
-                        onComplete();
-                    }, 480);
-                } else {
-                    stopHudTicker();
-                    onComplete();
-                }
-                return;
-            }
-            var line = lines[i];
-            var div = document.createElement('div');
-            div.className = 'log-line log-' + line.type;
-            if (i === lines.length - 1) div.classList.add('log-latest');
-            logBody.appendChild(div);
-            var perChar = Math.max(6, Math.round(120 / Math.max(line.text.length, 1) * 3));
-            typeLogLine(div, line.text, perChar, function() {
-                logBody.scrollTop = logBody.scrollHeight;
-                var pct = Math.round(((i + 1) / lines.length) * 100);
-                if (progressBar) progressBar.style.width = pct + '%';
-                if (percentEl) percentEl.textContent = pct + '%';
-                if (radarFill) radarFill.setAttribute('stroke-dashoffset', radarCircumference * (1 - pct / 100));
-                i++;
-                setTimeout(nextLine, 120 + Math.random() * 140);
-            });
+    function beginStage(index) {
+        if (index >= stages.length) {
+            trackScanTimer(setTimeout(function() {
+                clearScanRuntime();
+                onComplete();
+            }, 520));
+            return;
         }
-        nextLine();
+
+        var stage = stages[index];
+        updateScanStageVisuals(stage.key);
+        updateScanStageCopy(stage.key, stage.rowDetail);
+        if (progressLabel) progressLabel.textContent = stage.label;
+        if (progressMeta) progressMeta.textContent = 'Stage ' + (index + 1) + ' / ' + stages.length;
+        if (subtitleEl) subtitleEl.textContent = stage.subtitle;
+        if (integrityEl) integrityEl.textContent = stage.badge;
+
+        tweenScanValue({
+            from: currentProgress,
+            to: stage.progress,
+            duration: Math.max(320, stage.duration - 120),
+            onUpdate: function(value) {
+                setScanProgress(value);
+            }
+        });
+        currentProgress = stage.progress;
+        stage.onStart();
+
+        trackScanTimer(setTimeout(function() {
+            updateScanStageCopy(stage.key, stage.rowDetail.replace(/^Waiting for /i, '').replace(/^Waiting /i, '') || stage.rowDetail);
+            beginStage(index + 1);
+        }, stage.duration));
     }
 
-    // C: target lock first, then lines
-    runTargetLock(providerName, runLines);
+    beginStage(0);
 }
 
 // ==========================================
@@ -843,14 +926,16 @@ function runScanProgress(providerName, onComplete) {
 // ==========================================
 function startScan() {
     var provider = GAME_DATABASE[currentProvider];
-    var providerSection = document.getElementById('providerSection');
     if (isScanning) return;
     if (!provider) {
         updateProviderHint('Sila pilih provider dulu sebelum mula scan.', true);
         openProviderModal();
         return;
     }
+
+    var scanData = createProviderScanSnapshot(currentProvider);
     isScanning = true;
+    clearScanRuntime();
     document.body.classList.add('scanning-active');
     setFlowStep('scan');
     var scanBtn = document.getElementById('scanButton');
@@ -861,34 +946,40 @@ function startScan() {
         setTimeout(function() { scanBtn.classList.remove('popping'); }, 750);
     }
     updateProviderHint();
+
     var scanSection = document.getElementById('scanningSection');
     var resultsSection = document.getElementById('resultsSection');
-    var gameList = document.getElementById('gameList');
     var top3Section = document.getElementById('top3Section');
     var pName = provider.name;
 
-    openScanModal(pName, function() {
-        scanSection.style.display = 'block';
-        resultsSection.style.display = 'none';
+    openScanModal(pName, scanData, function() {
+        if (scanSection) scanSection.style.display = 'block';
+        if (resultsSection) resultsSection.style.display = 'none';
         renderGameSkeleton(6);
         if (top3Section) top3Section.innerHTML = '';
+        if (scanSection) scanSection.scrollIntoView({ behavior: 'smooth', block: 'center' });
 
-        var sd = document.getElementById('scanDetail');
-        if (sd) sd.textContent = 'Provider: ' + pName + ' • SLOTPATCHER';
-
-        scanSection.scrollIntoView({ behavior: 'smooth', block: 'center' });
-
-        runScanProgress(pName, function() {
-            scanSection.style.display = 'none';
-            resultsSection.style.display = 'block';
+        runScanProgress(scanData, function() {
+            if (scanSection) scanSection.style.display = 'none';
+            if (resultsSection) resultsSection.style.display = 'block';
             isScanning = false;
             document.body.classList.remove('scanning-active');
             loadGames(currentProvider);
             updateBottomNavVisibility();
             setFlowStep('result');
-            resultsSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            if (resultsSection) resultsSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
         });
     });
+}
+
+// ==========================================
+// HELPERS
+// ==========================================
+function getStatusLabel(s) { return s === 'hot' ? '🔥 HOT' : s === 'warm' ? '⚡ WARM' : '❄️ COLD'; }
+function getStatusEmoji(s) { return s === 'hot' ? '🔥' : s === 'warm' ? '⚡' : '❄️'; }
+
+function formatGameName(raw) {
+    return raw || '';
 }
 
 // ==========================================

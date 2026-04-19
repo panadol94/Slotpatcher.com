@@ -15,7 +15,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
     <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css">
-    <link rel="stylesheet" href="style.css?v=bc-hybrid-2">
+    <link rel="stylesheet" href="style.css?v=scan-live-1">
 </head>
 <body>
 
@@ -245,49 +245,135 @@
         </div>
     </section>
 
-    <!-- Scanning Section (Hacker-HUD) -->
+    <!-- Scanning Section -->
     <section id="scanningSection" class="scanning-section" style="display:none;" data-aos="fade-up">
         <div class="scan-panel" id="scanPanelRoot">
-            <!-- Tech HUD corners (D) -->
-            <div class="hud-corners" aria-hidden="true">
-                <span class="hud-tag hud-tl">IP <b data-hud="ip">---.---.---.---</b></span>
-                <span class="hud-tag hud-tr">ENCR <b data-hud="encr">AES-256</b></span>
-                <span class="hud-tag hud-bl">MAC <b data-hud="mac">--:--:--:--:--:--</b></span>
-                <span class="hud-tag hud-br">LAT <b data-hud="lat">-- ms</b></span>
-                <span class="hud-corner hc-tl"></span>
-                <span class="hud-corner hc-tr"></span>
-                <span class="hud-corner hc-bl"></span>
-                <span class="hud-corner hc-br"></span>
+            <div class="scan-console-topbar">
+                <span class="scan-top-chip">Session <b id="scanSessionId">----</b></span>
+                <span class="scan-top-live"><span class="scan-top-live-dot" aria-hidden="true"></span> LIVE</span>
+                <span class="scan-top-chip">Latency <b id="scanLatencyMs">-- ms</b></span>
             </div>
-            <!-- Target lock overlay (C) -->
-            <div class="target-lock-overlay" id="targetLockOverlay" aria-hidden="true">
-                <div class="target-reticle">
-                    <span class="tl-corner tl-tl"></span>
-                    <span class="tl-corner tl-tr"></span>
-                    <span class="tl-corner tl-bl"></span>
-                    <span class="tl-corner tl-br"></span>
-                    <span class="tl-cross tl-cross-h"></span>
-                    <span class="tl-cross tl-cross-v"></span>
+
+            <div class="scan-console-hero">
+                <div class="scan-console-brand">
+                    <span class="scan-provider-badge" id="scanProviderBadge">PROVIDER</span>
+                    <div class="scan-console-heading">
+                        <span class="scan-console-kicker">Provider Scan</span>
+                        <h3 class="scan-panel-title" id="scanPanelTitle">Provider Scan</h3>
+                        <p class="scan-panel-subtitle" id="scanPanelSubtitle">Initializing live provider console...</p>
+                    </div>
                 </div>
-                <div class="target-lock-text" id="targetLockText"></div>
-            </div>
-            <div class="scan-panel-header">
-                <div class="scan-radar" aria-hidden="true">
-                    <svg viewBox="0 0 36 36">
-                        <circle class="radar-track" cx="18" cy="18" r="15"/>
-                        <circle class="radar-fill" id="scanRadarFill" cx="18" cy="18" r="15"
-                                stroke-dasharray="94.2" stroke-dashoffset="94.2"/>
-                    </svg>
+                <div class="scan-console-meta">
+                    <span class="scan-panel-percent" id="scanPanelPercent">0%</span>
+                    <span class="scan-elapsed" id="scanElapsed">00:00</span>
                 </div>
-                <span class="scan-panel-title" id="scanPanelTitle">Scanning...</span>
-                <span class="scan-panel-percent" id="scanPanelPercent">0%</span>
             </div>
-            <div class="scan-progress-bar">
-                <div class="scan-progress-fill" id="scanProgressBar" style="width:0%"></div>
+
+            <div class="scan-progress-block">
+                <div class="scan-progress-head">
+                    <span id="scanProgressLabel">Initializing secure scan...</span>
+                    <span id="scanProgressMeta">Stage 0 / 5</span>
+                </div>
+                <div class="scan-progress-bar">
+                    <div class="scan-progress-fill" id="scanProgressBar" style="width:0%"></div>
+                </div>
+                <div class="scan-stage-track" id="scanStageTrack">
+                    <span class="scan-stage-pill" data-scan-stage="handshake">Handshake</span>
+                    <span class="scan-stage-pill" data-scan-stage="catalog">Catalog Parse</span>
+                    <span class="scan-stage-pill" data-scan-stage="rtp">RTP Extraction</span>
+                    <span class="scan-stage-pill" data-scan-stage="pattern">Pattern Analysis</span>
+                    <span class="scan-stage-pill" data-scan-stage="report">Report Build</span>
+                </div>
             </div>
-            <div class="scan-log-body" id="terminalLog"></div>
+
+            <div class="scan-metrics-grid">
+                <div class="scan-metric-card" data-scan-metric="titles">
+                    <span class="scan-metric-label">Titles Indexed</span>
+                    <strong class="scan-metric-value" id="scanMetricTitles">0</strong>
+                    <span class="scan-metric-meta" id="scanMetricTitlesMeta">0 discovered</span>
+                </div>
+                <div class="scan-metric-card" data-scan-metric="coverage">
+                    <span class="scan-metric-label">Coverage</span>
+                    <strong class="scan-metric-value" id="scanMetricCoverage">0%</strong>
+                    <span class="scan-metric-meta" id="scanMetricCoverageMeta">0 / 0 indexed</span>
+                </div>
+                <div class="scan-metric-card" data-scan-metric="rtp-range">
+                    <span class="scan-metric-label">RTP Range</span>
+                    <strong class="scan-metric-value" id="scanMetricRtpRange">--</strong>
+                    <span class="scan-metric-meta" id="scanMetricRtpMeta">Normalizing bands</span>
+                </div>
+                <div class="scan-metric-card" data-scan-metric="confidence">
+                    <span class="scan-metric-label">Confidence</span>
+                    <strong class="scan-metric-value" id="scanMetricConfidence">0%</strong>
+                    <span class="scan-metric-meta" id="scanMetricConfidenceMeta">Awaiting signal</span>
+                </div>
+                <div class="scan-metric-card" data-scan-metric="outliers">
+                    <span class="scan-metric-label">Outliers</span>
+                    <strong class="scan-metric-value" id="scanMetricOutliers">0</strong>
+                    <span class="scan-metric-meta" id="scanMetricOutliersMeta">No variance flagged</span>
+                </div>
+            </div>
+
+            <div class="scan-console-sections">
+                <div class="scan-card">
+                    <div class="scan-card-head">
+                        <span>ACTIVE PIPELINE</span>
+                        <span class="scan-card-badge" id="scanIntegrityBadge">Integrity Check</span>
+                    </div>
+                    <div class="scan-stage-list" id="scanStageList">
+                        <div class="scan-stage-row" data-stage-row="handshake">
+                            <span class="scan-stage-row-dot" aria-hidden="true"></span>
+                            <div class="scan-stage-row-copy">
+                                <strong>Provider Handshake</strong>
+                                <span>Waiting for secure session</span>
+                            </div>
+                            <span class="scan-stage-row-status">Waiting</span>
+                        </div>
+                        <div class="scan-stage-row" data-stage-row="catalog">
+                            <span class="scan-stage-row-dot" aria-hidden="true"></span>
+                            <div class="scan-stage-row-copy">
+                                <strong>Catalog Parse</strong>
+                                <span>Waiting for manifest index</span>
+                            </div>
+                            <span class="scan-stage-row-status">Waiting</span>
+                        </div>
+                        <div class="scan-stage-row" data-stage-row="rtp">
+                            <span class="scan-stage-row-dot" aria-hidden="true"></span>
+                            <div class="scan-stage-row-copy">
+                                <strong>RTP Extraction</strong>
+                                <span>Waiting for payout normalization</span>
+                            </div>
+                            <span class="scan-stage-row-status">Waiting</span>
+                        </div>
+                        <div class="scan-stage-row" data-stage-row="pattern">
+                            <span class="scan-stage-row-dot" aria-hidden="true"></span>
+                            <div class="scan-stage-row-copy">
+                                <strong>Pattern Analysis</strong>
+                                <span>Waiting for volatility clustering</span>
+                            </div>
+                            <span class="scan-stage-row-status">Waiting</span>
+                        </div>
+                        <div class="scan-stage-row" data-stage-row="report">
+                            <span class="scan-stage-row-dot" aria-hidden="true"></span>
+                            <div class="scan-stage-row-copy">
+                                <strong>Report Build</strong>
+                                <span>Waiting for live board assembly</span>
+                            </div>
+                            <span class="scan-stage-row-status">Waiting</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="scan-card">
+                    <div class="scan-card-head">
+                        <span>EVENT STREAM</span>
+                        <span class="scan-card-badge" id="scanLogCount">0 events</span>
+                    </div>
+                    <div class="scan-log-body" id="terminalLog"></div>
+                </div>
+            </div>
         </div>
-        <p id="scanDetail" class="scan-detail">Scanning...</p>
+        <p id="scanDetail" class="scan-detail">Provider scan queued...</p>
     </section>
 
     <!-- Scan Intel Modal -->
@@ -457,6 +543,6 @@
     <script src="https://unpkg.com/aos@2.3.4/dist/aos.js" defer></script>
     <script src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js" async></script>
     <script src="game-data.js?v=tel4" defer></script>
-    <script src="script.js?v=tel4" defer></script>
+    <script src="script.js?v=scan-live-1" defer></script>
 </body>
 </html>
