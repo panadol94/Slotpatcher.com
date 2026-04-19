@@ -2260,25 +2260,25 @@ body.scan-modal-open { overflow: hidden; }
 /* Center scan button — winners-style red CTA disc */
 .center-hack-btn {
     position: relative;
-    top: -16px;
-    flex: 1.2;
-    gap: 4px;
+    top: -10px;
+    flex: 1.1;
+    gap: 2px;
     z-index: 1;
 }
 
 .center-hack-btn .hack-btn-inner {
     position: relative;
-    width: 54px;
-    height: 54px;
-    margin-bottom: 4px;
+    width: 42px;
+    height: 42px;
+    margin-bottom: 2px;
     background: var(--brand-red);
-    border: 3px solid var(--surface-white);
+    border: 2px solid var(--surface-white);
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    box-shadow: 0 4px 12px rgba(149, 6, 6, 0.35);
+    box-shadow: 0 3px 8px rgba(149, 6, 6, 0.30);
     animation: none;
 }
 
@@ -2321,22 +2321,20 @@ body.scan-modal-open { overflow: hidden; }
 
 .scan-hack-svg .sp-scanline {
     stroke: rgba(255, 255, 255, 0.95);
-    stroke-width: 0.7;
-    filter: drop-shadow(0 0 1.6px rgba(255, 255, 255, 0.85));
+    stroke-width: 0.6;
     transform-origin: center;
     animation: spScanSweep 1.8s cubic-bezier(0.45, 0, 0.55, 1) infinite;
 }
 
 .scan-hack-svg .sp-reticle path {
-    stroke: rgba(255, 255, 255, 0.85);
-    stroke-width: 1;
+    stroke: #fff;
+    stroke-width: 1.2;
     fill: none;
     stroke-linecap: round;
 }
 .scan-hack-svg .sp-reticle {
     transform-origin: center;
     animation: spReticlePulse 2s ease-in-out infinite;
-    filter: drop-shadow(0 0 0.8px rgba(255, 255, 255, 0.6));
 }
 
 .scan-hack-svg .sp-blip {
@@ -2416,17 +2414,17 @@ body.scanning-active .sp-reticle  { animation-duration: 0.7s;  }
 }
 
 .center-hack-btn .hack-btn-inner::before {
-    inset: -7px;
-    border: 2px dashed var(--brand-red);
-    opacity: 0.75;
+    inset: -4px;
+    border: 1.5px dashed var(--brand-red);
+    opacity: 0.65;
     animation: spinRingCW 6s linear infinite;
 }
 
 .center-hack-btn .hack-btn-inner::after {
-    inset: -13px;
+    inset: -8px;
     border: 1px solid transparent;
     border-top-color: var(--brand-red);
-    border-right-color: rgba(149, 6, 6, 0.45);
+    border-right-color: rgba(149, 6, 6, 0.40);
     animation: spinRingCCW 3.5s linear infinite;
 }
 
@@ -2872,25 +2870,25 @@ select:focus-visible,
     .bottom-nav > a.nav-item > svg .icon-accent { stroke: currentColor; }
 
     .bottom-nav > a.center-hack-btn {
-        flex: 1.15;
-        top: -14px;
+        flex: 1.1;
+        top: -10px;
     }
 
     .bottom-nav > a.center-hack-btn .hack-btn-inner {
-        width: 46px;
-        height: 46px;
-        border: 3px solid var(--surface-white);
-        box-shadow: 0 3px 10px rgba(149, 6, 6, 0.35);
+        width: 40px;
+        height: 40px;
+        border: 2px solid var(--surface-white);
+        box-shadow: 0 2px 6px rgba(149, 6, 6, 0.30);
     }
 
-    .bottom-nav > a.center-hack-btn .scan-medallion-mark {
-        font-size: 13px;
-    }
+    .bottom-nav > a.center-hack-btn .hack-btn-inner::before { inset: -3px; }
+    .bottom-nav > a.center-hack-btn .hack-btn-inner::after  { inset: -7px; }
 
     .bottom-nav > a.center-hack-btn > #scanButtonLabel {
-        font-size: 10px;
-        letter-spacing: 0.3px;
+        font-size: 9px;
+        letter-spacing: 0.2px;
         color: var(--brand-red);
+        margin-top: 4px;
     }
 }
 
