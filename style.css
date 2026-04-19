@@ -322,7 +322,7 @@ body {
 
 .hero-carousel.banner-carousel {
     margin: 0;
-    aspect-ratio: 16 / 9;
+    aspect-ratio: 1 / 1;
     border-radius: 0;
     border: 0;
     background: #000;
@@ -360,7 +360,7 @@ body {
 }
 
 .hero-carousel .carousel-slide img {
-    filter: saturate(1.1) contrast(1.05) brightness(0.72);
+    filter: none;
 }
 
 .slide-overlay {
