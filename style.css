@@ -100,7 +100,7 @@ body {
     min-height: 100vh;
     max-width: 100vw;
     overflow-x: hidden;
-    padding-bottom: calc(132px + env(safe-area-inset-bottom, 0px));
+    padding-bottom: calc(72px + env(safe-area-inset-bottom, 0px));
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     position: relative;
@@ -110,7 +110,7 @@ body {
     width: 100%;
     max-width: 460px;
     margin: 0 auto;
-    padding: 0 0 134px;
+    padding: 0 0 12px;
     position: relative;
     z-index: 1;
     overflow-x: hidden;
@@ -513,11 +513,10 @@ body {
    6. FLOW STEPPER + HERO STATUS PILL
    ============================================================= */
 .flow-stepper {
-    position: sticky;
-    top: 0;
+    position: relative;
     z-index: 20;
-    margin: 16px auto 0;
-    padding: 10px 14px;
+    margin: 12px auto 0;
+    padding: 8px 12px;
     max-width: 460px;
     background: var(--surface-cream);
     border: 1px solid rgba(149, 6, 6, 0.10);
@@ -650,9 +649,9 @@ body {
    7. PROVIDER PICKER + MODAL + GRID
    ============================================================= */
 .provider-trigger-section {
-    max-width: var(--content-max-width);
-    margin: var(--space-lg) auto 0;
-    padding: 0 16px;
+    max-width: 460px;
+    margin: 14px auto 0;
+    padding: 0 14px;
 }
 
 .provider-picker-btn {
@@ -1026,8 +1025,8 @@ body.provider-modal-open { overflow: hidden; }
 .scanning-section {
     width: 100%;
     max-width: 460px;
-    margin: 14px auto 0;
-    padding: 16px 14px;
+    margin: 10px auto 0;
+    padding: 12px 14px;
     border-radius: 10px;
     background: var(--surface-white);
     border: 1px solid rgba(19, 27, 32, 0.06);
@@ -1058,7 +1057,7 @@ body.provider-modal-open { overflow: hidden; }
 /* =============================================================
    8. SCAN PANEL (progress)
    ============================================================= */
-.scanning-section { margin-bottom: 16px; }
+.scanning-section { margin-bottom: 8px; }
 
 .scan-panel {
     background: #1e2228;
@@ -1259,7 +1258,7 @@ body.provider-modal-open { overflow: hidden; }
     text-align: center;
     font-size: 11px;
     color: var(--ink-muted);
-    margin-top: 12px;
+    margin-top: 8px;
     text-transform: uppercase;
     letter-spacing: 0.08em;
     font-weight: 600;
@@ -1505,7 +1504,7 @@ body.scan-modal-open { overflow: hidden; }
 
 .top3-section {
     padding: 0 14px;
-    margin-bottom: 20px;
+    margin-bottom: 14px;
     position: relative;
     z-index: 1;
     perspective: 1200px;
@@ -1620,8 +1619,8 @@ body.scan-modal-open { overflow: hidden; }
 .rtp-chart-panel {
     width: 100%;
     max-width: 460px;
-    margin: 0 auto 18px;
-    padding: 16px 14px;
+    margin: 0 auto 12px;
+    padding: 14px 14px 10px;
     border-radius: 10px;
     background: var(--surface-white);
     border: 1px solid rgba(19, 27, 32, 0.06);
@@ -2656,17 +2655,17 @@ select:focus-visible,
 /* Narrow phones */
 @media (max-width: 480px) {
     .winners-ticker {
-        margin-top: 10px;
-        padding: 11px 12px;
+        margin-top: 0;
+        padding: 8px 14px;
         gap: 10px;
     }
     .ticker-text  { font-size: 11px; }
-    .ticker-action { padding: 9px 12px; font-size: 11px; }
+    .ticker-action { padding: 6px 10px; font-size: 11px; }
     .provider-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-    .slide-hero-btn { padding: 9px 16px; font-size: 15px; }
+    .slide-hero-btn { padding: 8px 14px; font-size: 13px; }
 
     .flow-stepper {
-        padding: 8px 10px;
+        padding: 6px 10px;
         margin-left: 12px;
         margin-right: 12px;
     }
@@ -2675,21 +2674,18 @@ select:focus-visible,
     .flow-step > button { padding: 6px 8px; gap: 4px; }
     .hero-status-pill { font-size: 11px; padding: 6px 12px; }
 
-    /* Clean compact mobile nav (overrides the premium glassy light nav) */
+    /* Compact mobile nav — winners-style light bar */
     .bottom-nav {
-        left: 4px;
-        right: 4px;
-        bottom: 4px;
-        width: calc(100% - 8px);
-        max-width: calc(100vw - 8px);
-        min-width: unset;
-        padding: 6px 2px;
-        border-radius: 16px;
-        background: rgba(17, 20, 13, 0.96);
-        border: 1px solid rgba(240, 181, 72, 0.10);
-        box-shadow: 0 16px 40px rgba(0, 0, 0, 0.34);
-        backdrop-filter: none;
-        -webkit-backdrop-filter: none;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        width: 100%;
+        max-width: 100vw;
+        padding: 4px 4px calc(6px + env(safe-area-inset-bottom, 0px));
+        border-radius: 0;
+        background: var(--surface-white);
+        border-top: 1px solid rgba(19, 27, 32, 0.08);
+        box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.06);
         transform: none;
         box-sizing: border-box;
     }
@@ -2699,45 +2695,58 @@ select:focus-visible,
     .bottom-nav > a.nav-item {
         flex: 1;
         min-width: 0;
-        min-height: 50px;
+        min-height: 48px;
         padding: 4px 2px;
+        gap: 2px;
         text-transform: none;
-        letter-spacing: 0.02em;
-        color: rgba(34, 34, 34, 0.64);
+        letter-spacing: 0;
+        color: var(--ink-muted);
     }
 
     .bottom-nav > a.nav-item span {
-        font-size: 6px;
-        margin-top: 3px;
+        font-size: 10px;
+        margin-top: 0;
         max-width: 100%;
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
+        font-weight: 600;
     }
 
     .bottom-nav > a.nav-item > svg {
-        width: 18px;
-        height: 18px;
-        padding: 3px;
-        background: linear-gradient(145deg, rgba(217, 23, 32, 0.07), rgba(0, 0, 0, 0.03));
-        border-color: rgba(0, 0, 0, 0.05);
+        width: 22px;
+        height: 22px;
+        padding: 0;
+        background: transparent;
+        border: 0;
+        color: var(--ink-muted);
+        box-shadow: none;
     }
 
-    .bottom-nav > a.nav-item > svg .icon-accent { stroke: #d91720; }
+    .bottom-nav > a.nav-item.active,
+    .bottom-nav > a.nav-item.active > svg { color: var(--brand-red); }
+    .bottom-nav > a.nav-item > svg .icon-accent { stroke: currentColor; }
 
     .bottom-nav > a.center-hack-btn {
-        flex: 1.2;
-        top: -8px;
+        flex: 1.15;
+        top: -14px;
     }
 
     .bottom-nav > a.center-hack-btn .hack-btn-inner {
-        width: 50px;
-        height: 50px;
+        width: 46px;
+        height: 46px;
+        border: 3px solid var(--surface-white);
+        box-shadow: 0 3px 10px rgba(149, 6, 6, 0.35);
+    }
+
+    .bottom-nav > a.center-hack-btn .scan-medallion-mark {
+        font-size: 13px;
     }
 
     .bottom-nav > a.center-hack-btn > #scanButtonLabel {
         font-size: 10px;
-        letter-spacing: 0.5px;
+        letter-spacing: 0.3px;
+        color: var(--brand-red);
     }
 }
 
