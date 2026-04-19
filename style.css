@@ -2403,15 +2403,17 @@ body.scan-modal-open { overflow: hidden; }
     filter: drop-shadow(0 -2px 6px rgba(0, 0, 0, 0.06));
 }
 
-/* Nav background as masked pseudo — extends above nav to create a
-   full-circle white "bowl" that cradles the floating SCAN disc */
+/* Nav background as masked pseudo — cuts a semicircle arch out of the
+   top edge of the nav so the floating SCAN disc sits in a concave cradle.
+   Pseudo stays inside the nav box so there's no full-width white band
+   bulging upward on the sides. */
 .bottom-nav::before {
     content: '';
     position: absolute;
-    inset: -26px 0 0 0;
+    inset: 0;
     background: var(--surface-white);
-    -webkit-mask: radial-gradient(circle 40px at 50% 26px, transparent 38px, black 40px);
-            mask: radial-gradient(circle 40px at 50% 26px, transparent 38px, black 40px);
+    -webkit-mask: radial-gradient(circle 40px at 50% 0, transparent 38px, black 40px);
+            mask: radial-gradient(circle 40px at 50% 0, transparent 38px, black 40px);
     z-index: 0;
     pointer-events: none;
 }
