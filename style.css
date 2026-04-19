@@ -3331,8 +3331,8 @@ body::after,
 
 .featured-provider-section,
 .scan-mission-section,
-.provider-section,
-.results-section,
+.provider-section:not(.provider-modal),
+.results-section:not(.provider-modal),
 .scanning-section,
 .site-footer {
     width: min(100% - 20px, 430px);
