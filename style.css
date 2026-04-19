@@ -321,14 +321,14 @@ body {
 }
 
 .hero-carousel.banner-carousel {
-    margin: 14px auto 0;
-    max-width: 340px;
-    width: calc(100% - 24px);
+    margin: 0 auto;
+    width: 100%;
+    max-width: 100%;
     aspect-ratio: 16 / 9;
-    border-radius: 12px;
+    border-radius: 0;
     border: 0;
     background: #000;
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+    box-shadow: none;
     overflow: hidden;
 }
 
