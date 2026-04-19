@@ -19,6 +19,18 @@ assert.match(
 
 assert.match(
   trustedHtml,
+  /id="trustedVideoCount"/,
+  'expected trusted page to expose a live video-count stat'
+);
+
+assert.match(
+  trustedHtml,
+  /id="trustedPhotoCount"/,
+  'expected trusted page to expose a live photo-count stat'
+);
+
+assert.match(
+  trustedHtml,
   /var\s+apiUrl\s*=\s*'https:\/\/api\.tipsmega888\.com\/api\/companies'/,
   'expected trusted page to target the TipsMega888 companies API'
 );
@@ -31,8 +43,32 @@ assert.match(
 
 assert.match(
   trustedHtml,
-  /renderTrustedCompanies\(/,
-  'expected trusted page to render company cards from API data'
+  /sortCompaniesByFreshness\(/,
+  'expected trusted page to sort companies by updatedAt\/createdAt before rendering'
+);
+
+assert.match(
+  trustedHtml,
+  /updatedAt|createdAt/,
+  'expected trusted page sorting logic to use timestamp fields from the API payload'
+);
+
+assert.match(
+  trustedHtml,
+  /resolveMediaUrl\(/,
+  'expected trusted page to resolve storageUrl values into absolute media URLs'
+);
+
+assert.match(
+  trustedHtml,
+  /renderCompanyMedia\(/,
+  'expected trusted page to render photo\/video previews from storageUrl'
+);
+
+assert.match(
+  trustedHtml,
+  /trusted-company-media-frame/,
+  'expected trusted page cards to include a dedicated media frame'
 );
 
 assert.match(
@@ -45,6 +81,12 @@ assert.match(
   trustedHtml,
   /id="trustedSourceStatus"/,
   'expected trusted page to show API sync/fallback status to the user'
+);
+
+assert.match(
+  trustedHtml,
+  /class="bottom-nav trusted-bottom-nav"/,
+  'expected trusted page to include a bottom nav for quick navigation'
 );
 
 console.log('Trusted companies API integration checks passed.');

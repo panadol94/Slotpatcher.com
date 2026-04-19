@@ -3890,17 +3890,18 @@ select:focus-visible,
 }
 
 .trusted-stat-card {
-    background: var(--bg-card);
-    border: 1px solid var(--border-subtle);
-    border-radius: var(--radius);
-    padding: var(--space-md);
+    background: rgba(255, 255, 255, 0.035);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 18px;
+    padding: 18px 16px;
     text-align: center;
-    transition: all 0.3s ease;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.14);
+    transition: transform 0.22s ease, border-color 0.22s ease, background 0.22s ease;
 }
 
 .trusted-stat-card:hover {
-    background: var(--bg-card-hover);
-    border-color: var(--border-glow);
+    background: rgba(255, 255, 255, 0.05);
+    border-color: rgba(240, 181, 72, 0.18);
     transform: translateY(-2px);
 }
 
@@ -3922,79 +3923,137 @@ select:focus-visible,
     color: var(--text-dim);
     text-transform: uppercase;
     letter-spacing: 0.08em;
-    margin-top: 6px;
+    margin-top: 8px;
 }
 
 .trusted-company-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: var(--space-md);
+    gap: 18px;
 }
 
 .trusted-company-card {
-    display: block;
-    background: var(--bg-card);
-    border: 1px solid var(--border-subtle);
-    border-radius: var(--radius);
-    padding: var(--space-md);
+    display: grid;
+    grid-template-rows: auto 1fr;
+    background: rgba(255, 255, 255, 0.035);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 20px;
     text-decoration: none;
     color: inherit;
-    position: relative;
-    transition: all 0.3s ease;
     overflow: hidden;
-}
-
-.trusted-company-card::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(135deg, rgba(240, 181, 72, 0.05), transparent 60%);
-    opacity: 0;
-    transition: opacity 0.3s ease;
+    box-shadow: 0 16px 38px rgba(0, 0, 0, 0.16);
+    transition: transform 0.22s ease, border-color 0.22s ease, box-shadow 0.22s ease, background 0.22s ease;
 }
 
 .trusted-company-card:hover {
-    border-color: var(--border-glow);
-    transform: translateY(-3px);
-    box-shadow: var(--shadow-elevated);
+    transform: translateY(-4px);
+    border-color: rgba(240, 181, 72, 0.18);
+    box-shadow: 0 22px 48px rgba(0, 0, 0, 0.2);
+    background: rgba(255, 255, 255, 0.05);
 }
 
-.trusted-company-card:hover::before {
-    opacity: 1;
+.trusted-company-media-frame {
+    position: relative;
+    aspect-ratio: 16 / 10;
+    background: rgba(8, 11, 18, 0.92);
+    overflow: hidden;
 }
 
-.trusted-company-badge {
+.trusted-company-media {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    background: rgba(12, 16, 24, 0.96);
+}
+
+.trusted-company-media-fallback {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-dim);
+    font-size: 13px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+}
+
+.trusted-company-media-overlay {
+    position: absolute;
+    inset: auto 0 0 0;
+    height: 46%;
+    background: linear-gradient(180deg, rgba(4, 6, 10, 0), rgba(4, 6, 10, 0.7));
+    pointer-events: none;
+}
+
+.trusted-company-video-flag {
     position: absolute;
     top: 12px;
     right: 12px;
-    background: linear-gradient(135deg, #FF4D4D, #DC2626);
+    z-index: 1;
+    padding: 6px 10px;
+    border-radius: 999px;
+    background: rgba(8, 11, 18, 0.74);
+    border: 1px solid rgba(255, 255, 255, 0.12);
     color: #fff;
-    font-size: 9px;
-    font-weight: 800;
-    padding: 4px 8px;
-    border-radius: 6px;
-    letter-spacing: 0.05em;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.trusted-company-body {
+    display: grid;
+    gap: 10px;
+    padding: 16px 16px 18px;
+}
+
+.trusted-company-chip-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.trusted-company-chip {
+    display: inline-flex;
+    align-items: center;
+    padding: 5px 9px;
+    border-radius: 999px;
+    background: rgba(240, 181, 72, 0.1);
+    border: 1px solid rgba(240, 181, 72, 0.12);
+    color: var(--accent);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
 }
 
 .trusted-company-name {
     font-family: var(--font-display);
-    font-size: 18px;
+    font-size: 20px;
     font-weight: 700;
     color: var(--text-bright);
-    margin-bottom: 6px;
+    line-height: 1.15;
 }
 
 .trusted-company-caption {
-    font-size: 13px;
-    color: var(--accent);
-    margin-bottom: 12px;
+    font-size: 14px;
+    color: #f4d68b;
+    line-height: 1.5;
+}
+
+.trusted-company-meta {
+    font-size: 12px;
+    color: var(--text-dim);
 }
 
 .trusted-company-action {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 2px;
     font-size: 12px;
-    font-weight: 600;
-    color: var(--text-dim);
-    transition: color 0.3s ease;
+    font-weight: 700;
+    color: var(--text-primary);
 }
 
 .trusted-company-card:hover .trusted-company-action {
@@ -4022,15 +4081,16 @@ select:focus-visible,
 @media (max-width: 768px) {
     .trusted-stats-row {
         grid-template-columns: repeat(3, 1fr);
-        gap: var(--space-sm);
+        gap: 10px;
     }
     
     .trusted-stat-card {
-        padding: var(--space-sm);
+        padding: 14px 10px;
     }
     
     .trusted-company-grid {
         grid-template-columns: 1fr;
+        gap: 14px;
     }
 }
 
