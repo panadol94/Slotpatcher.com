@@ -68,53 +68,29 @@
 
         <section class="hero-section">
             <div class="hero-copy" data-aos="fade-up" data-aos-delay="0">
-                <span class="hero-kicker">Trusted casino intelligence for Malaysia players</span>
+                <span class="hero-kicker">Live casino scanner · Malaysia</span>
                 <h1 class="hero-title">Scan provider dulu, baru unlock live result paling hot.</h1>
-                <p class="hero-text" id="scanStatusText">Slotpatcher bagi flow premium macam landing casino besar, tapi scanner function kekal padu. Pilih provider, tekan scan, terus dapat live RTP analysis.</p>
+                <p class="hero-text" id="scanStatusText">Pilih provider, tekan scan, dapat live RTP analysis dalam beberapa saat.</p>
 
                 <div class="hero-actions">
                     <a href="#providerSection" class="hero-btn hero-btn-primary">PILIH PROVIDER</a>
                     <a href="#resultsSection" class="hero-btn hero-btn-secondary">VIEW RESULT</a>
                 </div>
 
-                <div class="hero-points">
-                    <div class="hero-point"><span>✔</span> Provider selection dulu sebelum scan</div>
-                    <div class="hero-point"><span>✔</span> Popup secure scan + IP detect</div>
-                    <div class="hero-point"><span>✔</span> Top 3 result, filter, dan game list live</div>
+                <div class="hero-status-pill" role="status" aria-live="polite">
+                    <span class="live-dot"></span>
+                    <span class="pill-label">LIVE</span>
+                    <span class="pill-sep">·</span>
+                    <span><strong id="statProviders">16</strong> provider</span>
+                    <span class="pill-sep">·</span>
+                    <span><strong id="totalGames">0</strong> games</span>
+                    <span class="pill-sep">·</span>
+                    <span>update <strong id="lastUpdate">--:--</strong></span>
                 </div>
 
-                <div class="hero-stats-grid">
-                    <div class="hero-stat-card highlight">
-                        <div class="hero-stat-label">LIVE STATUS</div>
-                        <div class="hero-stat-value"><span class="live-dot"></span>ONLINE</div>
-                        <div class="hero-stat-sub">Update <span id="lastUpdate">--:--</span></div>
-                    </div>
-                    <div class="hero-stat-card">
-                        <div class="hero-stat-label">PROVIDER</div>
-                        <div class="hero-stat-value" id="statProviders">16</div>
-                        <div class="hero-stat-sub">Lobby aktif</div>
-                    </div>
-                    <div class="hero-stat-card hot">
-                        <div class="hero-stat-label">HOT</div>
-                        <div class="hero-stat-value" id="statHot">0</div>
-                        <div class="hero-stat-sub">Game panas</div>
-                    </div>
-                    <div class="hero-stat-card warm">
-                        <div class="hero-stat-label">WARM</div>
-                        <div class="hero-stat-value" id="statWarm">0</div>
-                        <div class="hero-stat-sub">Mid trend</div>
-                    </div>
-                    <div class="hero-stat-card cold">
-                        <div class="hero-stat-label">COLD</div>
-                        <div class="hero-stat-value" id="statCold">0</div>
-                        <div class="hero-stat-sub">Low heat</div>
-                    </div>
-                    <div class="hero-stat-card total">
-                        <div class="hero-stat-label">TOTAL GAMES</div>
-                        <div class="hero-stat-value" id="totalGames">0</div>
-                        <div class="hero-stat-sub">Scannable sekarang</div>
-                    </div>
-                </div>
+                <span hidden id="statHot">0</span>
+                <span hidden id="statWarm">0</span>
+                <span hidden id="statCold">0</span>
             </div>
 
             <div class="hero-media" data-aos="fade-up" data-aos-delay="120">
@@ -148,76 +124,73 @@
                             </div>
                         </div>
                         <div class="carousel-dots swiper-pagination" id="carouselDots"></div>
-                        <button class="carousel-arrow carousel-arrow-left swiper-button-prev" id="carouselPrev">❮</button>
-                        <button class="carousel-arrow carousel-arrow-right swiper-button-next" id="carouselNext">❯</button>
+                        <button class="carousel-arrow carousel-arrow-left swiper-button-prev" id="carouselPrev" type="button" aria-label="Banner sebelumnya"><span aria-hidden="true">❮</span></button>
+                        <button class="carousel-arrow carousel-arrow-right swiper-button-next" id="carouselNext" type="button" aria-label="Banner seterusnya"><span aria-hidden="true">❯</span></button>
                     </section>
 
-                    <div class="winners-cta-row">
-                        <a href="#home" class="winners-cta winners-cta-primary">
-                            <span class="winners-cta-icon">🎁</span>
-                            <span class="winners-cta-label">Register</span>
-                        </a>
-                        <a href="#resultsSection" class="winners-cta winners-cta-secondary">
-                            <span class="winners-cta-icon">🔐</span>
-                            <span class="winners-cta-label">Login</span>
-                        </a>
-                        <a href="#providerSection" class="winners-cta winners-cta-light">
-                            <span class="winners-cta-icon">🎰</span>
-                            <span class="winners-cta-label">Provider</span>
-                        </a>
-                        <button type="button" class="winners-cta winners-cta-accent" onclick="startScan()">
-                            <span class="winners-cta-icon">⚡</span>
-                            <span class="winners-cta-label">Scan</span>
-                        </button>
-                    </div>
                 </div>
             </div>
         </section>
 
-        <section class="featured-provider-section" data-aos="fade-up">
-            <div class="winners-section-head">
-                <h2>Recommended Provider</h2>
-                <a href="#providerSection">View All</a>
-            </div>
-            <div id="featuredProviderGrid" class="featured-provider-grid"></div>
-        </section>
+        <nav class="flow-stepper" aria-label="Scan flow" data-aos="fade-up">
+            <ol>
+                <li class="flow-step is-active" data-step="provider">
+                    <a href="#providerSection">
+                        <span class="flow-step-num">1</span>
+                        <span class="flow-step-label">Pilih Provider</span>
+                    </a>
+                </li>
+                <li class="flow-step" data-step="scan">
+                    <button type="button" onclick="startScan()">
+                        <span class="flow-step-num">2</span>
+                        <span class="flow-step-label">Scan</span>
+                    </button>
+                </li>
+                <li class="flow-step" data-step="result">
+                    <a href="#resultsSection">
+                        <span class="flow-step-num">3</span>
+                        <span class="flow-step-label">Live Result</span>
+                    </a>
+                </li>
+            </ol>
+        </nav>
 
-        <section class="scan-mission-section" data-aos="fade-up">
-            <div class="winners-section-head">
-                <h2>Scan</h2>
-                <a href="#providerSection">View All</a>
-            </div>
-            <div class="scan-mission-card">
-                <div class="scan-mission-figure">⚡</div>
-                <div class="scan-mission-body">
-                    <div class="scan-mission-chip">More Rewards</div>
-                    <h3 id="scanMissionTitle">Pilih provider untuk mula scan</h3>
-                    <p id="scanMissionText">Provider first, lepas tu tekan button scan untuk buka live result.</p>
-                    <div class="scan-mission-progress">
-                        <span id="scanMissionProgress"></span>
-                    </div>
-                </div>
-                <button class="scan-mission-go" type="button" onclick="startScan()">Scan</button>
-            </div>
-        </section>
+        <!-- Hidden legacy container for script.js compatibility -->
+        <div id="featuredProviderGrid" hidden></div>
 
         <!-- Device Intel (hidden, used for scan modal) -->
         <section id="deviceIntel" class="device-intel" hidden></section>
     </div>
 
-    <!-- Provider Grid -->
-    <section class="provider-section" id="providerSection" data-aos="fade-up">
-        <div class="section-heading-wrap">
-            <h2 class="section-title">
-                <span class="section-icon">🔥</span>
-                ALL PROVIDER
-            </h2>
-            <p class="section-subtitle">Recommended provider dekat atas. Kalau nak lebih banyak pilihan, pilih mana-mana provider dekat sini sebelum mula scan.</p>
-        </div>
-        <div id="providerGrid" class="provider-grid">
-            <!-- Populated dynamically by JS from 99laju.net data -->
-        </div>
+    <!-- Provider Picker Trigger -->
+    <section class="provider-trigger-section" data-aos="fade-up">
+        <button type="button" id="providerPickerBtn" class="provider-picker-btn" aria-haspopup="dialog" aria-controls="providerSection">
+            <span class="provider-picker-icon" aria-hidden="true">🎰</span>
+            <span class="provider-picker-body">
+                <span class="provider-picker-label">Pilih Provider</span>
+                <span class="provider-picker-value" id="providerPickerValue">Tap untuk pilih provider casino</span>
+            </span>
+            <span class="provider-picker-chevron" aria-hidden="true">›</span>
+        </button>
         <p id="providerHint" class="provider-hint">Sila pilih provider dulu, lepas tu tekan SCAN untuk mula scan.</p>
+    </section>
+
+    <!-- Provider Grid Modal -->
+    <section class="provider-section provider-modal" id="providerSection" role="dialog" aria-modal="true" aria-labelledby="providerModalTitle" hidden>
+        <div class="provider-modal-backdrop" data-provider-close></div>
+        <div class="provider-modal-card">
+            <div class="section-heading-wrap provider-modal-head">
+                <h2 class="section-title" id="providerModalTitle">
+                    <span class="section-icon">🔥</span>
+                    ALL PROVIDER
+                </h2>
+                <button type="button" class="provider-modal-close" aria-label="Tutup" data-provider-close>✕</button>
+            </div>
+            <p class="section-subtitle">Pilih satu provider untuk mula scan RTP.</p>
+            <div id="providerGrid" class="provider-grid">
+                <!-- Populated dynamically by JS from 99laju.net data -->
+            </div>
+        </div>
     </section>
 
     <!-- Scanning Section (Clean Progress) -->
@@ -309,22 +282,7 @@
                 <button class="share-btn share-btn-copy" onclick="shareResults('copy')"><span>📋</span> Copy</button>
             </div>
         </div>
-        <div class="results-footer">
-            <div class="results-footer-grid">
-                <div>
-                    <span class="results-footer-label">Refresh Cycle</span>
-                    <strong>Setiap 60 minit</strong>
-                </div>
-                <div>
-                    <span class="results-footer-label">Scan Mode</span>
-                    <strong>Provider First</strong>
-                </div>
-                <div>
-                    <span class="results-footer-label">Output</span>
-                    <strong>Top 3 + Full Lobby</strong>
-                </div>
-            </div>
-        </div>
+        <p class="results-meta">Refresh automatik setiap 60 minit · Top 3 + Full Lobby</p>
     </section>
 
     <footer class="site-footer" data-aos="fade-up">
@@ -345,16 +303,16 @@
     </footer>
 
     <!-- Bottom Navigation -->
-    <nav class="bottom-nav">
-        <a href="#home" class="nav-item active">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+    <nav class="bottom-nav" aria-label="Navigasi utama">
+        <a href="#home" class="nav-item active" aria-label="Trusted — ke atas">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                 <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"/>
                 <path d="m9.5 12 1.8 1.8 3.8-4.1" class="icon-accent"/>
             </svg>
             <span>Trusted</span>
         </a>
-        <a href="#providerSection" class="nav-item">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+        <a href="#providerSection" class="nav-item" aria-label="Download — pilih provider">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                 <path d="M12 3v11" class="icon-accent"/>
                 <path d="m7.5 9.5 4.5 4.5 4.5-4.5"/>
                 <path d="M4 18.5h16"/>
@@ -363,19 +321,14 @@
             </svg>
             <span>Download</span>
         </a>
-        <a href="#" id="scanButton" class="nav-item center-hack-btn disabled" onclick="startScan()">
-            <span class="hack-btn-ring" aria-hidden="true"></span>
-            <span class="hack-btn-orbit orbit-left" aria-hidden="true"></span>
-            <span class="hack-btn-orbit orbit-right" aria-hidden="true"></span>
-            <div class="hack-btn-inner">
-                <span class="scan-medallion-core" aria-hidden="true"></span>
-                <span class="scan-medallion-glint" aria-hidden="true"></span>
+        <a href="#" id="scanButton" class="nav-item center-hack-btn disabled" onclick="startScan()" role="button" aria-label="Mula scan">
+            <div class="hack-btn-inner" aria-hidden="true">
                 <span class="scan-medallion-mark">SP</span>
             </div>
-            <span id="scanButtonLabel">PATCHER SLOT</span>
+            <span id="scanButtonLabel">SCAN</span>
         </a>
-        <a href="#resultsSection" class="nav-item">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+        <a href="#resultsSection" class="nav-item" aria-label="Tutorial — lihat hasil">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                 <path d="M5 5.5h14"/>
                 <path d="M7.5 9h9"/>
                 <path d="M9 12.5h6"/>
@@ -383,8 +336,8 @@
             </svg>
             <span>Tutorial</span>
         </a>
-        <a href="#home" class="nav-item">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+        <a href="#home" class="nav-item" aria-label="Profile">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                 <circle cx="12" cy="8" r="4"/>
                 <path d="M4 21v-1a6 6 0 0 1 6-6h4a6 6 0 0 1 6 6v1"/>
                 <path d="M18 3l.8 1.6L20.5 5l-1.2 1.1.3 1.7L18 7l-1.6.8.3-1.7L15.5 5l1.7-.4L18 3z" stroke-width="1.3" class="icon-accent"/>
@@ -393,13 +346,13 @@
         </a>
     </nav>
 
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
-    <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js" defer></script>
+    <script src="https://unpkg.com/aos@2.3.4/dist/aos.js" defer></script>
     <script src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js" async></script>
-    <script src="game-data.js"></script>
-    <script src="script.js"></script>
+    <script src="game-data.js" defer></script>
+    <script src="script.js" defer></script>
 </body>
 </html>

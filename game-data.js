@@ -1,4 +1,4 @@
-/* Auto-generated from 99laju.net slot catalogue. Do not edit by hand. */
+/* Auto-generated game database. Do not edit by hand. */
 window.SQUEEN668_GAME_DATABASE = {
   "pp": {
     "name": "PRAGMATIC PLAY",
@@ -9157,2034 +9157,3553 @@ window.SQUEEN668_GAME_DATABASE = {
     "logo": "assets/mega.png",
     "games": [
       {
-            "name": "10,001 Nights",
-            "img": "assets/mega888/10001Nights0.png"
+        "name": "AppleMachineIcon0.png",
+        "img": "assets/mega888/AppleMachineIcon0.png"
       },
       {
-            "name": "10001 Nights1",
-            "img": "assets/mega888/10001Nights1.png"
+        "name": "AppleMachineIcon1.png",
+        "img": "assets/mega888/AppleMachineIcon1.png"
       },
       {
-            "name": "12 Roulette",
-            "img": "assets/mega888/12RouIcon0.png"
+        "name": "AztecIcon0.png",
+        "img": "assets/mega888/AztecIcon0.png"
       },
       {
-            "name": "1942 Sky Warrior",
-            "img": "assets/mega888/1942SkyWarrior0.png"
+        "name": "AztecIcon1.png",
+        "img": "assets/mega888/AztecIcon1.png"
       },
       {
-            "name": "1942 Sky Warrior1",
-            "img": "assets/mega888/1942SkyWarrior1.png"
+        "name": "BaccaratIcon0.png",
+        "img": "assets/mega888/BaccaratIcon0.png"
       },
       {
-            "name": "24 Roulette",
-            "img": "assets/mega888/24RouIcon0.png"
+        "name": "BaccaratIcon1.png",
+        "img": "assets/mega888/BaccaratIcon1.png"
       },
       {
-            "name": "5 Dragons",
-            "img": "assets/mega888/5DragonsIcon0.png"
+        "name": "BattleIcon0.png",
+        "img": "assets/mega888/BattleIcon0.png"
       },
       {
-            "name": "73 Roulette",
-            "img": "assets/mega888/73RouIcon0.png"
+        "name": "BattleIcon1.png",
+        "img": "assets/mega888/BattleIcon1.png"
       },
       {
-            "name": "8 Ball",
-            "img": "assets/mega888/8BallIcon0.png"
+        "name": "BigShotIcon0.png",
+        "img": "assets/mega888/BigShotIcon0.png"
       },
       {
-            "name": "African",
-            "img": "assets/mega888/AfricanIcon0.png"
+        "name": "BigShotIcon1.png",
+        "img": "assets/mega888/BigShotIcon1.png"
       },
       {
-            "name": "Agent510",
-            "img": "assets/mega888/Agent510.png"
+        "name": "BlackjackIcon0.png",
+        "img": "assets/mega888/BlackjackIcon0.png"
       },
       {
-            "name": "Agent511",
-            "img": "assets/mega888/Agent511.png"
+        "name": "BlackjackIcon1.png",
+        "img": "assets/mega888/BlackjackIcon1.png"
       },
       {
-            "name": "Aladdin",
-            "img": "assets/mega888/AladdinIcon0.png"
+        "name": "BlueIcon0.png",
+        "img": "assets/mega888/BlueIcon0.png"
       },
       {
-            "name": "Alice",
-            "img": "assets/mega888/AliceIcon0.png"
+        "name": "BlueIcon1.png",
+        "img": "assets/mega888/BlueIcon1.png"
       },
       {
-            "name": "Amazon",
-            "img": "assets/mega888/AmazonIcon0.png"
+        "name": "BonusBearsIcon0.png",
+        "img": "assets/mega888/BonusBearsIcon0.png"
       },
       {
-            "name": "Apple Machine",
-            "img": "assets/mega888/AppleMachineIcon0.png"
+        "name": "BonusBearsIcon1.png",
+        "img": "assets/mega888/BonusBearsIcon1.png"
       },
       {
-            "name": "Aztec",
-            "img": "assets/mega888/AztecIcon0.png"
+        "name": "BoykingIcon0.png",
+        "img": "assets/mega888/BoykingIcon0.png"
       },
       {
-            "name": "Baccarat",
-            "img": "assets/mega888/BaccaratIcon0.png"
+        "name": "BoykingIcon1.png",
+        "img": "assets/mega888/BoykingIcon1.png"
       },
       {
-            "name": "Battle",
-            "img": "assets/mega888/BattleIcon0.png"
+        "name": "BulletIcon0.png",
+        "img": "assets/mega888/BulletIcon0.png"
       },
       {
-            "name": "Beast Of Wealth",
-            "img": "assets/mega888/BeastOfWealth0.png"
+        "name": "BulletIcon1.png",
+        "img": "assets/mega888/BulletIcon1.png"
       },
       {
-            "name": "Beast Of Wealth1",
-            "img": "assets/mega888/BeastOfWealth1.png"
+        "name": "CFishIcon0.png",
+        "img": "assets/mega888/CFishIcon0.png"
       },
       {
-            "name": "BG Live",
-            "img": "assets/mega888/BGLiveIcon0.png"
+        "name": "CFishIcon1.png",
+        "img": "assets/mega888/CFishIcon1.png"
       },
       {
-            "name": "Big Chef",
-            "img": "assets/mega888/BigChef0.png"
+        "name": "CFishWanIcon0.png",
+        "img": "assets/mega888/CFishWanIcon0.png"
       },
       {
-            "name": "Big Chef1",
-            "img": "assets/mega888/BigChef1.png"
+        "name": "CFishWanIcon1.png",
+        "img": "assets/mega888/CFishWanIcon1.png"
       },
       {
-            "name": "Big Shot",
-            "img": "assets/mega888/BigShotIcon0.png"
+        "name": "CaptainsIcon0.png",
+        "img": "assets/mega888/CaptainsIcon0.png"
       },
       {
-            "name": "Big Win Cat",
-            "img": "assets/mega888/BigWinCatIcon0.png"
+        "name": "CaptainsIcon1.png",
+        "img": "assets/mega888/CaptainsIcon1.png"
       },
       {
-            "name": "Blackjack",
-            "img": "assets/mega888/BlackjackIcon0.png"
+        "name": "CircusIcon0.png",
+        "img": "assets/mega888/CircusIcon0.png"
       },
       {
-            "name": "Blaze of Ra",
-            "img": "assets/mega888/BlazeOfRa0.png"
+        "name": "CircusIcon1.png",
+        "img": "assets/mega888/CircusIcon1.png"
       },
       {
-            "name": "Blaze Of Ra1",
-            "img": "assets/mega888/BlazeOfRa1.png"
+        "name": "CoyoteCashIcon0.png",
+        "img": "assets/mega888/CoyoteCashIcon0.png"
       },
       {
-            "name": "Blue",
-            "img": "assets/mega888/BlueIcon0.png"
+        "name": "CoyoteCashIcon1.png",
+        "img": "assets/mega888/CoyoteCashIcon1.png"
       },
       {
-            "name": "Bonus Bears",
-            "img": "assets/mega888/BonusBearsIcon0.png"
+        "name": "DolphinPIcon0.png",
+        "img": "assets/mega888/DolphinPIcon0.png"
       },
       {
-            "name": "Boyking",
-            "img": "assets/mega888/BoykingIcon0.png"
+        "name": "DolphinPIcon1.png",
+        "img": "assets/mega888/DolphinPIcon1.png"
       },
       {
-            "name": "Bullet",
-            "img": "assets/mega888/BulletIcon0.png"
+        "name": "DragonIcon0.png",
+        "img": "assets/mega888/DragonIcon0.png"
       },
       {
-            "name": "Caishen's Gold",
-            "img": "assets/mega888/Caishen'sGold0.png"
+        "name": "DragonIcon1.png",
+        "img": "assets/mega888/DragonIcon1.png"
       },
       {
-            "name": "Caishen's Gold1",
-            "img": "assets/mega888/Caishen'sGold1.png"
+        "name": "FaDaCaiIcon0.png",
+        "img": "assets/mega888/FaDaCaiIcon0.png"
       },
       {
-            "name": "Captains",
-            "img": "assets/mega888/CaptainsIcon0.png"
+        "name": "FaDaCaiIcon1.png",
+        "img": "assets/mega888/FaDaCaiIcon1.png"
       },
       {
-            "name": "Cash Noire",
-            "img": "assets/mega888/CashNoire0.png"
+        "name": "FameIcon0.png",
+        "img": "assets/mega888/FameIcon0.png"
       },
       {
-            "name": "Cash Noire1",
-            "img": "assets/mega888/CashNoire1.png"
+        "name": "FameIcon1.png",
+        "img": "assets/mega888/FameIcon1.png"
       },
       {
-            "name": "Cash Vanda",
-            "img": "assets/mega888/CashVanda0.png"
+        "name": "FattenIcon0.png",
+        "img": "assets/mega888/FattenIcon0.png"
       },
       {
-            "name": "Cash Vanda1",
-            "img": "assets/mega888/CashVanda1.png"
+        "name": "FattenIcon1.png",
+        "img": "assets/mega888/FattenIcon1.png"
       },
       {
-            "name": "Casino War",
-            "img": "assets/mega888/CasinoWarIcon0.png"
+        "name": "FengshenIcon0.png",
+        "img": "assets/mega888/FengshenIcon0.png"
       },
       {
-            "name": "Celebration of Wealth",
-            "img": "assets/mega888/CelebrationOfWealth0.png"
+        "name": "FengshenIcon1.png",
+        "img": "assets/mega888/FengshenIcon1.png"
       },
       {
-            "name": "Celebration Of Wealth1",
-            "img": "assets/mega888/CelebrationOfWealth1.png"
+        "name": "FishIcon0.png",
+        "img": "assets/mega888/FishIcon0.png"
       },
       {
-            "name": "C Fish",
-            "img": "assets/mega888/CFishIcon0.png"
+        "name": "FishIcon1.png",
+        "img": "assets/mega888/FishIcon1.png"
       },
       {
-            "name": "C Fish Wan",
-            "img": "assets/mega888/CFishWanIcon0.png"
+        "name": "ForTuneIcon0.png",
+        "img": "assets/mega888/ForTuneIcon0.png"
       },
       {
-            "name": "Champions of Rome",
-            "img": "assets/mega888/ChampionsOfRome0.png"
+        "name": "ForTuneIcon1.png",
+        "img": "assets/mega888/ForTuneIcon1.png"
       },
       {
-            "name": "Champions Of Rome1",
-            "img": "assets/mega888/ChampionsOfRome1.png"
+        "name": "GardenIcon0.png",
+        "img": "assets/mega888/GardenIcon0.png"
       },
       {
-            "name": "Charm",
-            "img": "assets/mega888/CharmIcon0.png"
+        "name": "GardenIcon1.png",
+        "img": "assets/mega888/GardenIcon1.png"
       },
       {
-            "name": "Chicago Gold",
-            "img": "assets/mega888/ChicagoGold0.png"
+        "name": "GreatStarsIcon0.png",
+        "img": "assets/mega888/GreatStarsIcon0.png"
       },
       {
-            "name": "Chicago Gold1",
-            "img": "assets/mega888/ChicagoGold1.png"
+        "name": "GreatStarsIcon1.png",
+        "img": "assets/mega888/GreatStarsIcon1.png"
       },
       {
-            "name": "Chinese",
-            "img": "assets/mega888/ChineseIcon0.png"
+        "name": "GreenIcon0.png",
+        "img": "assets/mega888/GreenIcon0.png"
       },
       {
-            "name": "Chinese New Year",
-            "img": "assets/mega888/ChineseNewYear0.png"
+        "name": "GreenIcon1.png",
+        "img": "assets/mega888/GreenIcon1.png"
       },
       {
-            "name": "Chinese New Year1",
-            "img": "assets/mega888/ChineseNewYear1.png"
+        "name": "HighwayIcon0.png",
+        "img": "assets/mega888/HighwayIcon0.png"
       },
       {
-            "name": "Circus",
-            "img": "assets/mega888/CircusIcon0.png"
+        "name": "HighwayIcon1.png",
+        "img": "assets/mega888/HighwayIcon1.png"
       },
       {
-            "name": "Clash of the Beasts",
-            "img": "assets/mega888/ClashOfTheBeasts0.png"
+        "name": "IceSnowIcon0.png",
+        "img": "assets/mega888/IceSnowIcon0.png"
       },
       {
-            "name": "Clash Of The Beasts1",
-            "img": "assets/mega888/ClashOfTheBeasts1.png"
+        "name": "IceSnowIcon1.png",
+        "img": "assets/mega888/IceSnowIcon1.png"
       },
       {
-            "name": "Cleopatra",
-            "img": "assets/mega888/CleopatraIcon0.png"
+        "name": "JinlianIcon0.png",
+        "img": "assets/mega888/JinlianIcon0.png"
       },
       {
-            "name": "Cleopatra's Riches",
-            "img": "assets/mega888/CleopatrasRiches0.png"
+        "name": "JinlianIcon1.png",
+        "img": "assets/mega888/JinlianIcon1.png"
       },
       {
-            "name": "Cleopatras Riches1",
-            "img": "assets/mega888/CleopatrasRiches1.png"
+        "name": "LongIcon10.png",
+        "img": "assets/mega888/LongIcon10.png"
       },
       {
-            "name": "Cocktail Nights",
-            "img": "assets/mega888/CocktailNights0.png"
+        "name": "LongIcon11.png",
+        "img": "assets/mega888/LongIcon11.png"
       },
       {
-            "name": "Cocktail Nights1",
-            "img": "assets/mega888/CocktailNights1.png"
+        "name": "LongIcon20.png",
+        "img": "assets/mega888/LongIcon20.png"
       },
       {
-            "name": "Conan",
-            "img": "assets/mega888/Conan0.png"
+        "name": "LongIcon21.png",
+        "img": "assets/mega888/LongIcon21.png"
       },
       {
-            "name": "Conan1",
-            "img": "assets/mega888/Conan1.png"
+        "name": "LongIcon30.png",
+        "img": "assets/mega888/LongIcon30.png"
       },
       {
-            "name": "Cookie Pop",
-            "img": "assets/mega888/CookiePopIcon0.png"
+        "name": "LongIcon31.png",
+        "img": "assets/mega888/LongIcon31.png"
       },
       {
-            "name": "Coyote Cash",
-            "img": "assets/mega888/CoyoteCashIcon0.png"
+        "name": "LotusIcon0.png",
+        "img": "assets/mega888/LotusIcon0.png"
       },
       {
-            "name": "Crazy 7",
-            "img": "assets/mega888/Crazy7Icon0.png"
+        "name": "LotusIcon1.png",
+        "img": "assets/mega888/LotusIcon1.png"
       },
       {
-            "name": "Dark Vortex",
-            "img": "assets/mega888/DarkVortex0.png"
+        "name": "LoveIcon0.png",
+        "img": "assets/mega888/LoveIcon0.png"
       },
       {
-            "name": "Dark Vortex1",
-            "img": "assets/mega888/DarkVortex1.png"
+        "name": "LoveIcon1.png",
+        "img": "assets/mega888/LoveIcon1.png"
       },
       {
-            "name": "Da Si Xi",
-            "img": "assets/mega888/DaSiXiIcon0.png"
+        "name": "MonkeyIcon0.png",
+        "img": "assets/mega888/MonkeyIcon0.png"
       },
       {
-            "name": "Deep Trek",
-            "img": "assets/mega888/DeepTrek0.png"
+        "name": "MonkeyIcon1.png",
+        "img": "assets/mega888/MonkeyIcon1.png"
       },
       {
-            "name": "Deep Trek1",
-            "img": "assets/mega888/DeepTrek1.png"
+        "name": "NiuIcon0.png",
+        "img": "assets/mega888/NiuIcon0.png"
       },
       {
-            "name": "Desert Gem",
-            "img": "assets/mega888/DesertGem0.png"
+        "name": "NiuIcon1.png",
+        "img": "assets/mega888/NiuIcon1.png"
       },
       {
-            "name": "Desert Gem1",
-            "img": "assets/mega888/DesertGem1.png"
+        "name": "PokerThreeIcon0.png",
+        "img": "assets/mega888/PokerThreeIcon0.png"
       },
       {
-            "name": "Destiny of Sun and Moon",
-            "img": "assets/mega888/DestinyOfSunAndMoon0.png"
+        "name": "PokerThreeIcon1.png",
+        "img": "assets/mega888/PokerThreeIcon1.png"
       },
       {
-            "name": "Destiny Of Sun And Moon1",
-            "img": "assets/mega888/DestinyOfSunAndMoon1.png"
+        "name": "RouletteIcon0.png",
+        "img": "assets/mega888/RouletteIcon0.png"
       },
       {
-            "name": "Diamond Strike",
-            "img": "assets/mega888/DiamondSrike0.png"
+        "name": "RouletteIcon1.png",
+        "img": "assets/mega888/RouletteIcon1.png"
       },
       {
-            "name": "Diamond Srike1",
-            "img": "assets/mega888/DiamondSrike1.png"
+        "name": "SafariIcon0.png",
+        "img": "assets/mega888/SafariIcon0.png"
       },
       {
-            "name": "Dim Sum Prize",
-            "img": "assets/mega888/DimSumPrize0.png"
+        "name": "SafariIcon1.png",
+        "img": "assets/mega888/SafariIcon1.png"
       },
       {
-            "name": "Dim Sum Prize1",
-            "img": "assets/mega888/DimSumPrize1.png"
+        "name": "SicBoIcon0.png",
+        "img": "assets/mega888/SicBoIcon0.png"
       },
       {
-            "name": "Discovery",
-            "img": "assets/mega888/DiscoveryIcon0.png"
+        "name": "SicBoIcon1.png",
+        "img": "assets/mega888/SicBoIcon1.png"
       },
       {
-            "name": "Doctor",
-            "img": "assets/mega888/DoctorIcon0.png"
+        "name": "12RouIcon0.png",
+        "img": "assets/mega888/12RouIcon0.png"
       },
       {
-            "name": "Dolphin Reef",
-            "img": "assets/mega888/DolphinIcon0.png"
+        "name": "12RouIcon1.png",
+        "img": "assets/mega888/12RouIcon1.png"
       },
       {
-            "name": "Dolphin P",
-            "img": "assets/mega888/DolphinPIcon0.png"
+        "name": "24RouIcon0.png",
+        "img": "assets/mega888/24RouIcon0.png"
       },
       {
-            "name": "Doom",
-            "img": "assets/mega888/DoomIcon0.png"
+        "name": "24RouIcon1.png",
+        "img": "assets/mega888/24RouIcon1.png"
       },
       {
-            "name": "Dragon",
-            "img": "assets/mega888/Dragon0.png"
+        "name": "73RouIcon0.png",
+        "img": "assets/mega888/73RouIcon0.png"
       },
       {
-            "name": "Dragon1",
-            "img": "assets/mega888/Dragon1.png"
+        "name": "73RouIcon1.png",
+        "img": "assets/mega888/73RouIcon1.png"
       },
       {
-            "name": "Dragon Hero",
-            "img": "assets/mega888/DragonHero0.png"
+        "name": "CasinoWarIcon0.png",
+        "img": "assets/mega888/CasinoWarIcon0.png"
       },
       {
-            "name": "Dragon Hero1",
-            "img": "assets/mega888/DragonHero1.png"
+        "name": "CasinoWarIcon1.png",
+        "img": "assets/mega888/CasinoWarIcon1.png"
       },
       {
-            "name": "Dragon M",
-            "img": "assets/mega888/DragonM0.png"
+        "name": "ChineseIcon0.png",
+        "img": "assets/mega888/ChineseIcon0.png"
       },
       {
-            "name": "Dragon M1",
-            "img": "assets/mega888/DragonM1.png"
+        "name": "ChineseIcon1.png",
+        "img": "assets/mega888/ChineseIcon1.png"
       },
       {
-            "name": "Dragon Strike",
-            "img": "assets/mega888/DragonStrike0.png"
+        "name": "Crazy7Icon0.png",
+        "img": "assets/mega888/Crazy7Icon0.png"
       },
       {
-            "name": "Dragon Strike1",
-            "img": "assets/mega888/DragonStrike1.png"
+        "name": "Crazy7Icon1.png",
+        "img": "assets/mega888/Crazy7Icon1.png"
       },
       {
-            "name": "Dragon Z",
-            "img": "assets/mega888/DragonZIcon0.png"
+        "name": "FashionIcon0.png",
+        "img": "assets/mega888/FashionIcon0.png"
       },
       {
-            "name": "Dr Fortuno",
-            "img": "assets/mega888/DrFortuno0.png"
+        "name": "FashionIcon1.png",
+        "img": "assets/mega888/FashionIcon1.png"
       },
       {
-            "name": "Dr Fortuno1",
-            "img": "assets/mega888/DrFortuno1.png"
+        "name": "FishHWIcon0.png",
+        "img": "assets/mega888/FishHWIcon0.png"
       },
       {
-            "name": "Dwarfs Gone Wild",
-            "img": "assets/mega888/DwarfsGoneWild0.png"
+        "name": "FishHWIcon1.png",
+        "img": "assets/mega888/FishHWIcon1.png"
       },
       {
-            "name": "Dwarfs Gone Wild1",
-            "img": "assets/mega888/DwarfsGoneWild1.png"
+        "name": "FishHWWanIcon0.png",
+        "img": "assets/mega888/FishHWWanIcon0.png"
       },
       {
-            "name": "Easter",
-            "img": "assets/mega888/EasterIcon0.png"
+        "name": "FishHWWanIcon1.png",
+        "img": "assets/mega888/FishHWWanIcon1.png"
       },
       {
-            "name": "Elven Magic",
-            "img": "assets/mega888/ElvenMagic0.png"
+        "name": "ForestIcon0.png",
+        "img": "assets/mega888/ForestIcon0.png"
       },
       {
-            "name": "Elven Magic1",
-            "img": "assets/mega888/ElvenMagic1.png"
+        "name": "ForestIcon1.png",
+        "img": "assets/mega888/ForestIcon1.png"
       },
       {
-            "name": "Evolution Live",
-            "img": "assets/mega888/EvolutionLive0.png"
+        "name": "FruitsIcon0.png",
+        "img": "assets/mega888/FruitsIcon0.png"
       },
       {
-            "name": "Evolution Live1",
-            "img": "assets/mega888/EvolutionLive1.png"
+        "name": "FruitsIcon1.png",
+        "img": "assets/mega888/FruitsIcon1.png"
       },
       {
-            "name": "Fa Da Cai",
-            "img": "assets/mega888/FaDaCaiIcon0.png"
+        "name": "FunkyIcon0.png",
+        "img": "assets/mega888/FunkyIcon0.png"
       },
       {
-            "name": "Fa Fa Babies",
-            "img": "assets/mega888/FaFaBabies0.png"
+        "name": "FunkyIcon1.png",
+        "img": "assets/mega888/FunkyIcon1.png"
       },
       {
-            "name": "Fa Fa Babies1",
-            "img": "assets/mega888/FaFaBabies1.png"
+        "name": "GirlsIcon0.png",
+        "img": "assets/mega888/GirlsIcon0.png"
       },
       {
-            "name": "Fame",
-            "img": "assets/mega888/FameIcon0.png"
+        "name": "GirlsIcon1.png",
+        "img": "assets/mega888/GirlsIcon1.png"
       },
       {
-            "name": "Fashion",
-            "img": "assets/mega888/FashionIcon0.png"
+        "name": "GoldenDerbyIcon0.png",
+        "img": "assets/mega888/GoldenDerbyIcon0.png"
       },
       {
-            "name": "Fatten",
-            "img": "assets/mega888/FattenIcon0.png"
+        "name": "GoldenDerbyIcon1.png",
+        "img": "assets/mega888/GoldenDerbyIcon1.png"
       },
       {
-            "name": "Fengshen",
-            "img": "assets/mega888/FengshenIcon0.png"
+        "name": "GuanYuIcon0.png",
+        "img": "assets/mega888/GuanYuIcon0.png"
       },
       {
-            "name": "Fiesta",
-            "img": "assets/mega888/FiestaIcon0.png"
+        "name": "GuanYuIcon1.png",
+        "img": "assets/mega888/GuanYuIcon1.png"
       },
       {
-            "name": "Fish",
-            "img": "assets/mega888/FishIcon0.png"
+        "name": "HoldEnIcon0.png",
+        "img": "assets/mega888/HoldEnIcon0.png"
       },
       {
-            "name": "Fish Hunter World",
-            "img": "assets/mega888/FishHWIcon0.png"
+        "name": "HoldEnIcon1.png",
+        "img": "assets/mega888/HoldEnIcon1.png"
       },
       {
-            "name": "Fish HW Wan",
-            "img": "assets/mega888/FishHWWanIcon0.png"
+        "name": "HuluCockIcon0.png",
+        "img": "assets/mega888/HuluCockIcon0.png"
       },
       {
-            "name": "Floating Dragon",
-            "img": "assets/mega888/FloatingDragon0.png"
+        "name": "HuluCockIcon1.png",
+        "img": "assets/mega888/HuluCockIcon1.png"
       },
       {
-            "name": "Floating Dragon1",
-            "img": "assets/mega888/FloatingDragon1.png"
+        "name": "IndiaIcon0.png",
+        "img": "assets/mega888/IndiaIcon0.png"
       },
       {
-            "name": "Foot Ball",
-            "img": "assets/mega888/FootBallIcon0.png"
+        "name": "IndiaIcon1.png",
+        "img": "assets/mega888/IndiaIcon1.png"
       },
       {
-            "name": "Forest",
-            "img": "assets/mega888/ForestIcon0.png"
+        "name": "JapanIcon0.png",
+        "img": "assets/mega888/JapanIcon0.png"
       },
       {
-            "name": "For Tune",
-            "img": "assets/mega888/ForTuneIcon0.png"
+        "name": "JapanIcon1.png",
+        "img": "assets/mega888/JapanIcon1.png"
       },
       {
-            "name": "Fortunefest",
-            "img": "assets/mega888/FortunefestIcon0.png"
+        "name": "LiKuiIcon0.png",
+        "img": "assets/mega888/LiKuiIcon0.png"
       },
       {
-            "name": "Fortune Firework",
-            "img": "assets/mega888/FortuneFirework0.png"
+        "name": "LiKuiIcon1.png",
+        "img": "assets/mega888/LiKuiIcon1.png"
       },
       {
-            "name": "Fortune Firework1",
-            "img": "assets/mega888/FortuneFirework1.png"
+        "name": "LiKuiWIcon0.png",
+        "img": "assets/mega888/LiKuiWIcon0.png"
       },
       {
-            "name": "Fortune Panda",
-            "img": "assets/mega888/FortunePandaIcon0.png"
+        "name": "LiKuiWIcon1.png",
+        "img": "assets/mega888/LiKuiWIcon1.png"
       },
       {
-            "name": "Frost Queen",
-            "img": "assets/mega888/FrostQueen0.png"
+        "name": "MonkeyPlusIcon0.png",
+        "img": "assets/mega888/MonkeyPlusIcon0.png"
       },
       {
-            "name": "Frost Queen1",
-            "img": "assets/mega888/FrostQueen1.png"
+        "name": "MonkeyPlusIcon1.png",
+        "img": "assets/mega888/MonkeyPlusIcon1.png"
       },
       {
-            "name": "Fruit Candy",
-            "img": "assets/mega888/FruitCandyIcon0.png"
+        "name": "MotoIcon0.png",
+        "img": "assets/mega888/MotoIcon0.png"
       },
       {
-            "name": "Fruits",
-            "img": "assets/mega888/FruitsIcon0.png"
+        "name": "MotoIcon1.png",
+        "img": "assets/mega888/MotoIcon1.png"
       },
       {
-            "name": "Funky",
-            "img": "assets/mega888/FunkyIcon0.png"
+        "name": "NightClubIcon0.png",
+        "img": "assets/mega888/NightClubIcon0.png"
       },
       {
-            "name": "Garden",
-            "img": "assets/mega888/GardenIcon0.png"
+        "name": "NightClubIcon1.png",
+        "img": "assets/mega888/NightClubIcon1.png"
       },
       {
-            "name": "Gifts from Santa",
-            "img": "assets/mega888/GiftsFromSanta0.png"
+        "name": "OrientIcon0.png",
+        "img": "assets/mega888/OrientIcon0.png"
       },
       {
-            "name": "Gifts From Santa1",
-            "img": "assets/mega888/GiftsFromSanta1.png"
+        "name": "OrientIcon1.png",
+        "img": "assets/mega888/OrientIcon1.png"
       },
       {
-            "name": "Girl",
-            "img": "assets/mega888/GirlIcon0.png"
+        "name": "PayDirtIcon0.png",
+        "img": "assets/mega888/PayDirtIcon0.png"
       },
       {
-            "name": "Girls",
-            "img": "assets/mega888/GirlsIcon0.png"
+        "name": "PayDirtIcon1.png",
+        "img": "assets/mega888/PayDirtIcon1.png"
       },
       {
-            "name": "Glory",
-            "img": "assets/mega888/Glory0.png"
+        "name": "PhoenixIcon0.png",
+        "img": "assets/mega888/PhoenixIcon0.png"
       },
       {
-            "name": "Glory1",
-            "img": "assets/mega888/Glory1.png"
+        "name": "PhoenixIcon1.png",
+        "img": "assets/mega888/PhoenixIcon1.png"
       },
       {
-            "name": "God of Cookery",
-            "img": "assets/mega888/GodOfCookery0.png"
+        "name": "PokemonIcon0.png",
+        "img": "assets/mega888/PokemonIcon0.png"
       },
       {
-            "name": "God Of Cookery1",
-            "img": "assets/mega888/GodOfCookery1.png"
+        "name": "PokemonIcon1.png",
+        "img": "assets/mega888/PokemonIcon1.png"
       },
       {
-            "name": "Golden Beauty",
-            "img": "assets/mega888/GoldenBeauty0.png"
+        "name": "ReelIcon0.png",
+        "img": "assets/mega888/ReelIcon0.png"
       },
       {
-            "name": "Golden Beauty1",
-            "img": "assets/mega888/GoldenBeauty1.png"
+        "name": "ReelIcon1.png",
+        "img": "assets/mega888/ReelIcon1.png"
       },
       {
-            "name": "Golden Cock",
-            "img": "assets/mega888/GoldenCock0.png"
+        "name": "SharkIcon0.png",
+        "img": "assets/mega888/SharkIcon0.png"
       },
       {
-            "name": "Golden Cock1",
-            "img": "assets/mega888/GoldenCock1.png"
+        "name": "SharkIcon1.png",
+        "img": "assets/mega888/SharkIcon1.png"
       },
       {
-            "name": "Golden Colts",
-            "img": "assets/mega888/GoldenColts0.png"
+        "name": "SpartanIcon0.png",
+        "img": "assets/mega888/SpartanIcon0.png"
       },
       {
-            "name": "Golden Colts1",
-            "img": "assets/mega888/GoldenColts1.png"
+        "name": "SpartanIcon1.png",
+        "img": "assets/mega888/SpartanIcon1.png"
       },
       {
-            "name": "Golden Derby",
-            "img": "assets/mega888/GoldenDerbyIcon0.png"
+        "name": "StudentIcon0.png",
+        "img": "assets/mega888/StudentIcon0.png"
       },
       {
-            "name": "Golden Horns",
-            "img": "assets/mega888/GoldenHorns0.png"
+        "name": "StudentIcon1.png",
+        "img": "assets/mega888/StudentIcon1.png"
       },
       {
-            "name": "Golden Horns1",
-            "img": "assets/mega888/GoldenHorns1.png"
+        "name": "TallyIcon0.png",
+        "img": "assets/mega888/TallyIcon0.png"
       },
       {
-            "name": "Golden Monkey",
-            "img": "assets/mega888/GoldenMonkey0.png"
+        "name": "TallyIcon1.png",
+        "img": "assets/mega888/TallyIcon1.png"
       },
       {
-            "name": "Golden Monkey1",
-            "img": "assets/mega888/GoldenMonkey1.png"
+        "name": "ThailandIcon0.png",
+        "img": "assets/mega888/ThailandIcon0.png"
       },
       {
-            "name": "Golden Tour",
-            "img": "assets/mega888/GoldenTourIcon0.png"
+        "name": "ThailandIcon1.png",
+        "img": "assets/mega888/ThailandIcon1.png"
       },
       {
-            "name": "Golden Tree",
-            "img": "assets/mega888/GoldenTreeIcon0.png"
+        "name": "TornadIcon0.png",
+        "img": "assets/mega888/TornadIcon0.png"
       },
       {
-            "name": "Gold Rush",
-            "img": "assets/mega888/GoldRush0.png"
+        "name": "TornadIcon1.png",
+        "img": "assets/mega888/TornadIcon1.png"
       },
       {
-            "name": "Gold Rush1",
-            "img": "assets/mega888/GoldRush1.png"
+        "name": "VictoryIcon0.png",
+        "img": "assets/mega888/VictoryIcon0.png"
       },
       {
-            "name": "Gold Train",
-            "img": "assets/mega888/GoldTrain0.png"
+        "name": "VictoryIcon1.png",
+        "img": "assets/mega888/VictoryIcon1.png"
       },
       {
-            "name": "Gold Train1",
-            "img": "assets/mega888/GoldTrain1.png"
+        "name": "WangCaiIcon0.png",
+        "img": "assets/mega888/WangCaiIcon0.png"
       },
       {
-            "name": "Great880",
-            "img": "assets/mega888/Great880.png"
+        "name": "WangCaiIcon1.png",
+        "img": "assets/mega888/WangCaiIcon1.png"
       },
       {
-            "name": "Great881",
-            "img": "assets/mega888/Great881.png"
+        "name": "WaterIcon0.png",
+        "img": "assets/mega888/WaterIcon0.png"
       },
       {
-            "name": "Great Stars",
-            "img": "assets/mega888/GreatStarsIcon0.png"
+        "name": "WaterIcon1.png",
+        "img": "assets/mega888/WaterIcon1.png"
       },
       {
-            "name": "Green",
-            "img": "assets/mega888/GreenIcon0.png"
+        "name": "WildFoxIcon0.png",
+        "img": "assets/mega888/WildFoxIcon0.png"
       },
       {
-            "name": "Guan Yu",
-            "img": "assets/mega888/GuanYuIcon0.png"
+        "name": "WildFoxIcon1.png",
+        "img": "assets/mega888/WildFoxIcon1.png"
       },
       {
-            "name": "Halloween",
-            "img": "assets/mega888/HalloweenIcon0.png"
+        "name": "5DragonsIcon0.png",
+        "img": "assets/mega888/5DragonsIcon0.png"
       },
       {
-            "name": "Hanzo's Dojo",
-            "img": "assets/mega888/HanzosDojo0.png"
+        "name": "5DragonsIcon1.png",
+        "img": "assets/mega888/5DragonsIcon1.png"
       },
       {
-            "name": "Hanzos Dojo1",
-            "img": "assets/mega888/HanzosDojo1.png"
+        "name": "8BallIcon0.png",
+        "img": "assets/mega888/8BallIcon0.png"
       },
       {
-            "name": "Happy New Year",
-            "img": "assets/mega888/HappyNewYear0.png"
+        "name": "8BallIcon1.png",
+        "img": "assets/mega888/8BallIcon1.png"
       },
       {
-            "name": "Happy New Year1",
-            "img": "assets/mega888/HappyNewYear1.png"
+        "name": "AfricanIcon0.png",
+        "img": "assets/mega888/AfricanIcon0.png"
       },
       {
-            "name": "Happy Riches",
-            "img": "assets/mega888/HappyRiches0.png"
+        "name": "AfricanIcon1.png",
+        "img": "assets/mega888/AfricanIcon1.png"
       },
       {
-            "name": "Happy Riches1",
-            "img": "assets/mega888/HappyRiches1.png"
+        "name": "AladdinIcon0.png",
+        "img": "assets/mega888/AladdinIcon0.png"
       },
       {
-            "name": "Happy Rich Year_00",
-            "img": "assets/mega888/HappyRichYear_00.png"
+        "name": "AladdinIcon1.png",
+        "img": "assets/mega888/AladdinIcon1.png"
       },
       {
-            "name": "Happy Rich Year_01",
-            "img": "assets/mega888/HappyRichYear_01.png"
+        "name": "AliceIcon0.png",
+        "img": "assets/mega888/AliceIcon0.png"
       },
       {
-            "name": "Hexa Keno",
-            "img": "assets/mega888/HexaKeno0.png"
+        "name": "AliceIcon1.png",
+        "img": "assets/mega888/AliceIcon1.png"
       },
       {
-            "name": "Hexa Keno1",
-            "img": "assets/mega888/HexaKeno1.png"
+        "name": "CleopatraIcon0.png",
+        "img": "assets/mega888/CleopatraIcon0.png"
       },
       {
-            "name": "Highway",
-            "img": "assets/mega888/HighwayIcon0.png"
+        "name": "CleopatraIcon1.png",
+        "img": "assets/mega888/CleopatraIcon1.png"
       },
       {
-            "name": "Hold Em",
-            "img": "assets/mega888/HoldEnIcon0.png"
+        "name": "CookiePopIcon0.png",
+        "img": "assets/mega888/CookiePopIcon0.png"
       },
       {
-            "name": "Hong BAO",
-            "img": "assets/mega888/HongBAO0.png"
+        "name": "CookiePopIcon1.png",
+        "img": "assets/mega888/CookiePopIcon1.png"
       },
       {
-            "name": "Hong BAO1",
-            "img": "assets/mega888/HongBAO1.png"
+        "name": "DiscoveryIcon0.png",
+        "img": "assets/mega888/DiscoveryIcon0.png"
       },
       {
-            "name": "Hotline",
-            "img": "assets/mega888/HotlineIcon0.png"
+        "name": "DiscoveryIcon1.png",
+        "img": "assets/mega888/DiscoveryIcon1.png"
       },
       {
-            "name": "Hot Shot Keno",
-            "img": "assets/mega888/HotShotKeno0.png"
+        "name": "DolphinIcon0.png",
+        "img": "assets/mega888/DolphinIcon0.png"
       },
       {
-            "name": "Hot Shot Keno1",
-            "img": "assets/mega888/HotShotKeno1.png"
+        "name": "DolphinIcon1.png",
+        "img": "assets/mega888/DolphinIcon1.png"
       },
       {
-            "name": "Hulu Cock",
-            "img": "assets/mega888/HuluCockIcon0.png"
+        "name": "GoldenTourIcon0.png",
+        "img": "assets/mega888/GoldenTourIcon0.png"
       },
       {
-            "name": "Ice Snow",
-            "img": "assets/mega888/IceSnowIcon0.png"
+        "name": "GoldenTourIcon1.png",
+        "img": "assets/mega888/GoldenTourIcon1.png"
       },
       {
-            "name": "Imperial Opera",
-            "img": "assets/mega888/ImperialOpera0.png"
+        "name": "GoldenTreeIcon0.png",
+        "img": "assets/mega888/GoldenTreeIcon0.png"
       },
       {
-            "name": "Imperial Opera1",
-            "img": "assets/mega888/ImperialOpera1.png"
+        "name": "GoldenTreeIcon1.png",
+        "img": "assets/mega888/GoldenTreeIcon1.png"
       },
       {
-            "name": "India",
-            "img": "assets/mega888/IndiaIcon0.png"
+        "name": "HalloweenIcon0.png",
+        "img": "assets/mega888/HalloweenIcon0.png"
       },
       {
-            "name": "Ireland",
-            "img": "assets/mega888/Ireland0.png"
+        "name": "HalloweenIcon1.png",
+        "img": "assets/mega888/HalloweenIcon1.png"
       },
       {
-            "name": "Ireland1",
-            "img": "assets/mega888/Ireland1.png"
+        "name": "IrishLuckIcon0.png",
+        "img": "assets/mega888/IrishLuckIcon0.png"
       },
       {
-            "name": "Irish Luck",
-            "img": "assets/mega888/IrishLuckIcon0.png"
+        "name": "IrishLuckIcon1.png",
+        "img": "assets/mega888/IrishLuckIcon1.png"
       },
       {
-            "name": "Ivan",
-            "img": "assets/mega888/Ivan0.png"
+        "name": "LoongIcon0.png",
+        "img": "assets/mega888/LoongIcon0.png"
       },
       {
-            "name": "Ivan1",
-            "img": "assets/mega888/Ivan1.png"
+        "name": "LoongIcon1.png",
+        "img": "assets/mega888/LoongIcon1.png"
       },
       {
-            "name": "Jackpot Raiders",
-            "img": "assets/mega888/JackpotRaiders0.png"
+        "name": "MagicIcon0.png",
+        "img": "assets/mega888/MagicIcon0.png"
       },
       {
-            "name": "Jackpot Raiders1",
-            "img": "assets/mega888/JackpotRaiders1.png"
+        "name": "MagicIcon1.png",
+        "img": "assets/mega888/MagicIcon1.png"
       },
       {
-            "name": "Jackson",
-            "img": "assets/mega888/Jackson0.png"
+        "name": "MoneyFeverIcon0.png",
+        "img": "assets/mega888/MoneyFeverIcon0.png"
       },
       {
-            "name": "Jackson1",
-            "img": "assets/mega888/Jackson1.png"
+        "name": "MoneyFeverIcon1.png",
+        "img": "assets/mega888/MoneyFeverIcon1.png"
       },
       {
-            "name": "Japan",
-            "img": "assets/mega888/JapanIcon0.png"
+        "name": "NinjaIcon0.png",
+        "img": "assets/mega888/NinjaIcon0.png"
       },
       {
-            "name": "Jewels of Prosperity",
-            "img": "assets/mega888/JewelsOfProsperity0.png"
+        "name": "NinjaIcon1.png",
+        "img": "assets/mega888/NinjaIcon1.png"
       },
       {
-            "name": "Jewels Of Prosperity1",
-            "img": "assets/mega888/JewelsOfProsperity1.png"
+        "name": "NnyyIcon0.png",
+        "img": "assets/mega888/NnyyIcon0.png"
       },
       {
-            "name": "Jingle Bells",
-            "img": "assets/mega888/JingleBells0.png"
+        "name": "NnyyIcon1.png",
+        "img": "assets/mega888/NnyyIcon1.png"
       },
       {
-            "name": "Jingle Bells1",
-            "img": "assets/mega888/JingleBells1.png"
+        "name": "PantherIcon0.png",
+        "img": "assets/mega888/PantherIcon0.png"
       },
       {
-            "name": "Jinlian",
-            "img": "assets/mega888/JinlianIcon0.png"
+        "name": "PantherIcon1.png",
+        "img": "assets/mega888/PantherIcon1.png"
       },
       {
-            "name": "Jin Qian",
-            "img": "assets/mega888/JinQianIcon0.png"
+        "name": "PirateShipIcon0.png",
+        "img": "assets/mega888/PirateShipIcon0.png"
       },
       {
-            "name": "Jungle Spirit",
-            "img": "assets/mega888/JungleSpirit0.png"
+        "name": "PirateShipIcon1.png",
+        "img": "assets/mega888/PirateShipIcon1.png"
       },
       {
-            "name": "Jungle Spirit1",
-            "img": "assets/mega888/JungleSpirit1.png"
+        "name": "PlusIcon0.png",
+        "img": "assets/mega888/PlusIcon0.png"
       },
       {
-            "name": "King of Ghosts",
-            "img": "assets/mega888/KingOfGhosts0.png"
+        "name": "PlusIcon1.png",
+        "img": "assets/mega888/PlusIcon1.png"
       },
       {
-            "name": "King Of Ghosts1",
-            "img": "assets/mega888/KingOfGhosts1.png"
+        "name": "RacingCarIcon0.png",
+        "img": "assets/mega888/RacingCarIcon0.png"
       },
       {
-            "name": "Laura",
-            "img": "assets/mega888/LauraIcon0.png"
+        "name": "RacingCarIcon1.png",
+        "img": "assets/mega888/RacingCarIcon1.png"
       },
       {
-            "name": "Lights",
-            "img": "assets/mega888/Lights0.png"
+        "name": "RallyIcon0.png",
+        "img": "assets/mega888/RallyIcon0.png"
       },
       {
-            "name": "Lights1",
-            "img": "assets/mega888/Lights1.png"
+        "name": "RallyIcon1.png",
+        "img": "assets/mega888/RallyIcon1.png"
       },
       {
-            "name": "Li Kui",
-            "img": "assets/mega888/LiKuiIcon0.png"
+        "name": "RanchStoryIcon0.png",
+        "img": "assets/mega888/RanchStoryIcon0.png"
       },
       {
-            "name": "Li Kui W",
-            "img": "assets/mega888/LiKuiWIcon0.png"
+        "name": "RanchStoryIcon1.png",
+        "img": "assets/mega888/RanchStoryIcon1.png"
       },
       {
-            "name": "Lion",
-            "img": "assets/mega888/LionIcon0.png"
+        "name": "SeaCaptainIcon0.png",
+        "img": "assets/mega888/SeaCaptainIcon0.png"
       },
       {
-            "name": "Lion Dance",
-            "img": "assets/mega888/LionDanceIcon0.png"
+        "name": "SeaCaptainIcon1.png",
+        "img": "assets/mega888/SeaCaptainIcon1.png"
       },
       {
-            "name": "Live Casino",
-            "img": "assets/mega888/LiveIcon0.png"
+        "name": "SeaWorldIcon0.png",
+        "img": "assets/mega888/SeaWorldIcon0.png"
       },
       {
-            "name": "Live New",
-            "img": "assets/mega888/LiveNewIcon0.png"
+        "name": "SeaWorldIcon1.png",
+        "img": "assets/mega888/SeaWorldIcon1.png"
       },
       {
-            "name": "Long Icon20",
-            "img": "assets/mega888/LongIcon20.png"
+        "name": "ShiningStarsIcon0.png",
+        "img": "assets/mega888/ShiningStarsIcon0.png"
       },
       {
-            "name": "Long Icon21",
-            "img": "assets/mega888/LongIcon21.png"
+        "name": "ShiningStarsIcon1.png",
+        "img": "assets/mega888/ShiningStarsIcon1.png"
       },
       {
-            "name": "Long Icon30",
-            "img": "assets/mega888/LongIcon30.png"
+        "name": "ShuiHuIcon0.png",
+        "img": "assets/mega888/ShuiHuIcon0.png"
       },
       {
-            "name": "Long Icon31",
-            "img": "assets/mega888/LongIcon31.png"
+        "name": "ShuiHuIcon1.png",
+        "img": "assets/mega888/ShuiHuIcon1.png"
       },
       {
-            "name": "Loong",
-            "img": "assets/mega888/LoongIcon0.png"
+        "name": "SinglePokerIcon0.png",
+        "img": "assets/mega888/SinglePokerIcon0.png"
       },
       {
-            "name": "Lost Island",
-            "img": "assets/mega888/LostIsland0.png"
+        "name": "SinglePokerIcon1.png",
+        "img": "assets/mega888/SinglePokerIcon1.png"
       },
       {
-            "name": "Lost Island1",
-            "img": "assets/mega888/LostIsland1.png"
+        "name": "Sparta2Icon0.png",
+        "img": "assets/mega888/Sparta2Icon0.png"
       },
       {
-            "name": "Lotus",
-            "img": "assets/mega888/LotusIcon0.png"
+        "name": "Sparta2Icon1.png",
+        "img": "assets/mega888/Sparta2Icon1.png"
       },
       {
-            "name": "Lotus Legend",
-            "img": "assets/mega888/LotusLegendIcon0.png"
+        "name": "StoneAgeIcon0.png",
+        "img": "assets/mega888/StoneAgeIcon0.png"
       },
       {
-            "name": "Love",
-            "img": "assets/mega888/LoveIcon0.png"
+        "name": "StoneAgeIcon1.png",
+        "img": "assets/mega888/StoneAgeIcon1.png"
       },
       {
-            "name": "Lucky",
-            "img": "assets/mega888/LuckyIcon0.png"
+        "name": "TRexIcon0.png",
+        "img": "assets/mega888/TRexIcon0.png"
       },
       {
-            "name": "Lucky Duck",
-            "img": "assets/mega888/LuckyDuck0.png"
+        "name": "TRexIcon1.png",
+        "img": "assets/mega888/TRexIcon1.png"
       },
       {
-            "name": "Lucky Duck1",
-            "img": "assets/mega888/LuckyDuck1.png"
+        "name": "ThaiIcon0.png",
+        "img": "assets/mega888/ThaiIcon0.png"
       },
       {
-            "name": "Lucky Firecracker",
-            "img": "assets/mega888/LuckyFirecracker0.png"
+        "name": "ThaiIcon1.png",
+        "img": "assets/mega888/ThaiIcon1.png"
       },
       {
-            "name": "Lucky Firecracker1",
-            "img": "assets/mega888/LuckyFirecracker1.png"
+        "name": "ThreeKingIcon0.png",
+        "img": "assets/mega888/ThreeKingIcon0.png"
       },
       {
-            "name": "Lucky Koi",
-            "img": "assets/mega888/LuckyKoi0.png"
+        "name": "ThreeKingIcon1.png",
+        "img": "assets/mega888/ThreeKingIcon1.png"
       },
       {
-            "name": "Lucky Koi1",
-            "img": "assets/mega888/LuckyKoi1.png"
+        "name": "TreasureIcon0.png",
+        "img": "assets/mega888/TreasureIcon0.png"
       },
       {
-            "name": "Lucky Neko",
-            "img": "assets/mega888/LuckyNeko0.png"
+        "name": "TreasureIcon1.png",
+        "img": "assets/mega888/TreasureIcon1.png"
       },
       {
-            "name": "Lucky Neko1",
-            "img": "assets/mega888/LuckyNeko1.png"
+        "name": "WealthIcon0.png",
+        "img": "assets/mega888/WealthIcon0.png"
       },
       {
-            "name": "Lucky New Year",
-            "img": "assets/mega888/LuckyNewYear0.png"
+        "name": "WealthIcon1.png",
+        "img": "assets/mega888/WealthIcon1.png"
       },
       {
-            "name": "Lucky New Year1",
-            "img": "assets/mega888/LuckyNewYear1.png"
+        "name": "WesternIcon0.png",
+        "img": "assets/mega888/WesternIcon0.png"
       },
       {
-            "name": "Madame Ink",
-            "img": "assets/mega888/MadameInk0.png"
+        "name": "WesternIcon1.png",
+        "img": "assets/mega888/WesternIcon1.png"
       },
       {
-            "name": "Madame Ink1",
-            "img": "assets/mega888/MadameInk1.png"
+        "name": "WuKongIcon0.png",
+        "img": "assets/mega888/WuKongIcon0.png"
       },
       {
-            "name": "Magic",
-            "img": "assets/mega888/MagicIcon0.png"
+        "name": "WuKongIcon1.png",
+        "img": "assets/mega888/WuKongIcon1.png"
       },
       {
-            "name": "Magic Shoppe",
-            "img": "assets/mega888/MagicShoppe0.png"
+        "name": "WuKongWIcon0.png",
+        "img": "assets/mega888/WuKongWIcon0.png"
       },
       {
-            "name": "Magic Shoppe1",
-            "img": "assets/mega888/MagicShoppe1.png"
+        "name": "WuKongWIcon1.png",
+        "img": "assets/mega888/WuKongWIcon1.png"
       },
       {
-            "name": "Mask Carnival",
-            "img": "assets/mega888/MaskCarnival0.png"
+        "name": "ZcjbIcon0.png",
+        "img": "assets/mega888/ZcjbIcon0.png"
       },
       {
-            "name": "Mask Carnival1",
-            "img": "assets/mega888/MaskCarnival1.png"
+        "name": "ZcjbIcon1.png",
+        "img": "assets/mega888/ZcjbIcon1.png"
       },
       {
-            "name": "Masquerade",
-            "img": "assets/mega888/Masquerade0.png"
+        "name": "AmazonIcon0.png",
+        "img": "assets/mega888/AmazonIcon0.png"
       },
       {
-            "name": "Masquerade1",
-            "img": "assets/mega888/Masquerade1.png"
+        "name": "AmazonIcon1.png",
+        "img": "assets/mega888/AmazonIcon1.png"
       },
       {
-            "name": "Matsuri",
-            "img": "assets/mega888/Matsuri0.png"
+        "name": "BigWinCatIcon0.png",
+        "img": "assets/mega888/BigWinCatIcon0.png"
       },
       {
-            "name": "Matsuri1",
-            "img": "assets/mega888/Matsuri1.png"
+        "name": "BigWinCatIcon1.png",
+        "img": "assets/mega888/BigWinCatIcon1.png"
       },
       {
-            "name": "Midas Golden Touch",
-            "img": "assets/mega888/MidasGoldenTouch0.png"
+        "name": "BlazeOfRa0.png",
+        "img": "assets/mega888/BlazeOfRa0.png"
       },
       {
-            "name": "Midas Golden Touch1",
-            "img": "assets/mega888/MidasGoldenTouch1.png"
+        "name": "BlazeOfRa1.png",
+        "img": "assets/mega888/BlazeOfRa1.png"
       },
       {
-            "name": "Money Fever",
-            "img": "assets/mega888/MoneyFeverIcon0.png"
+        "name": "CleopatrasRiches0.png",
+        "img": "assets/mega888/CleopatrasRiches0.png"
       },
       {
-            "name": "Monkey",
-            "img": "assets/mega888/MonkeyIcon0.png"
+        "name": "CleopatrasRiches1.png",
+        "img": "assets/mega888/CleopatrasRiches1.png"
       },
       {
-            "name": "Monkey Plus",
-            "img": "assets/mega888/MonkeyPlusIcon0.png"
+        "name": "DaSiXiIcon0.png",
+        "img": "assets/mega888/DaSiXiIcon0.png"
       },
       {
-            "name": "Moto",
-            "img": "assets/mega888/MotoIcon0.png"
+        "name": "DaSiXiIcon1.png",
+        "img": "assets/mega888/DaSiXiIcon1.png"
       },
       {
-            "name": "Motorcycle",
-            "img": "assets/mega888/Motorcycle0.png"
+        "name": "DoctorIcon0.png",
+        "img": "assets/mega888/DoctorIcon0.png"
       },
       {
-            "name": "Motorcycle1",
-            "img": "assets/mega888/Motorcycle1.png"
+        "name": "DoctorIcon1.png",
+        "img": "assets/mega888/DoctorIcon1.png"
       },
       {
-            "name": "Narcos",
-            "img": "assets/mega888/Narcos0.png"
+        "name": "DoomIcon0.png",
+        "img": "assets/mega888/DoomIcon0.png"
       },
       {
-            "name": "Narcos1",
-            "img": "assets/mega888/Narcos1.png"
+        "name": "DoomIcon1.png",
+        "img": "assets/mega888/DoomIcon1.png"
       },
       {
-            "name": "Native Indian",
-            "img": "assets/mega888/NativeIndian0.png"
+        "name": "DragonZIcon0.png",
+        "img": "assets/mega888/DragonZIcon0.png"
       },
       {
-            "name": "Native Indian1",
-            "img": "assets/mega888/NativeIndian1.png"
+        "name": "DragonZIcon1.png",
+        "img": "assets/mega888/DragonZIcon1.png"
       },
       {
-            "name": "New20",
-            "img": "assets/mega888/New20.png"
+        "name": "EasterIcon0.png",
+        "img": "assets/mega888/EasterIcon0.png"
       },
       {
-            "name": "New Years Bash",
-            "img": "assets/mega888/NewYearsBash0.png"
+        "name": "EasterIcon1.png",
+        "img": "assets/mega888/EasterIcon1.png"
       },
       {
-            "name": "New Years Bash1",
-            "img": "assets/mega888/NewYearsBash1.png"
+        "name": "ElvenMagic0.png",
+        "img": "assets/mega888/ElvenMagic0.png"
       },
       {
-            "name": "New York_00",
-            "img": "assets/mega888/NewYork_00.png"
+        "name": "ElvenMagic1.png",
+        "img": "assets/mega888/ElvenMagic1.png"
       },
       {
-            "name": "New York_01",
-            "img": "assets/mega888/NewYork_01.png"
+        "name": "FootBallIcon0.png",
+        "img": "assets/mega888/FootBallIcon0.png"
       },
       {
-            "name": "Night Club",
-            "img": "assets/mega888/NightClubIcon0.png"
+        "name": "FootBallIcon1.png",
+        "img": "assets/mega888/FootBallIcon1.png"
       },
       {
-            "name": "Ninja",
-            "img": "assets/mega888/NinjaIcon0.png"
+        "name": "FortunePandaIcon0.png",
+        "img": "assets/mega888/FortunePandaIcon0.png"
       },
       {
-            "name": "Niu",
-            "img": "assets/mega888/NiuIcon0.png"
+        "name": "FortunePandaIcon1.png",
+        "img": "assets/mega888/FortunePandaIcon1.png"
       },
       {
-            "name": "Nian Nian You Yu",
-            "img": "assets/mega888/NnyyIcon0.png"
+        "name": "FortunefestIcon0.png",
+        "img": "assets/mega888/FortunefestIcon0.png"
       },
       {
-            "name": "Orient",
-            "img": "assets/mega888/OrientIcon0.png"
+        "name": "FortunefestIcon1.png",
+        "img": "assets/mega888/FortunefestIcon1.png"
       },
       {
-            "name": "Panther",
-            "img": "assets/mega888/PantherIcon0.png"
+        "name": "FruitCandyIcon0.png",
+        "img": "assets/mega888/FruitCandyIcon0.png"
       },
       {
-            "name": "Pay Dirt",
-            "img": "assets/mega888/PayDirtIcon0.png"
+        "name": "FruitCandyIcon1.png",
+        "img": "assets/mega888/FruitCandyIcon1.png"
       },
       {
-            "name": "Penguin City",
-            "img": "assets/mega888/PenguinCity0.png"
+        "name": "GoldRush0.png",
+        "img": "assets/mega888/GoldRush0.png"
       },
       {
-            "name": "Penguin City1",
-            "img": "assets/mega888/PenguinCity1.png"
+        "name": "GoldRush1.png",
+        "img": "assets/mega888/GoldRush1.png"
       },
       {
-            "name": "Phoenix",
-            "img": "assets/mega888/PhoenixIcon0.png"
+        "name": "GoldenMonkey0.png",
+        "img": "assets/mega888/GoldenMonkey0.png"
       },
       {
-            "name": "Pirate2",
-            "img": "assets/mega888/Pirate2Icon0.png"
+        "name": "GoldenMonkey1.png",
+        "img": "assets/mega888/GoldenMonkey1.png"
       },
       {
-            "name": "Pirate Ship",
-            "img": "assets/mega888/PirateShipIcon0.png"
+        "name": "Ireland0.png",
+        "img": "assets/mega888/Ireland0.png"
       },
       {
-            "name": "Plus",
-            "img": "assets/mega888/PlusIcon0.png"
+        "name": "Ireland1.png",
+        "img": "assets/mega888/Ireland1.png"
       },
       {
-            "name": "Pokemon",
-            "img": "assets/mega888/PokemonIcon0.png"
+        "name": "JinQianIcon0.png",
+        "img": "assets/mega888/JinQianIcon0.png"
       },
       {
-            "name": "Poker Three",
-            "img": "assets/mega888/PokerThreeIcon0.png"
+        "name": "JinQianIcon1.png",
+        "img": "assets/mega888/JinQianIcon1.png"
       },
       {
-            "name": "Pond of Riches",
-            "img": "assets/mega888/PondOfRiches0.png"
+        "name": "JingleBells0.png",
+        "img": "assets/mega888/JingleBells0.png"
       },
       {
-            "name": "Pond Of Riches1",
-            "img": "assets/mega888/PondOfRiches1.png"
+        "name": "JingleBells1.png",
+        "img": "assets/mega888/JingleBells1.png"
       },
       {
-            "name": "Racing Car",
-            "img": "assets/mega888/RacingCarIcon0.png"
+        "name": "LauraIcon0.png",
+        "img": "assets/mega888/LauraIcon0.png"
       },
       {
-            "name": "Raging",
-            "img": "assets/mega888/RagingIcon0.png"
+        "name": "LauraIcon1.png",
+        "img": "assets/mega888/LauraIcon1.png"
       },
       {
-            "name": "Rally",
-            "img": "assets/mega888/RallyIcon0.png"
+        "name": "LionDanceIcon0.png",
+        "img": "assets/mega888/LionDanceIcon0.png"
       },
       {
-            "name": "Ranch Story",
-            "img": "assets/mega888/RanchStoryIcon0.png"
+        "name": "LionDanceIcon1.png",
+        "img": "assets/mega888/LionDanceIcon1.png"
       },
       {
-            "name": "Razor Shark",
-            "img": "assets/mega888/RazorShark0.png"
+        "name": "LostIsland0.png",
+        "img": "assets/mega888/LostIsland0.png"
       },
       {
-            "name": "Razor Shark1",
-            "img": "assets/mega888/RazorShark1.png"
+        "name": "LostIsland1.png",
+        "img": "assets/mega888/LostIsland1.png"
       },
       {
-            "name": "Reel",
-            "img": "assets/mega888/ReelIcon0.png"
+        "name": "LotusLegendIcon0.png",
+        "img": "assets/mega888/LotusLegendIcon0.png"
       },
       {
-            "name": "Robber Attack",
-            "img": "assets/mega888/RobberAttack0.png"
+        "name": "LotusLegendIcon1.png",
+        "img": "assets/mega888/LotusLegendIcon1.png"
       },
       {
-            "name": "Robber Attack1",
-            "img": "assets/mega888/RobberAttack1.png"
+        "name": "LuckyDuck0.png",
+        "img": "assets/mega888/LuckyDuck0.png"
       },
       {
-            "name": "Robin",
-            "img": "assets/mega888/RobinIcon0.png"
+        "name": "LuckyDuck1.png",
+        "img": "assets/mega888/LuckyDuck1.png"
       },
       {
-            "name": "Robin of Sherwood",
-            "img": "assets/mega888/RobinOfSherwood0.png"
+        "name": "NativeIndian0.png",
+        "img": "assets/mega888/NativeIndian0.png"
       },
       {
-            "name": "Robin Of Sherwood1",
-            "img": "assets/mega888/RobinOfSherwood1.png"
+        "name": "NativeIndian1.png",
+        "img": "assets/mega888/NativeIndian1.png"
       },
       {
-            "name": "Roulette",
-            "img": "assets/mega888/RouletteIcon0.png"
+        "name": "Pirate2Icon0.png",
+        "img": "assets/mega888/Pirate2Icon0.png"
       },
       {
-            "name": "Royal Masquerade",
-            "img": "assets/mega888/RoyalMasquerade0.png"
+        "name": "Pirate2Icon1.png",
+        "img": "assets/mega888/Pirate2Icon1.png"
       },
       {
-            "name": "Royal Masquerade1",
-            "img": "assets/mega888/RoyalMasquerade1.png"
+        "name": "RobinIcon0.png",
+        "img": "assets/mega888/RobinIcon0.png"
       },
       {
-            "name": "Safari",
-            "img": "assets/mega888/SafariIcon0.png"
+        "name": "RobinIcon1.png",
+        "img": "assets/mega888/RobinIcon1.png"
       },
       {
-            "name": "Santa",
-            "img": "assets/mega888/Santa0.png"
+        "name": "RoyalMasquerade0.png",
+        "img": "assets/mega888/RoyalMasquerade0.png"
       },
       {
-            "name": "Santa1",
-            "img": "assets/mega888/Santa1.png"
+        "name": "RoyalMasquerade1.png",
+        "img": "assets/mega888/RoyalMasquerade1.png"
       },
       {
-            "name": "Sea Captain",
-            "img": "assets/mega888/SeaCaptainIcon0.png"
+        "name": "Santa0.png",
+        "img": "assets/mega888/Santa0.png"
       },
       {
-            "name": "Seasons",
-            "img": "assets/mega888/SeasonsIcon0.png"
+        "name": "Santa1.png",
+        "img": "assets/mega888/Santa1.png"
       },
       {
-            "name": "Sea World",
-            "img": "assets/mega888/SeaWorldIcon0.png"
+        "name": "SeasonsIcon0.png",
+        "img": "assets/mega888/SeasonsIcon0.png"
       },
       {
-            "name": "Shark",
-            "img": "assets/mega888/SharkIcon0.png"
+        "name": "SeasonsIcon1.png",
+        "img": "assets/mega888/SeasonsIcon1.png"
       },
       {
-            "name": "Shining Stars",
-            "img": "assets/mega888/ShiningStarsIcon0.png"
+        "name": "SilentRunIcon0.png",
+        "img": "assets/mega888/SilentRunIcon0.png"
       },
       {
-            "name": "Shui Hu",
-            "img": "assets/mega888/ShuiHuIcon0.png"
+        "name": "SilentRunIcon1.png",
+        "img": "assets/mega888/SilentRunIcon1.png"
       },
       {
-            "name": "Sic Bo",
-            "img": "assets/mega888/SicBoIcon0.png"
+        "name": "SnowWorldIcon0.png",
+        "img": "assets/mega888/SnowWorldIcon0.png"
       },
       {
-            "name": "Silent Run",
-            "img": "assets/mega888/SilentRunIcon0.png"
+        "name": "SnowWorldIcon1.png",
+        "img": "assets/mega888/SnowWorldIcon1.png"
       },
       {
-            "name": "Single Poker",
-            "img": "assets/mega888/SinglePokerIcon0.png"
+        "name": "SunWIcon0.png",
+        "img": "assets/mega888/SunWIcon0.png"
       },
       {
-            "name": "Six Acrobats",
-            "img": "assets/mega888/SixAcrobats0.png"
+        "name": "SunWIcon1.png",
+        "img": "assets/mega888/SunWIcon1.png"
       },
       {
-            "name": "Six Acrobats1",
-            "img": "assets/mega888/SixAcrobats1.png"
+        "name": "TempleQuest0.png",
+        "img": "assets/mega888/TempleQuest0.png"
       },
       {
-            "name": "Sizzling",
-            "img": "assets/mega888/SizzlingIcon0.png"
+        "name": "TempleQuest1.png",
+        "img": "assets/mega888/TempleQuest1.png"
       },
       {
-            "name": "Snow World",
-            "img": "assets/mega888/SnowWorldIcon0.png"
+        "name": "TopGun0.png",
+        "img": "assets/mega888/TopGun0.png"
       },
       {
-            "name": "Sparta2",
-            "img": "assets/mega888/Sparta2Icon0.png"
+        "name": "TopGun1.png",
+        "img": "assets/mega888/TopGun1.png"
       },
       {
-            "name": "Spartan",
-            "img": "assets/mega888/SpartanIcon0.png"
+        "name": "WitchIcon0.png",
+        "img": "assets/mega888/WitchIcon0.png"
       },
       {
-            "name": "Spinata Grande",
-            "img": "assets/mega888/SpinataGrande0.png"
+        "name": "WitchIcon1.png",
+        "img": "assets/mega888/WitchIcon1.png"
       },
       {
-            "name": "Spinata Grande1",
-            "img": "assets/mega888/SpinataGrande1.png"
+        "name": "ChampionsOfRome0.png",
+        "img": "assets/mega888/ChampionsOfRome0.png"
       },
       {
-            "name": "Steam Tower",
-            "img": "assets/mega888/SteamTower0.png"
+        "name": "ChampionsOfRome1.png",
+        "img": "assets/mega888/ChampionsOfRome1.png"
       },
       {
-            "name": "Steam Tower1",
-            "img": "assets/mega888/SteamTower1.png"
+        "name": "CharmIcon0.png",
+        "img": "assets/mega888/CharmIcon0.png"
       },
       {
-            "name": "Sticky Bandits",
-            "img": "assets/mega888/StickyBandits0.png"
+        "name": "CharmIcon1.png",
+        "img": "assets/mega888/CharmIcon1.png"
       },
       {
-            "name": "Sticky Bandits1",
-            "img": "assets/mega888/StickyBandits1.png"
+        "name": "DarkVortex0.png",
+        "img": "assets/mega888/DarkVortex0.png"
       },
       {
-            "name": "Stone Age",
-            "img": "assets/mega888/StoneAgeIcon0.png"
+        "name": "DarkVortex1.png",
+        "img": "assets/mega888/DarkVortex1.png"
       },
       {
-            "name": "Student",
-            "img": "assets/mega888/StudentIcon0.png"
+        "name": "DesertGem0.png",
+        "img": "assets/mega888/DesertGem0.png"
       },
       {
-            "name": "Suken Keno",
-            "img": "assets/mega888/SukenKeno0.png"
+        "name": "DesertGem1.png",
+        "img": "assets/mega888/DesertGem1.png"
       },
       {
-            "name": "Suken Keno1",
-            "img": "assets/mega888/SukenKeno1.png"
+        "name": "DragonM0.png",
+        "img": "assets/mega888/DragonM0.png"
       },
       {
-            "name": "Summer Chill",
-            "img": "assets/mega888/SummerChill0.png"
+        "name": "DragonM1.png",
+        "img": "assets/mega888/DragonM1.png"
       },
       {
-            "name": "Summer Chill1",
-            "img": "assets/mega888/SummerChill1.png"
+        "name": "GirlIcon0.png",
+        "img": "assets/mega888/GirlIcon0.png"
       },
       {
-            "name": "Sun W",
-            "img": "assets/mega888/SunWIcon0.png"
+        "name": "GirlIcon1.png",
+        "img": "assets/mega888/GirlIcon1.png"
       },
       {
-            "name": "Sushi Oishi",
-            "img": "assets/mega888/SushiOishi0.png"
+        "name": "GoldenCock0.png",
+        "img": "assets/mega888/GoldenCock0.png"
       },
       {
-            "name": "Sushi Oishi1",
-            "img": "assets/mega888/SushiOishi1.png"
+        "name": "GoldenCock1.png",
+        "img": "assets/mega888/GoldenCock1.png"
       },
       {
-            "name": "Sward Of Khans",
-            "img": "assets/mega888/SwardOfKhans0.png"
+        "name": "GoldenColts0.png",
+        "img": "assets/mega888/GoldenColts0.png"
       },
       {
-            "name": "Sward Of Khans1",
-            "img": "assets/mega888/SwardOfKhans1.png"
+        "name": "GoldenColts1.png",
+        "img": "assets/mega888/GoldenColts1.png"
       },
       {
-            "name": "Sword of Khans",
-            "img": "assets/mega888/SwordOfKhans0.png"
+        "name": "HanzosDojo0.png",
+        "img": "assets/mega888/HanzosDojo0.png"
       },
       {
-            "name": "Sword Of Khans1",
-            "img": "assets/mega888/SwordOfKhans1.png"
+        "name": "HanzosDojo1.png",
+        "img": "assets/mega888/HanzosDojo1.png"
       },
       {
-            "name": "Syncronite",
-            "img": "assets/mega888/Syncronite0.png"
+        "name": "JackpotRaiders0.png",
+        "img": "assets/mega888/JackpotRaiders0.png"
       },
       {
-            "name": "Syncronite1",
-            "img": "assets/mega888/Syncronite1.png"
+        "name": "JackpotRaiders1.png",
+        "img": "assets/mega888/JackpotRaiders1.png"
       },
       {
-            "name": "Tally",
-            "img": "assets/mega888/TallyIcon0.png"
+        "name": "LionIcon0.png",
+        "img": "assets/mega888/LionIcon0.png"
       },
       {
-            "name": "Temple of Wealth",
-            "img": "assets/mega888/TempleOfWealth0.png"
+        "name": "LionIcon1.png",
+        "img": "assets/mega888/LionIcon1.png"
       },
       {
-            "name": "Temple Of Wealth1",
-            "img": "assets/mega888/TempleOfWealth1.png"
+        "name": "LuckyIcon0.png",
+        "img": "assets/mega888/LuckyIcon0.png"
       },
       {
-            "name": "Temple Quest",
-            "img": "assets/mega888/TempleQuest0.png"
+        "name": "LuckyIcon1.png",
+        "img": "assets/mega888/LuckyIcon1.png"
       },
       {
-            "name": "Temple Quest1",
-            "img": "assets/mega888/TempleQuest1.png"
+        "name": "LuckyNewYear0.png",
+        "img": "assets/mega888/LuckyNewYear0.png"
       },
       {
-            "name": "Thai",
-            "img": "assets/mega888/ThaiIcon0.png"
+        "name": "LuckyNewYear1.png",
+        "img": "assets/mega888/LuckyNewYear1.png"
       },
       {
-            "name": "Thailand",
-            "img": "assets/mega888/ThailandIcon0.png"
+        "name": "Motorcycle0.png",
+        "img": "assets/mega888/Motorcycle0.png"
       },
       {
-            "name": "The Golden Rat",
-            "img": "assets/mega888/TheGoldenRat0.png"
+        "name": "Motorcycle1.png",
+        "img": "assets/mega888/Motorcycle1.png"
       },
       {
-            "name": "The Golden Rat1",
-            "img": "assets/mega888/TheGoldenRat1.png"
+        "name": "PenguinCity0.png",
+        "img": "assets/mega888/PenguinCity0.png"
       },
       {
-            "name": "The Good Life",
-            "img": "assets/mega888/TheGoodLife0.png"
+        "name": "PenguinCity1.png",
+        "img": "assets/mega888/PenguinCity1.png"
       },
       {
-            "name": "The Good Life1",
-            "img": "assets/mega888/TheGoodLife1.png"
+        "name": "RagingIcon0.png",
+        "img": "assets/mega888/RagingIcon0.png"
       },
       {
-            "name": "Third Prince's Journey",
-            "img": "assets/mega888/ThirdPrince'sJourney0.png"
+        "name": "RagingIcon1.png",
+        "img": "assets/mega888/RagingIcon1.png"
       },
       {
-            "name": "Third Prince's Journey1",
-            "img": "assets/mega888/ThirdPrince'sJourney1.png"
+        "name": "RobinOfSherwood0.png",
+        "img": "assets/mega888/RobinOfSherwood0.png"
       },
       {
-            "name": "Three Kingdom",
-            "img": "assets/mega888/ThreeKingIcon0.png"
+        "name": "RobinOfSherwood1.png",
+        "img": "assets/mega888/RobinOfSherwood1.png"
       },
       {
-            "name": "Thunder Screech",
-            "img": "assets/mega888/ThunderScreech0.png"
+        "name": "SizzlingIcon0.png",
+        "img": "assets/mega888/SizzlingIcon0.png"
       },
       {
-            "name": "Thunder Screech1",
-            "img": "assets/mega888/ThunderScreech1.png"
+        "name": "SizzlingIcon1.png",
+        "img": "assets/mega888/SizzlingIcon1.png"
       },
       {
-            "name": "Tiger Fortune",
-            "img": "assets/mega888/TigerFortune0.png"
+        "name": "SteamTower0.png",
+        "img": "assets/mega888/SteamTower0.png"
       },
       {
-            "name": "Tiger Fortune1",
-            "img": "assets/mega888/TigerFortune1.png"
+        "name": "SteamTower1.png",
+        "img": "assets/mega888/SteamTower1.png"
       },
       {
-            "name": "Top Gun",
-            "img": "assets/mega888/TopGun0.png"
+        "name": "WolfHunters0.png",
+        "img": "assets/mega888/WolfHunters0.png"
       },
       {
-            "name": "Top Gun1",
-            "img": "assets/mega888/TopGun1.png"
+        "name": "WolfHunters1.png",
+        "img": "assets/mega888/WolfHunters1.png"
       },
       {
-            "name": "Tornado",
-            "img": "assets/mega888/TornadIcon0.png"
+        "name": "ZombieIcon0.png",
+        "img": "assets/mega888/ZombieIcon0.png"
       },
       {
-            "name": "Treasure",
-            "img": "assets/mega888/TreasureIcon0.png"
+        "name": "ZombieIcon1.png",
+        "img": "assets/mega888/ZombieIcon1.png"
       },
       {
-            "name": "T-Rex",
-            "img": "assets/mega888/TRexIcon0.png"
+        "name": "Agent510.png",
+        "img": "assets/mega888/Agent510.png"
       },
       {
-            "name": "Vegas Night Life",
-            "img": "assets/mega888/VegasNightLife0.png"
+        "name": "Agent511.png",
+        "img": "assets/mega888/Agent511.png"
       },
       {
-            "name": "Vegas Night Life1",
-            "img": "assets/mega888/VegasNightLife1.png"
+        "name": "BeastOfWealth0.png",
+        "img": "assets/mega888/BeastOfWealth0.png"
       },
       {
-            "name": "Victory",
-            "img": "assets/mega888/VictoryIcon0.png"
+        "name": "BeastOfWealth1.png",
+        "img": "assets/mega888/BeastOfWealth1.png"
       },
       {
-            "name": "Wang Cai",
-            "img": "assets/mega888/WangCaiIcon0.png"
+        "name": "BigChef0.png",
+        "img": "assets/mega888/BigChef0.png"
       },
       {
-            "name": "Water",
-            "img": "assets/mega888/WaterIcon0.png"
+        "name": "BigChef1.png",
+        "img": "assets/mega888/BigChef1.png"
       },
       {
-            "name": "Ways of the Qilin",
-            "img": "assets/mega888/WaysOfTheQilin0.png"
+        "name": "Caishen'sGold0.png",
+        "img": "assets/mega888/Caishen'sGold0.png"
       },
       {
-            "name": "Ways Of The Qilin1",
-            "img": "assets/mega888/WaysOfTheQilin1.png"
+        "name": "Caishen'sGold1.png",
+        "img": "assets/mega888/Caishen'sGold1.png"
       },
       {
-            "name": "Wealth",
-            "img": "assets/mega888/WealthIcon0.png"
+        "name": "CashVanda0.png",
+        "img": "assets/mega888/CashVanda0.png"
       },
       {
-            "name": "Western",
-            "img": "assets/mega888/WesternIcon0.png"
+        "name": "CashVanda1.png",
+        "img": "assets/mega888/CashVanda1.png"
       },
       {
-            "name": "White Snake Lady",
-            "img": "assets/mega888/WhiteSnakeLady0.png"
+        "name": "CelebrationOfWealth0.png",
+        "img": "assets/mega888/CelebrationOfWealth0.png"
       },
       {
-            "name": "White Snake Lady1",
-            "img": "assets/mega888/WhiteSnakeLady1.png"
+        "name": "CelebrationOfWealth1.png",
+        "img": "assets/mega888/CelebrationOfWealth1.png"
       },
       {
-            "name": "Wild Fireworks",
-            "img": "assets/mega888/WildFireworks0.png"
+        "name": "ChineseNewYear0.png",
+        "img": "assets/mega888/ChineseNewYear0.png"
       },
       {
-            "name": "Wild Fireworks1",
-            "img": "assets/mega888/WildFireworks1.png"
+        "name": "ChineseNewYear1.png",
+        "img": "assets/mega888/ChineseNewYear1.png"
       },
       {
-            "name": "Wild Fox",
-            "img": "assets/mega888/WildFoxIcon0.png"
+        "name": "Conan0.png",
+        "img": "assets/mega888/Conan0.png"
       },
       {
-            "name": "Wildhound Derby",
-            "img": "assets/mega888/WildhoundDerby0.png"
+        "name": "Conan1.png",
+        "img": "assets/mega888/Conan1.png"
       },
       {
-            "name": "Wildhound Derby1",
-            "img": "assets/mega888/WildhoundDerby1.png"
+        "name": "DimSumPrize0.png",
+        "img": "assets/mega888/DimSumPrize0.png"
       },
       {
-            "name": "Witch",
-            "img": "assets/mega888/WitchIcon0.png"
+        "name": "DimSumPrize1.png",
+        "img": "assets/mega888/DimSumPrize1.png"
       },
       {
-            "name": "Wolf Hunters",
-            "img": "assets/mega888/WolfHunters0.png"
+        "name": "DrFortuno0.png",
+        "img": "assets/mega888/DrFortuno0.png"
       },
       {
-            "name": "Wolf Hunters1",
-            "img": "assets/mega888/WolfHunters1.png"
+        "name": "DrFortuno1.png",
+        "img": "assets/mega888/DrFortuno1.png"
       },
       {
-            "name": "Wolf Run",
-            "img": "assets/mega888/WolfRun0.png"
+        "name": "DragonStrike0.png",
+        "img": "assets/mega888/DragonStrike0.png"
       },
       {
-            "name": "Wolf Run1",
-            "img": "assets/mega888/WolfRun1.png"
+        "name": "DragonStrike1.png",
+        "img": "assets/mega888/DragonStrike1.png"
       },
       {
-            "name": "Wu Kong",
-            "img": "assets/mega888/WuKongIcon0.png"
+        "name": "DwarfsGoneWild0.png",
+        "img": "assets/mega888/DwarfsGoneWild0.png"
       },
       {
-            "name": "Wu Kong W",
-            "img": "assets/mega888/WuKongWIcon0.png"
+        "name": "DwarfsGoneWild1.png",
+        "img": "assets/mega888/DwarfsGoneWild1.png"
       },
       {
-            "name": "X-Man",
-            "img": "assets/mega888/XmanIcon0.png"
+        "name": "FortuneFirework0.png",
+        "img": "assets/mega888/FortuneFirework0.png"
       },
       {
-            "name": "Yin Yang",
-            "img": "assets/mega888/YinYang0.png"
+        "name": "FortuneFirework1.png",
+        "img": "assets/mega888/FortuneFirework1.png"
       },
       {
-            "name": "Yin Yang1",
-            "img": "assets/mega888/YinYang1.png"
+        "name": "Glory0.png",
+        "img": "assets/mega888/Glory0.png"
       },
       {
-            "name": "Zhao Cai Jin Bao",
-            "img": "assets/mega888/ZcjbIcon0.png"
+        "name": "Glory1.png",
+        "img": "assets/mega888/Glory1.png"
       },
       {
-            "name": "Zhi Zun Cai Shen",
-            "img": "assets/mega888/ZhiZunCaiShen0.png"
+        "name": "GoldenBeauty0.png",
+        "img": "assets/mega888/GoldenBeauty0.png"
       },
       {
-            "name": "Zhi Zun Cai Shen1",
-            "img": "assets/mega888/ZhiZunCaiShen1.png"
+        "name": "GoldenBeauty1.png",
+        "img": "assets/mega888/GoldenBeauty1.png"
       },
       {
-            "name": "Zhu Guang Bao Qi",
-            "img": "assets/mega888/ZhuGuangBaoQi0.png"
+        "name": "Great880.png",
+        "img": "assets/mega888/Great880.png"
       },
       {
-            "name": "Zhu Guang Bao Qi1",
-            "img": "assets/mega888/ZhuGuangBaoQi1.png"
+        "name": "Great881.png",
+        "img": "assets/mega888/Great881.png"
       },
       {
-            "name": "Zombie",
-            "img": "assets/mega888/ZombieIcon0.png"
+        "name": "Ivan0.png",
+        "img": "assets/mega888/Ivan0.png"
       },
       {
-            "name": "Zombie_00",
-            "img": "assets/mega888/Zombie_00.png"
+        "name": "Ivan1.png",
+        "img": "assets/mega888/Ivan1.png"
       },
       {
-            "name": "Zombie_01",
-            "img": "assets/mega888/Zombie_01.png"
+        "name": "JungleSpirit0.png",
+        "img": "assets/mega888/JungleSpirit0.png"
+      },
+      {
+        "name": "JungleSpirit1.png",
+        "img": "assets/mega888/JungleSpirit1.png"
+      },
+      {
+        "name": "Lights0.png",
+        "img": "assets/mega888/Lights0.png"
+      },
+      {
+        "name": "Lights1.png",
+        "img": "assets/mega888/Lights1.png"
+      },
+      {
+        "name": "LuckyKoi0.png",
+        "img": "assets/mega888/LuckyKoi0.png"
+      },
+      {
+        "name": "LuckyKoi1.png",
+        "img": "assets/mega888/LuckyKoi1.png"
+      },
+      {
+        "name": "LuckyNeko0.png",
+        "img": "assets/mega888/LuckyNeko0.png"
+      },
+      {
+        "name": "LuckyNeko1.png",
+        "img": "assets/mega888/LuckyNeko1.png"
+      },
+      {
+        "name": "MagicShoppe0.png",
+        "img": "assets/mega888/MagicShoppe0.png"
+      },
+      {
+        "name": "MagicShoppe1.png",
+        "img": "assets/mega888/MagicShoppe1.png"
+      },
+      {
+        "name": "Masquerade0.png",
+        "img": "assets/mega888/Masquerade0.png"
+      },
+      {
+        "name": "Masquerade1.png",
+        "img": "assets/mega888/Masquerade1.png"
+      },
+      {
+        "name": "Matsuri0.png",
+        "img": "assets/mega888/Matsuri0.png"
+      },
+      {
+        "name": "Matsuri1.png",
+        "img": "assets/mega888/Matsuri1.png"
+      },
+      {
+        "name": "MidasGoldenTouch0.png",
+        "img": "assets/mega888/MidasGoldenTouch0.png"
+      },
+      {
+        "name": "MidasGoldenTouch1.png",
+        "img": "assets/mega888/MidasGoldenTouch1.png"
+      },
+      {
+        "name": "Narcos0.png",
+        "img": "assets/mega888/Narcos0.png"
+      },
+      {
+        "name": "Narcos1.png",
+        "img": "assets/mega888/Narcos1.png"
+      },
+      {
+        "name": "PondOfRiches0.png",
+        "img": "assets/mega888/PondOfRiches0.png"
+      },
+      {
+        "name": "PondOfRiches1.png",
+        "img": "assets/mega888/PondOfRiches1.png"
+      },
+      {
+        "name": "SixAcrobats0.png",
+        "img": "assets/mega888/SixAcrobats0.png"
+      },
+      {
+        "name": "SixAcrobats1.png",
+        "img": "assets/mega888/SixAcrobats1.png"
+      },
+      {
+        "name": "StickyBandits0.png",
+        "img": "assets/mega888/StickyBandits0.png"
+      },
+      {
+        "name": "StickyBandits1.png",
+        "img": "assets/mega888/StickyBandits1.png"
+      },
+      {
+        "name": "SwardOfKhans0.png",
+        "img": "assets/mega888/SwardOfKhans0.png"
+      },
+      {
+        "name": "SwardOfKhans1.png",
+        "img": "assets/mega888/SwardOfKhans1.png"
+      },
+      {
+        "name": "TempleOfWealth0.png",
+        "img": "assets/mega888/TempleOfWealth0.png"
+      },
+      {
+        "name": "TempleOfWealth1.png",
+        "img": "assets/mega888/TempleOfWealth1.png"
+      },
+      {
+        "name": "TheGoodLife0.png",
+        "img": "assets/mega888/TheGoodLife0.png"
+      },
+      {
+        "name": "TheGoodLife1.png",
+        "img": "assets/mega888/TheGoodLife1.png"
+      },
+      {
+        "name": "WhiteSnakeLady0.png",
+        "img": "assets/mega888/WhiteSnakeLady0.png"
+      },
+      {
+        "name": "WhiteSnakeLady1.png",
+        "img": "assets/mega888/WhiteSnakeLady1.png"
+      },
+      {
+        "name": "XmanIcon0.png",
+        "img": "assets/mega888/XmanIcon0.png"
+      },
+      {
+        "name": "XmanIcon1.png",
+        "img": "assets/mega888/XmanIcon1.png"
+      },
+      {
+        "name": "YinYang0.png",
+        "img": "assets/mega888/YinYang0.png"
+      },
+      {
+        "name": "YinYang1.png",
+        "img": "assets/mega888/YinYang1.png"
+      },
+      {
+        "name": "10001Nights0.png",
+        "img": "assets/mega888/10001Nights0.png"
+      },
+      {
+        "name": "10001Nights1.png",
+        "img": "assets/mega888/10001Nights1.png"
+      },
+      {
+        "name": "CashNoire0.png",
+        "img": "assets/mega888/CashNoire0.png"
+      },
+      {
+        "name": "CashNoire1.png",
+        "img": "assets/mega888/CashNoire1.png"
+      },
+      {
+        "name": "ChicagoGold0.png",
+        "img": "assets/mega888/ChicagoGold0.png"
+      },
+      {
+        "name": "ChicagoGold1.png",
+        "img": "assets/mega888/ChicagoGold1.png"
+      },
+      {
+        "name": "ClashOfTheBeasts0.png",
+        "img": "assets/mega888/ClashOfTheBeasts0.png"
+      },
+      {
+        "name": "ClashOfTheBeasts1.png",
+        "img": "assets/mega888/ClashOfTheBeasts1.png"
+      },
+      {
+        "name": "CocktailNights0.png",
+        "img": "assets/mega888/CocktailNights0.png"
+      },
+      {
+        "name": "CocktailNights1.png",
+        "img": "assets/mega888/CocktailNights1.png"
+      },
+      {
+        "name": "DeepTrek0.png",
+        "img": "assets/mega888/DeepTrek0.png"
+      },
+      {
+        "name": "DeepTrek1.png",
+        "img": "assets/mega888/DeepTrek1.png"
+      },
+      {
+        "name": "FiestaIcon0.png",
+        "img": "assets/mega888/FiestaIcon0.png"
+      },
+      {
+        "name": "FiestaIcon1.png",
+        "img": "assets/mega888/FiestaIcon1.png"
+      },
+      {
+        "name": "FloatingDragon0.png",
+        "img": "assets/mega888/FloatingDragon0.png"
+      },
+      {
+        "name": "FloatingDragon1.png",
+        "img": "assets/mega888/FloatingDragon1.png"
+      },
+      {
+        "name": "FrostQueen0.png",
+        "img": "assets/mega888/FrostQueen0.png"
+      },
+      {
+        "name": "FrostQueen1.png",
+        "img": "assets/mega888/FrostQueen1.png"
+      },
+      {
+        "name": "GoldTrain0.png",
+        "img": "assets/mega888/GoldTrain0.png"
+      },
+      {
+        "name": "GoldTrain1.png",
+        "img": "assets/mega888/GoldTrain1.png"
+      },
+      {
+        "name": "GoldenHorns0.png",
+        "img": "assets/mega888/GoldenHorns0.png"
+      },
+      {
+        "name": "GoldenHorns1.png",
+        "img": "assets/mega888/GoldenHorns1.png"
+      },
+      {
+        "name": "HappyRiches0.png",
+        "img": "assets/mega888/HappyRiches0.png"
+      },
+      {
+        "name": "HappyRiches1.png",
+        "img": "assets/mega888/HappyRiches1.png"
+      },
+      {
+        "name": "HexaKeno0.png",
+        "img": "assets/mega888/HexaKeno0.png"
+      },
+      {
+        "name": "HexaKeno1.png",
+        "img": "assets/mega888/HexaKeno1.png"
+      },
+      {
+        "name": "HongBAO0.png",
+        "img": "assets/mega888/HongBAO0.png"
+      },
+      {
+        "name": "HongBAO1.png",
+        "img": "assets/mega888/HongBAO1.png"
+      },
+      {
+        "name": "ImperialOpera0.png",
+        "img": "assets/mega888/ImperialOpera0.png"
+      },
+      {
+        "name": "ImperialOpera1.png",
+        "img": "assets/mega888/ImperialOpera1.png"
+      },
+      {
+        "name": "Jackson0.png",
+        "img": "assets/mega888/Jackson0.png"
+      },
+      {
+        "name": "Jackson1.png",
+        "img": "assets/mega888/Jackson1.png"
+      },
+      {
+        "name": "JewelsOfProsperity0.png",
+        "img": "assets/mega888/JewelsOfProsperity0.png"
+      },
+      {
+        "name": "JewelsOfProsperity1.png",
+        "img": "assets/mega888/JewelsOfProsperity1.png"
+      },
+      {
+        "name": "KingOfGhosts0.png",
+        "img": "assets/mega888/KingOfGhosts0.png"
+      },
+      {
+        "name": "KingOfGhosts1.png",
+        "img": "assets/mega888/KingOfGhosts1.png"
+      },
+      {
+        "name": "LuckyFirecracker0.png",
+        "img": "assets/mega888/LuckyFirecracker0.png"
+      },
+      {
+        "name": "LuckyFirecracker1.png",
+        "img": "assets/mega888/LuckyFirecracker1.png"
+      },
+      {
+        "name": "MadameInk0.png",
+        "img": "assets/mega888/MadameInk0.png"
+      },
+      {
+        "name": "MadameInk1.png",
+        "img": "assets/mega888/MadameInk1.png"
+      },
+      {
+        "name": "RazorShark0.png",
+        "img": "assets/mega888/RazorShark0.png"
+      },
+      {
+        "name": "RazorShark1.png",
+        "img": "assets/mega888/RazorShark1.png"
+      },
+      {
+        "name": "SukenKeno0.png",
+        "img": "assets/mega888/SukenKeno0.png"
+      },
+      {
+        "name": "SukenKeno1.png",
+        "img": "assets/mega888/SukenKeno1.png"
+      },
+      {
+        "name": "SushiOishi0.png",
+        "img": "assets/mega888/SushiOishi0.png"
+      },
+      {
+        "name": "SushiOishi1.png",
+        "img": "assets/mega888/SushiOishi1.png"
+      },
+      {
+        "name": "SwordOfKhans0.png",
+        "img": "assets/mega888/SwordOfKhans0.png"
+      },
+      {
+        "name": "SwordOfKhans1.png",
+        "img": "assets/mega888/SwordOfKhans1.png"
+      },
+      {
+        "name": "Syncronite0.png",
+        "img": "assets/mega888/Syncronite0.png"
+      },
+      {
+        "name": "Syncronite1.png",
+        "img": "assets/mega888/Syncronite1.png"
+      },
+      {
+        "name": "TheGoldenRat0.png",
+        "img": "assets/mega888/TheGoldenRat0.png"
+      },
+      {
+        "name": "TheGoldenRat1.png",
+        "img": "assets/mega888/TheGoldenRat1.png"
+      },
+      {
+        "name": "ThunderScreech0.png",
+        "img": "assets/mega888/ThunderScreech0.png"
+      },
+      {
+        "name": "ThunderScreech1.png",
+        "img": "assets/mega888/ThunderScreech1.png"
+      },
+      {
+        "name": "TigerFortune0.png",
+        "img": "assets/mega888/TigerFortune0.png"
+      },
+      {
+        "name": "TigerFortune1.png",
+        "img": "assets/mega888/TigerFortune1.png"
+      },
+      {
+        "name": "VegasNightLife0.png",
+        "img": "assets/mega888/VegasNightLife0.png"
+      },
+      {
+        "name": "VegasNightLife1.png",
+        "img": "assets/mega888/VegasNightLife1.png"
+      },
+      {
+        "name": "WaysOfTheQilin0.png",
+        "img": "assets/mega888/WaysOfTheQilin0.png"
+      },
+      {
+        "name": "WaysOfTheQilin1.png",
+        "img": "assets/mega888/WaysOfTheQilin1.png"
+      },
+      {
+        "name": "WildFireworks0.png",
+        "img": "assets/mega888/WildFireworks0.png"
+      },
+      {
+        "name": "WildFireworks1.png",
+        "img": "assets/mega888/WildFireworks1.png"
+      },
+      {
+        "name": "WildhoundDerby0.png",
+        "img": "assets/mega888/WildhoundDerby0.png"
+      },
+      {
+        "name": "WildhoundDerby1.png",
+        "img": "assets/mega888/WildhoundDerby1.png"
+      },
+      {
+        "name": "ZhiZunCaiShen0.png",
+        "img": "assets/mega888/ZhiZunCaiShen0.png"
+      },
+      {
+        "name": "ZhiZunCaiShen1.png",
+        "img": "assets/mega888/ZhiZunCaiShen1.png"
+      },
+      {
+        "name": "1942SkyWarrior0.png",
+        "img": "assets/mega888/1942SkyWarrior0.png"
+      },
+      {
+        "name": "1942SkyWarrior1.png",
+        "img": "assets/mega888/1942SkyWarrior1.png"
+      },
+      {
+        "name": "DestinyOfSunAndMoon0.png",
+        "img": "assets/mega888/DestinyOfSunAndMoon0.png"
+      },
+      {
+        "name": "DestinyOfSunAndMoon1.png",
+        "img": "assets/mega888/DestinyOfSunAndMoon1.png"
+      },
+      {
+        "name": "DiamondSrike0.png",
+        "img": "assets/mega888/DiamondSrike0.png"
+      },
+      {
+        "name": "DiamondSrike1.png",
+        "img": "assets/mega888/DiamondSrike1.png"
+      },
+      {
+        "name": "Dragon0.png",
+        "img": "assets/mega888/Dragon0.png"
+      },
+      {
+        "name": "Dragon1.png",
+        "img": "assets/mega888/Dragon1.png"
+      },
+      {
+        "name": "DragonHero0.png",
+        "img": "assets/mega888/DragonHero0.png"
+      },
+      {
+        "name": "DragonHero1.png",
+        "img": "assets/mega888/DragonHero1.png"
+      },
+      {
+        "name": "FaFaBabies0.png",
+        "img": "assets/mega888/FaFaBabies0.png"
+      },
+      {
+        "name": "FaFaBabies1.png",
+        "img": "assets/mega888/FaFaBabies1.png"
+      },
+      {
+        "name": "GiftsFromSanta0.png",
+        "img": "assets/mega888/GiftsFromSanta0.png"
+      },
+      {
+        "name": "GiftsFromSanta1.png",
+        "img": "assets/mega888/GiftsFromSanta1.png"
+      },
+      {
+        "name": "GodOfCookery0.png",
+        "img": "assets/mega888/GodOfCookery0.png"
+      },
+      {
+        "name": "GodOfCookery1.png",
+        "img": "assets/mega888/GodOfCookery1.png"
+      },
+      {
+        "name": "HappyNewYear0.png",
+        "img": "assets/mega888/HappyNewYear0.png"
+      },
+      {
+        "name": "HappyNewYear1.png",
+        "img": "assets/mega888/HappyNewYear1.png"
+      },
+      {
+        "name": "HappyRichYear_00.png",
+        "img": "assets/mega888/HappyRichYear_00.png"
+      },
+      {
+        "name": "HappyRichYear_01.png",
+        "img": "assets/mega888/HappyRichYear_01.png"
+      },
+      {
+        "name": "MaskCarnival0.png",
+        "img": "assets/mega888/MaskCarnival0.png"
+      },
+      {
+        "name": "MaskCarnival1.png",
+        "img": "assets/mega888/MaskCarnival1.png"
+      },
+      {
+        "name": "RobberAttack0.png",
+        "img": "assets/mega888/RobberAttack0.png"
+      },
+      {
+        "name": "RobberAttack1.png",
+        "img": "assets/mega888/RobberAttack1.png"
+      },
+      {
+        "name": "SpinataGrande0.png",
+        "img": "assets/mega888/SpinataGrande0.png"
+      },
+      {
+        "name": "SpinataGrande1.png",
+        "img": "assets/mega888/SpinataGrande1.png"
+      },
+      {
+        "name": "SummerChill0.png",
+        "img": "assets/mega888/SummerChill0.png"
+      },
+      {
+        "name": "SummerChill1.png",
+        "img": "assets/mega888/SummerChill1.png"
+      },
+      {
+        "name": "ThirdPrince'sJourney0.png",
+        "img": "assets/mega888/ThirdPrince'sJourney0.png"
+      },
+      {
+        "name": "ThirdPrince'sJourney1.png",
+        "img": "assets/mega888/ThirdPrince'sJourney1.png"
+      },
+      {
+        "name": "WolfRun0.png",
+        "img": "assets/mega888/WolfRun0.png"
+      },
+      {
+        "name": "WolfRun1.png",
+        "img": "assets/mega888/WolfRun1.png"
+      },
+      {
+        "name": "ZhuGuangBaoQi0.png",
+        "img": "assets/mega888/ZhuGuangBaoQi0.png"
+      },
+      {
+        "name": "ZhuGuangBaoQi1.png",
+        "img": "assets/mega888/ZhuGuangBaoQi1.png"
+      },
+      {
+        "name": "Zombie_00.png",
+        "img": "assets/mega888/Zombie_00.png"
+      },
+      {
+        "name": "Zombie_01.png",
+        "img": "assets/mega888/Zombie_01.png"
       }
-]
+    ]
   },
   "k918": {
     "name": "918KISS",
     "code": "K918",
-    "logo": "assets/cat-slot.png",
+    "logo": "assets/kissh5.png",
     "games": [
       {
-            "name": "12 Rou Icon0",
-            "img": "assets/kiss918/12RouIcon0.png"
+        "name": "AztecIcon0.png",
+        "img": "assets/kiss918/AztecIcon0.png"
       },
       {
-            "name": "24 Rou Icon0",
-            "img": "assets/kiss918/24RouIcon0.png"
+        "name": "AztecIcon1.png",
+        "img": "assets/kiss918/AztecIcon1.png"
       },
       {
-            "name": "5 Dragons Icon0",
-            "img": "assets/kiss918/5DragonsIcon0.png"
+        "name": "BaccaratIcon0.png",
+        "img": "assets/kiss918/BaccaratIcon0.png"
       },
       {
-            "name": "73 Rou Icon0",
-            "img": "assets/kiss918/73RouIcon0.png"
+        "name": "BaccaratIcon1.png",
+        "img": "assets/kiss918/BaccaratIcon1.png"
       },
       {
-            "name": "8 Ball Icon0",
-            "img": "assets/kiss918/8BallIcon0.png"
+        "name": "BlackjackIcon0.png",
+        "img": "assets/kiss918/BlackjackIcon0.png"
       },
       {
-            "name": "Apple Machine Icon0",
-            "img": "assets/kiss918/AppleMachineIcon0.png"
+        "name": "BlackjackIcon1.png",
+        "img": "assets/kiss918/BlackjackIcon1.png"
       },
       {
-            "name": "Aztec Icon0",
-            "img": "assets/kiss918/AztecIcon0.png"
+        "name": "BlueIcon0.png",
+        "img": "assets/kiss918/BlueIcon0.png"
       },
       {
-            "name": "Baccarat Icon0",
-            "img": "assets/kiss918/BaccaratIcon0.png"
+        "name": "BlueIcon1.png",
+        "img": "assets/kiss918/BlueIcon1.png"
       },
       {
-            "name": "Battle Icon0",
-            "img": "assets/kiss918/BattleIcon0.png"
+        "name": "BonusBearsIcon0.png",
+        "img": "assets/kiss918/BonusBearsIcon0.png"
       },
       {
-            "name": "Big Shot Icon0",
-            "img": "assets/kiss918/BigShotIcon0.png"
+        "name": "BonusBearsIcon1.png",
+        "img": "assets/kiss918/BonusBearsIcon1.png"
       },
       {
-            "name": "Blackjack Icon0",
-            "img": "assets/kiss918/BlackjackIcon0.png"
+        "name": "BoykingIcon0.png",
+        "img": "assets/kiss918/BoykingIcon0.png"
       },
       {
-            "name": "Blue Icon0",
-            "img": "assets/kiss918/BlueIcon0.png"
+        "name": "BoykingIcon1.png",
+        "img": "assets/kiss918/BoykingIcon1.png"
       },
       {
-            "name": "Bonus Bears Icon0",
-            "img": "assets/kiss918/BonusBearsIcon0.png"
+        "name": "BulletIcon0.png",
+        "img": "assets/kiss918/BulletIcon0.png"
       },
       {
-            "name": "Boyking Icon0",
-            "img": "assets/kiss918/BoykingIcon0.png"
+        "name": "BulletIcon1.png",
+        "img": "assets/kiss918/BulletIcon1.png"
       },
       {
-            "name": "Bullet Icon0",
-            "img": "assets/kiss918/BulletIcon0.png"
+        "name": "CaptainsIcon0.png",
+        "img": "assets/kiss918/CaptainsIcon0.png"
       },
       {
-            "name": "Captains Icon0",
-            "img": "assets/kiss918/CaptainsIcon0.png"
+        "name": "CaptainsIcon1.png",
+        "img": "assets/kiss918/CaptainsIcon1.png"
       },
       {
-            "name": "Cash Fever Icon0",
-            "img": "assets/kiss918/CashFeverIcon0.png"
+        "name": "DragonIcon0.png",
+        "img": "assets/kiss918/DragonIcon0.png"
       },
       {
-            "name": "Casino War Icon0",
-            "img": "assets/kiss918/CasinoWarIcon0.png"
+        "name": "DragonIcon1.png",
+        "img": "assets/kiss918/DragonIcon1.png"
       },
       {
-            "name": "C Fish Icon0",
-            "img": "assets/kiss918/CFishIcon0.png"
+        "name": "FaDaCaiIcon0.png",
+        "img": "assets/kiss918/FaDaCaiIcon0.png"
       },
       {
-            "name": "C Fish Wan Icon0",
-            "img": "assets/kiss918/CFishWanIcon0.png"
+        "name": "FaDaCaiIcon1.png",
+        "img": "assets/kiss918/FaDaCaiIcon1.png"
       },
       {
-            "name": "Chinese Icon0",
-            "img": "assets/kiss918/ChineseIcon0.png"
+        "name": "FattenIcon0.png",
+        "img": "assets/kiss918/FattenIcon0.png"
       },
       {
-            "name": "Circus Icon0",
-            "img": "assets/kiss918/CircusIcon0.png"
+        "name": "FattenIcon1.png",
+        "img": "assets/kiss918/FattenIcon1.png"
       },
       {
-            "name": "Cleopatra Icon0",
-            "img": "assets/kiss918/CleopatraIcon0.png"
+        "name": "FishIcon0.png",
+        "img": "assets/kiss918/FishIcon0.png"
       },
       {
-            "name": "Coming Soon",
-            "img": "assets/kiss918/ComingSoon.png"
+        "name": "FishIcon1.png",
+        "img": "assets/kiss918/FishIcon1.png"
       },
       {
-            "name": "Coming Soon Icon",
-            "img": "assets/kiss918/ComingSoonIcon.png"
+        "name": "ForTuneIcon0.png",
+        "img": "assets/kiss918/ForTuneIcon0.png"
       },
       {
-            "name": "Cookie Pop Icon0",
-            "img": "assets/kiss918/CookiePopIcon0.png"
+        "name": "ForTuneIcon1.png",
+        "img": "assets/kiss918/ForTuneIcon1.png"
       },
       {
-            "name": "Coyote Cash Icon0",
-            "img": "assets/kiss918/CoyoteCashIcon0.png"
+        "name": "GardenIcon0.png",
+        "img": "assets/kiss918/GardenIcon0.png"
       },
       {
-            "name": "Crazy7 Icon0",
-            "img": "assets/kiss918/Crazy7Icon0.png"
+        "name": "GardenIcon1.png",
+        "img": "assets/kiss918/GardenIcon1.png"
       },
       {
-            "name": "Discovery Icon0",
-            "img": "assets/kiss918/DiscoveryIcon0.png"
+        "name": "GreatStarsIcon0.png",
+        "img": "assets/kiss918/GreatStarsIcon0.png"
       },
       {
-            "name": "Dolphin Icon0",
-            "img": "assets/kiss918/DolphinIcon0.png"
+        "name": "GreatStarsIcon1.png",
+        "img": "assets/kiss918/GreatStarsIcon1.png"
       },
       {
-            "name": "Dolphin P Icon0",
-            "img": "assets/kiss918/DolphinPIcon0.png"
+        "name": "GreenIcon0.png",
+        "img": "assets/kiss918/GreenIcon0.png"
       },
       {
-            "name": "Dragon Icon0",
-            "img": "assets/kiss918/DragonIcon0.png"
+        "name": "GreenIcon1.png",
+        "img": "assets/kiss918/GreenIcon1.png"
       },
       {
-            "name": "Fa Da Cai Icon0",
-            "img": "assets/kiss918/FaDaCaiIcon0.png"
+        "name": "HighwayIcon0.png",
+        "img": "assets/kiss918/HighwayIcon0.png"
       },
       {
-            "name": "Fame Icon0",
-            "img": "assets/kiss918/FameIcon0.png"
+        "name": "HighwayIcon1.png",
+        "img": "assets/kiss918/HighwayIcon1.png"
       },
       {
-            "name": "Fashion Icon0",
-            "img": "assets/kiss918/FashionIcon0.png"
+        "name": "IceSnowIcon0.png",
+        "img": "assets/kiss918/IceSnowIcon0.png"
       },
       {
-            "name": "Fatten Icon0",
-            "img": "assets/kiss918/FattenIcon0.png"
+        "name": "IceSnowIcon1.png",
+        "img": "assets/kiss918/IceSnowIcon1.png"
       },
       {
-            "name": "Fengshen Icon0",
-            "img": "assets/kiss918/FengshenIcon0.png"
+        "name": "JinlianIcon0.png",
+        "img": "assets/kiss918/JinlianIcon0.png"
       },
       {
-            "name": "Fish HW Icon0",
-            "img": "assets/kiss918/FishHWIcon0.png"
+        "name": "JinlianIcon1.png",
+        "img": "assets/kiss918/JinlianIcon1.png"
       },
       {
-            "name": "Fish HW Wan Icon0",
-            "img": "assets/kiss918/FishHWWanIcon0.png"
+        "name": "LongIcon0.png",
+        "img": "assets/kiss918/LongIcon0.png"
       },
       {
-            "name": "Fish Icon0",
-            "img": "assets/kiss918/FishIcon0.png"
+        "name": "LongIcon1.png",
+        "img": "assets/kiss918/LongIcon1.png"
       },
       {
-            "name": "Forest Icon0",
-            "img": "assets/kiss918/ForestIcon0.png"
+        "name": "LotusIcon0.png",
+        "img": "assets/kiss918/LotusIcon0.png"
       },
       {
-            "name": "For Tune Icon0",
-            "img": "assets/kiss918/ForTuneIcon0.png"
+        "name": "LotusIcon1.png",
+        "img": "assets/kiss918/LotusIcon1.png"
       },
       {
-            "name": "Fruits Icon0",
-            "img": "assets/kiss918/FruitsIcon0.png"
+        "name": "LoveIcon0.png",
+        "img": "assets/kiss918/LoveIcon0.png"
       },
       {
-            "name": "Funky Icon0",
-            "img": "assets/kiss918/FunkyIcon0.png"
+        "name": "LoveIcon1.png",
+        "img": "assets/kiss918/LoveIcon1.png"
       },
       {
-            "name": "Garden Icon0",
-            "img": "assets/kiss918/GardenIcon0.png"
+        "name": "MonkeyIcon0.png",
+        "img": "assets/kiss918/MonkeyIcon0.png"
       },
       {
-            "name": "Girls Icon0",
-            "img": "assets/kiss918/GirlsIcon0.png"
+        "name": "MonkeyIcon1.png",
+        "img": "assets/kiss918/MonkeyIcon1.png"
       },
       {
-            "name": "Golden Derby Icon0",
-            "img": "assets/kiss918/GoldenDerbyIcon0.png"
+        "name": "NiuIcon0.png",
+        "img": "assets/kiss918/NiuIcon0.png"
       },
       {
-            "name": "Golden Tour Icon0",
-            "img": "assets/kiss918/GoldenTourIcon0.png"
+        "name": "NiuIcon1.png",
+        "img": "assets/kiss918/NiuIcon1.png"
       },
       {
-            "name": "Golden Tree Icon0",
-            "img": "assets/kiss918/GoldenTreeIcon0.png"
+        "name": "PokerThreeIcon0.png",
+        "img": "assets/kiss918/PokerThreeIcon0.png"
       },
       {
-            "name": "Great Stars Icon0",
-            "img": "assets/kiss918/GreatStarsIcon0.png"
+        "name": "PokerThreeIcon1.png",
+        "img": "assets/kiss918/PokerThreeIcon1.png"
       },
       {
-            "name": "Green Icon0",
-            "img": "assets/kiss918/GreenIcon0.png"
+        "name": "RouletteIcon0.png",
+        "img": "assets/kiss918/RouletteIcon0.png"
       },
       {
-            "name": "Guan Yu Icon0",
-            "img": "assets/kiss918/GuanYuIcon0.png"
+        "name": "RouletteIcon1.png",
+        "img": "assets/kiss918/RouletteIcon1.png"
       },
       {
-            "name": "Halloween Icon0",
-            "img": "assets/kiss918/HalloweenIcon0.png"
+        "name": "SafariIcon0.png",
+        "img": "assets/kiss918/SafariIcon0.png"
       },
       {
-            "name": "Highway Icon0",
-            "img": "assets/kiss918/HighwayIcon0.png"
+        "name": "SafariIcon1.png",
+        "img": "assets/kiss918/SafariIcon1.png"
       },
       {
-            "name": "Hold En Icon0",
-            "img": "assets/kiss918/HoldEnIcon0.png"
+        "name": "SicBoIcon0.png",
+        "img": "assets/kiss918/SicBoIcon0.png"
       },
       {
-            "name": "Hulu Cock Icon0",
-            "img": "assets/kiss918/HuluCockIcon0.png"
+        "name": "SicBoIcon1.png",
+        "img": "assets/kiss918/SicBoIcon1.png"
       },
       {
-            "name": "Ice Snow Icon0",
-            "img": "assets/kiss918/IceSnowIcon0.png"
+        "name": "12RouIcon0.png",
+        "img": "assets/kiss918/12RouIcon0.png"
       },
       {
-            "name": "Icon New",
-            "img": "assets/kiss918/IconNew.png"
+        "name": "12RouIcon1.png",
+        "img": "assets/kiss918/12RouIcon1.png"
       },
       {
-            "name": "India Icon0",
-            "img": "assets/kiss918/IndiaIcon0.png"
+        "name": "24RouIcon0.png",
+        "img": "assets/kiss918/24RouIcon0.png"
       },
       {
-            "name": "Irish Luck Icon0",
-            "img": "assets/kiss918/IrishLuckIcon0.png"
+        "name": "24RouIcon1.png",
+        "img": "assets/kiss918/24RouIcon1.png"
       },
       {
-            "name": "Japan Icon0",
-            "img": "assets/kiss918/JapanIcon0.png"
+        "name": "73RouIcon0.png",
+        "img": "assets/kiss918/73RouIcon0.png"
       },
       {
-            "name": "Jinlian Icon0",
-            "img": "assets/kiss918/JinlianIcon0.png"
+        "name": "73RouIcon1.png",
+        "img": "assets/kiss918/73RouIcon1.png"
       },
       {
-            "name": "Li Kui Icon0",
-            "img": "assets/kiss918/LiKuiIcon0.png"
+        "name": "CasinoWarIcon0.png",
+        "img": "assets/kiss918/CasinoWarIcon0.png"
       },
       {
-            "name": "Li Kui W Icon0",
-            "img": "assets/kiss918/LiKuiWIcon0.png"
+        "name": "CasinoWarIcon1.png",
+        "img": "assets/kiss918/CasinoWarIcon1.png"
       },
       {
-            "name": "Loong Icon0",
-            "img": "assets/kiss918/LoongIcon0.png"
+        "name": "ChineseIcon0.png",
+        "img": "assets/kiss918/ChineseIcon0.png"
       },
       {
-            "name": "Lotus Icon0",
-            "img": "assets/kiss918/LotusIcon0.png"
+        "name": "ChineseIcon1.png",
+        "img": "assets/kiss918/ChineseIcon1.png"
       },
       {
-            "name": "Love Icon0",
-            "img": "assets/kiss918/LoveIcon0.png"
+        "name": "Crazy7Icon0.png",
+        "img": "assets/kiss918/Crazy7Icon0.png"
       },
       {
-            "name": "Magic Icon0",
-            "img": "assets/kiss918/MagicIcon0.png"
+        "name": "Crazy7Icon1.png",
+        "img": "assets/kiss918/Crazy7Icon1.png"
       },
       {
-            "name": "Money Fever Icon0",
-            "img": "assets/kiss918/MoneyFeverIcon0.png"
+        "name": "FashionIcon0.png",
+        "img": "assets/kiss918/FashionIcon0.png"
       },
       {
-            "name": "Monkey Icon0",
-            "img": "assets/kiss918/MonkeyIcon0.png"
+        "name": "FashionIcon1.png",
+        "img": "assets/kiss918/FashionIcon1.png"
       },
       {
-            "name": "Monkey King Icon0",
-            "img": "assets/kiss918/MonkeyKingIcon0.png"
+        "name": "FruitsIcon0.png",
+        "img": "assets/kiss918/FruitsIcon0.png"
       },
       {
-            "name": "Monkey Plus Icon0",
-            "img": "assets/kiss918/MonkeyPlusIcon0.png"
+        "name": "FruitsIcon1.png",
+        "img": "assets/kiss918/FruitsIcon1.png"
       },
       {
-            "name": "Moto Icon0",
-            "img": "assets/kiss918/MotoIcon0.png"
+        "name": "FunkyIcon0.png",
+        "img": "assets/kiss918/FunkyIcon0.png"
       },
       {
-            "name": "Night Club Icon0",
-            "img": "assets/kiss918/NightClubIcon0.png"
+        "name": "FunkyIcon1.png",
+        "img": "assets/kiss918/FunkyIcon1.png"
       },
       {
-            "name": "Ninja Icon0",
-            "img": "assets/kiss918/NinjaIcon0.png"
+        "name": "GirlsIcon0.png",
+        "img": "assets/kiss918/GirlsIcon0.png"
       },
       {
-            "name": "Niu Icon0",
-            "img": "assets/kiss918/NiuIcon0.png"
+        "name": "GirlsIcon1.png",
+        "img": "assets/kiss918/GirlsIcon1.png"
       },
       {
-            "name": "Nnyy Icon0",
-            "img": "assets/kiss918/NnyyIcon0.png"
+        "name": "GoldenDerbyIcon0.png",
+        "img": "assets/kiss918/GoldenDerbyIcon0.png"
       },
       {
-            "name": "Orient Icon0",
-            "img": "assets/kiss918/OrientIcon0.png"
+        "name": "GoldenDerbyIcon1.png",
+        "img": "assets/kiss918/GoldenDerbyIcon1.png"
       },
       {
-            "name": "Panther Icon0",
-            "img": "assets/kiss918/PantherIcon0.png"
+        "name": "GuanYuIcon0.png",
+        "img": "assets/kiss918/GuanYuIcon0.png"
       },
       {
-            "name": "Pay Dirt Icon0",
-            "img": "assets/kiss918/PayDirtIcon0.png"
+        "name": "GuanYuIcon1.png",
+        "img": "assets/kiss918/GuanYuIcon1.png"
       },
       {
-            "name": "Phoenix Icon0",
-            "img": "assets/kiss918/PhoenixIcon0.png"
+        "name": "HoldEnIcon0.png",
+        "img": "assets/kiss918/HoldEnIcon0.png"
       },
       {
-            "name": "Pirate Ship Icon0",
-            "img": "assets/kiss918/PirateShipIcon0.png"
+        "name": "HoldEnIcon1.png",
+        "img": "assets/kiss918/HoldEnIcon1.png"
       },
       {
-            "name": "Plus Icon0",
-            "img": "assets/kiss918/PlusIcon0.png"
+        "name": "HuluCockIcon0.png",
+        "img": "assets/kiss918/HuluCockIcon0.png"
       },
       {
-            "name": "Pokemon Icon0",
-            "img": "assets/kiss918/PokemonIcon0.png"
+        "name": "HuluCockIcon1.png",
+        "img": "assets/kiss918/HuluCockIcon1.png"
       },
       {
-            "name": "Poker Three Icon0",
-            "img": "assets/kiss918/PokerThreeIcon0.png"
+        "name": "IndiaIcon0.png",
+        "img": "assets/kiss918/IndiaIcon0.png"
       },
       {
-            "name": "Racing Car Icon0",
-            "img": "assets/kiss918/RacingCarIcon0.png"
+        "name": "IndiaIcon1.png",
+        "img": "assets/kiss918/IndiaIcon1.png"
       },
       {
-            "name": "Rally Icon0",
-            "img": "assets/kiss918/RallyIcon0.png"
+        "name": "JapanIcon0.png",
+        "img": "assets/kiss918/JapanIcon0.png"
       },
       {
-            "name": "Ranch Story Icon0",
-            "img": "assets/kiss918/RanchStoryIcon0.png"
+        "name": "JapanIcon1.png",
+        "img": "assets/kiss918/JapanIcon1.png"
       },
       {
-            "name": "Reel Icon0",
-            "img": "assets/kiss918/ReelIcon0.png"
+        "name": "MotoIcon0.png",
+        "img": "assets/kiss918/MotoIcon0.png"
       },
       {
-            "name": "Roulette Icon0",
-            "img": "assets/kiss918/RouletteIcon0.png"
+        "name": "MotoIcon1.png",
+        "img": "assets/kiss918/MotoIcon1.png"
       },
       {
-            "name": "Safari Icon0",
-            "img": "assets/kiss918/SafariIcon0.png"
+        "name": "OrientIcon0.png",
+        "img": "assets/kiss918/OrientIcon0.png"
       },
       {
-            "name": "Sea Captain Icon0",
-            "img": "assets/kiss918/SeaCaptainIcon0.png"
+        "name": "OrientIcon1.png",
+        "img": "assets/kiss918/OrientIcon1.png"
       },
       {
-            "name": "Sea World Icon0",
-            "img": "assets/kiss918/SeaWorldIcon0.png"
+        "name": "ReelIcon0.png",
+        "img": "assets/kiss918/ReelIcon0.png"
       },
       {
-            "name": "Shark Icon0",
-            "img": "assets/kiss918/SharkIcon0.png"
+        "name": "ReelIcon1.png",
+        "img": "assets/kiss918/ReelIcon1.png"
       },
       {
-            "name": "Shining Stars Icon0",
-            "img": "assets/kiss918/ShiningStarsIcon0.png"
+        "name": "SpartanIcon0.png",
+        "img": "assets/kiss918/SpartanIcon0.png"
       },
       {
-            "name": "Shui Hu Icon0",
-            "img": "assets/kiss918/ShuiHuIcon0.png"
+        "name": "SpartanIcon1.png",
+        "img": "assets/kiss918/SpartanIcon1.png"
       },
       {
-            "name": "Sic Bo Icon0",
-            "img": "assets/kiss918/SicBoIcon0.png"
+        "name": "StudentIcon0.png",
+        "img": "assets/kiss918/StudentIcon0.png"
       },
       {
-            "name": "Single Poker Icon0",
-            "img": "assets/kiss918/SinglePokerIcon0.png"
+        "name": "StudentIcon1.png",
+        "img": "assets/kiss918/StudentIcon1.png"
       },
       {
-            "name": "Sparta2 Icon0",
-            "img": "assets/kiss918/Sparta2Icon0.png"
+        "name": "TallyIcon0.png",
+        "img": "assets/kiss918/TallyIcon0.png"
       },
       {
-            "name": "Spartan Icon0",
-            "img": "assets/kiss918/SpartanIcon0.png"
+        "name": "TallyIcon1.png",
+        "img": "assets/kiss918/TallyIcon1.png"
       },
       {
-            "name": "Stone Age Icon0",
-            "img": "assets/kiss918/StoneAgeIcon0.png"
+        "name": "ThailandIcon0.png",
+        "img": "assets/kiss918/ThailandIcon0.png"
       },
       {
-            "name": "Student Icon0",
-            "img": "assets/kiss918/StudentIcon0.png"
+        "name": "ThailandIcon1.png",
+        "img": "assets/kiss918/ThailandIcon1.png"
       },
       {
-            "name": "Tally Icon0",
-            "img": "assets/kiss918/TallyIcon0.png"
+        "name": "TornadIcon0.png",
+        "img": "assets/kiss918/TornadIcon0.png"
       },
       {
-            "name": "Thai Icon0",
-            "img": "assets/kiss918/ThaiIcon0.png"
+        "name": "TornadIcon1.png",
+        "img": "assets/kiss918/TornadIcon1.png"
       },
       {
-            "name": "Thailand Icon0",
-            "img": "assets/kiss918/ThailandIcon0.png"
+        "name": "VictoryIcon0.png",
+        "img": "assets/kiss918/VictoryIcon0.png"
       },
       {
-            "name": "Three King Icon0",
-            "img": "assets/kiss918/ThreeKingIcon0.png"
+        "name": "VictoryIcon1.png",
+        "img": "assets/kiss918/VictoryIcon1.png"
       },
       {
-            "name": "Tornad Icon0",
-            "img": "assets/kiss918/TornadIcon0.png"
+        "name": "WangCaiIcon0.png",
+        "img": "assets/kiss918/WangCaiIcon0.png"
       },
       {
-            "name": "Treasure Icon0",
-            "img": "assets/kiss918/TreasureIcon0.png"
+        "name": "WangCaiIcon1.png",
+        "img": "assets/kiss918/WangCaiIcon1.png"
       },
       {
-            "name": "T Rex Icon0",
-            "img": "assets/kiss918/TRexIcon0.png"
+        "name": "WaterIcon0.png",
+        "img": "assets/kiss918/WaterIcon0.png"
       },
       {
-            "name": "Victory Icon0",
-            "img": "assets/kiss918/VictoryIcon0.png"
+        "name": "WaterIcon1.png",
+        "img": "assets/kiss918/WaterIcon1.png"
       },
       {
-            "name": "Wang Cai Icon0",
-            "img": "assets/kiss918/WangCaiIcon0.png"
+        "name": "WildFoxIcon0.png",
+        "img": "assets/kiss918/WildFoxIcon0.png"
       },
       {
-            "name": "Water Icon0",
-            "img": "assets/kiss918/WaterIcon0.png"
+        "name": "WildFoxIcon1.png",
+        "img": "assets/kiss918/WildFoxIcon1.png"
       },
       {
-            "name": "Wealth Icon0",
-            "img": "assets/kiss918/WealthIcon0.png"
+        "name": "5DragonsIcon0.png",
+        "img": "assets/kiss918/5DragonsIcon0.png"
       },
       {
-            "name": "Western Icon0",
-            "img": "assets/kiss918/WesternIcon0.png"
+        "name": "5DragonsIcon1.png",
+        "img": "assets/kiss918/5DragonsIcon1.png"
       },
       {
-            "name": "Wild Fox Icon0",
-            "img": "assets/kiss918/WildFoxIcon0.png"
+        "name": "8BallIcon0.png",
+        "img": "assets/kiss918/8BallIcon0.png"
       },
       {
-            "name": "Wu Kong Icon0",
-            "img": "assets/kiss918/WuKongIcon0.png"
+        "name": "8BallIcon1.png",
+        "img": "assets/kiss918/8BallIcon1.png"
       },
       {
-            "name": "Wu Kong W Icon0",
-            "img": "assets/kiss918/WuKongWIcon0.png"
+        "name": "CashFeverIcon0.png",
+        "img": "assets/kiss918/CashFeverIcon0.png"
       },
       {
-            "name": "Zcjb Icon0",
-            "img": "assets/kiss918/ZcjbIcon0.png"
+        "name": "CashFeverIcon1.png",
+        "img": "assets/kiss918/CashFeverIcon1.png"
+      },
+      {
+        "name": "CleopatraIcon0.png",
+        "img": "assets/kiss918/CleopatraIcon0.png"
+      },
+      {
+        "name": "CleopatraIcon1.png",
+        "img": "assets/kiss918/CleopatraIcon1.png"
+      },
+      {
+        "name": "CookiePopIcon0.png",
+        "img": "assets/kiss918/CookiePopIcon0.png"
+      },
+      {
+        "name": "CookiePopIcon1.png",
+        "img": "assets/kiss918/CookiePopIcon1.png"
+      },
+      {
+        "name": "DiscoveryIcon0.png",
+        "img": "assets/kiss918/DiscoveryIcon0.png"
+      },
+      {
+        "name": "DiscoveryIcon1.png",
+        "img": "assets/kiss918/DiscoveryIcon1.png"
+      },
+      {
+        "name": "DolphinIcon0.png",
+        "img": "assets/kiss918/DolphinIcon0.png"
+      },
+      {
+        "name": "DolphinIcon1.png",
+        "img": "assets/kiss918/DolphinIcon1.png"
+      },
+      {
+        "name": "GoldenTourIcon0.png",
+        "img": "assets/kiss918/GoldenTourIcon0.png"
+      },
+      {
+        "name": "GoldenTourIcon1.png",
+        "img": "assets/kiss918/GoldenTourIcon1.png"
+      },
+      {
+        "name": "GoldenTreeIcon0.png",
+        "img": "assets/kiss918/GoldenTreeIcon0.png"
+      },
+      {
+        "name": "GoldenTreeIcon1.png",
+        "img": "assets/kiss918/GoldenTreeIcon1.png"
+      },
+      {
+        "name": "HalloweenIcon0.png",
+        "img": "assets/kiss918/HalloweenIcon0.png"
+      },
+      {
+        "name": "HalloweenIcon1.png",
+        "img": "assets/kiss918/HalloweenIcon1.png"
+      },
+      {
+        "name": "IrishLuckIcon0.png",
+        "img": "assets/kiss918/IrishLuckIcon0.png"
+      },
+      {
+        "name": "IrishLuckIcon1.png",
+        "img": "assets/kiss918/IrishLuckIcon1.png"
+      },
+      {
+        "name": "LoongIcon0.png",
+        "img": "assets/kiss918/LoongIcon0.png"
+      },
+      {
+        "name": "LoongIcon1.png",
+        "img": "assets/kiss918/LoongIcon1.png"
+      },
+      {
+        "name": "MagicIcon0.png",
+        "img": "assets/kiss918/MagicIcon0.png"
+      },
+      {
+        "name": "MagicIcon1.png",
+        "img": "assets/kiss918/MagicIcon1.png"
+      },
+      {
+        "name": "MoneyFeverIcon0.png",
+        "img": "assets/kiss918/MoneyFeverIcon0.png"
+      },
+      {
+        "name": "MoneyFeverIcon1.png",
+        "img": "assets/kiss918/MoneyFeverIcon1.png"
+      },
+      {
+        "name": "NinjaIcon0.png",
+        "img": "assets/kiss918/NinjaIcon0.png"
+      },
+      {
+        "name": "NinjaIcon1.png",
+        "img": "assets/kiss918/NinjaIcon1.png"
+      },
+      {
+        "name": "NnyyIcon0.png",
+        "img": "assets/kiss918/NnyyIcon0.png"
+      },
+      {
+        "name": "NnyyIcon1.png",
+        "img": "assets/kiss918/NnyyIcon1.png"
+      },
+      {
+        "name": "PantherIcon0.png",
+        "img": "assets/kiss918/PantherIcon0.png"
+      },
+      {
+        "name": "PantherIcon1.png",
+        "img": "assets/kiss918/PantherIcon1.png"
+      },
+      {
+        "name": "PirateShipIcon0.png",
+        "img": "assets/kiss918/PirateShipIcon0.png"
+      },
+      {
+        "name": "PirateShipIcon1.png",
+        "img": "assets/kiss918/PirateShipIcon1.png"
+      },
+      {
+        "name": "PlusIcon0.png",
+        "img": "assets/kiss918/PlusIcon0.png"
+      },
+      {
+        "name": "PlusIcon1.png",
+        "img": "assets/kiss918/PlusIcon1.png"
+      },
+      {
+        "name": "RacingCarIcon0.png",
+        "img": "assets/kiss918/RacingCarIcon0.png"
+      },
+      {
+        "name": "RacingCarIcon1.png",
+        "img": "assets/kiss918/RacingCarIcon1.png"
+      },
+      {
+        "name": "RallyIcon0.png",
+        "img": "assets/kiss918/RallyIcon0.png"
+      },
+      {
+        "name": "RallyIcon1.png",
+        "img": "assets/kiss918/RallyIcon1.png"
+      },
+      {
+        "name": "RanchStoryIcon0.png",
+        "img": "assets/kiss918/RanchStoryIcon0.png"
+      },
+      {
+        "name": "RanchStoryIcon1.png",
+        "img": "assets/kiss918/RanchStoryIcon1.png"
+      },
+      {
+        "name": "SeaCaptainIcon0.png",
+        "img": "assets/kiss918/SeaCaptainIcon0.png"
+      },
+      {
+        "name": "SeaCaptainIcon1.png",
+        "img": "assets/kiss918/SeaCaptainIcon1.png"
+      },
+      {
+        "name": "SeaWorldIcon0.png",
+        "img": "assets/kiss918/SeaWorldIcon0.png"
+      },
+      {
+        "name": "SeaWorldIcon1.png",
+        "img": "assets/kiss918/SeaWorldIcon1.png"
+      },
+      {
+        "name": "ShiningStarsIcon0.png",
+        "img": "assets/kiss918/ShiningStarsIcon0.png"
+      },
+      {
+        "name": "ShiningStarsIcon1.png",
+        "img": "assets/kiss918/ShiningStarsIcon1.png"
+      },
+      {
+        "name": "Sparta2Icon0.png",
+        "img": "assets/kiss918/Sparta2Icon0.png"
+      },
+      {
+        "name": "Sparta2Icon1.png",
+        "img": "assets/kiss918/Sparta2Icon1.png"
+      },
+      {
+        "name": "StoneAgeIcon0.png",
+        "img": "assets/kiss918/StoneAgeIcon0.png"
+      },
+      {
+        "name": "StoneAgeIcon1.png",
+        "img": "assets/kiss918/StoneAgeIcon1.png"
+      },
+      {
+        "name": "TRexIcon0.png",
+        "img": "assets/kiss918/TRexIcon0.png"
+      },
+      {
+        "name": "TRexIcon1.png",
+        "img": "assets/kiss918/TRexIcon1.png"
+      },
+      {
+        "name": "ThaiIcon0.png",
+        "img": "assets/kiss918/ThaiIcon0.png"
+      },
+      {
+        "name": "ThaiIcon1.png",
+        "img": "assets/kiss918/ThaiIcon1.png"
+      },
+      {
+        "name": "TreasureIcon0.png",
+        "img": "assets/kiss918/TreasureIcon0.png"
+      },
+      {
+        "name": "TreasureIcon1.png",
+        "img": "assets/kiss918/TreasureIcon1.png"
+      },
+      {
+        "name": "WealthIcon0.png",
+        "img": "assets/kiss918/WealthIcon0.png"
+      },
+      {
+        "name": "WealthIcon1.png",
+        "img": "assets/kiss918/WealthIcon1.png"
+      },
+      {
+        "name": "WesternIcon0.png",
+        "img": "assets/kiss918/WesternIcon0.png"
+      },
+      {
+        "name": "WesternIcon1.png",
+        "img": "assets/kiss918/WesternIcon1.png"
+      },
+      {
+        "name": "ZcjbIcon0.png",
+        "img": "assets/kiss918/ZcjbIcon0.png"
+      },
+      {
+        "name": "ZcjbIcon1.png",
+        "img": "assets/kiss918/ZcjbIcon1.png"
+      },
+      {
+        "name": "AppleMachineIcon0.png",
+        "img": "assets/kiss918/AppleMachineIcon0.png"
+      },
+      {
+        "name": "AppleMachineIcon1.png",
+        "img": "assets/kiss918/AppleMachineIcon1.png"
+      },
+      {
+        "name": "BattleIcon0.png",
+        "img": "assets/kiss918/BattleIcon0.png"
+      },
+      {
+        "name": "BattleIcon1.png",
+        "img": "assets/kiss918/BattleIcon1.png"
+      },
+      {
+        "name": "BigShotIcon0.png",
+        "img": "assets/kiss918/BigShotIcon0.png"
+      },
+      {
+        "name": "BigShotIcon1.png",
+        "img": "assets/kiss918/BigShotIcon1.png"
+      },
+      {
+        "name": "CFishIcon0.png",
+        "img": "assets/kiss918/CFishIcon0.png"
+      },
+      {
+        "name": "CFishIcon1.png",
+        "img": "assets/kiss918/CFishIcon1.png"
+      },
+      {
+        "name": "CFishWanIcon0.png",
+        "img": "assets/kiss918/CFishWanIcon0.png"
+      },
+      {
+        "name": "CFishWanIcon1.png",
+        "img": "assets/kiss918/CFishWanIcon1.png"
+      },
+      {
+        "name": "CircusIcon0.png",
+        "img": "assets/kiss918/CircusIcon0.png"
+      },
+      {
+        "name": "CircusIcon1.png",
+        "img": "assets/kiss918/CircusIcon1.png"
+      },
+      {
+        "name": "CoyoteCashIcon0.png",
+        "img": "assets/kiss918/CoyoteCashIcon0.png"
+      },
+      {
+        "name": "CoyoteCashIcon1.png",
+        "img": "assets/kiss918/CoyoteCashIcon1.png"
+      },
+      {
+        "name": "DolphinPIcon0.png",
+        "img": "assets/kiss918/DolphinPIcon0.png"
+      },
+      {
+        "name": "DolphinPIcon1.png",
+        "img": "assets/kiss918/DolphinPIcon1.png"
+      },
+      {
+        "name": "FameIcon0.png",
+        "img": "assets/kiss918/FameIcon0.png"
+      },
+      {
+        "name": "FameIcon1.png",
+        "img": "assets/kiss918/FameIcon1.png"
+      },
+      {
+        "name": "FengshenIcon0.png",
+        "img": "assets/kiss918/FengshenIcon0.png"
+      },
+      {
+        "name": "FengshenIcon1.png",
+        "img": "assets/kiss918/FengshenIcon1.png"
+      },
+      {
+        "name": "FishHWIcon0.png",
+        "img": "assets/kiss918/FishHWIcon0.png"
+      },
+      {
+        "name": "FishHWIcon1.png",
+        "img": "assets/kiss918/FishHWIcon1.png"
+      },
+      {
+        "name": "FishHWWanIcon0.png",
+        "img": "assets/kiss918/FishHWWanIcon0.png"
+      },
+      {
+        "name": "FishHWWanIcon1.png",
+        "img": "assets/kiss918/FishHWWanIcon1.png"
+      },
+      {
+        "name": "ForestIcon0.png",
+        "img": "assets/kiss918/ForestIcon0.png"
+      },
+      {
+        "name": "ForestIcon1.png",
+        "img": "assets/kiss918/ForestIcon1.png"
+      },
+      {
+        "name": "LiKuiIcon0.png",
+        "img": "assets/kiss918/LiKuiIcon0.png"
+      },
+      {
+        "name": "LiKuiIcon1.png",
+        "img": "assets/kiss918/LiKuiIcon1.png"
+      },
+      {
+        "name": "LiKuiWIcon0.png",
+        "img": "assets/kiss918/LiKuiWIcon0.png"
+      },
+      {
+        "name": "LiKuiWIcon1.png",
+        "img": "assets/kiss918/LiKuiWIcon1.png"
+      },
+      {
+        "name": "MonkeyKingIcon0.png",
+        "img": "assets/kiss918/MonkeyKingIcon0.png"
+      },
+      {
+        "name": "MonkeyKingIcon1.png",
+        "img": "assets/kiss918/MonkeyKingIcon1.png"
+      },
+      {
+        "name": "MonkeyPlusIcon0.png",
+        "img": "assets/kiss918/MonkeyPlusIcon0.png"
+      },
+      {
+        "name": "MonkeyPlusIcon1.png",
+        "img": "assets/kiss918/MonkeyPlusIcon1.png"
+      },
+      {
+        "name": "NewJinIcon0.png",
+        "img": "assets/kiss918/NewJinIcon0.png"
+      },
+      {
+        "name": "NewJinIcon1.png",
+        "img": "assets/kiss918/NewJinIcon1.png"
+      },
+      {
+        "name": "NightClubIcon0.png",
+        "img": "assets/kiss918/NightClubIcon0.png"
+      },
+      {
+        "name": "NightClubIcon1.png",
+        "img": "assets/kiss918/NightClubIcon1.png"
+      },
+      {
+        "name": "PayDirtIcon0.png",
+        "img": "assets/kiss918/PayDirtIcon0.png"
+      },
+      {
+        "name": "PayDirtIcon1.png",
+        "img": "assets/kiss918/PayDirtIcon1.png"
+      },
+      {
+        "name": "PhoenixIcon0.png",
+        "img": "assets/kiss918/PhoenixIcon0.png"
+      },
+      {
+        "name": "PhoenixIcon1.png",
+        "img": "assets/kiss918/PhoenixIcon1.png"
+      },
+      {
+        "name": "PokemonIcon0.png",
+        "img": "assets/kiss918/PokemonIcon0.png"
+      },
+      {
+        "name": "PokemonIcon1.png",
+        "img": "assets/kiss918/PokemonIcon1.png"
+      },
+      {
+        "name": "SharkIcon0.png",
+        "img": "assets/kiss918/SharkIcon0.png"
+      },
+      {
+        "name": "SharkIcon1.png",
+        "img": "assets/kiss918/SharkIcon1.png"
+      },
+      {
+        "name": "ShuiHuIcon0.png",
+        "img": "assets/kiss918/ShuiHuIcon0.png"
+      },
+      {
+        "name": "ShuiHuIcon1.png",
+        "img": "assets/kiss918/ShuiHuIcon1.png"
+      },
+      {
+        "name": "SinglePokerIcon0.png",
+        "img": "assets/kiss918/SinglePokerIcon0.png"
+      },
+      {
+        "name": "SinglePokerIcon1.png",
+        "img": "assets/kiss918/SinglePokerIcon1.png"
+      },
+      {
+        "name": "ThreeKingIcon0.png",
+        "img": "assets/kiss918/ThreeKingIcon0.png"
+      },
+      {
+        "name": "ThreeKingIcon1.png",
+        "img": "assets/kiss918/ThreeKingIcon1.png"
+      },
+      {
+        "name": "WuKongIcon0.png",
+        "img": "assets/kiss918/WuKongIcon0.png"
+      },
+      {
+        "name": "WuKongIcon1.png",
+        "img": "assets/kiss918/WuKongIcon1.png"
+      },
+      {
+        "name": "WuKongWIcon0.png",
+        "img": "assets/kiss918/WuKongWIcon0.png"
+      },
+      {
+        "name": "WuKongWIcon1.png",
+        "img": "assets/kiss918/WuKongWIcon1.png"
       }
-]
+    ]
+  },
+  "pussy888": {
+    "name": "Pussy888",
+    "code": "PUSSY888",
+    "logo": "assets/pussy888-logo.png",
+    "games": [
+      {
+        "name": "santasurprise",
+        "img": "assets/pussy888/santasurprise.png"
+      },
+      {
+        "name": "magigalspin",
+        "img": "assets/pussy888/magigalspin.png"
+      },
+      {
+        "name": "coyotecash",
+        "img": "assets/pussy888/coyotecash.png"
+      },
+      {
+        "name": "oceanking",
+        "img": "assets/pussy888/oceanking.png"
+      },
+      {
+        "name": "roulette24",
+        "img": "assets/pussy888/roulette24.png"
+      },
+      {
+        "name": "roulette36",
+        "img": "assets/pussy888/roulette36.png"
+      },
+      {
+        "name": "diamond",
+        "img": "assets/pussy888/diamond.png"
+      },
+      {
+        "name": "trex",
+        "img": "assets/pussy888/trex.png"
+      },
+      {
+        "name": "pokerthree",
+        "img": "assets/pussy888/pokerthree.png"
+      },
+      {
+        "name": "shiuhuzhuan",
+        "img": "assets/pussy888/shiuhuzhuan.png"
+      },
+      {
+        "name": "shiningstars",
+        "img": "assets/pussy888/shiningstars.png"
+      },
+      {
+        "name": "waters",
+        "img": "assets/pussy888/waters.png"
+      },
+      {
+        "name": "cookie",
+        "img": "assets/pussy888/cookie.png"
+      },
+      {
+        "name": "ghost",
+        "img": "assets/pussy888/ghost.png"
+      },
+      {
+        "name": "boxing",
+        "img": "assets/pussy888/boxing.png"
+      },
+      {
+        "name": "greatchina",
+        "img": "assets/pussy888/greatchina.png"
+      },
+      {
+        "name": "greatstars",
+        "img": "assets/pussy888/greatstars.png"
+      },
+      {
+        "name": "rally",
+        "img": "assets/pussy888/rally.png"
+      },
+      {
+        "name": "deserttreasure",
+        "img": "assets/pussy888/deserttreasure.png"
+      },
+      {
+        "name": "japan",
+        "img": "assets/pussy888/japan.png"
+      },
+      {
+        "name": "pangl",
+        "img": "assets/pussy888/pangl.png"
+      },
+      {
+        "name": "samurai",
+        "img": "assets/pussy888/samurai.png"
+      },
+      {
+        "name": "highway",
+        "img": "assets/pussy888/highway.png"
+      },
+      {
+        "name": "dragongold",
+        "img": "assets/pussy888/dragongold.png"
+      },
+      {
+        "name": "pharaoh",
+        "img": "assets/pussy888/pharaoh.png"
+      },
+      {
+        "name": "dragontigerblue",
+        "img": "assets/pussy888/dragontigerblue.png"
+      },
+      {
+        "name": "zhaocjb",
+        "img": "assets/pussy888/zhaocjb.png"
+      },
+      {
+        "name": "goldentour",
+        "img": "assets/pussy888/goldentour.png"
+      },
+      {
+        "name": "fairygarden",
+        "img": "assets/pussy888/fairygarden.png"
+      },
+      {
+        "name": "cherrylove",
+        "img": "assets/pussy888/cherrylove.png"
+      },
+      {
+        "name": "fhzshi",
+        "img": "assets/pussy888/fhzshi.png"
+      },
+      {
+        "name": "witch",
+        "img": "assets/pussy888/witch.png"
+      },
+      {
+        "name": "tallyho",
+        "img": "assets/pussy888/tallyho.png"
+      },
+      {
+        "name": "dacaishen",
+        "img": "assets/pussy888/dacaishen.png"
+      },
+      {
+        "name": "goldenlotus",
+        "img": "assets/pussy888/goldenlotus.png"
+      },
+      {
+        "name": "dolphinreef",
+        "img": "assets/pussy888/dolphinreef.png"
+      },
+      {
+        "name": "fortune",
+        "img": "assets/pussy888/fortune.png"
+      },
+      {
+        "name": "archer",
+        "img": "assets/pussy888/archer.png"
+      },
+      {
+        "name": "cleopatra",
+        "img": "assets/pussy888/cleopatra.png"
+      },
+      {
+        "name": "irishluck",
+        "img": "assets/pussy888/irishluck.png"
+      },
+      {
+        "name": "queen",
+        "img": "assets/pussy888/queen.png"
+      },
+      {
+        "name": "thaitemple",
+        "img": "assets/pussy888/thaitemple.png"
+      },
+      {
+        "name": "roaring",
+        "img": "assets/pussy888/roaring.png"
+      },
+      {
+        "name": "jqw",
+        "img": "assets/pussy888/jqw.png"
+      },
+      {
+        "name": "topgun",
+        "img": "assets/pussy888/topgun.png"
+      },
+      {
+        "name": "greatblue",
+        "img": "assets/pussy888/greatblue.png"
+      },
+      {
+        "name": "catqueen",
+        "img": "assets/pussy888/catqueen.png"
+      },
+      {
+        "name": "belangkai",
+        "img": "assets/pussy888/belangkai.png"
+      },
+      {
+        "name": "football_carnival",
+        "img": "assets/pussy888/football_carnival.png"
+      },
+      {
+        "name": "buffaloblitz",
+        "img": "assets/pussy888/buffaloblitz.png"
+      },
+      {
+        "name": "blackjack",
+        "img": "assets/pussy888/blackjack.png"
+      },
+      {
+        "name": "casinowar",
+        "img": "assets/pussy888/casinowar.png"
+      },
+      {
+        "name": "easter",
+        "img": "assets/pussy888/easter.png"
+      },
+      {
+        "name": "goldenslut",
+        "img": "assets/pussy888/goldenslut.png"
+      },
+      {
+        "name": "arctic",
+        "img": "assets/pussy888/arctic.png"
+      },
+      {
+        "name": "safariheat",
+        "img": "assets/pussy888/safariheat.png"
+      },
+      {
+        "name": "bananamonkey",
+        "img": "assets/pussy888/bananamonkey.png"
+      },
+      {
+        "name": "boyking",
+        "img": "assets/pussy888/boyking.png"
+      },
+      {
+        "name": "sicbo",
+        "img": "assets/pussy888/sicbo.png"
+      },
+      {
+        "name": "ageofegypt",
+        "img": "assets/pussy888/ageofegypt.png"
+      },
+      {
+        "name": "fortunelions",
+        "img": "assets/pussy888/fortunelions.png"
+      },
+      {
+        "name": "beachlife",
+        "img": "assets/pussy888/beachlife.png"
+      },
+      {
+        "name": "sparta9",
+        "img": "assets/pussy888/sparta9.png"
+      },
+      {
+        "name": "pyramid",
+        "img": "assets/pussy888/pyramid.png"
+      },
+      {
+        "name": "girls",
+        "img": "assets/pussy888/girls.png"
+      },
+      {
+        "name": "discover",
+        "img": "assets/pussy888/discover.png"
+      },
+      {
+        "name": "treasureisland",
+        "img": "assets/pussy888/treasureisland.png"
+      },
+      {
+        "name": "baccarat",
+        "img": "assets/pussy888/baccarat.png"
+      },
+      {
+        "name": "emperorgate",
+        "img": "assets/pussy888/emperorgate.png"
+      },
+      {
+        "name": "seaworld",
+        "img": "assets/pussy888/seaworld.png"
+      },
+      {
+        "name": "godofwealth",
+        "img": "assets/pussy888/godofwealth.png"
+      },
+      {
+        "name": "singlepick",
+        "img": "assets/pussy888/singlepick.png"
+      },
+      {
+        "name": "robinhood",
+        "img": "assets/pussy888/robinhood.png"
+      },
+      {
+        "name": "fishingdsnh",
+        "img": "assets/pussy888/fishingdsnh.png"
+      },
+      {
+        "name": "panthermoon",
+        "img": "assets/pussy888/panthermoon.png"
+      },
+      {
+        "name": "penguin",
+        "img": "assets/pussy888/penguin.png"
+      },
+      {
+        "name": "fishingstar",
+        "img": "assets/pussy888/fishingstar.png"
+      },
+      {
+        "name": "multiplayer_niuniu",
+        "img": "assets/pussy888/multiplayer_niuniu.png"
+      },
+      {
+        "name": "ycl",
+        "img": "assets/pussy888/ycl.png"
+      },
+      {
+        "name": "dolphin",
+        "img": "assets/pussy888/dolphin.png"
+      },
+      {
+        "name": "iceland",
+        "img": "assets/pussy888/iceland.png"
+      },
+      {
+        "name": "fengshen",
+        "img": "assets/pussy888/fengshen.png"
+      },
+      {
+        "name": "dragons",
+        "img": "assets/pussy888/dragons.png"
+      },
+      {
+        "name": "greenlight",
+        "img": "assets/pussy888/greenlight.png"
+      },
+      {
+        "name": "fortunesfox",
+        "img": "assets/pussy888/fortunesfox.png"
+      },
+      {
+        "name": "amazon",
+        "img": "assets/pussy888/amazon.png"
+      },
+      {
+        "name": "moneyfever",
+        "img": "assets/pussy888/moneyfever.png"
+      },
+      {
+        "name": "geisha",
+        "img": "assets/pussy888/geisha.png"
+      },
+      {
+        "name": "twister",
+        "img": "assets/pussy888/twister.png"
+      },
+      {
+        "name": "roulette12",
+        "img": "assets/pussy888/roulette12.png"
+      },
+      {
+        "name": "ranchstory",
+        "img": "assets/pussy888/ranchstory.png"
+      },
+      {
+        "name": "gaelicluck",
+        "img": "assets/pussy888/gaelicluck.png"
+      },
+      {
+        "name": "westernrs",
+        "img": "assets/pussy888/westernrs.png"
+      },
+      {
+        "name": "hologramwilds",
+        "img": "assets/pussy888/hologramwilds.png"
+      },
+      {
+        "name": "hulucok",
+        "img": "assets/pussy888/hulucok.png"
+      },
+      {
+        "name": "garden",
+        "img": "assets/pussy888/garden.png"
+      },
+      {
+        "name": "dragontigergreen",
+        "img": "assets/pussy888/dragontigergreen.png"
+      },
+      {
+        "name": "fishinglkpy",
+        "img": "assets/pussy888/fishinglkpy.png"
+      },
+      {
+        "name": "wildfox",
+        "img": "assets/pussy888/wildfox.png"
+      },
+      {
+        "name": "holdem",
+        "img": "assets/pussy888/holdem.png"
+      },
+      {
+        "name": "circus",
+        "img": "assets/pussy888/circus.png"
+      },
+      {
+        "name": "bonusbears",
+        "img": "assets/pussy888/bonusbears.png"
+      },
+      {
+        "name": "sparta30",
+        "img": "assets/pussy888/sparta30.png"
+      },
+      {
+        "name": "dragontigerred",
+        "img": "assets/pussy888/dragontigerred.png"
+      },
+      {
+        "name": "pirateship",
+        "img": "assets/pussy888/pirateship.png"
+      },
+      {
+        "name": "thai",
+        "img": "assets/pussy888/thai.png"
+      },
+      {
+        "name": "feicuigongzhu",
+        "img": "assets/pussy888/feicuigongzhu.png"
+      },
+      {
+        "name": "cropsofgold",
+        "img": "assets/pussy888/cropsofgold.png"
+      },
+      {
+        "name": "halloweenparty",
+        "img": "assets/pussy888/halloweenparty.png"
+      },
+      {
+        "name": "orient",
+        "img": "assets/pussy888/orient.png"
+      },
+      {
+        "name": "bigshot",
+        "img": "assets/pussy888/bigshot.png"
+      },
+      {
+        "name": "baishi",
+        "img": "assets/pussy888/baishi.png"
+      },
+      {
+        "name": "neptunetreasure",
+        "img": "assets/pussy888/neptunetreasure.png"
+      },
+      {
+        "name": "stoneage",
+        "img": "assets/pussy888/stoneage.png"
+      },
+      {
+        "name": "fishingjcby",
+        "img": "assets/pussy888/fishingjcby.png"
+      },
+      {
+        "name": "madness",
+        "img": "assets/pussy888/madness.png"
+      },
+      {
+        "name": "nightout",
+        "img": "assets/pussy888/nightout.png"
+      },
+      {
+        "name": "threekingdoms",
+        "img": "assets/pussy888/threekingdoms.png"
+      },
+      {
+        "name": "sunwukong",
+        "img": "assets/pussy888/sunwukong.png"
+      },
+      {
+        "name": "goldentree",
+        "img": "assets/pussy888/goldentree.png"
+      },
+      {
+        "name": "jndianmyth",
+        "img": "assets/pussy888/jndianmyth.png"
+      },
+      {
+        "name": "roulette72",
+        "img": "assets/pussy888/roulette72.png"
+      },
+      {
+        "name": "yearsoffish",
+        "img": "assets/pussy888/yearsoffish.png"
+      },
+      {
+        "name": "kimochi",
+        "img": "assets/pussy888/kimochi.png"
+      },
+      {
+        "name": "africanwildlife",
+        "img": "assets/pussy888/africanwildlife.png"
+      }
+    ]
   }
 };
-window.SQUEEN668_PROVIDER_ORDER = ["m8", "k918", "pp", "pz", "jkr", "ag", "cq9", "ep", "fc", "gp", "jdb", "je", "li_22", "nextspin", "sg"];
+window.SQUEEN668_PROVIDER_ORDER = ["m8", "k918", "pussy888", "pp", "pz", "jkr", "ag", "cq9", "ep", "fc", "gp", "jdb", "je", "li_22", "nextspin", "sg"];
 window.SQUEEN668_DEFAULT_PROVIDER = "pp";

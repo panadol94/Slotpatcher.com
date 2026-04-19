@@ -179,7 +179,7 @@ def build_database():
 
 def write_data_file(database, order):
     lines = [
-        '/* Auto-generated from 99laju.net slot catalogue. Do not edit by hand. */',
+        '/* Auto-generated game database. Do not edit by hand. */',
         'window.SQUEEN668_GAME_DATABASE = ' + json.dumps(database, ensure_ascii=False, indent=2) + ';',
         'window.SQUEEN668_PROVIDER_ORDER = ' + json.dumps(order, ensure_ascii=False) + ';',
         'window.SQUEEN668_DEFAULT_PROVIDER = ' + json.dumps(order[0] if order else '') + ';',

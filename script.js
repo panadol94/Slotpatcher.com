@@ -49,9 +49,75 @@ var scanModalTimer = null;
 var currentRtpChart = null;
 
 // ==========================================
+// FLOW STEPPER
+// ==========================================
+var FLOW_STEP_ORDER = ['provider', 'scan', 'result'];
+function setFlowStep(step) {
+    var idx = FLOW_STEP_ORDER.indexOf(step);
+    if (idx < 0) return;
+    document.querySelectorAll('.flow-step').forEach(function(el) {
+        var i = FLOW_STEP_ORDER.indexOf(el.getAttribute('data-step'));
+        el.classList.toggle('is-active', i === idx);
+        el.classList.toggle('is-done', i > -1 && i < idx);
+    });
+}
+
+// ==========================================
+// TOAST
+// ==========================================
+var toastTimer = null;
+function showToast(message, type) {
+    var host = document.getElementById('uxToast');
+    if (!host) {
+        host = document.createElement('div');
+        host.id = 'uxToast';
+        host.className = 'ux-toast';
+        host.setAttribute('role', 'status');
+        host.setAttribute('aria-live', 'polite');
+        document.body.appendChild(host);
+    }
+    host.textContent = message;
+    host.classList.remove('is-error', 'is-success', 'is-visible');
+    host.classList.add(type === 'error' ? 'is-error' : 'is-success');
+    // trigger reflow so transition replays
+    void host.offsetWidth;
+    host.classList.add('is-visible');
+    if (toastTimer) clearTimeout(toastTimer);
+    toastTimer = setTimeout(function() { host.classList.remove('is-visible'); }, 2400);
+}
+
+// ==========================================
+// SKELETON / EMPTY HELPERS
+// ==========================================
+function renderGameSkeleton(count) {
+    var gameList = document.getElementById('gameList');
+    if (!gameList) return;
+    var n = count || 6;
+    var html = '';
+    for (var i = 0; i < n; i++) {
+        html += '<div class="game-skeleton" style="animation-delay:' + (i * 0.08) + 's">'
+            + '<div class="sk-thumb"></div>'
+            + '<div class="sk-body"><div class="sk-line sk-line-title"></div><div class="sk-line sk-line-sub"></div><div class="sk-line sk-line-bar"></div></div>'
+            + '<div class="sk-gauge"></div>'
+            + '</div>';
+    }
+    gameList.innerHTML = html;
+}
+
+function renderGamesEmpty(message) {
+    var gameList = document.getElementById('gameList');
+    if (!gameList) return;
+    gameList.innerHTML = '<div class="games-empty"><div class="games-empty-icon" aria-hidden="true">🕳️</div><h4>Tiada game untuk dipaparkan</h4><p>' + escapeHtml(message || 'Cuba pilih provider lain atau reset filter.') + '</p></div>';
+}
+
+// ==========================================
 // INIT
 // ==========================================
 document.addEventListener('DOMContentLoaded', function() {
+    setFlowStep('provider');
+    initProviderModal();
+    initProviderEntryLinks();
+    updatePickerTrigger();
     buildProviderGrid();
     buildFeaturedProviders();
     initFilterTabs();
@@ -63,6 +129,12 @@ document.addEventListener('DOMContentLoaded', function() {
     updateScanButtonState();
     updateProviderHint();
     updateTimestamp();
+    if (location.hash === '#providerSection') {
+        if (window.history && window.history.replaceState) {
+            window.history.replaceState(null, '', location.pathname + location.search);
+        }
+        openProviderModal();
+    }
     setInterval(updateTimestamp, 60000);
     setInterval(function() {
         if (currentProvider && currentGames.length) loadGames(currentProvider);
@@ -213,9 +285,61 @@ function selectProvider(key) {
         card.classList.toggle('active', card.getAttribute('data-provider') === key);
     });
     if (resultsSection) resultsSection.style.display = 'none';
+    setFlowStep('provider');
     updateScanButtonState();
     updateProviderHint();
+    updatePickerTrigger();
     updateBottomNavVisibility();
+    closeProviderModal();
+}
+
+function updatePickerTrigger() {
+    var trigger = document.getElementById('providerPickerBtn');
+    var value = document.getElementById('providerPickerValue');
+    var provider = GAME_DATABASE[currentProvider];
+    if (value) {
+        value.textContent = provider ? provider.name : 'Tap untuk pilih provider casino';
+    }
+    if (trigger) {
+        trigger.classList.toggle('is-selected', !!provider);
+    }
+}
+
+function openProviderModal() {
+    var modal = document.getElementById('providerSection');
+    if (!modal) return;
+    modal.hidden = false;
+    void modal.offsetWidth;
+    modal.classList.add('is-open');
+    document.body.classList.add('provider-modal-open');
+}
+
+function closeProviderModal() {
+    var modal = document.getElementById('providerSection');
+    if (!modal || modal.hidden) return;
+    modal.classList.remove('is-open');
+    document.body.classList.remove('provider-modal-open');
+    setTimeout(function() { modal.hidden = true; }, 220);
+}
+
+function initProviderModal() {
+    var trigger = document.getElementById('providerPickerBtn');
+    if (trigger) trigger.addEventListener('click', openProviderModal);
+    document.querySelectorAll('[data-provider-close]').forEach(function(el) {
+        el.addEventListener('click', closeProviderModal);
+    });
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') closeProviderModal();
+    });
+}
+
+function initProviderEntryLinks() {
+    document.querySelectorAll('a[href="#providerSection"]').forEach(function(link) {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            openProviderModal();
+        });
+    });
 }
 
 function updateScanButtonState() {
@@ -225,36 +349,27 @@ function updateScanButtonState() {
     if (!scanButton || !scanButtonLabel) return;
     if (provider) {
         scanButton.classList.remove('disabled');
-        scanButtonLabel.textContent = 'PATCHER SLOT';
+        scanButtonLabel.textContent = 'SCAN';
         scanButton.setAttribute('aria-label', 'Patcher Slot ready untuk scan ' + provider.name);
     } else {
         scanButton.classList.add('disabled');
-        scanButtonLabel.textContent = 'PATCHER SLOT';
+        scanButtonLabel.textContent = 'SCAN';
         scanButton.setAttribute('aria-label', 'Patcher Slot, pilih provider dulu');
     }
 }
 
 function updateProviderHint(message, isError) {
     var hint = document.getElementById('providerHint');
-    var missionTitle = document.getElementById('scanMissionTitle');
-    var missionText = document.getElementById('scanMissionText');
-    var missionProgress = document.getElementById('scanMissionProgress');
     var provider = GAME_DATABASE[currentProvider];
     if (!hint) return;
     hint.classList.toggle('error', !!isError);
     if (message) {
         hint.textContent = message;
-        if (missionText) missionText.textContent = message;
         return;
     }
     hint.textContent = provider
         ? 'Provider dipilih: ' + provider.name + '. Tekan SCAN untuk mula scan.'
         : 'Sila pilih provider dulu, lepas tu tekan SCAN untuk mula scan.';
-    if (missionTitle) missionTitle.textContent = provider ? 'Scan ' + provider.name + ' sekarang' : 'Pilih provider untuk mula scan';
-    if (missionText) missionText.textContent = provider
-        ? provider.name + ' dah ready. Tekan Scan atau button bawah untuk teruskan.'
-        : 'Pilih provider dekat Recommended Provider atau All Provider, lepas tu tekan Scan.';
-    if (missionProgress) missionProgress.style.width = provider ? '100%' : '36%';
 }
 
 function escapeHtml(value) {
@@ -489,6 +604,22 @@ function openScanModalSweet(providerName, onDone) {
 function getStatusLabel(s) { return s === 'hot' ? '🔥 HOT' : s === 'warm' ? '⚡ WARM' : '❄️ COLD'; }
 function getStatusEmoji(s) { return s === 'hot' ? '🔥' : s === 'warm' ? '⚡' : '❄️'; }
 
+function formatGameName(raw) {
+    if (!raw) return '';
+    var name = String(raw);
+    name = name.replace(/\.(png|jpe?g|webp|gif)$/i, '');
+    name = name.replace(/Icon\d*$/i, '');
+    name = name.replace(/_\d+$/, '');
+    name = name.replace(/([A-Za-z])[01]$/, '$1');
+    name = name.replace(/[_\-]+/g, ' ');
+    name = name.replace(/([a-z])([A-Z])/g, '$1 $2');
+    name = name.replace(/([A-Z]+)([A-Z][a-z])/g, '$1 $2');
+    name = name.replace(/([a-zA-Z])(\d)/g, '$1 $2').replace(/(\d)([a-zA-Z])/g, '$1 $2');
+    name = name.replace(/\s+/g, ' ').trim();
+    name = name.replace(/\b([a-z])/g, function(_, ch) { return ch.toUpperCase(); });
+    return name || raw;
+}
+
 window.getFallbackImage = function(gameName) {
     if (!gameName) gameName = "GAME";
     var words = gameName.split(' ');
@@ -571,10 +702,18 @@ function startScan() {
     if (isScanning) return;
     if (!provider) {
         updateProviderHint('Sila pilih provider dulu sebelum mula scan.', true);
-        if (providerSection) providerSection.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        openProviderModal();
         return;
     }
     isScanning = true;
+    setFlowStep('scan');
+    var scanBtn = document.getElementById('scanButton');
+    if (scanBtn) {
+        scanBtn.classList.remove('popping');
+        void scanBtn.offsetWidth;
+        scanBtn.classList.add('popping');
+        setTimeout(function() { scanBtn.classList.remove('popping'); }, 750);
+    }
     updateProviderHint();
     var scanSection = document.getElementById('scanningSection');
     var resultsSection = document.getElementById('resultsSection');
@@ -585,7 +724,7 @@ function startScan() {
     openScanModal(pName, function() {
         scanSection.style.display = 'block';
         resultsSection.style.display = 'none';
-        gameList.innerHTML = '';
+        renderGameSkeleton(6);
         if (top3Section) top3Section.innerHTML = '';
 
         var sd = document.getElementById('scanDetail');
@@ -599,6 +738,7 @@ function startScan() {
             isScanning = false;
             loadGames(currentProvider);
             updateBottomNavVisibility();
+            setFlowStep('result');
             resultsSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
         });
     });
@@ -607,10 +747,14 @@ function startScan() {
 // ==========================================
 // GENERATE RTP (time-seeded)
 // ==========================================
+function isNonSlotGame(rawName) {
+    return /roulette|fish|fishin|baccarat|blackjack|sic ?bo|poker|hi ?lo|dragon ?tiger|niu ?niu|bull ?bull/i.test(String(rawName || ''));
+}
+
 function generateResults(providerKey) {
     var provider = GAME_DATABASE[providerKey];
     if (!provider) return [];
-    var allGames = provider.games;
+    var allGames = provider.games.filter(function(g) { return !isNonSlotGame(g.name); });
     var seed = getTimeSeed(providerKey, SCANNER_CONFIG.seedInterval);
     var rand = seededRandom(seed);
     var cfg = SCANNER_CONFIG;
@@ -622,7 +766,7 @@ function generateResults(providerKey) {
         if (tierRoll < cfg.hotPercent) { rtp = Math.floor(gameRand() * (cfg.maxRtp - cfg.hotThreshold + 1) + cfg.hotThreshold); status = 'hot'; }
         else if (tierRoll < cfg.hotPercent + cfg.warmPercent) { rtp = Math.floor(gameRand() * (cfg.hotThreshold - cfg.warmThreshold) + cfg.warmThreshold); status = 'warm'; }
         else { rtp = Math.floor(gameRand() * (cfg.warmThreshold - cfg.minRtp) + cfg.minRtp); status = 'cold'; }
-        return { name: g.name, img: g.img, provider: provider.name, rtp: rtp, status: status };
+        return { name: formatGameName(g.name), img: g.img, provider: provider.name, rtp: rtp, status: status };
     }).sort(function(a, b) { return b.rtp - a.rtp; });
 }
 
@@ -630,6 +774,12 @@ function loadGames(providerKey) {
     currentGames = generateResults(providerKey);
     currentGames.forEach(function(g, i) { g.rank = i + 1; });
     updateStats();
+    if (!currentGames.length) {
+        var top3 = document.getElementById('top3Section');
+        if (top3) top3.innerHTML = '';
+        renderGamesEmpty('Provider ni belum ada game scannable. Cuba pilih provider lain.');
+        return;
+    }
     renderTop3();
     renderRtpChart();
     renderGames();
@@ -675,19 +825,10 @@ function animateCounter(id, target) {
     var el = document.getElementById(id); if (!el) return;
     var cur = parseInt(el.textContent) || 0; if (cur === target) return;
     var step = target > cur ? 1 : -1;
-    var card = el.closest('.stat-card, .hero-stat-card');
     var t = setInterval(function() {
         cur += step;
         el.textContent = cur;
-        if (cur === target) {
-            clearInterval(t);
-            if (card) {
-                card.classList.remove('flash');
-                void card.offsetWidth;
-                card.classList.add('flash');
-                setTimeout(function() { card.classList.remove('flash'); }, 700);
-            }
-        }
+        if (cur === target) clearInterval(t);
     }, 50);
 }
 
@@ -699,7 +840,10 @@ function renderGames() {
     if (!gameList) return;
     var filtered = currentFilter === 'all' ? currentGames.slice(3) : currentGames.filter(function(g) { return g.status === currentFilter; });
     gameList.innerHTML = '';
-    if (!filtered.length) { gameList.innerHTML = '<div style="text-align:center;padding:30px;color:var(--text-dim);font-size:12px;">Tiada game ditemui untuk filter ini.</div>'; return; }
+    if (!filtered.length) {
+        renderGamesEmpty(currentFilter === 'all' ? 'Belum cukup game untuk dipaparkan di luar Top 3.' : 'Tiada game dalam kategori ' + currentFilter.toUpperCase() + '. Cuba tab lain.');
+        return;
+    }
     filtered.forEach(function(game, index) {
         var card = document.createElement('div');
         card.className = 'game-card ' + game.status;
@@ -806,6 +950,11 @@ function initBottomNav() {
             var href = this.getAttribute('href') || '';
             document.querySelectorAll('.nav-item').forEach(function(i) { i.classList.remove('active'); });
             this.classList.add('active');
+            if (href === '#providerSection') {
+                e.preventDefault();
+                openProviderModal();
+                return;
+            }
             if (href && href !== '#') {
                 e.preventDefault();
                 var target = document.querySelector(href);
@@ -827,16 +976,31 @@ function updateTimestamp() {
 // SHARE
 // ==========================================
 function shareResults(method) {
-    if (!currentGames.length) return;
+    if (!currentGames.length) {
+        showToast('Belum ada result untuk share. Scan dulu.', 'error');
+        return;
+    }
     var pName = GAME_DATABASE[currentProvider] ? GAME_DATABASE[currentProvider].name : currentProvider;
     var now = new Date().toLocaleString('ms-MY');
     var top5 = currentGames.slice(0, 5);
     var text = '🛡️ *SLOTPATCHER SCAN RESULT*\n🎮 Provider: ' + pName + '\n📅 ' + now + '\n────────────────────\n\n🏆 *TOP 5 GAME:*\n\n';
     top5.forEach(function(g, i) { text += (i+1) + '. ' + g.name + '\n   RTP: ' + g.rtp + '% ' + getStatusEmoji(g.status) + ' ' + g.status.toUpperCase() + '\n\n'; });
     text += '────────────────────\n🚀 Scan premium di Slotpatcher.com!\n';
-    if (method === 'whatsapp') window.open('https://wa.me/?text=' + encodeURIComponent(text), '_blank');
-    else if (method === 'telegram') window.open('https://t.me/share/url?url=' + encodeURIComponent(location.href) + '&text=' + encodeURIComponent(text), '_blank');
-    else navigator.clipboard.writeText(text).then(function() { var btn = document.querySelector('.share-btn-copy span'); if (btn) { btn.textContent = '✅'; setTimeout(function() { btn.textContent = '📋'; }, 2000); } });
+    if (method === 'whatsapp') {
+        window.open('https://wa.me/?text=' + encodeURIComponent(text), '_blank');
+        showToast('Dibuka ke WhatsApp', 'success');
+    } else if (method === 'telegram') {
+        window.open('https://t.me/share/url?url=' + encodeURIComponent(location.href) + '&text=' + encodeURIComponent(text), '_blank');
+        showToast('Dibuka ke Telegram', 'success');
+    } else if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(function() {
+            showToast('Result disalin ke clipboard', 'success');
+        }).catch(function() {
+            showToast('Gagal salin. Cuba lagi.', 'error');
+        });
+    } else {
+        showToast('Clipboard tak disokong di browser ini', 'error');
+    }
 }
 
 window.startScan = startScan;
