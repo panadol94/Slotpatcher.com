@@ -647,6 +647,13 @@ function startScan() {
     }
     isScanning = true;
     setFlowStep('scan');
+    var scanBtn = document.getElementById('scanButton');
+    if (scanBtn) {
+        scanBtn.classList.remove('popping');
+        void scanBtn.offsetWidth;
+        scanBtn.classList.add('popping');
+        setTimeout(function() { scanBtn.classList.remove('popping'); }, 750);
+    }
     updateProviderHint();
     var scanSection = document.getElementById('scanningSection');
     var resultsSection = document.getElementById('resultsSection');
