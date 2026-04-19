@@ -2528,51 +2528,33 @@ body.scan-modal-open { overflow: hidden; }
     gap: 0;
     z-index: 3;
     min-height: 44px;
-    min-width: 72px; /* Ensure minimum size to prevent collapse */
     height: 44px;
     overflow: visible;
     padding: 0 !important;
     display: flex;
     align-items: center;
     justify-content: center;
-    background: transparent;
-    border: none;
-    cursor: pointer;
-    font-family: inherit;
-    font-size: inherit;
-    color: inherit;
 }
 
-/* Centered scan button - use flexbox centered wrapper approach */
-.center-hack-btn::before {
-    content: '';
+.center-hack-btn .hack-btn-inner {
     position: absolute;
     left: 50%;
     top: -36px;
     transform: translateX(-50%);
     width: 72px;
     height: 72px;
-    border-radius: 50%;
+    margin: 0;
     background: radial-gradient(circle at 30% 25%, #c51f1f 0%, #950606 55%, #6e0404 100%);
     border: 3px solid var(--surface-white);
-    box-shadow:
-        0 6px 18px rgba(149, 6, 6, 0.50),
-        0 0 24px rgba(255, 140, 100, 0.40);
-    pointer-events: none;
-    z-index: 2;
-}
-
-.center-hack-btn .hack-btn-inner {
-    position: absolute;
-    left: 0;
-    right: 0;
-    top: 0;
-    bottom: 0;
+    border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    pointer-events: none;
-    z-index: 3;
+    cursor: pointer;
+    box-shadow:
+        0 6px 18px rgba(149, 6, 6, 0.50),
+        0 0 24px rgba(255, 140, 100, 0.40);
+    animation: discGlitch 4.2s steps(1, end) infinite;
 }
 
 .center-hack-btn > #scanButtonLabel {
@@ -2584,19 +2566,16 @@ body.scan-modal-open { overflow: hidden; }
 }
 
 @keyframes discGlitch {
-    0%, 100%  { filter: none; }
-    94%       { filter: none; }
-    95%       { filter: hue-rotate(25deg) saturate(1.4); }
-    96%       { filter: hue-rotate(-18deg) saturate(1.3); }
-    97%       { filter: hue-rotate(12deg); }
-    98%       { filter: none; }
+    0%, 100%  { transform: translate(0, 0); }
+    94%       { transform: translate(0, 0); filter: none; }
+    95%       { transform: translate(-1.5px, 1px); filter: hue-rotate(25deg) saturate(1.4); }
+    96%       { transform: translate(2px, -1px); filter: hue-rotate(-18deg) saturate(1.3); }
+    97%       { transform: translate(-1px, 1.5px); filter: hue-rotate(12deg); }
+    98%       { transform: translate(1px, 0); filter: none; }
 }
 
-.center-hack-btn.disabled::before {
+.center-hack-btn.disabled .hack-btn-inner {
     animation: none;
-    background: rgba(149, 6, 6, 0.35);
-    box-shadow: inset 0 -2px 4px rgba(0, 0, 0, 0.15);
-    cursor: not-allowed;
 }
 
 /* Warm glow halo behind disc (visible through curve cutout) */
@@ -2606,7 +2585,7 @@ body.scan-modal-open { overflow: hidden; }
 .center-hack-btn::after {
     content: '';
     position: absolute;
-    top: -40px; /* aligned with hack-btn-inner (top: -36px minus offset) */
+    top: -4px;
     left: 50%;
     transform: translateX(-50%);
     width: 74px;
@@ -2616,7 +2595,6 @@ body.scan-modal-open { overflow: hidden; }
     z-index: -1;
     pointer-events: none;
     animation: haloPulse 2.4s ease-in-out infinite;
-    margin-left: -37px; /* Ensure center alignment */
 }
 @keyframes haloPulse {
     0%, 100% { transform: translateX(-50%) scale(1); opacity: 0.85; }
