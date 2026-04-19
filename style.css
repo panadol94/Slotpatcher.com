@@ -1045,6 +1045,7 @@ body.provider-modal-open { overflow: hidden; }
 
 /* The dialog variant of .provider-section has its own shell */
 .provider-section.provider-modal {
+    position: fixed;
     width: auto;
     margin: 0;
     padding: 0;
@@ -1053,6 +1054,8 @@ body.provider-modal-open { overflow: hidden; }
     box-shadow: none;
     overflow: visible;
 }
+
+.provider-modal[hidden] { display: none; }
 
 /* =============================================================
    8. SCAN PANEL (progress)
