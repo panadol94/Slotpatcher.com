@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Trusted Companies — Slotpatcher.com</title>
-    <meta name="description" content="Senarai platform terverifikasi dari TipsMega888 untuk pemain Malaysia. 29 trusted companies dengan bonus dan promosi.">
+    <meta name="description" content="Senarai platform terverifikasi dari TipsMega888 untuk pemain Malaysia. Auto-sync trusted companies dengan bonus dan promosi terkini.">
     <link rel="icon" type="image/x-icon" href="../favicon.ico">
     <link rel="icon" type="image/png" sizes="32x32" href="../favicon.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -81,6 +81,17 @@
             margin: 0 auto;
             padding: var(--space-lg) var(--space-md);
         }
+
+        .trusted-source-status {
+            margin: 0 0 18px;
+            text-align: center;
+            font-size: 12px;
+            color: var(--text-dim);
+        }
+
+        .trusted-source-status.is-error {
+            color: #fca5a5;
+        }
     </style>
 </head>
 <body>
@@ -98,7 +109,7 @@
         <div class="trusted-content">
             <div class="trusted-stats-row">
                 <div class="trusted-stat-card">
-                    <div class="trusted-stat-value">29</div>
+                    <div class="trusted-stat-value" id="trustedPlatformCount">29</div>
                     <div class="trusted-stat-label">Trusted Platforms</div>
                 </div>
                 <div class="trusted-stat-card">
@@ -111,7 +122,9 @@
                 </div>
             </div>
 
-            <div class="trusted-company-grid">
+            <p class="trusted-source-status" id="trustedSourceStatus">Loading live companies from TipsMega888 API...</p>
+
+            <div class="trusted-company-grid" id="trustedCompanyGrid">
                 <a href="https://masuk10.com/Winbest" target="_blank" rel="noopener" class="trusted-company-card">
                     <div class="trusted-company-badge">🔥 TOP</div>
                     <div class="trusted-company-name">Winbest</div>
@@ -285,5 +298,79 @@
             <span>Data by TipsMega888</span>
         </div>
     </footer>
+
+    <script>
+        (function () {
+            var apiUrl = 'https://api.tipsmega888.com/api/companies';
+            var grid = document.getElementById('trustedCompanyGrid');
+            var platformCount = document.getElementById('trustedPlatformCount');
+            var sourceStatus = document.getElementById('trustedSourceStatus');
+
+            if (!grid || !platformCount || !sourceStatus) return;
+
+            function escapeHtml(value) {
+                return String(value == null ? '' : value)
+                    .replace(/&/g, '&amp;')
+                    .replace(/</g, '&lt;')
+                    .replace(/>/g, '&gt;')
+                    .replace(/"/g, '&quot;')
+                    .replace(/'/g, '&#39;');
+            }
+
+            function getCompanyBadge(company, index) {
+                if (index === 0) return '🔥 TOP';
+                return (company.mediaType || '').toLowerCase() === 'video' ? 'VIDEO' : '';
+            }
+
+            function renderTrustedCompanies(companies) {
+                var activeCompanies = companies.filter(function(company) {
+                    return company && company.status === 'ACTIVE';
+                });
+
+                platformCount.textContent = String(activeCompanies.length);
+
+                if (!activeCompanies.length) {
+                    sourceStatus.textContent = 'Tiada trusted company aktif dari API sekarang.';
+                    sourceStatus.classList.add('is-error');
+                    return;
+                }
+
+                grid.innerHTML = activeCompanies.map(function(company, index) {
+                    var badge = getCompanyBadge(company, index);
+                    var href = escapeHtml(company.link || '#');
+                    var name = escapeHtml(company.name || company.id || 'Trusted Company');
+                    var caption = escapeHtml(company.caption || 'Trusted company');
+
+                    return '<a href="' + href + '" target="_blank" rel="noopener" class="trusted-company-card">'
+                        + (badge ? '<div class="trusted-company-badge">' + escapeHtml(badge) + '</div>' : '')
+                        + '<div class="trusted-company-name">' + name + '</div>'
+                        + '<div class="trusted-company-caption">' + caption + '</div>'
+                        + '<div class="trusted-company-action">Daftar Sekarang →</div>'
+                        + '</a>';
+                }).join('');
+
+                sourceStatus.textContent = 'Live sync: ' + activeCompanies.length + ' trusted companies dari TipsMega888 API.';
+                sourceStatus.classList.remove('is-error');
+            }
+
+            fetch(apiUrl)
+                .then(function(response) {
+                    if (!response.ok) throw new Error('API ' + response.status);
+                    return response.json();
+                })
+                .then(function(payload) {
+                    if (!payload || !payload.ok || !Array.isArray(payload.companies)) {
+                        throw new Error('Invalid companies payload');
+                    }
+
+                    renderTrustedCompanies(payload.companies);
+                })
+                .catch(function(error) {
+                    console.error('Trusted companies API failed:', error);
+                    sourceStatus.textContent = 'Live API tak dapat dicapai sekarang. Fallback list dipaparkan.';
+                    sourceStatus.classList.add('is-error');
+                });
+        })();
+    </script>
 </body>
 </html>
