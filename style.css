@@ -5170,9 +5170,9 @@ body.provider-modal-open {
         0 0 0 1px rgba(240,181,72,0.25),
         0 10px 24px rgba(240,181,72,0.12);
 }
-.provider-modal .provider-card.active .provider-name {
+.provider-modal .provider-card.active .provider-name.provider-name {
     color: #fff !important;
-    font-weight: 600;
+    font-weight: 600 !important;
 }
 .provider-modal .provider-card .provider-check {
     position: absolute;
