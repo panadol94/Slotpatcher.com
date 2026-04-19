@@ -1153,3 +1153,155 @@ function shareResults(method) {
 window.startScan = startScan;
 window.shareResults = shareResults;
 console.log('%c Slotpatcher Live Scanner ', 'background: linear-gradient(135deg, #D4AF37, #FFD700); color: #1A0A2E; font-weight: bold; padding: 5px 10px; border-radius: 5px;');
+
+// ==========================================
+// PREMIUM HACKER LAYER (boot, matrix, session, telemetry)
+// ==========================================
+(function premiumHackerLayer() {
+    function onReady(fn) {
+        if (document.readyState !== 'loading') fn();
+        else document.addEventListener('DOMContentLoaded', fn);
+    }
+
+    // A: Boot overlay (once per session)
+    onReady(function bootOverlay() {
+        var overlay = document.getElementById('bootOverlay');
+        if (!overlay) return;
+        try {
+            if (sessionStorage.getItem('sp_boot_shown')) {
+                overlay.remove();
+                return;
+            }
+            sessionStorage.setItem('sp_boot_shown', '1');
+        } catch (e) { /* storage blocked — still run */ }
+
+        var log = document.getElementById('bootLog');
+        var lines = [
+            '> SLOTPATCHER OS v2.0.1',
+            '> Booting kernel............ [ OK ]',
+            '> Mounting RTP database..... [ OK ]',
+            '> Connecting secure node.... [ OK ]',
+            '> Encryption handshake...... AES-256',
+            '> Authenticating session.... [ OK ]',
+            '> ACCESS GRANTED',
+            '> Loading UI...'
+        ];
+        var cursor = document.createElement('span');
+        cursor.className = 'boot-cursor';
+        log.appendChild(cursor);
+
+        var dismissed = false;
+        function dismiss() {
+            if (dismissed) return;
+            dismissed = true;
+            overlay.classList.add('is-done');
+            setTimeout(function() { if (overlay.parentNode) overlay.remove(); }, 500);
+        }
+        overlay.addEventListener('click', dismiss);
+
+        var lineIdx = 0;
+        function typeNext() {
+            if (dismissed) return;
+            if (lineIdx >= lines.length) {
+                setTimeout(dismiss, 380);
+                return;
+            }
+            var line = lines[lineIdx++];
+            var charIdx = 0;
+            (function typeChar() {
+                if (dismissed) return;
+                if (charIdx >= line.length) {
+                    log.insertBefore(document.createTextNode('\n'), cursor);
+                    setTimeout(typeNext, 70);
+                    return;
+                }
+                log.insertBefore(document.createTextNode(line.charAt(charIdx++)), cursor);
+                setTimeout(typeChar, 14 + Math.random() * 10);
+            })();
+        }
+        typeNext();
+    });
+
+    // B: Matrix rain
+    onReady(function matrixRain() {
+        var canvas = document.getElementById('matrixRain');
+        if (!canvas) return;
+        var ctx = canvas.getContext('2d');
+        if (!ctx) return;
+        var fontSize = 14;
+        var drops = [];
+        function resize() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+            var cols = Math.ceil(canvas.width / fontSize);
+            drops = [];
+            for (var i = 0; i < cols; i++) drops.push(Math.random() * canvas.height / fontSize);
+        }
+        resize();
+        var resizeTimer;
+        window.addEventListener('resize', function() {
+            clearTimeout(resizeTimer);
+            resizeTimer = setTimeout(resize, 180);
+        });
+
+        var chars = 'アイウエオカキクケコサシスセソタチツABCDEF0123456789$%&#@';
+        function draw() {
+            ctx.fillStyle = 'rgba(11, 13, 15, 0.12)';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            ctx.font = fontSize + 'px "SF Mono", Consolas, monospace';
+            for (var i = 0; i < drops.length; i++) {
+                var text = chars.charAt(Math.floor(Math.random() * chars.length));
+                ctx.fillStyle = Math.random() > 0.92 ? '#22c55e' : '#950606';
+                ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+                if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) drops[i] = 0;
+                drops[i]++;
+            }
+        }
+        setInterval(draw, 70);
+    });
+
+    // D: Session ID + node
+    onReady(function sessionBadges() {
+        var sessEl = document.getElementById('secSession');
+        var nodeEl = document.getElementById('secNode');
+        if (sessEl) {
+            var h = '0123456789ABCDEF', id = '0x';
+            for (var i = 0; i < 8; i++) id += h.charAt(Math.floor(Math.random() * 16));
+            sessEl.textContent = id;
+        }
+        if (nodeEl) {
+            var nodes = ['SG-2', 'SG-4', 'MY-1', 'MY-3', 'KL-7', 'JKT-2'];
+            nodeEl.textContent = nodes[Math.floor(Math.random() * nodes.length)];
+        }
+    });
+
+    // E: Telemetry counters
+    onReady(function telemetry() {
+        var scansEl = document.getElementById('telScans');
+        var poolEl = document.getElementById('telPool');
+        var nodesEl = document.getElementById('telNodes');
+        if (!scansEl) return;
+        var scans = 47200 + Math.floor(Math.random() * 800);
+        var pool = 12700000 + Math.floor(Math.random() * 400000);
+        var totalNodes = 25;
+
+        function fmtN(n) { return n.toLocaleString('en-US'); }
+        function fmtPool(n) { return 'RM ' + (n / 1000000).toFixed(2) + 'M'; }
+        function bump(el) {
+            el.classList.remove('just-ticked');
+            void el.offsetWidth;
+            el.classList.add('just-ticked');
+        }
+        function tick(first) {
+            scans += first ? 0 : (1 + Math.floor(Math.random() * 3));
+            pool += first ? 0 : Math.floor(Math.random() * 2400);
+            var nodes = 22 + Math.floor(Math.random() * 4);
+            scansEl.textContent = fmtN(scans);
+            poolEl.textContent = fmtPool(pool);
+            nodesEl.textContent = nodes + '/' + totalNodes;
+            if (!first) { bump(scansEl); bump(poolEl); }
+        }
+        tick(true);
+        setInterval(tick, 3200);
+    });
+})();

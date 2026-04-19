@@ -3228,3 +3228,160 @@ select:focus-visible,
 
     .topbar-menu { display: none; }
 }
+
+/* =============================================================
+   22. PREMIUM HACKER LAYER (boot, matrix, scanlines, sec, telemetry)
+   ============================================================= */
+
+/* A: Boot overlay */
+.boot-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    background: #000;
+    color: #22c55e;
+    font-family: 'SF Mono', 'JetBrains Mono', Consolas, monospace;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px 16px;
+    cursor: pointer;
+    transition: opacity 0.4s ease;
+}
+.boot-overlay.is-done { opacity: 0; pointer-events: none; }
+.boot-log {
+    max-width: 540px;
+    width: 100%;
+    white-space: pre-wrap;
+    line-height: 1.7;
+    margin: 0;
+    color: #22c55e;
+    font-size: 12px;
+    font-family: inherit;
+    min-height: 180px;
+    text-shadow: 0 0 6px rgba(34, 197, 94, 0.45);
+}
+.boot-log .boot-cursor {
+    display: inline-block;
+    width: 8px;
+    height: 13px;
+    background: #22c55e;
+    vertical-align: -2px;
+    animation: bootBlink 0.55s steps(2) infinite;
+}
+@keyframes bootBlink { 50% { opacity: 0; } }
+.boot-skip {
+    margin-top: 24px;
+    font-size: 10px;
+    color: rgba(255, 255, 255, 0.35);
+    font-family: inherit;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+}
+
+/* B: Matrix rain */
+.matrix-rain {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    opacity: 0.08;
+    pointer-events: none;
+}
+
+/* C: CRT scanline overlay */
+.crt-scanlines {
+    position: fixed;
+    inset: 0;
+    z-index: 9998;
+    pointer-events: none;
+    background: repeating-linear-gradient(
+        0deg,
+        rgba(0, 0, 0, 0.06) 0px,
+        rgba(0, 0, 0, 0.06) 1px,
+        transparent 1px,
+        transparent 3px
+    );
+    mix-blend-mode: multiply;
+}
+
+/* D: Security strip */
+.sec-strip {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 5px 12px;
+    background: var(--ink-primary);
+    color: rgba(255, 255, 255, 0.78);
+    font-family: 'SF Mono', 'JetBrains Mono', Consolas, monospace;
+    font-size: 9px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    overflow-x: auto;
+    white-space: nowrap;
+    scrollbar-width: none;
+}
+.sec-strip::-webkit-scrollbar { display: none; }
+.sec-item { flex-shrink: 0; display: inline-flex; align-items: center; gap: 5px; }
+.sec-item b { color: #22c55e; font-weight: 700; letter-spacing: 0.02em; }
+.sec-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #22c55e;
+    box-shadow: 0 0 4px rgba(34, 197, 94, 0.7);
+    animation: secDotPulse 1.4s ease-in-out infinite;
+}
+@keyframes secDotPulse {
+    0%, 100% { opacity: 0.5; }
+    50% { opacity: 1; }
+}
+
+/* E: Telemetry strip */
+.telemetry-strip {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 4px;
+    padding: 10px 12px;
+    background: var(--surface-cream);
+    border-bottom: 1px solid rgba(149, 6, 6, 0.12);
+}
+.tel-item {
+    text-align: center;
+    position: relative;
+}
+.tel-item + .tel-item::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 20%;
+    bottom: 20%;
+    width: 1px;
+    background: rgba(149, 6, 6, 0.15);
+}
+.tel-label {
+    font-size: 9px;
+    color: var(--ink-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    font-weight: 600;
+}
+.tel-value {
+    font-family: 'SF Mono', 'JetBrains Mono', Consolas, monospace;
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--brand-red);
+    margin-top: 2px;
+    letter-spacing: 0.02em;
+    transition: transform 0.2s ease;
+}
+.tel-value.just-ticked {
+    animation: telTick 0.3s ease-out;
+}
+@keyframes telTick {
+    0%   { transform: scale(1.08); color: #22c55e; }
+    100% { transform: scale(1); color: var(--brand-red); }
+}
