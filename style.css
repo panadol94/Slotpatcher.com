@@ -5253,3 +5253,11 @@ body > nav.bottom-nav {
         max-width: 100% !important;
     }
 }
+
+/* =============================================
+   FORCE VW WIDTH - LAST ATTEMPT
+   ============================================= */
+@media (max-width: 480px) {
+    .bottom-nav { width: 100vw !important; left: 0 !important; right: 0 !important; }
+    .bottom-nav > * { width: 20vw !important; flex: 0 0 20vw !important; }
+}
