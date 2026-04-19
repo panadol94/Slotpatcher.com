@@ -55,20 +55,26 @@ assert.match(
 
 assert.match(
   trustedHtml,
-  /resolveMediaUrl\(/,
-  'expected trusted page to resolve storageUrl values into absolute media URLs'
+  /renderTrustedCompanyCard\(/,
+  'expected trusted page to render cards through a dedicated review-card helper'
+);
+
+assert.doesNotMatch(
+  trustedHtml,
+  /preload="metadata"/,
+  'expected trusted page to stop preloading video metadata for every listing card'
 );
 
 assert.match(
   trustedHtml,
-  /renderCompanyMedia\(/,
-  'expected trusted page to render photo\/video previews from storageUrl'
+  /trusted-company-review-card/,
+  'expected trusted page cards to use the new review-card layout shell'
 );
 
 assert.match(
   trustedHtml,
-  /trusted-company-media-frame/,
-  'expected trusted page cards to include a dedicated media frame'
+  /trusted-company-facts/,
+  'expected trusted page cards to render a comparison-style facts row'
 );
 
 assert.match(
