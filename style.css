@@ -5081,3 +5081,48 @@ body > nav.bottom-nav {
         flex: 1.2;
     }
 }
+
+/* =============================================
+   GRID OVERRIDE - FINAL ATTEMPT
+   ============================================= */
+@media (max-width: 480px) {
+    .bottom-nav {
+        display: grid !important;
+        grid-template-columns: repeat(5, 1fr) !important;
+        grid-template-areas: "trusted download scan tutorial profile" !important;
+        gap: 1px !important;
+        left: 2px !important;
+        right: 2px !important;
+        width: calc(100% - 4px) !important;
+        padding: 4px 1px !important;
+    }
+    
+    .bottom-nav > a.nav-item:nth-child(1) { grid-area: trusted !important; }
+    .bottom-nav > a.nav-item:nth-child(2) { grid-area: download !important; }
+    .bottom-nav > a.nav-item:nth-child(3) { grid-area: scan !important; }
+    .bottom-nav > a.nav-item:nth-child(4) { grid-area: tutorial !important; }
+    .bottom-nav > a.nav-item:nth-child(5) { grid-area: profile !important; }
+    
+    .bottom-nav > a.nav-item {
+        display: flex !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+        min-width: 0 !important;
+        padding: 4px 0 !important;
+        overflow: hidden !important;
+    }
+    
+    .bottom-nav > a.nav-item span {
+        display: block !important;
+        font-size: 5.5px !important;
+        white-space: nowrap !important;
+        overflow: hidden !important;
+        text-overflow: ellipsis !important;
+    }
+    
+    .center-hack-btn {
+        position: relative !important;
+        top: -4px !important;
+        margin: 0 !important;
+    }
+}
