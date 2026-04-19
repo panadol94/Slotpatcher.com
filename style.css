@@ -3056,28 +3056,37 @@ body.scan-modal-open {
         text-align: center;
     }
     .bottom-nav {
-        left: 12px;
-        right: 12px;
-        width: auto;
-        bottom: 10px;
-        padding: 4px 4px 8px;
-        border-radius: 18px;
+        left: 4px;
+        right: 4px;
+        width: calc(100% - 8px);
+        min-width: 0;
+        bottom: 8px;
+        padding: 6px 2px;
+        border-radius: 16px;
     }
     .nav-item {
-        min-height: 34px;
-        padding: 4px 3px 3px;
+        flex: 1 1 20%;
+        min-width: 0;
+        min-height: 56px;
+        padding: 5px 1px 3px;
         font-size: 7px;
     }
     .nav-item:not(.center-hack-btn) span {
-        display: none;
+        display: block;
+        font-size: 6.5px;
+        max-width: 100%;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
     }
     .nav-item > svg {
-        width: 18px;
-        height: 18px;
-        padding: 3px;
+        width: 22px;
+        height: 22px;
+        padding: 4px;
     }
     .center-hack-btn {
-        top: -8px;
+        top: -6px;
+        flex: 1 1 20%;
         min-width: 0;
     }
     .hack-btn-inner,
