@@ -260,6 +260,27 @@
             var photoCount = document.getElementById('trustedPhotoCount');
             var sourceStatus = document.getElementById('trustedSourceStatus');
             var trustedThumbCache = Object.create(null);
+            var trustedVideoThumbs = {
+                'a9play': '/assets/trusted-company-thumbs/a9play.webp',
+                'aceplay88': '/assets/trusted-company-thumbs/aceplay88.webp',
+                'alladin99': '/assets/trusted-company-thumbs/alladin99.webp',
+                'atm88': '/assets/trusted-company-thumbs/atm88.webp',
+                'cateye': '/assets/trusted-company-thumbs/cateye.webp',
+                'club99': '/assets/trusted-company-thumbs/club99.webp',
+                'empire88': '/assets/trusted-company-thumbs/empire88.webp',
+                'everwin': '/assets/trusted-company-thumbs/everwin.webp',
+                'henghongbet': '/assets/trusted-company-thumbs/henghongbet.webp',
+                'icrown88': '/assets/trusted-company-thumbs/icrown88.webp',
+                'iwin88': '/assets/trusted-company-thumbs/iwin88.webp',
+                'jomgowin': '/assets/trusted-company-thumbs/jomgowin.webp',
+                'kuatbox': '/assets/trusted-company-thumbs/kuatbox.webp',
+                'm9': '/assets/trusted-company-thumbs/m9.webp',
+                'poker9': '/assets/trusted-company-thumbs/poker9.webp',
+                'star8': '/assets/trusted-company-thumbs/star8.webp',
+                'u9play': '/assets/trusted-company-thumbs/u9play.webp',
+                'winbox': '/assets/trusted-company-thumbs/winbox.webp',
+                'winway33': '/assets/trusted-company-thumbs/winway33.webp'
+            };
             var fallbackCompanies = [
                 { id: 'Winbest', name: 'Winbest', link: 'https://masuk10.com/Winbest', caption: '288% Bonus', status: 'ACTIVE', mediaType: 'photo', updatedAt: '2026-04-09T00:00:00.000Z' },
                 { id: 'Ezrich88', name: 'Ezrich88', link: 'http://ezchat4u.com/REZ88', caption: '100% bonus', status: 'ACTIVE', mediaType: 'photo', updatedAt: '2026-04-02T00:00:00.000Z' },
@@ -369,6 +390,13 @@
                 }
             }
 
+            function normalizeTrustedThumbKey(value) {
+                return String(value || '')
+                    .toLowerCase()
+                    .replace(/[^a-z0-9]+/g, '')
+                    .trim();
+            }
+
             function hashTrustedValue(value) {
                 var input = String(value || 'trusted-company');
                 var hash = 0;
@@ -454,6 +482,15 @@
                     return {
                         kind: 'photo',
                         src: resolveMediaUrl(company.storageUrl),
+                        loading: 'lazy'
+                    };
+                }
+
+                var thumbKey = normalizeTrustedThumbKey(company && (company.id || company.name) || '');
+                if (thumbKey && trustedVideoThumbs[thumbKey]) {
+                    return {
+                        kind: 'video-thumb',
+                        src: trustedVideoThumbs[thumbKey],
                         loading: 'lazy'
                     };
                 }
