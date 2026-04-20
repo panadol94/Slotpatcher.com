@@ -3940,9 +3940,9 @@ select:focus-visible,
     color: inherit;
     overflow: hidden;
     border-radius: 22px;
-    border: 1px solid rgba(255, 255, 255, 0.06);
-    background: linear-gradient(180deg, rgba(17, 19, 25, 0.98), rgba(10, 12, 18, 0.98));
-    box-shadow: 0 16px 38px rgba(0, 0, 0, 0.18);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    background: linear-gradient(160deg, rgba(8, 10, 14, 0.98), rgba(12, 15, 22, 0.98));
+    box-shadow: 0 20px 46px rgba(0, 0, 0, 0.28);
     transition: transform 0.24s ease, border-color 0.24s ease, box-shadow 0.24s ease, background 0.24s ease;
 }
 
@@ -3969,23 +3969,23 @@ select:focus-visible,
 .trusted-company-card:hover,
 .trusted-company-review-card:hover {
     transform: translateY(-3px);
-    border-color: rgba(240, 181, 72, 0.18);
-    box-shadow: 0 24px 50px rgba(0, 0, 0, 0.24);
-    background: linear-gradient(180deg, rgba(20, 23, 30, 0.99), rgba(11, 13, 20, 0.99));
+    border-color: rgba(240, 181, 72, 0.2);
+    box-shadow: 0 26px 56px rgba(0, 0, 0, 0.34);
+    background: linear-gradient(160deg, rgba(10, 13, 18, 0.99), rgba(15, 18, 26, 0.99));
 }
 
 .trusted-company-shell {
     display: grid;
-    grid-template-columns: minmax(176px, 220px) minmax(0, 1fr) minmax(132px, 158px);
-    gap: 0 18px;
+    grid-template-columns: minmax(164px, 198px) minmax(0, 1fr) minmax(120px, 144px);
+    gap: 0 16px;
     align-items: stretch;
 }
 
 .trusted-company-leading {
     display: grid;
     align-content: center;
-    gap: 12px;
-    padding: 18px 0 18px 18px;
+    gap: 10px;
+    padding: 16px 0 16px 16px;
 }
 
 .trusted-company-index-badge {
@@ -4006,26 +4006,26 @@ select:focus-visible,
 
 .trusted-company-identity {
     display: grid;
-    gap: 10px;
-    padding: 16px;
+    gap: 9px;
+    padding: 14px;
     border-radius: 18px;
-    background: linear-gradient(180deg, rgba(255, 255, 255, 0.03), rgba(255, 255, 255, 0.015));
-    border: 1px solid rgba(255, 255, 255, 0.06);
-    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.03);
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.025), rgba(255, 255, 255, 0.012));
+    border: 1px solid rgba(240, 181, 72, 0.08);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.03), inset 0 -18px 28px rgba(0, 0, 0, 0.18);
 }
 
 .trusted-company-thumb {
-    width: 58px;
-    height: 58px;
+    width: 56px;
+    height: 56px;
     border-radius: 16px;
     position: relative;
     overflow: hidden;
     display: flex;
     align-items: center;
     justify-content: center;
-    background: linear-gradient(180deg, rgba(197, 31, 31, 0.14), rgba(197, 31, 31, 0.05));
-    border: 1px solid rgba(197, 31, 31, 0.16);
-    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04);
+    background: linear-gradient(180deg, rgba(197, 31, 31, 0.12), rgba(197, 31, 31, 0.04));
+    border: 1px solid rgba(240, 181, 72, 0.12);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04), 0 10px 22px rgba(0, 0, 0, 0.16);
 }
 
 .trusted-company-thumb-image {
@@ -4033,7 +4033,11 @@ select:focus-visible,
     height: 100%;
     object-fit: cover;
     display: block;
-    background: rgba(11, 13, 19, 0.94);
+    background: rgba(8, 10, 14, 0.96);
+}
+
+.trusted-company-thumb.is-generated {
+    background: linear-gradient(180deg, rgba(240, 181, 72, 0.06), rgba(255, 255, 255, 0.02));
 }
 
 .trusted-company-thumb-fallback {
@@ -4074,9 +4078,9 @@ select:focus-visible,
 .trusted-company-main {
     display: grid;
     align-content: center;
-    gap: 10px;
+    gap: 8px;
     min-width: 0;
-    padding: 18px 0;
+    padding: 16px 0;
 }
 
 .trusted-company-topline {
@@ -4088,7 +4092,7 @@ select:focus-visible,
 
 .trusted-company-name {
     font-family: var(--font-display);
-    font-size: clamp(22px, 2.8vw, 28px);
+    font-size: clamp(20px, 2.5vw, 26px);
     font-weight: 800;
     color: var(--text-bright);
     line-height: 1.06;
@@ -4104,27 +4108,27 @@ select:focus-visible,
 .trusted-company-chip {
     display: inline-flex;
     align-items: center;
-    padding: 5px 9px;
+    padding: 4px 8px;
     border-radius: 999px;
     background: rgba(255, 255, 255, 0.04);
     border: 1px solid rgba(255, 255, 255, 0.08);
     color: rgba(240, 238, 232, 0.78);
-    font-size: 10px;
+    font-size: 9px;
     font-weight: 700;
     letter-spacing: 0.08em;
     text-transform: uppercase;
 }
 
 .trusted-company-caption {
-    font-size: clamp(16px, 2vw, 20px);
+    font-size: clamp(15px, 1.9vw, 18px);
     font-weight: 700;
     color: #f4d68b;
-    line-height: 1.35;
+    line-height: 1.3;
 }
 
 .trusted-company-subcopy {
-    font-size: 13px;
-    line-height: 1.6;
+    font-size: 12px;
+    line-height: 1.5;
     color: var(--text-dim);
 }
 
@@ -4138,12 +4142,12 @@ select:focus-visible,
     display: inline-flex;
     align-items: center;
     gap: 6px;
-    padding: 6px 10px;
+    padding: 5px 9px;
     border-radius: 999px;
     background: rgba(255, 255, 255, 0.03);
     border: 1px solid rgba(255, 255, 255, 0.06);
     color: #d0d6e0;
-    font-size: 12px;
+    font-size: 11px;
     font-weight: 600;
     line-height: 1;
 }
@@ -4152,7 +4156,7 @@ select:focus-visible,
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 18px 18px 18px 0;
+    padding: 16px 16px 16px 0;
 }
 
 .trusted-company-cta {
@@ -4160,16 +4164,16 @@ select:focus-visible,
     align-items: center;
     justify-content: center;
     width: 100%;
-    max-width: 142px;
-    padding: 12px 16px;
+    max-width: 132px;
+    padding: 11px 14px;
     border-radius: 999px;
-    background: rgba(197, 31, 31, 0.08);
+    background: rgba(197, 31, 31, 0.06);
     border: 1px solid rgba(197, 31, 31, 0.22);
     box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04);
     color: #fff;
-    font-size: 12px;
+    font-size: 11px;
     font-weight: 800;
-    letter-spacing: 0.08em;
+    letter-spacing: 0.1em;
     text-transform: uppercase;
     transition: transform 0.2s ease, border-color 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
 }
@@ -4186,10 +4190,10 @@ select:focus-visible,
     grid-column: 1 / -1;
     display: grid;
     grid-template-columns: repeat(4, minmax(0, 1fr));
-    gap: 12px;
-    padding: 14px 18px 18px;
+    gap: 10px;
+    padding: 12px 16px 16px;
     border-top: 1px solid rgba(255, 255, 255, 0.06);
-    background: linear-gradient(180deg, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0));
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.018), rgba(255, 255, 255, 0));
 }
 
 .trusted-company-fact {
@@ -4207,7 +4211,7 @@ select:focus-visible,
 }
 
 .trusted-company-fact-body {
-    font-size: 14px;
+    font-size: 13px;
     font-weight: 700;
     color: var(--text-primary);
     white-space: nowrap;
@@ -4282,6 +4286,89 @@ select:focus-visible,
     .trusted-company-facts {
         grid-template-columns: repeat(2, minmax(0, 1fr));
         padding: 14px 18px 18px;
+    }
+}
+
+@media (max-width: 640px) {
+    .trusted-company-card,
+    .trusted-company-review-card {
+        border-radius: 20px;
+    }
+
+    .trusted-company-shell {
+        grid-template-columns: 84px minmax(0, 1fr);
+        gap: 0 12px;
+    }
+
+    .trusted-company-leading {
+        align-content: start;
+        gap: 8px;
+        padding: 14px 0 0 14px;
+    }
+
+    .trusted-company-index-badge {
+        padding: 6px 8px;
+        font-size: 10px;
+    }
+
+    .trusted-company-identity {
+        padding: 10px;
+        border-radius: 16px;
+    }
+
+    .trusted-company-thumb {
+        width: 52px;
+        height: 52px;
+        border-radius: 14px;
+    }
+
+    .trusted-company-signal {
+        gap: 6px;
+        font-size: 10px;
+    }
+
+    .trusted-company-main {
+        gap: 7px;
+        padding: 14px 14px 10px 0;
+    }
+
+    .trusted-company-name {
+        font-size: 19px;
+    }
+
+    .trusted-company-chip-row {
+        justify-content: flex-start;
+        gap: 6px;
+    }
+
+    .trusted-company-caption {
+        font-size: 14px;
+    }
+
+    .trusted-company-subcopy {
+        font-size: 11px;
+    }
+
+    .trusted-company-actions {
+        grid-column: 2;
+        padding: 0 14px 12px 0;
+        justify-content: flex-start;
+    }
+
+    .trusted-company-cta {
+        width: auto;
+        min-width: 116px;
+        max-width: none;
+        padding: 10px 14px;
+    }
+
+    .trusted-company-facts {
+        gap: 8px;
+        padding: 12px 14px 14px;
+    }
+
+    .trusted-company-fact-body {
+        font-size: 12px;
     }
 }
 

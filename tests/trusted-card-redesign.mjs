@@ -78,4 +78,40 @@ assert.match(
   'expected trusted CTA to become a subtler bordered action that matches Slotpatcher theme better'
 );
 
+assert.doesNotMatch(
+  trustedHtml,
+  /google\.com\/s2\/favicons/,
+  'expected trusted cards to stop relying on external Google favicon fetches for non-photo listings'
+);
+
+assert.match(
+  trustedHtml,
+  /var\s+trustedThumbCache\s*=\s*Object\.create\(null\)/,
+  'expected trusted page to cache generated thumb treatments locally for more consistent renders'
+);
+
+assert.match(
+  trustedHtml,
+  /buildTrustedThumbDataUrl\(/,
+  'expected trusted page to generate a deterministic custom SVG thumb for non-photo listings'
+);
+
+assert.match(
+  trustedHtml,
+  /var\s+cacheKey\s*=\s*\[\s*company && company\.id,\s*company && company\.name,\s*company && company\.link\s*\]/,
+  'expected trusted thumb cache key to include id, name, and link so cached SVG thumbs stay correct when listing metadata changes'
+);
+
+assert.match(
+  styleCss,
+  /\.trusted-company-card,\s*[\s\S]*background:\s*linear-gradient\(160deg, rgba\(8, 10, 14, 0\.98\), rgba\(12, 15, 22, 0\.98\)\)/,
+  'expected trusted cards to move to a darker luxury surface treatment'
+);
+
+assert.match(
+  styleCss,
+  /@media \(max-width: 640px\)[\s\S]*\.trusted-company-shell\s*\{[\s\S]*grid-template-columns:\s*84px minmax\(0, 1fr\)/,
+  'expected trusted cards to use a tighter two-column mobile layout instead of a tall stacked shell'
+);
+
 console.log('Trusted card redesign checks passed.');

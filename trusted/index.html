@@ -259,6 +259,7 @@
             var videoCount = document.getElementById('trustedVideoCount');
             var photoCount = document.getElementById('trustedPhotoCount');
             var sourceStatus = document.getElementById('trustedSourceStatus');
+            var trustedThumbCache = Object.create(null);
             var fallbackCompanies = [
                 { id: 'Winbest', name: 'Winbest', link: 'https://masuk10.com/Winbest', caption: '288% Bonus', status: 'ACTIVE', mediaType: 'photo', updatedAt: '2026-04-09T00:00:00.000Z' },
                 { id: 'Ezrich88', name: 'Ezrich88', link: 'http://ezchat4u.com/REZ88', caption: '100% bonus', status: 'ACTIVE', mediaType: 'photo', updatedAt: '2026-04-02T00:00:00.000Z' },
@@ -289,17 +290,6 @@
                     var aTime = new Date(a.updatedAt || a.createdAt || 0).getTime();
                     var bTime = new Date(b.updatedAt || b.createdAt || 0).getTime();
                     return bTime - aTime;
-                });
-            }
-
-            function formatUpdatedAt(value) {
-                if (!value) return 'Updated recently';
-                var date = new Date(value);
-                if (isNaN(date.getTime())) return 'Updated recently';
-                return 'Updated ' + date.toLocaleDateString('en-MY', {
-                    day: 'numeric',
-                    month: 'short',
-                    year: 'numeric'
                 });
             }
 
@@ -347,27 +337,99 @@
                 }
             }
 
-            function getCompanyThumbUrl(company) {
-                if (!company) return '';
-                if (String(company.mediaType || '').toLowerCase() === 'photo' && company.storageUrl) {
-                    return resolveMediaUrl(company.storageUrl);
+            function hashTrustedValue(value) {
+                var input = String(value || 'trusted-company');
+                var hash = 0;
+                for (var i = 0; i < input.length; i += 1) {
+                    hash = (hash * 31 + input.charCodeAt(i)) >>> 0;
                 }
-                if (company.link) {
-                    return 'https://www.google.com/s2/favicons?sz=128&domain_url=' + encodeURIComponent(company.link);
+                return hash;
+            }
+
+            function sanitizeThumbLabel(value, fallback) {
+                var cleaned = String(value || '')
+                    .replace(/[^A-Za-z0-9. ]+/g, ' ')
+                    .replace(/\s+/g, ' ')
+                    .trim();
+                return cleaned || fallback;
+            }
+
+            function buildTrustedThumbDataUrl(company) {
+                var cacheKey = [
+                    company && company.id,
+                    company && company.name,
+                    company && company.link
+                ].map(function (part) {
+                    return String(part || '').trim().toLowerCase();
+                }).join('|') || 'trusted-company';
+                if (trustedThumbCache[cacheKey]) return trustedThumbCache[cacheKey];
+
+                var palettes = [
+                    { base: '#1f1014', depth: '#09090d', edge: '#f0b548', accent: '#ffe09a', meta: '#f9ebc5', glow: '#5e151c' },
+                    { base: '#15101e', depth: '#09090f', edge: '#c592ff', accent: '#ecd4ff', meta: '#f4ebff', glow: '#35205d' },
+                    { base: '#112019', depth: '#090d0b', edge: '#6ad7a7', accent: '#cff9e5', meta: '#ebfff7', glow: '#10382a' },
+                    { base: '#22170f', depth: '#0c0908', edge: '#ffb16b', accent: '#ffd9b1', meta: '#fff0dc', glow: '#5c2b12' }
+                ];
+                var palette = palettes[hashTrustedValue(cacheKey) % palettes.length];
+                var initials = sanitizeThumbLabel(getCompanyInitials(company && (company.name || company.id) || 'Trusted Company'), 'TC').slice(0, 2).toUpperCase();
+                var domainLabel = sanitizeThumbLabel(extractDomain(company && company.link || ''), 'DIRECT').replace(/^WWW\./i, '').slice(0, 16).toUpperCase();
+                var svg = ''
+                    + '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120">'
+                    + '<defs>'
+                    + '<linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">'
+                    + '<stop offset="0%" stop-color="' + palette.base + '"/>'
+                    + '<stop offset="100%" stop-color="' + palette.depth + '"/>'
+                    + '</linearGradient>'
+                    + '<linearGradient id="edge" x1="0" y1="0" x2="1" y2="1">'
+                    + '<stop offset="0%" stop-color="' + palette.edge + '" stop-opacity="0.95"/>'
+                    + '<stop offset="100%" stop-color="#ffffff" stop-opacity="0.18"/>'
+                    + '</linearGradient>'
+                    + '<radialGradient id="glow" cx="50%" cy="42%" r="56%">'
+                    + '<stop offset="0%" stop-color="' + palette.glow + '" stop-opacity="0.82"/>'
+                    + '<stop offset="100%" stop-color="' + palette.glow + '" stop-opacity="0"/>'
+                    + '</radialGradient>'
+                    + '</defs>'
+                    + '<rect width="120" height="120" rx="30" fill="url(#bg)"/>'
+                    + '<rect x="5" y="5" width="110" height="110" rx="25" fill="rgba(255,255,255,0.03)" stroke="url(#edge)" stroke-width="1.4"/>'
+                    + '<rect x="14" y="16" width="92" height="16" rx="8" fill="rgba(255,255,255,0.06)" stroke="rgba(255,255,255,0.08)" stroke-width="0.8"/>'
+                    + '<text x="60" y="27" text-anchor="middle" font-family="Poppins, Arial, sans-serif" font-size="8.5" font-weight="700" letter-spacing="1.4" fill="' + palette.meta + '">' + domainLabel + '</text>'
+                    + '<circle cx="60" cy="66" r="34" fill="url(#glow)"/>'
+                    + '<rect x="26" y="43" width="68" height="48" rx="18" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.12)" stroke-width="1"/>'
+                    + '<text x="60" y="74" text-anchor="middle" font-family="Poppins, Arial, sans-serif" font-size="30" font-weight="800" letter-spacing="1" fill="' + palette.accent + '">' + initials + '</text>'
+                    + '<path d="M26 97H94" stroke="' + palette.edge + '" stroke-opacity="0.46" stroke-width="1.4" stroke-linecap="round"/>'
+                    + '<circle cx="60" cy="97" r="3.2" fill="' + palette.accent + '"/>'
+                    + '</svg>';
+                var dataUrl = 'data:image/svg+xml;charset=UTF-8,' + encodeURIComponent(svg);
+                trustedThumbCache[cacheKey] = dataUrl;
+                return dataUrl;
+            }
+
+            function getCompanyThumbAsset(company) {
+                if (company && String(company.mediaType || '').toLowerCase() === 'photo' && company.storageUrl) {
+                    return {
+                        kind: 'photo',
+                        src: resolveMediaUrl(company.storageUrl),
+                        loading: 'lazy'
+                    };
                 }
-                return '';
+
+                return {
+                    kind: 'generated',
+                    src: buildTrustedThumbDataUrl(company || {}),
+                    loading: 'lazy'
+                };
             }
 
             function renderCompanyThumb(company) {
                 var name = escapeHtml(company.name || company.id || 'Trusted Company');
                 var initials = escapeHtml(getCompanyInitials(company.name || company.id || 'Trusted Company'));
-                var thumbUrl = getCompanyThumbUrl(company);
-                if (!thumbUrl) {
+                var thumbAsset = getCompanyThumbAsset(company);
+                if (!thumbAsset || !thumbAsset.src) {
                     return '<div class="trusted-company-thumb is-fallback"><span class="trusted-company-thumb-fallback">' + initials + '</span></div>';
                 }
-                return '<div class="trusted-company-thumb">'
+                return '<div class="trusted-company-thumb is-' + escapeHtml(thumbAsset.kind) + '">'
                     + '<span class="trusted-company-thumb-fallback">' + initials + '</span>'
-                    + '<img class="trusted-company-thumb-image" src="' + escapeHtml(thumbUrl) + '" alt="' + name + '" loading="lazy" decoding="async" onerror="this.style.display=\'none\'; this.parentNode.classList.add(\'is-fallback\');">'
+                    + '<img class="trusted-company-thumb-image" src="' + escapeHtml(thumbAsset.src) + '" alt="' + name + '" loading="' + escapeHtml(thumbAsset.loading || 'lazy') + '" decoding="async" onerror="this.style.display=\'none\'; this.parentNode.classList.add(\'is-fallback\');">'
                     + '</div>';
             }
 
@@ -375,7 +437,6 @@
                 var href = escapeHtml(company.link || '#');
                 var name = escapeHtml(company.name || company.id || 'Trusted Company');
                 var caption = escapeHtml(company.caption || 'Trusted offer');
-                var updatedLabel = escapeHtml(formatUpdatedAt(company.updatedAt || company.createdAt));
                 var factDate = escapeHtml(formatFactDate(company.updatedAt || company.createdAt));
                 var mediaType = escapeHtml(String(company.mediaType || 'listing').toUpperCase());
                 var promoTag = escapeHtml(detectPromoTag(company.caption) || 'General');
@@ -403,7 +464,7 @@
                     + '</div>'
                     + '</div>'
                     + '<div class="trusted-company-caption">' + caption + '</div>'
-                    + '<div class="trusted-company-subcopy">Updated ' + factDate + ' · Active trusted link</div>'
+                    + '<div class="trusted-company-subcopy">Live sync · ' + factDate + '</div>'
                     + '<div class="trusted-company-meta-row">'
                     + '<span class="trusted-company-meta-pill">' + domain + '</span>'
                     + '<span class="trusted-company-meta-pill">' + mediaType + '</span>'
