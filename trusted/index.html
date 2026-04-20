@@ -322,6 +322,38 @@
                 return chips.filter(Boolean).slice(0, 2);
             }
 
+            function getTrustedRankMeta(index) {
+                if (index === 0) {
+                    return {
+                        kicker: 'Prime Tier',
+                        label: 'Top Signal',
+                        cardClass: 'is-top-tier is-top-1'
+                    };
+                }
+
+                if (index === 1) {
+                    return {
+                        kicker: 'Elite Tier',
+                        label: 'High Confidence',
+                        cardClass: 'is-top-tier is-top-2'
+                    };
+                }
+
+                if (index === 2) {
+                    return {
+                        kicker: 'Select Tier',
+                        label: 'Fast Access',
+                        cardClass: 'is-top-tier is-top-3'
+                    };
+                }
+
+                return {
+                    kicker: 'Rank Position',
+                    label: 'Verified Listing',
+                    cardClass: ''
+                };
+            }
+
             function getCompanyInitials(name) {
                 var parts = String(name || 'Trusted Company').match(/[A-Za-z0-9]+/g) || [];
                 if (!parts.length) return 'TC';
@@ -404,11 +436,33 @@
                 return dataUrl;
             }
 
+            function getLinkedThumbUrl(company) {
+                if (!company || !company.link) return '';
+                try {
+                    var targetUrl = new URL(company.link);
+                    if (targetUrl.protocol !== 'http:' && targetUrl.protocol !== 'https:') {
+                        return '';
+                    }
+                    return '/api/trusted-icon?target=' + encodeURIComponent(targetUrl.toString());
+                } catch (error) {
+                    return '';
+                }
+            }
+
             function getCompanyThumbAsset(company) {
                 if (company && String(company.mediaType || '').toLowerCase() === 'photo' && company.storageUrl) {
                     return {
                         kind: 'photo',
                         src: resolveMediaUrl(company.storageUrl),
+                        loading: 'lazy'
+                    };
+                }
+
+                var linkedThumbUrl = getLinkedThumbUrl(company);
+                if (linkedThumbUrl) {
+                    return {
+                        kind: 'linked',
+                        src: linkedThumbUrl,
                         loading: 'lazy'
                     };
                 }
@@ -424,11 +478,12 @@
                 var name = escapeHtml(company.name || company.id || 'Trusted Company');
                 var initials = escapeHtml(getCompanyInitials(company.name || company.id || 'Trusted Company'));
                 var thumbAsset = getCompanyThumbAsset(company);
+                var fallbackThumb = escapeHtml(buildTrustedThumbDataUrl(company || {}));
                 if (!thumbAsset || !thumbAsset.src) {
-                    return '<div class="trusted-company-thumb is-fallback"><span class="trusted-company-thumb-fallback">' + initials + '</span></div>';
+                    return '<div class="trusted-company-thumb is-fallback"><span class="trusted-company-thumb-fallback" style="background-image:url(\'' + fallbackThumb + '\')"><span class="trusted-company-thumb-fallback-initials">' + initials + '</span></span></div>';
                 }
                 return '<div class="trusted-company-thumb is-' + escapeHtml(thumbAsset.kind) + '">'
-                    + '<span class="trusted-company-thumb-fallback">' + initials + '</span>'
+                    + '<span class="trusted-company-thumb-fallback" style="background-image:url(\'' + fallbackThumb + '\')"><span class="trusted-company-thumb-fallback-initials">' + initials + '</span></span>'
                     + '<img class="trusted-company-thumb-image" src="' + escapeHtml(thumbAsset.src) + '" alt="' + name + '" loading="' + escapeHtml(thumbAsset.loading || 'lazy') + '" decoding="async" onerror="this.style.display=\'none\'; this.parentNode.classList.add(\'is-fallback\');">'
                     + '</div>';
             }
@@ -444,11 +499,21 @@
                 var rankNumber = escapeHtml('#' + String(index + 1).padStart(2, '0'));
                 var chips = getCompanyChips(company, index);
                 var signalText = mediaType === 'PHOTO' ? 'Photo verified' : 'Live verified';
+                var rankMeta = getTrustedRankMeta(index);
+                var rankKicker = escapeHtml(rankMeta.kicker);
+                var rankLabel = escapeHtml(rankMeta.label);
+                var cardClassName = 'trusted-company-card trusted-company-review-card' + (rankMeta.cardClass ? ' ' + rankMeta.cardClass : '');
 
-                return '<a href="' + href + '" target="_blank" rel="noopener" class="trusted-company-card trusted-company-review-card">'
+                return '<a href="' + href + '" target="_blank" rel="noopener" class="' + cardClassName + '">'
                     + '<div class="trusted-company-shell">'
                     + '<div class="trusted-company-leading">'
+                    + '<div class="trusted-company-rank-stack">'
+                    + '<span class="trusted-company-rank-kicker">' + rankKicker + '</span>'
+                    + '<div class="trusted-company-rank-line">'
                     + '<span class="trusted-company-index-badge">' + rankNumber + '</span>'
+                    + '<span class="trusted-company-rank-label">' + rankLabel + '</span>'
+                    + '</div>'
+                    + '</div>'
                     + '<div class="trusted-company-identity">'
                     + renderCompanyThumb(company)
                     + '<div class="trusted-company-signal"><span class="trusted-company-signal-dot"></span>' + signalText + '</div>'
@@ -473,11 +538,10 @@
                     + '<div class="trusted-company-actions">'
                     + '<span class="trusted-company-cta">Visit Site</span>'
                     + '</div>'
-                    + '<div class="trusted-company-facts">'
+                    + '<div class="trusted-company-facts trusted-company-facts-minimal">'
                     + '<div class="trusted-company-fact"><span class="trusted-company-fact-head">Domain</span><span class="trusted-company-fact-body">' + domain + '</span></div>'
                     + '<div class="trusted-company-fact"><span class="trusted-company-fact-head">Format</span><span class="trusted-company-fact-body">' + mediaType + '</span></div>'
                     + '<div class="trusted-company-fact"><span class="trusted-company-fact-head">Promo</span><span class="trusted-company-fact-body">' + promoTag + '</span></div>'
-                    + '<div class="trusted-company-fact"><span class="trusted-company-fact-head">Updated</span><span class="trusted-company-fact-body">' + factDate + '</span></div>'
                     + '</div>'
                     + '</div>'
                     + '</a>';

@@ -1,11 +1,13 @@
-# Nginx static server for SQUEEN668 Scanner
-FROM nginx:alpine
+# Node static server + trusted icon proxy for Slotpatcher.com
+FROM node:20-alpine
 
-# Copy all files to nginx public html directory
-COPY . /usr/share/nginx/html
+WORKDIR /app
 
-# Expose port 80
+# Copy site files and lightweight Node server
+COPY . /app
+
+# Expose HTTP port
 EXPOSE 80
 
-# Start nginx
-CMD ["nginx", "-g", "daemon off;"]
+# Start static server with trusted icon proxy route
+CMD ["node", "server.mjs"]

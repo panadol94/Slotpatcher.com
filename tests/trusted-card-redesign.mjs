@@ -98,6 +98,36 @@ assert.match(
 
 assert.match(
   trustedHtml,
+  /getLinkedThumbUrl\(/,
+  'expected trusted cards to derive a fallback image candidate from the trusted company link when no API photo exists'
+);
+
+assert.match(
+  trustedHtml,
+  /\/api\/trusted-icon\?target=/,
+  'expected trusted cards to route link-derived icon requests through a local trusted-icon proxy endpoint'
+);
+
+assert.doesNotMatch(
+  trustedHtml,
+  /new URL\(company\.link\)\.origin \+ '\/favicon\.ico'/,
+  'expected trusted cards to stop requesting favicon.ico directly from third-party company domains in the browser'
+);
+
+assert.doesNotMatch(
+  trustedHtml,
+  /this\.remove\(\);\s*this\.parentNode\.classList\.add\(/,
+  'expected linked-image fallback handler to avoid removing the image before toggling its parent fallback state'
+);
+
+assert.match(
+  trustedHtml,
+  /this\.style\.display=\\'none\\';\s*this\.parentNode\.classList\.add\(\\'is-fallback\\'\)/,
+  'expected linked-image fallback handler to hide the failed image and then reveal the thumb fallback state safely'
+);
+
+assert.match(
+  trustedHtml,
   /var\s+cacheKey\s*=\s*\[\s*company && company\.id,\s*company && company\.name,\s*company && company\.link\s*\]/,
   'expected trusted thumb cache key to include id, name, and link so cached SVG thumbs stay correct when listing metadata changes'
 );
@@ -112,6 +142,36 @@ assert.match(
   styleCss,
   /@media \(max-width: 640px\)[\s\S]*\.trusted-company-shell\s*\{[\s\S]*grid-template-columns:\s*84px minmax\(0, 1fr\)/,
   'expected trusted cards to use a tighter two-column mobile layout instead of a tall stacked shell'
+);
+
+assert.match(
+  trustedHtml,
+  /getTrustedRankMeta\(/,
+  'expected trusted cards to derive premium rank metadata through a dedicated helper for top-tier treatments'
+);
+
+assert.match(
+  styleCss,
+  /\.trusted-company-rank-stack\s*\{/,
+  'expected trusted cards to upgrade the rank area into a richer premium stack instead of a single small badge'
+);
+
+assert.match(
+  styleCss,
+  /\.trusted-company-card\.is-top-tier,\s*[\s\S]*\.trusted-company-review-card\.is-top-tier\s*\{/,
+  'expected trusted cards to give the top 3 entries a dedicated premium highlight treatment'
+);
+
+assert.match(
+  styleCss,
+  /\.trusted-company-facts-minimal\s*\{/,
+  'expected trusted cards to define a more minimal facts row treatment'
+);
+
+assert.doesNotMatch(
+  trustedHtml,
+  /trusted-company-fact-head">Updated</,
+  'expected updated time to move out of the facts row once the row becomes more minimal'
 );
 
 console.log('Trusted card redesign checks passed.');
