@@ -161,6 +161,31 @@
                 </div>
             </div>
 
+            <section class="trusted-feature-stage" id="trustedFeatureStage" aria-labelledby="trustedFeatureTitle" hidden>
+                <div class="trusted-feature-head">
+                    <div class="trusted-feature-copy">
+                        <span class="trusted-feature-kicker">Luxury Coverflow · Visual Spotlight</span>
+                        <h2 class="trusted-feature-title" id="trustedFeatureTitle">Featured trusted picks dengan view lebih hidup</h2>
+                        <p class="trusted-feature-subcopy">Hero showcase ni fokus pada company yang ada visual paling kuat sekarang, sementara list bawah kekal jadi ranking penuh untuk scan cepat.</p>
+                    </div>
+                    <div class="trusted-feature-controls">
+                        <button class="trusted-feature-nav" id="trustedCoverflowPrev" type="button" aria-label="Previous trusted feature">‹</button>
+                        <div class="trusted-feature-count" aria-live="polite">
+                            <span id="trustedCoverflowCurrent">01</span>
+                            <span>/</span>
+                            <span id="trustedCoverflowTotal">05</span>
+                        </div>
+                        <button class="trusted-feature-nav" id="trustedCoverflowNext" type="button" aria-label="Next trusted feature">›</button>
+                    </div>
+                </div>
+
+                <div class="trusted-coverflow-shell">
+                    <div class="trusted-coverflow-track" id="trustedCoverflow"></div>
+                </div>
+
+                <div class="trusted-coverflow-dots" id="trustedCoverflowDots" aria-label="Trusted feature pagination"></div>
+            </section>
+
             <p class="trusted-source-status" id="trustedSourceStatus">Loading live companies from TipsMega888 API...</p>
             <div class="trusted-company-grid" id="trustedCompanyGrid">
                 <!-- Live trusted companies rendered via JS -->
@@ -258,8 +283,19 @@
             var platformCount = document.getElementById('trustedPlatformCount');
             var videoCount = document.getElementById('trustedVideoCount');
             var photoCount = document.getElementById('trustedPhotoCount');
+            var featureStage = document.getElementById('trustedFeatureStage');
+            var coverflow = document.getElementById('trustedCoverflow');
+            var coverflowPrev = document.getElementById('trustedCoverflowPrev');
+            var coverflowNext = document.getElementById('trustedCoverflowNext');
+            var coverflowDots = document.getElementById('trustedCoverflowDots');
+            var coverflowCurrent = document.getElementById('trustedCoverflowCurrent');
+            var coverflowTotal = document.getElementById('trustedCoverflowTotal');
             var sourceStatus = document.getElementById('trustedSourceStatus');
             var trustedThumbCache = Object.create(null);
+            var trustedFeatureState = {
+                items: [],
+                activeIndex: 0
+            };
             var trustedVideoThumbs = {
                 'a9play': '/assets/trusted-company-thumbs/a9play.webp',
                 'aceplay88': '/assets/trusted-company-thumbs/aceplay88.webp',
@@ -375,6 +411,33 @@
                 };
             }
 
+
+
+            function getTrustedFeatureCompanies(companies) {
+                var visualPriority = {
+                    photo: 4,
+                    'video-thumb': 3,
+                    linked: 2,
+                    generated: 1
+                };
+
+                return companies.map(function (company, index) {
+                    var thumbAsset = getCompanyThumbAsset(company);
+                    var freshness = new Date(company.updatedAt || company.createdAt || 0).getTime() || 0;
+                    return {
+                        company: company,
+                        rankIndex: index,
+                        thumbKind: thumbAsset.kind,
+                        visualScore: visualPriority[thumbAsset.kind] || 0,
+                        freshness: freshness
+                    };
+                }).sort(function (a, b) {
+                    if (b.visualScore !== a.visualScore) return b.visualScore - a.visualScore;
+                    if (b.freshness !== a.freshness) return b.freshness - a.freshness;
+                    return a.rankIndex - b.rankIndex;
+                }).slice(0, 5);
+            }
+
             function getCompanyInitials(name) {
                 var parts = String(name || 'Trusted Company').match(/[A-Za-z0-9]+/g) || [];
                 if (!parts.length) return 'TC';
@@ -387,6 +450,19 @@
                     return new URL(link).hostname.replace(/^www\./i, '');
                 } catch (error) {
                     return 'direct link';
+                }
+            }
+
+            function sanitizeTrustedHref(link) {
+                if (!link || link === '#') return '#';
+                try {
+                    var targetUrl = new URL(String(link), window.location.origin);
+                    if (targetUrl.protocol !== 'http:' && targetUrl.protocol !== 'https:') {
+                        return '#';
+                    }
+                    return targetUrl.toString();
+                } catch (error) {
+                    return '#';
                 }
             }
 
@@ -525,8 +601,21 @@
                     + '</div>';
             }
 
+
+
+            function renderTrustedFeatureMedia(company) {
+                var name = escapeHtml(company.name || company.id || 'Trusted Company');
+                var thumbAsset = getCompanyThumbAsset(company);
+                var fallbackThumb = escapeHtml(buildTrustedThumbDataUrl(company || {}));
+                return '<div class="trusted-feature-card-media is-' + escapeHtml(thumbAsset.kind) + '">'
+                    + '<span class="trusted-feature-media-fallback" style="background-image:url(\'' + fallbackThumb + '\')"></span>'
+                    + '<img class="trusted-feature-media-image" src="' + escapeHtml(thumbAsset.src) + '" alt="' + name + '" loading="lazy" decoding="async" onerror="this.style.display=\'none\'; this.parentNode.classList.add(\'is-fallback\');">'
+                    + '<span class="trusted-feature-media-sheen"></span>'
+                    + '</div>';
+            }
+
             function renderTrustedCompanyCard(company, index) {
-                var href = escapeHtml(company.link || '#');
+                var href = escapeHtml(sanitizeTrustedHref(company.link || '#'));
                 var name = escapeHtml(company.name || company.id || 'Trusted Company');
                 var caption = escapeHtml(company.caption || 'Trusted offer');
                 var factDate = escapeHtml(formatFactDate(company.updatedAt || company.createdAt));
@@ -584,6 +673,116 @@
                     + '</a>';
             }
 
+
+
+            function getTrustedFeatureRelative(index, activeIndex, total) {
+                var relative = index - activeIndex;
+                if (!total) return 0;
+                if (relative > total / 2) relative -= total;
+                if (relative < -total / 2) relative += total;
+                return relative;
+            }
+
+            function getTrustedFeatureSlot(relative) {
+                if (relative === 0) return 'active';
+                if (relative === -1) return 'before';
+                if (relative === 1) return 'after';
+                if (relative < 0) return 'far-before';
+                return 'far-after';
+            }
+
+            function renderTrustedFeatureCard(featureItem, featureIndex) {
+                var company = featureItem.company;
+                var relative = getTrustedFeatureRelative(featureIndex, trustedFeatureState.activeIndex, trustedFeatureState.items.length);
+                var slot = getTrustedFeatureSlot(relative);
+                var href = escapeHtml(sanitizeTrustedHref(company.link || '#'));
+                var name = escapeHtml(company.name || company.id || 'Trusted Company');
+                var caption = escapeHtml(company.caption || 'Trusted offer');
+                var domain = escapeHtml(extractDomain(company.link || ''));
+                var mediaLabel = featureItem.thumbKind === 'photo'
+                    ? 'Verified photo'
+                    : featureItem.thumbKind === 'video-thumb'
+                        ? 'Video spotlight'
+                        : featureItem.thumbKind === 'linked'
+                            ? 'Direct access'
+                            : 'Trusted listing';
+                var activeAttr = featureIndex === trustedFeatureState.activeIndex ? 'true' : 'false';
+                var rankNumber = escapeHtml('#' + String(featureItem.rankIndex + 1).padStart(2, '0'));
+
+                return '<article class="trusted-feature-card is-' + slot + '" data-coverflow-index="' + featureIndex + '" data-coverflow-slot="' + slot + '" tabindex="0" role="button" aria-pressed="' + activeAttr + '" aria-label="Focus ' + name + ' spotlight">'
+                    + renderTrustedFeatureMedia(company)
+                    + '<div class="trusted-feature-card-body">'
+                    + '<div class="trusted-feature-card-topline">'
+                    + '<span class="trusted-feature-rank">' + rankNumber + '</span>'
+                    + '<span class="trusted-feature-kind">' + escapeHtml(mediaLabel) + '</span>'
+                    + '</div>'
+                    + '<div class="trusted-feature-card-name">' + name + '</div>'
+                    + '<div class="trusted-feature-card-caption">' + caption + '</div>'
+                    + '<div class="trusted-feature-card-meta">'
+                    + '<span class="trusted-feature-card-domain">' + domain + '</span>'
+                    + '<span class="trusted-feature-card-status"><span class="trusted-company-signal-dot"></span>Live verified</span>'
+                    + '</div>'
+                    + '<a class="trusted-feature-card-visit" href="' + href + '" target="_blank" rel="noopener">Visit Site</a>'
+                    + '</div>'
+                    + '</article>';
+            }
+
+            function updateTrustedFeatureCarousel(focusTarget) {
+                var items = trustedFeatureState.items;
+                if (!featureStage || !coverflow || !coverflowCurrent || !coverflowTotal || !coverflowDots) return;
+
+                if (!items.length) {
+                    featureStage.hidden = true;
+                    coverflow.innerHTML = '';
+                    coverflowDots.innerHTML = '';
+                    coverflowCurrent.textContent = '00';
+                    coverflowTotal.textContent = '00';
+                    return;
+                }
+
+                featureStage.hidden = false;
+                coverflow.innerHTML = items.map(function (featureItem, featureIndex) {
+                    return renderTrustedFeatureCard(featureItem, featureIndex);
+                }).join('');
+
+                coverflowDots.innerHTML = items.map(function (featureItem, featureIndex) {
+                    var isActive = featureIndex === trustedFeatureState.activeIndex;
+                    return '<button class="trusted-coverflow-dot' + (isActive ? ' is-active' : '') + '" type="button" data-coverflow-dot="' + featureIndex + '" aria-label="Focus ' + escapeHtml(featureItem.company.name || featureItem.company.id || 'trusted company') + '" aria-pressed="' + (isActive ? 'true' : 'false') + '"></button>';
+                }).join('');
+
+                coverflowCurrent.textContent = String(trustedFeatureState.activeIndex + 1).padStart(2, '0');
+                coverflowTotal.textContent = String(items.length).padStart(2, '0');
+
+                if (focusTarget === 'card') {
+                    var activeCard = coverflow.querySelector('.trusted-feature-card.is-active');
+                    if (activeCard) activeCard.focus();
+                }
+
+                if (focusTarget === 'dot') {
+                    var activeDot = coverflowDots.querySelector('.trusted-coverflow-dot.is-active');
+                    if (activeDot) activeDot.focus();
+                }
+            }
+
+            function renderTrustedFeatureCarousel(activeCompanies, focusTarget) {
+                trustedFeatureState.items = getTrustedFeatureCompanies(activeCompanies || []);
+                if (trustedFeatureState.activeIndex >= trustedFeatureState.items.length) {
+                    trustedFeatureState.activeIndex = 0;
+                }
+                updateTrustedFeatureCarousel(focusTarget);
+            }
+
+            function setTrustedFeatureIndex(nextIndex, focusTarget) {
+                var total = trustedFeatureState.items.length;
+                if (!total) return;
+                trustedFeatureState.activeIndex = (nextIndex % total + total) % total;
+                updateTrustedFeatureCarousel(focusTarget);
+            }
+
+            function shiftTrustedFeature(direction, focusTarget) {
+                setTrustedFeatureIndex(trustedFeatureState.activeIndex + direction, focusTarget);
+            }
+
             function renderTrustedCompanies(companies) {
                 var activeCompanies = sortCompaniesByFreshness(companies.filter(function (company) {
                     return company && company.status === 'ACTIVE';
@@ -600,16 +799,64 @@
                 if (!activeCompanies.length) {
                     sourceStatus.textContent = 'Tiada trusted company aktif dari API sekarang.';
                     sourceStatus.classList.add('is-error');
+                    renderTrustedFeatureCarousel([]);
                     grid.innerHTML = '';
                     return;
                 }
 
+                renderTrustedFeatureCarousel(activeCompanies);
                 grid.innerHTML = activeCompanies.map(function (company, index) {
                     return renderTrustedCompanyCard(company, index);
                 }).join('');
 
                 sourceStatus.textContent = 'Live sync · ' + activeCompanies.length + ' trusted companies dari TipsMega888 API.';
                 sourceStatus.classList.remove('is-error');
+            }
+
+
+
+            if (coverflowPrev) {
+                coverflowPrev.addEventListener('click', function () {
+                    shiftTrustedFeature(-1);
+                });
+            }
+
+            if (coverflowNext) {
+                coverflowNext.addEventListener('click', function () {
+                    shiftTrustedFeature(1);
+                });
+            }
+
+            if (coverflowDots) {
+                coverflowDots.addEventListener('click', function (event) {
+                    var dot = event.target.closest('[data-coverflow-dot]');
+                    if (!dot) return;
+                    var nextIndex = Number(dot.getAttribute('data-coverflow-dot'));
+                    if (isNaN(nextIndex)) return;
+                    setTrustedFeatureIndex(nextIndex, document.activeElement === dot ? 'dot' : '');
+                });
+            }
+
+            if (coverflow) {
+                coverflow.addEventListener('click', function (event) {
+                    if (event.target.closest('.trusted-feature-card-visit')) return;
+                    var card = event.target.closest('.trusted-feature-card');
+                    if (!card) return;
+                    var nextIndex = Number(card.getAttribute('data-coverflow-index'));
+                    if (isNaN(nextIndex) || nextIndex === trustedFeatureState.activeIndex) return;
+                    setTrustedFeatureIndex(nextIndex);
+                });
+
+                coverflow.addEventListener('keydown', function (event) {
+                    if (event.target.closest('a, button')) return;
+                    var card = event.target.closest('.trusted-feature-card');
+                    if (!card) return;
+                    if (event.key !== 'Enter' && event.key !== ' ') return;
+                    event.preventDefault();
+                    var nextIndex = Number(card.getAttribute('data-coverflow-index'));
+                    if (isNaN(nextIndex) || nextIndex === trustedFeatureState.activeIndex) return;
+                    setTrustedFeatureIndex(nextIndex, 'card');
+                });
             }
 
             fetch(apiUrl)
