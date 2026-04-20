@@ -14,6 +14,12 @@ assert.match(
 
 assert.match(
   trustedHtml,
+  /href="\.\.\/style\.css\?v=[^"]+"/,
+  'expected trusted page to reference a versioned shared stylesheet so immutable CDN/browser caches cannot pin an older non-3D trusted hero layout'
+);
+
+assert.match(
+  trustedHtml,
   /id="trustedCoverflow"/,
   'expected trusted page to expose a dedicated coverflow container for featured trusted companies'
 );
