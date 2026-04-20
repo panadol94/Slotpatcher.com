@@ -414,28 +414,14 @@
 
 
             function getTrustedFeatureCompanies(companies) {
-                var visualPriority = {
-                    photo: 4,
-                    'video-thumb': 3,
-                    linked: 2,
-                    generated: 1
-                };
-
-                return companies.map(function (company, index) {
+                return companies.slice(0, 5).map(function (company, index) {
                     var thumbAsset = getCompanyThumbAsset(company);
-                    var freshness = new Date(company.updatedAt || company.createdAt || 0).getTime() || 0;
                     return {
                         company: company,
                         rankIndex: index,
-                        thumbKind: thumbAsset.kind,
-                        visualScore: visualPriority[thumbAsset.kind] || 0,
-                        freshness: freshness
+                        thumbKind: thumbAsset.kind
                     };
-                }).sort(function (a, b) {
-                    if (b.visualScore !== a.visualScore) return b.visualScore - a.visualScore;
-                    if (b.freshness !== a.freshness) return b.freshness - a.freshness;
-                    return a.rankIndex - b.rankIndex;
-                }).slice(0, 5);
+                });
             }
 
             function getCompanyInitials(name) {

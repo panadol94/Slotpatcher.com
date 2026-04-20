@@ -115,6 +115,18 @@ assert.match(
 );
 
 assert.match(
+  trustedHtml,
+  /return companies\.slice\(0, 5\)\.map\(/,
+  'expected trusted feature selection to follow the top 5 ranked/listed ACTIVE companies instead of re-sorting by visual richness'
+);
+
+assert.doesNotMatch(
+  trustedHtml,
+  /visualPriority|visualScore/,
+  'expected trusted feature selection to stop using a visual-priority scoring sort once the user chooses top-rank ordering'
+);
+
+assert.match(
   styleCss,
   /\.trusted-feature-stage\s*\{/,
   'expected style.css to define a dedicated luxury feature stage shell for the trusted coverflow'
@@ -128,20 +140,20 @@ assert.match(
 
 assert.match(
   styleCss,
-  /\.trusted-feature-card\.is-active\s*\{[\s\S]*translateX\(-50%\)/,
-  'expected the active trusted feature card to remain centered in the coverflow'
+  /\.trusted-feature-card\.is-active\s*\{[\s\S]*translateX\(-50%\)[\s\S]*translateY\(-4px\)/,
+  'expected the active trusted feature card to stay centered while lifting slightly for a premium hero motion treatment'
 );
 
 assert.match(
   styleCss,
-  /\.trusted-feature-card\.is-before\s*\{[\s\S]*rotateY\(36deg\)/,
-  'expected the left-side trusted feature card to angle inward with a premium coverflow transform'
+  /\.trusted-feature-card\.is-before\s*\{[\s\S]*rotateY\(44deg\)/,
+  'expected the left-side trusted feature card to angle more dramatically inward for a stronger 3D coverflow effect'
 );
 
 assert.match(
   styleCss,
-  /\.trusted-feature-card\.is-after\s*\{[\s\S]*rotateY\(-36deg\)/,
-  'expected the right-side trusted feature card to angle inward with a premium coverflow transform'
+  /\.trusted-feature-card\.is-after\s*\{[\s\S]*rotateY\(-44deg\)/,
+  'expected the right-side trusted feature card to angle more dramatically inward for a stronger 3D coverflow effect'
 );
 
 assert.match(
@@ -158,8 +170,8 @@ assert.match(
 
 assert.match(
   styleCss,
-  /@media \(max-width: 640px\)[\s\S]*\.trusted-feature-card\.is-before\s*\{[\s\S]*rotateY\(28deg\)/,
-  'expected trusted coverflow to soften the side-angle transform on smaller screens'
+  /@media \(max-width: 640px\)[\s\S]*\.trusted-feature-card\.is-before\s*\{[\s\S]*rotateY\(34deg\)/,
+  'expected trusted coverflow to keep a still-noticeable 3D side angle on smaller screens while softening it from desktop'
 );
 
 console.log('Trusted coverflow hero checks passed.');
