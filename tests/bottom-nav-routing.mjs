@@ -8,7 +8,7 @@ const script = fs.readFileSync(path.join(repoRoot, 'script.js'), 'utf8');
 
 assert.match(
   indexHtml,
-  /<a href="\/trusted" class="nav-item"/,
+  /<a href="\/trusted\/?" class="nav-item"/,
   'expected home page bottom nav to include a real /trusted route link'
 );
 

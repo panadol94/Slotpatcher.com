@@ -43,6 +43,8 @@ var SCANNER_CONFIG = {
 var currentProvider = '';
 var currentFilter = 'all';
 var currentGames = [];
+var GAME_LIST_BATCH_SIZE = 24;
+var currentVisibleGameCount = 0;
 var isScanning = false;
 var currentDeviceIntel = null;
 var scanModalTimer = null;
@@ -109,7 +111,42 @@ function renderGameSkeleton(count) {
 function renderGamesEmpty(message) {
     var gameList = document.getElementById('gameList');
     if (!gameList) return;
+    updateGameListLoadMore(0, 0);
     gameList.innerHTML = '<div class="games-empty"><div class="games-empty-icon" aria-hidden="true">🕳️</div><h4>Tiada game untuk dipaparkan</h4><p>' + escapeHtml(message || 'Cuba pilih provider lain atau reset filter.') + '</p></div>';
+}
+
+function getFilteredGames() {
+    return currentFilter === 'all'
+        ? currentGames.slice(3)
+        : currentGames.filter(function(g) { return g.status === currentFilter; });
+}
+
+function resetVisibleGameCount(total) {
+    currentVisibleGameCount = Math.min(GAME_LIST_BATCH_SIZE, Math.max(0, total || 0));
+}
+
+function updateGameListLoadMore(total, showing) {
+    var wrap = document.getElementById('gameListLoadMoreWrap');
+    var btn = document.getElementById('gameListLoadMore');
+    var meta = document.getElementById('gameListLoadMoreMeta');
+    if (!wrap || !btn || !meta) return;
+
+    if (!total || showing >= total) {
+        wrap.hidden = true;
+        meta.textContent = total ? 'Semua game sudah dipaparkan.' : '';
+        return;
+    }
+
+    wrap.hidden = false;
+    btn.textContent = 'LOAD MORE';
+    meta.textContent = 'Papar ' + showing + ' / ' + total + ' game';
+}
+
+function handleLoadMoreGames() {
+    var filtered = getFilteredGames();
+    if (!filtered.length) return;
+    currentVisibleGameCount = Math.min(filtered.length, currentVisibleGameCount + GAME_LIST_BATCH_SIZE);
+    renderGames();
 }
 
 // ==========================================
@@ -125,6 +162,7 @@ document.addEventListener('DOMContentLoaded', function() {
     warmProviderLogos();
     initFilterTabs();
     initSortSelect();
+    initGameListLoadMore();
     initBottomNav();
     initDeviceIntel();
     initCarousel();
@@ -1088,6 +1126,7 @@ function loadGames(providerKey) {
     }
     renderTop3();
     renderRtpChart();
+    resetVisibleGameCount(getFilteredGames().length);
     renderGames();
 }
 
@@ -1144,13 +1183,15 @@ function animateCounter(id, target) {
 function renderGames() {
     var gameList = document.getElementById('gameList');
     if (!gameList) return;
-    var filtered = currentFilter === 'all' ? currentGames.slice(3) : currentGames.filter(function(g) { return g.status === currentFilter; });
+    var filtered = getFilteredGames();
+    if (!currentVisibleGameCount) resetVisibleGameCount(filtered.length);
+    var visibleGames = filtered.slice(0, currentVisibleGameCount);
     gameList.innerHTML = '';
     if (!filtered.length) {
         renderGamesEmpty(currentFilter === 'all' ? 'Belum cukup game untuk dipaparkan di luar Top 3.' : 'Tiada game dalam kategori ' + currentFilter.toUpperCase() + '. Cuba tab lain.');
         return;
     }
-    filtered.forEach(function(game, index) {
+    visibleGames.forEach(function(game, index) {
         var card = document.createElement('div');
         card.className = 'game-card ' + game.status;
         card.style.animationDelay = (index * 0.04) + 's';
@@ -1159,6 +1200,7 @@ function renderGames() {
         gameList.appendChild(card);
         setTimeout(function() { var fill = card.querySelector('.game-rtp-fill'); if (fill) fill.style.width = Math.max(0, Math.min(100, ((game.rtp - 25) / 75) * 100)) + '%'; }, 100 + index * 60);
     });
+    updateGameListLoadMore(filtered.length, visibleGames.length);
 }
 
 function renderRtpChart() {
@@ -1231,7 +1273,7 @@ function initFilterTabs() {
     document.querySelectorAll('.filter-tab').forEach(function(tab) {
         tab.addEventListener('click', function() {
             document.querySelectorAll('.filter-tab').forEach(function(t) { t.classList.remove('active'); });
-            this.classList.add('active'); currentFilter = this.getAttribute('data-filter'); renderRtpChart(); renderGames();
+            this.classList.add('active'); currentFilter = this.getAttribute('data-filter'); resetVisibleGameCount(getFilteredGames().length); renderRtpChart(); renderGames();
         });
     });
 }
@@ -1241,8 +1283,13 @@ function initSortSelect() {
         if (this.value === 'rtp-desc') currentGames.sort(function(a, b) { return b.rtp - a.rtp; });
         else if (this.value === 'rtp-asc') currentGames.sort(function(a, b) { return a.rtp - b.rtp; });
         else if (this.value === 'name') currentGames.sort(function(a, b) { return a.name.localeCompare(b.name); });
-        currentGames.forEach(function(g, i) { g.rank = i + 1; }); renderTop3(); renderRtpChart(); renderGames();
+        currentGames.forEach(function(g, i) { g.rank = i + 1; }); resetVisibleGameCount(getFilteredGames().length); renderTop3(); renderRtpChart(); renderGames();
     });
+}
+function initGameListLoadMore() {
+    var btn = document.getElementById('gameListLoadMore');
+    if (!btn) return;
+    btn.addEventListener('click', handleLoadMoreGames);
 }
 function updateBottomNavVisibility() {
     var nav = document.querySelector('.bottom-nav');

@@ -2387,6 +2387,43 @@ body.scan-modal-open { overflow: hidden; }
     max-width: 100%;
 }
 
+.game-list-more-wrap {
+    padding: 10px 14px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+}
+
+.game-list-more-btn {
+    min-width: 180px;
+    min-height: 44px;
+    padding: 11px 18px;
+    border: 1px solid rgba(240, 181, 72, 0.28);
+    border-radius: 999px;
+    background: linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.02));
+    color: var(--text-primary);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.game-list-more-btn:hover {
+    transform: translateY(-1px);
+    border-color: rgba(240, 181, 72, 0.48);
+    box-shadow: 0 10px 24px rgba(0,0,0,0.22);
+}
+
+.game-list-more-meta {
+    margin: 0;
+    font-size: 11px;
+    color: var(--text-secondary);
+    text-align: center;
+}
+
 .game-card {
     display: grid;
     grid-template-columns: 32px 44px 1fr auto;
