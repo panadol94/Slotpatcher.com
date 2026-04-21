@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Trusted Companies — Slotpatcher.com</title>
-    <meta name="description" content="Senarai platform terverifikasi dari TipsMega888 untuk pemain Malaysia. Auto-sync trusted companies dengan bonus dan promosi terkini.">
+    <title>Trusted Casino — Slotpatcher.com</title>
+    <meta name="description" content="Senarai trusted casino terverifikasi dari TipsMega888 untuk pemain Malaysia. Auto-sync trusted casino dengan bonus dan promosi terkini.">
     <link rel="icon" type="image/x-icon" href="../favicon.ico">
     <link rel="icon" type="image/png" sizes="32x32" href="../favicon.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -141,15 +141,15 @@
         <header class="trusted-header">
             <div class="trusted-kicker">Trusted Directory · Live Sync</div>
             <div class="trusted-header-icon">🛡️</div>
-            <h1>TRUSTED COMPANIES</h1>
-            <p>Senarai platform terverifikasi dari TipsMega888 — view yang lebih real, kemas, dan terus sync dengan data live.</p>
+            <h1>TRUSTED CASINO</h1>
+            <p>Senarai trusted casino terverifikasi dari TipsMega888 — view yang lebih kemas, premium, dan terus sync dengan data live.</p>
         </header>
 
         <div class="trusted-content">
             <div class="trusted-stats-row">
                 <div class="trusted-stat-card">
                     <div class="trusted-stat-value" id="trustedPlatformCount">29</div>
-                    <div class="trusted-stat-label">Trusted Platforms</div>
+                    <div class="trusted-stat-label">Trusted Casino</div>
                 </div>
                 <div class="trusted-stat-card">
                     <div class="trusted-stat-value" id="trustedVideoCount">0</div>
@@ -186,9 +186,9 @@
                 <div class="trusted-coverflow-dots" id="trustedCoverflowDots" aria-label="Trusted feature pagination"></div>
             </section>
 
-            <p class="trusted-source-status" id="trustedSourceStatus">Loading live companies from TipsMega888 API...</p>
+            <p class="trusted-source-status" id="trustedSourceStatus">Loading live trusted casino from TipsMega888 API...</p>
             <div class="trusted-company-grid" id="trustedCompanyGrid">
-                <!-- Live trusted companies rendered via JS -->
+                <!-- Live trusted casino rendered via JS -->
             </div>
 
             <p class="trusted-disclaimer">
@@ -216,7 +216,7 @@
     </footer>
 
     <nav class="bottom-nav trusted-bottom-nav" aria-label="Trusted page navigation">
-        <a href="/trusted/" class="nav-item active" aria-label="Trusted companies">
+        <a href="/trusted/" class="nav-item active" aria-label="Trusted casino">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                 <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"></path>
                 <path d="m9.5 12 1.8 1.8 3.8-4.1" class="icon-accent"></path>
@@ -233,28 +233,16 @@
             </svg>
             <span>Download</span>
         </a>
-        <a href="/#providerSection" class="nav-item center-hack-btn" aria-label="Pergi ke scan utama">
-            <div class="hack-btn-inner" aria-hidden="true">
-                <svg class="scan-hack-svg" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
-                    <defs>
-                        <clipPath id="trustedScanClip"><circle cx="20" cy="20" r="19"/></clipPath>
-                    </defs>
-                    <g clip-path="url(#trustedScanClip)">
-                        <text class="sp-binary sp-bin-top" x="20" y="8" text-anchor="middle">01010111</text>
-                        <text class="sp-binary sp-bin-bot" x="20" y="36" text-anchor="middle">10110101</text>
-                        <line class="sp-scanline" x1="2" y1="20" x2="38" y2="20"></line>
-                        <g class="sp-reticle">
-                            <path d="M6 13 V6 H13"></path>
-                            <path d="M27 6 H34 V13"></path>
-                            <path d="M34 27 V34 H27"></path>
-                            <path d="M13 34 H6 V27"></path>
-                        </g>
-                        <circle class="sp-pulse" cx="20" cy="20" r="3"></circle>
-                        <circle class="sp-blip" cx="20" cy="20" r="1.6"></circle>
-                    </g>
-                </svg>
-            </div>
-            <span id="scanButtonLabel">SCAN</span>
+        <a href="/#providerSection" class="nav-item" aria-label="Scan utama">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <circle cx="12" cy="12" r="7"></circle>
+                <circle cx="12" cy="12" r="2.4" class="icon-accent"></circle>
+                <path d="M12 2.5v3"></path>
+                <path d="M12 18.5v3"></path>
+                <path d="M2.5 12h3"></path>
+                <path d="M18.5 12h3"></path>
+            </svg>
+            <span>Scan</span>
         </a>
         <a href="/#resultsSection" class="nav-item" aria-label="Tutorial — lihat hasil">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -382,31 +370,27 @@
             function getTrustedRankMeta(index) {
                 if (index === 0) {
                     return {
-                        kicker: 'Prime Tier',
-                        label: 'Top Signal',
+                        label: 'Top Pick',
                         cardClass: 'is-top-tier is-top-1'
                     };
                 }
 
                 if (index === 1) {
                     return {
-                        kicker: 'Elite Tier',
-                        label: 'High Confidence',
+                        label: 'Strong Signal',
                         cardClass: 'is-top-tier is-top-2'
                     };
                 }
 
                 if (index === 2) {
                     return {
-                        kicker: 'Select Tier',
-                        label: 'Fast Access',
+                        label: 'Quick Access',
                         cardClass: 'is-top-tier is-top-3'
                     };
                 }
 
                 return {
-                    kicker: 'Rank Position',
-                    label: 'Verified Listing',
+                    label: 'Trusted Casino',
                     cardClass: ''
                 };
             }
@@ -602,17 +586,14 @@
 
             function renderTrustedCompanyCard(company, index) {
                 var href = escapeHtml(sanitizeTrustedHref(company.link || '#'));
-                var name = escapeHtml(company.name || company.id || 'Trusted Company');
+                var name = escapeHtml(company.name || company.id || 'Trusted Casino');
                 var caption = escapeHtml(company.caption || 'Trusted offer');
                 var factDate = escapeHtml(formatFactDate(company.updatedAt || company.createdAt));
                 var mediaType = escapeHtml(String(company.mediaType || 'listing').toUpperCase());
-                var promoTag = escapeHtml(detectPromoTag(company.caption) || 'General');
                 var domain = escapeHtml(extractDomain(company.link || ''));
                 var rankNumber = escapeHtml('#' + String(index + 1).padStart(2, '0'));
-                var chips = getCompanyChips(company, index);
                 var signalText = mediaType === 'PHOTO' ? 'Photo verified' : 'Live verified';
                 var rankMeta = getTrustedRankMeta(index);
-                var rankKicker = escapeHtml(rankMeta.kicker);
                 var rankLabel = escapeHtml(rankMeta.label);
                 var cardClassName = 'trusted-company-card trusted-company-review-card' + (rankMeta.cardClass ? ' ' + rankMeta.cardClass : '');
 
@@ -620,40 +601,25 @@
                     + '<div class="trusted-company-shell">'
                     + '<div class="trusted-company-leading">'
                     + '<div class="trusted-company-rank-stack">'
-                    + '<span class="trusted-company-rank-kicker">' + rankKicker + '</span>'
-                    + '<div class="trusted-company-rank-line">'
                     + '<span class="trusted-company-index-badge">' + rankNumber + '</span>'
                     + '<span class="trusted-company-rank-label">' + rankLabel + '</span>'
                     + '</div>'
-                    + '</div>'
                     + '<div class="trusted-company-identity">'
                     + renderCompanyThumb(company)
-                    + '<div class="trusted-company-signal"><span class="trusted-company-signal-dot"></span>' + signalText + '</div>'
                     + '</div>'
                     + '</div>'
                     + '<div class="trusted-company-main">'
-                    + '<div class="trusted-company-topline">'
                     + '<div class="trusted-company-name">' + name + '</div>'
-                    + '<div class="trusted-company-chip-row">'
-                    + chips.map(function (chip) {
-                        return '<span class="trusted-company-chip">' + escapeHtml(chip) + '</span>';
-                    }).join('')
-                    + '</div>'
-                    + '</div>'
                     + '<div class="trusted-company-caption">' + caption + '</div>'
                     + '<div class="trusted-company-subcopy">Live sync · ' + factDate + '</div>'
                     + '<div class="trusted-company-meta-row">'
                     + '<span class="trusted-company-meta-pill">' + domain + '</span>'
                     + '<span class="trusted-company-meta-pill">' + mediaType + '</span>'
-                    + '</div>'
+                    + '<span class="trusted-company-meta-pill trusted-company-meta-pill-verified"><span class="trusted-company-signal-dot"></span>' + signalText + '</span>'
                     + '</div>'
                     + '<div class="trusted-company-actions">'
                     + '<span class="trusted-company-cta">Visit Site</span>'
                     + '</div>'
-                    + '<div class="trusted-company-facts trusted-company-facts-minimal">'
-                    + '<div class="trusted-company-fact"><span class="trusted-company-fact-head">Domain</span><span class="trusted-company-fact-body">' + domain + '</span></div>'
-                    + '<div class="trusted-company-fact"><span class="trusted-company-fact-head">Format</span><span class="trusted-company-fact-body">' + mediaType + '</span></div>'
-                    + '<div class="trusted-company-fact"><span class="trusted-company-fact-head">Promo</span><span class="trusted-company-fact-body">' + promoTag + '</span></div>'
                     + '</div>'
                     + '</div>'
                     + '</a>';
@@ -733,7 +699,7 @@
 
                 coverflowDots.innerHTML = items.map(function (featureItem, featureIndex) {
                     var isActive = featureIndex === trustedFeatureState.activeIndex;
-                    return '<button class="trusted-coverflow-dot' + (isActive ? ' is-active' : '') + '" type="button" data-coverflow-dot="' + featureIndex + '" aria-label="Focus ' + escapeHtml(featureItem.company.name || featureItem.company.id || 'trusted company') + '" aria-pressed="' + (isActive ? 'true' : 'false') + '"></button>';
+                    return '<button class="trusted-coverflow-dot' + (isActive ? ' is-active' : '') + '" type="button" data-coverflow-dot="' + featureIndex + '" aria-label="Focus ' + escapeHtml(featureItem.company.name || featureItem.company.id || 'trusted casino') + '" aria-pressed="' + (isActive ? 'true' : 'false') + '"></button>';
                 }).join('');
 
                 coverflowCurrent.textContent = String(trustedFeatureState.activeIndex + 1).padStart(2, '0');
@@ -783,7 +749,7 @@
                 }).length);
 
                 if (!activeCompanies.length) {
-                    sourceStatus.textContent = 'Tiada trusted company aktif dari API sekarang.';
+                    sourceStatus.textContent = 'Tiada trusted casino aktif dari API sekarang.';
                     sourceStatus.classList.add('is-error');
                     renderTrustedFeatureCarousel([]);
                     grid.innerHTML = '';
@@ -795,7 +761,7 @@
                     return renderTrustedCompanyCard(company, index);
                 }).join('');
 
-                sourceStatus.textContent = 'Live sync · ' + activeCompanies.length + ' trusted companies dari TipsMega888 API.';
+                sourceStatus.textContent = 'Live sync · ' + activeCompanies.length + ' trusted casino dari TipsMega888 API.';
                 sourceStatus.classList.remove('is-error');
             }
 

@@ -17,22 +17,22 @@ assert.equal(
   'expected trusted page to keep the same 5-slot bottom-nav structure as the home page'
 );
 
-assert.match(
+assert.doesNotMatch(
   navHtml,
   /center-hack-btn/,
-  'expected trusted page to preserve the floating center scan button design'
+  'expected trusted page bottom nav to avoid the floating center scan button that overlaps listing CTAs'
 );
 
 assert.match(
   navHtml,
-  /href="\/#providerSection"[^>]*center-hack-btn|center-hack-btn[^>]*href="\/#providerSection"/,
+  /href="\/#providerSection"[^>]*aria-label="Scan utama"|aria-label="Scan utama"[^>]*href="\/#providerSection"/,
   'expected the trusted-page scan button to route back to the home provider/scan entry point'
 );
 
-assert.match(
+assert.doesNotMatch(
   navHtml,
   /id="scanButtonLabel">SCAN</,
-  'expected trusted page bottom nav to keep the same SCAN medallion label'
+  'expected trusted page bottom nav to remove the old floating SCAN medallion label'
 );
 
 assert.doesNotMatch(
@@ -44,8 +44,8 @@ assert.doesNotMatch(
 const labels = [...navHtml.matchAll(/<span(?: id="scanButtonLabel")?>([^<]+)<\/span>/g)].map((match) => match[1].trim());
 assert.deepEqual(
   labels,
-  ['Trusted', 'Download', 'SCAN', 'Tutorial', 'Profile'],
-  'expected trusted page nav labels to match the homepage bottom nav exactly'
+  ['Trusted', 'Download', 'Scan', 'Tutorial', 'Profile'],
+  'expected trusted page nav labels to match the lighter trusted-page bottom nav structure'
 );
 
 assert.match(

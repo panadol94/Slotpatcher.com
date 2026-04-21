@@ -71,10 +71,10 @@ assert.match(
   'expected trusted page cards to use the new review-card layout shell'
 );
 
-assert.match(
+assert.doesNotMatch(
   trustedHtml,
   /trusted-company-facts/,
-  'expected trusted page cards to render a comparison-style facts row'
+  'expected trusted page cards to remove the duplicated comparison-style facts row from the mobile-heavy layout'
 );
 
 assert.match(

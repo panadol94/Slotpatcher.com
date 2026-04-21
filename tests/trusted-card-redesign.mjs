@@ -140,8 +140,8 @@ assert.match(
 
 assert.match(
   styleCss,
-  /@media \(max-width: 640px\)[\s\S]*\.trusted-company-shell\s*\{[\s\S]*grid-template-columns:\s*84px minmax\(0, 1fr\)/,
-  'expected trusted cards to use a tighter two-column mobile layout instead of a tall stacked shell'
+  /@media \(max-width: 640px\)[\s\S]*\.trusted-company-shell\s*\{[\s\S]*grid-template-columns:\s*74px minmax\(0, 1fr\)/,
+  'expected trusted cards to use a tighter two-column mobile layout with a slimmer leading column'
 );
 
 assert.match(

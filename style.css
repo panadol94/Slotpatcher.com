@@ -4410,22 +4410,24 @@ select:focus-visible,
 
 .trusted-company-shell {
     display: grid;
-    grid-template-columns: minmax(164px, 198px) minmax(0, 1fr) minmax(120px, 144px);
-    gap: 0 16px;
-    align-items: stretch;
+    grid-template-columns: 108px minmax(0, 1fr);
+    gap: 14px;
+    align-items: center;
+    padding: 16px;
 }
 
 .trusted-company-leading {
     display: grid;
-    align-content: center;
-    gap: 12px;
-    padding: 16px 0 16px 16px;
+    align-content: start;
+    gap: 10px;
+    padding: 0;
 }
 
 .trusted-company-rank-stack {
     display: grid;
     gap: 8px;
-    padding: 12px 14px;
+    justify-items: start;
+    padding: 10px 12px;
     border-radius: 18px;
     background: linear-gradient(180deg, rgba(255, 255, 255, 0.03), rgba(255, 255, 255, 0.012));
     border: 1px solid rgba(240, 181, 72, 0.10);
@@ -4464,18 +4466,18 @@ select:focus-visible,
 
 .trusted-company-rank-label {
     min-width: 0;
-    font-size: 13px;
+    font-size: 12px;
     font-weight: 700;
     color: #f7ead0;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+    line-height: 1.25;
+    white-space: normal;
 }
 
 .trusted-company-identity {
     display: grid;
-    gap: 9px;
-    padding: 14px;
+    justify-items: center;
+    gap: 0;
+    padding: 10px;
     border-radius: 18px;
     background: linear-gradient(180deg, rgba(255, 255, 255, 0.025), rgba(255, 255, 255, 0.012));
     border: 1px solid rgba(240, 181, 72, 0.08);
@@ -4577,10 +4579,10 @@ select:focus-visible,
 
 .trusted-company-main {
     display: grid;
-    align-content: center;
-    gap: 8px;
+    align-content: start;
+    gap: 10px;
     min-width: 0;
-    padding: 16px 0;
+    padding: 0;
 }
 
 .trusted-company-topline {
@@ -4636,13 +4638,14 @@ select:focus-visible,
     display: flex;
     flex-wrap: wrap;
     gap: 8px;
+    align-items: center;
 }
 
 .trusted-company-meta-pill {
     display: inline-flex;
     align-items: center;
     gap: 6px;
-    padding: 5px 9px;
+    padding: 6px 10px;
     border-radius: 999px;
     background: rgba(255, 255, 255, 0.03);
     border: 1px solid rgba(255, 255, 255, 0.06);
@@ -4652,19 +4655,25 @@ select:focus-visible,
     line-height: 1;
 }
 
+.trusted-company-meta-pill-verified {
+    border-color: rgba(34, 197, 94, 0.18);
+    background: rgba(34, 197, 94, 0.08);
+    color: #dcfce7;
+}
+
 .trusted-company-actions {
     display: flex;
     align-items: center;
-    justify-content: center;
-    padding: 16px 16px 16px 0;
+    justify-content: flex-start;
+    padding: 2px 0 0;
 }
 
 .trusted-company-cta {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: 100%;
-    max-width: 132px;
+    width: auto;
+    min-width: 132px;
     padding: 11px 14px;
     border-radius: 999px;
     background: rgba(197, 31, 31, 0.06);
@@ -4957,19 +4966,20 @@ select:focus-visible,
     }
 
     .trusted-company-shell {
-        grid-template-columns: 84px minmax(0, 1fr);
-        gap: 0 12px;
+        grid-template-columns: 74px minmax(0, 1fr);
+        gap: 12px;
+        padding: 14px;
     }
 
     .trusted-company-leading {
         align-content: start;
         gap: 8px;
-        padding: 14px 0 0 14px;
+        padding: 0;
     }
 
     .trusted-company-rank-stack {
         gap: 6px;
-        padding: 8px 9px;
+        padding: 8px;
         border-radius: 14px;
     }
 
@@ -4987,11 +4997,12 @@ select:focus-visible,
     }
 
     .trusted-company-rank-label {
-        font-size: 11px;
+        font-size: 10px;
+        line-height: 1.2;
     }
 
     .trusted-company-identity {
-        padding: 10px;
+        padding: 8px;
         border-radius: 16px;
     }
 
@@ -5017,12 +5028,12 @@ select:focus-visible,
     }
 
     .trusted-company-main {
-        gap: 7px;
-        padding: 14px 14px 10px 0;
+        gap: 8px;
+        padding: 0;
     }
 
     .trusted-company-name {
-        font-size: 19px;
+        font-size: 18px;
     }
 
     .trusted-company-chip-row {
@@ -5039,14 +5050,14 @@ select:focus-visible,
     }
 
     .trusted-company-actions {
-        grid-column: 2;
-        padding: 0 14px 12px 0;
+        grid-column: auto;
+        padding: 2px 0 0;
         justify-content: flex-start;
     }
 
     .trusted-company-cta {
         width: auto;
-        min-width: 116px;
+        min-width: 110px;
         max-width: none;
         padding: 10px 14px;
     }
