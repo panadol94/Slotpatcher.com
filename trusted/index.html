@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Slotpatcher.com — Trusted Lounge</title>
+    <meta name="description" content="Trusted Lounge Slotpatcher.com — ruang premium untuk trusted flow, source-true review standard, dan akses balik ke scanner utama.">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="/icon-192.png">
+    <link rel="icon" type="image/png" sizes="512x512" href="/icon-512.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/style.css?v=scan-live-2">
+    <style>
+        :root {
+            --trusted-bg: radial-gradient(circle at top, rgba(212, 175, 55, 0.16), transparent 38%), linear-gradient(180deg, #090909 0%, #121212 48%, #070707 100%);
+            --trusted-surface: rgba(20, 20, 20, 0.82);
+            --trusted-surface-strong: rgba(31, 24, 10, 0.94);
+            --trusted-border: rgba(212, 175, 55, 0.24);
+            --trusted-border-strong: rgba(255, 215, 0, 0.46);
+            --trusted-ink: #f6f1dd;
+            --trusted-muted: rgba(246, 241, 221, 0.72);
+            --trusted-gold: #d4af37;
+            --trusted-gold-strong: #ffd86b;
+            --trusted-shadow: 0 24px 80px rgba(0, 0, 0, 0.44);
+        }
+
+        body.trusted-page-lite {
+            margin: 0;
+            min-height: 100vh;
+            font-family: 'Poppins', sans-serif;
+            color: var(--trusted-ink);
+            background: var(--trusted-bg);
+            padding: 0 0 calc(108px + env(safe-area-inset-bottom));
+        }
+
+        .trusted-shell {
+            width: min(1120px, calc(100% - 32px));
+            margin: 0 auto;
+            padding: 24px 0 40px;
+        }
+
+        .trusted-topbar-lite {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+            padding: 16px 18px;
+            margin-bottom: 22px;
+            border: 1px solid rgba(255,255,255,0.06);
+            border-radius: 24px;
+            background: rgba(10,10,10,0.72);
+            box-shadow: var(--trusted-shadow);
+            backdrop-filter: blur(18px);
+        }
+
+        .trusted-brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .trusted-brand img {
+            width: 46px;
+            height: 46px;
+            border-radius: 14px;
+            object-fit: cover;
+            box-shadow: 0 10px 28px rgba(212,175,55,0.22);
+        }
+
+        .trusted-brand-title {
+            font-size: 1rem;
+            font-weight: 700;
+            letter-spacing: 0.02em;
+        }
+
+        .trusted-brand-subtitle {
+            font-size: 0.76rem;
+            color: var(--trusted-muted);
+            margin-top: 2px;
+        }
+
+        .trusted-topnav {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .trusted-topnav a {
+            color: rgba(255,255,255,0.82);
+            text-decoration: none;
+            padding: 10px 14px;
+            border-radius: 999px;
+            border: 1px solid rgba(255,255,255,0.08);
+            background: rgba(255,255,255,0.03);
+            font-size: 0.88rem;
+            font-weight: 600;
+        }
+
+        .trusted-topnav a[aria-current="page"] {
+            color: #15120b;
+            background: linear-gradient(135deg, #f6df91 0%, #d4af37 100%);
+            border-color: rgba(255,216,107,0.88);
+            box-shadow: 0 14px 34px rgba(212,175,55,0.25);
+        }
+
+        .trusted-hero {
+            position: relative;
+            overflow: hidden;
+            padding: 34px 30px;
+            border-radius: 30px;
+            border: 1px solid var(--trusted-border);
+            background:
+                radial-gradient(circle at top right, rgba(255, 216, 107, 0.20), transparent 34%),
+                radial-gradient(circle at bottom left, rgba(166, 126, 39, 0.20), transparent 40%),
+                linear-gradient(160deg, rgba(20, 16, 10, 0.96), rgba(7, 7, 7, 0.94));
+            box-shadow: var(--trusted-shadow);
+        }
+
+        .trusted-kicker {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 14px;
+            border-radius: 999px;
+            background: rgba(255, 216, 107, 0.10);
+            border: 1px solid rgba(255, 216, 107, 0.24);
+            color: var(--trusted-gold-strong);
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
+
+        .trusted-hero h1 {
+            margin: 18px 0 12px;
+            font-size: clamp(2rem, 4vw, 3.6rem);
+            line-height: 1.04;
+            letter-spacing: -0.03em;
+        }
+
+        .trusted-hero p {
+            max-width: 760px;
+            margin: 0;
+            color: var(--trusted-muted);
+            font-size: 1rem;
+            line-height: 1.8;
+        }
+
+        .trusted-pill-row,
+        .trusted-actions,
+        .trusted-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 14px;
+        }
+
+        .trusted-pill-row {
+            margin-top: 22px;
+        }
+
+        .trusted-pill {
+            padding: 10px 14px;
+            border-radius: 999px;
+            border: 1px solid rgba(255,255,255,0.08);
+            background: rgba(255,255,255,0.04);
+            color: rgba(255,255,255,0.86);
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        .trusted-actions {
+            margin-top: 26px;
+        }
+
+        .trusted-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 50px;
+            padding: 0 20px;
+            border-radius: 16px;
+            text-decoration: none;
+            font-weight: 700;
+            letter-spacing: 0.01em;
+            transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+        }
+
+        .trusted-btn:hover { transform: translateY(-1px); }
+
+        .trusted-btn-primary {
+            color: #17120a;
+            background: linear-gradient(135deg, #f7e7a9 0%, #d4af37 100%);
+            box-shadow: 0 18px 44px rgba(212,175,55,0.24);
+        }
+
+        .trusted-btn-secondary {
+            color: var(--trusted-ink);
+            border: 1px solid rgba(255,255,255,0.12);
+            background: rgba(255,255,255,0.05);
+        }
+
+        .trusted-grid {
+            margin-top: 26px;
+        }
+
+        .trusted-card {
+            flex: 1 1 240px;
+            min-width: 0;
+            padding: 22px 20px;
+            border-radius: 24px;
+            background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02));
+            border: 1px solid rgba(255,255,255,0.08);
+            box-shadow: inset 0 1px 0 rgba(255,255,255,0.04);
+        }
+
+        .trusted-card .trusted-card-label {
+            color: var(--trusted-gold-strong);
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+        }
+
+        .trusted-card h2 {
+            margin: 0 0 10px;
+            font-size: 1.16rem;
+        }
+
+        .trusted-card p {
+            margin: 0;
+            color: var(--trusted-muted);
+            line-height: 1.75;
+            font-size: 0.95rem;
+        }
+
+        .trusted-note {
+            margin-top: 22px;
+            padding: 22px 20px;
+            border-radius: 24px;
+            border: 1px solid var(--trusted-border);
+            background: linear-gradient(180deg, var(--trusted-surface), rgba(10,10,10,0.9));
+            box-shadow: var(--trusted-shadow);
+        }
+
+        .trusted-note h2 {
+            margin: 0 0 10px;
+            font-size: 1.08rem;
+        }
+
+        .trusted-note p {
+            margin: 0;
+            color: var(--trusted-muted);
+            line-height: 1.8;
+        }
+
+        .trusted-footer-nav {
+            position: fixed;
+            left: 50%;
+            bottom: calc(16px + env(safe-area-inset-bottom));
+            transform: translateX(-50%);
+            width: min(760px, calc(100% - 24px));
+            display: flex;
+            gap: 10px;
+            padding: 12px;
+            border-radius: 24px;
+            border: 1px solid rgba(255,255,255,0.08);
+            background: rgba(10,10,10,0.90);
+            backdrop-filter: blur(20px);
+            box-shadow: 0 24px 70px rgba(0,0,0,0.5);
+            z-index: 40;
+        }
+
+        .trusted-footer-nav a {
+            flex: 1 1 0;
+            min-width: 0;
+            text-align: center;
+            padding: 12px 10px;
+            border-radius: 16px;
+            color: rgba(255,255,255,0.78);
+            text-decoration: none;
+            font-size: 0.84rem;
+            font-weight: 700;
+            border: 1px solid transparent;
+            background: transparent;
+        }
+
+        .trusted-footer-nav a.active {
+            color: #15120b;
+            background: linear-gradient(135deg, #f6df91 0%, #d4af37 100%);
+            border-color: var(--trusted-border-strong);
+        }
+
+        @media (max-width: 720px) {
+            .trusted-shell { width: min(100% - 20px, 1120px); padding-top: 14px; }
+            .trusted-topbar-lite,
+            .trusted-hero,
+            .trusted-card,
+            .trusted-note { border-radius: 22px; }
+            .trusted-topbar-lite { padding: 14px; }
+            .trusted-hero { padding: 24px 20px; }
+            .trusted-topnav { width: 100%; }
+            .trusted-topnav a { flex: 1 1 calc(50% - 10px); text-align: center; }
+            .trusted-footer-nav { gap: 8px; padding: 10px; }
+            .trusted-footer-nav a { font-size: 0.76rem; padding: 10px 8px; }
+        }
+    </style>
+</head>
+<body class="trusted-page-lite">
+    <div class="trusted-shell">
+        <header class="trusted-topbar-lite">
+            <a href="/" class="trusted-brand" aria-label="Kembali ke Slotpatcher utama">
+                <img src="/assets/logo.gif" alt="Slotpatcher logo">
+                <div>
+                    <div class="trusted-brand-title">Slotpatcher.com</div>
+                    <div class="trusted-brand-subtitle">Trusted Lounge · premium dark review flow</div>
+                </div>
+            </a>
+            <nav class="trusted-topnav" aria-label="Trusted top navigation">
+                <a href="/">Home</a>
+                <a href="/trusted/" aria-current="page">Trusted</a>
+                <a href="/#providerSection">Download</a>
+            </nav>
+        </header>
+
+        <main>
+            <section class="trusted-hero">
+                <div class="trusted-kicker">Trusted access now live</div>
+                <h1>Trusted sekarang ada page sendiri — bukan scroll balik ke home.</h1>
+                <p>
+                    Halaman ni diwujudkan khas untuk flow Trusted Slotpatcher. Sekarang bila user tekan button Trusted,
+                    dia akan buka route sebenar <strong>/trusted/</strong> dan bukan lagi tersekat pada hash <strong>#home</strong>.
+                    Struktur ni juga dah disediakan supaya next step boleh sambung ke premium showcase / source-true company view tanpa hacky workaround.
+                </p>
+
+                <div class="trusted-pill-row" aria-label="Trusted highlights">
+                    <span class="trusted-pill">Dedicated route</span>
+                    <span class="trusted-pill">Build-safe multi-page entry</span>
+                    <span class="trusted-pill">Premium dark shell</span>
+                    <span class="trusted-pill">Scanner links retained</span>
+                </div>
+
+                <div class="trusted-actions">
+                    <a class="trusted-btn trusted-btn-primary" href="/#providerSection">Buka scanner</a>
+                    <a class="trusted-btn trusted-btn-secondary" href="/">Kembali ke home</a>
+                </div>
+            </section>
+
+            <section class="trusted-grid" aria-label="Trusted principles">
+                <article class="trusted-card">
+                    <div class="trusted-card-label">Fix 01</div>
+                    <h2>Button dah route betul</h2>
+                    <p>Bottom nav Trusted sekarang target ke <strong>/trusted/</strong>, bukan lagi anchor <strong>#home</strong> yang cuma scroll dalam page utama.</p>
+                </article>
+                <article class="trusted-card">
+                    <div class="trusted-card-label">Fix 02</div>
+                    <h2>JS tak block route luar</h2>
+                    <p>Handler bottom nav sekarang hanya intercept hash link dalam page. Route sebenar macam <strong>/trusted/</strong> dibiarkan navigate normal.</p>
+                </article>
+                <article class="trusted-card">
+                    <div class="trusted-card-label">Fix 03</div>
+                    <h2>Build memang include page ni</h2>
+                    <p>Vite config dah ada input untuk <strong>trusted/index.html</strong>, jadi bila deploy nanti page ni takkan hilang dan 404 lagi.</p>
+                </article>
+            </section>
+
+            <section class="trusted-note">
+                <h2>Step seterusnya</h2>
+                <p>
+                    Ini fix minimum yang stabil untuk pulihkan flow Trusted. Lepas route ni live dan confirm okay, kita boleh sambung upgrade
+                    halaman ni jadi full premium company showcase ikut source-true media rules tanpa rosakkan live nav lagi.
+                </p>
+            </section>
+        </main>
+    </div>
+
+    <nav class="trusted-footer-nav" aria-label="Trusted quick navigation">
+        <a href="/trusted/" class="active" aria-current="page">Trusted</a>
+        <a href="/#providerSection">Download</a>
+        <a href="/">Scanner</a>
+        <a href="/#resultsSection">Tutorial</a>
+        <a href="/">Home</a>
+    </nav>
+</body>
+</html>

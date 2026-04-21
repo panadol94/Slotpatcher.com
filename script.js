@@ -1237,11 +1237,13 @@ function initBottomNav() {
                 openProviderModal();
                 return;
             }
-            if (href && href !== '#') {
+            if (href && href.charAt(0) === '#' && href !== '#') {
                 e.preventDefault();
                 var target = document.querySelector(href);
                 if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-            } else {
+                return;
+            }
+            if (!href || href === '#') {
                 e.preventDefault();
             }
         });

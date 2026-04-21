@@ -8,6 +8,7 @@
     "build": "vite build",
     "preview": "vite preview --host 0.0.0.0 --port 4173",
     "lint": "eslint .",
+    "test:trusted": "node tests/trusted-nav-regression.mjs",
     "test:e2e": "cypress run",
     "test:e2e:open": "cypress open",
     "minify:js": "terser script.js -o script.min.js --compress --mangle"
