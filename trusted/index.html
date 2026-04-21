@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Trusted Casino — Slotpatcher.com</title>
-    <meta name="description" content="Pilih trusted casino yang meyakinkan untuk pemain Malaysia. Semak bonus semasa, bandingkan pilihan trusted, dan terus daftar dengan lebih yakin.">
+    <meta name="description" content="Cari casino trusted yang tengah panas, semak bonus paling padu, dan daftar terus pada link yang paling meyakinkan.">
     <link rel="icon" type="image/x-icon" href="../favicon.ico">
     <link rel="icon" type="image/png" sizes="32x32" href="../favicon.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -139,21 +139,21 @@
 <body>
     <div class="trusted-page">
         <header class="trusted-header">
-            <div class="trusted-kicker">Trusted Casino · Bonus Semasa</div>
+            <div class="trusted-kicker">Trusted Casino · Bonus Padu</div>
             <div class="trusted-header-icon">🛡️</div>
             <h1>TRUSTED CASINO</h1>
-            <p>Pilih trusted casino yang nampak paling meyakinkan, semak bonus semasa, dan tekan terus untuk daftar dengan lebih yakin.</p>
+            <p>Cari trusted casino yang tengah panas, semak bonus paling padu, dan tekan terus link daftar bila dah jumpa yang paling ngam.</p>
         </header>
 
         <div class="trusted-content">
             <div class="trusted-stats-row">
                 <div class="trusted-stat-card">
                     <div class="trusted-stat-value" id="trustedPlatformCount">29</div>
-                    <div class="trusted-stat-label">Pilihan Trusted</div>
+                    <div class="trusted-stat-label">Casino Panas</div>
                 </div>
                 <div class="trusted-stat-card">
                     <div class="trusted-stat-value" id="trustedVideoCount">0</div>
-                    <div class="trusted-stat-label">Bukti Video</div>
+                    <div class="trusted-stat-label">Preview Video</div>
                 </div>
                 <div class="trusted-stat-card">
                     <div class="trusted-stat-value" id="trustedPhotoCount">0</div>
@@ -164,9 +164,9 @@
             <section class="trusted-feature-stage" id="trustedFeatureStage" aria-labelledby="trustedFeatureTitle" hidden>
                 <div class="trusted-feature-head">
                     <div class="trusted-feature-copy">
-                        <span class="trusted-feature-kicker">Pilihan Top Hari Ini</span>
-                        <h2 class="trusted-feature-title" id="trustedFeatureTitle">Tengok dulu casino trusted yang paling ramai orang buka sekarang</h2>
-                        <p class="trusted-feature-subcopy">Kalau nampak bonus yang ngam, tekan terus untuk daftar. List bawah bagi lebih banyak pilihan trusted untuk kau banding cepat.</p>
+                        <span class="trusted-feature-kicker">Top Casino Paling Panas</span>
+                        <h2 class="trusted-feature-title" id="trustedFeatureTitle">Bonus besar, link trusted, terus pilih yang paling ngam</h2>
+                        <p class="trusted-feature-subcopy">Kalau offer nampak sedap, terus tekan daftar. Lagi bawah ada lebih banyak pilihan trusted untuk kau banding dan masuk cepat.</p>
                     </div>
                     <div class="trusted-feature-controls">
                         <button class="trusted-feature-nav" id="trustedCoverflowPrev" type="button" aria-label="Previous trusted feature">‹</button>
@@ -186,7 +186,7 @@
                 <div class="trusted-coverflow-dots" id="trustedCoverflowDots" aria-label="Trusted feature pagination"></div>
             </section>
 
-            <p class="trusted-source-status" id="trustedSourceStatus">Sedang semak trusted casino dengan bonus semasa...</p>
+            <p class="trusted-source-status" id="trustedSourceStatus">Sedang semak trusted casino dengan bonus paling padu...</p>
             <div class="trusted-company-grid" id="trustedCompanyGrid">
                 <!-- Live trusted casino rendered via JS -->
             </div>
@@ -204,7 +204,7 @@
                 <div class="brand-logo footer-logo">SP</div>
                 <div>
                     <div class="brand-name">Slotpatcher.com</div>
-                    <p class="site-footer-copy">Cari trusted casino yang lebih meyakinkan, semak bonus semasa, dan terus daftar bila dah jumpa pilihan sesuai.</p>
+                    <p class="site-footer-copy">Pilih casino trusted yang tengah panas, semak bonus yang berbaloi, dan terus daftar bila dah jumpa link yang paling ngam.</p>
                 </div>
             </div>
         </div>
@@ -370,21 +370,21 @@
             function getTrustedRankMeta(index) {
                 if (index === 0) {
                     return {
-                        label: 'Pilihan Ramai',
+                        label: 'Paling Panas',
                         cardClass: 'is-top-tier is-top-1'
                     };
                 }
 
                 if (index === 1) {
                     return {
-                        label: 'Bonus Panas',
+                        label: 'Bonus Besar',
                         cardClass: 'is-top-tier is-top-2'
                     };
                 }
 
                 if (index === 2) {
                     return {
-                        label: 'Daftar Cepat',
+                        label: 'Masuk Cepat',
                         cardClass: 'is-top-tier is-top-3'
                     };
                 }
@@ -611,7 +611,7 @@
                     + '<div class="trusted-company-main">'
                     + '<div class="trusted-company-name">' + name + '</div>'
                     + '<div class="trusted-company-caption">' + caption + '</div>'
-                    + '<div class="trusted-company-subcopy">Update terkini · ' + factDate + '</div>'
+                    + '<div class="trusted-company-subcopy">Update bonus · ' + factDate + '</div>'
                     + '<div class="trusted-company-meta-row">'
                     + '<span class="trusted-company-meta-pill">' + domain + '</span>'
                     + '<span class="trusted-company-meta-pill">' + mediaType + '</span>'
@@ -749,7 +749,7 @@
                 }).length);
 
                 if (!activeCompanies.length) {
-                    sourceStatus.textContent = 'Sekarang belum ada trusted casino aktif untuk dipaparkan.';
+                    sourceStatus.textContent = 'Sekarang belum ada trusted casino panas untuk dipaparkan.';
                     sourceStatus.classList.add('is-error');
                     renderTrustedFeatureCarousel([]);
                     grid.innerHTML = '';
@@ -761,7 +761,7 @@
                     return renderTrustedCompanyCard(company, index);
                 }).join('');
 
-                sourceStatus.textContent = activeCompanies.length + ' trusted casino sedia untuk anda pilih sekarang.';
+                sourceStatus.textContent = activeCompanies.length + ' trusted casino tengah aktif untuk kau pilih sekarang.';
                 sourceStatus.classList.remove('is-error');
             }
 
@@ -826,7 +826,7 @@
                 .catch(function(error) {
                     console.error('Trusted companies API failed:', error);
                     renderTrustedCompanies(fallbackCompanies);
-                    sourceStatus.textContent = 'Live API tak dapat dicapai sekarang. Senarai fallback masih boleh digunakan untuk pilih link daftar.';
+                    sourceStatus.textContent = 'Live API tak dapat dicapai sekarang. Senarai fallback masih boleh dipakai untuk cari link daftar yang paling ngam.';
                     sourceStatus.classList.add('is-error');
                 });
         })();
