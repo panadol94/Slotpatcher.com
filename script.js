@@ -115,6 +115,19 @@ function renderGamesEmpty(message) {
     gameList.innerHTML = '<div class="games-empty"><div class="games-empty-icon" aria-hidden="true">🕳️</div><h4>Tiada game untuk dipaparkan</h4><p>' + escapeHtml(message || 'Cuba pilih provider lain atau reset filter.') + '</p></div>';
 }
 
+function getGameThumbnailUrl(rawUrl) {
+    if (!rawUrl) return '';
+    var value = String(rawUrl);
+    if (value.indexOf('/api/game-thumb?src=') === 0) return value;
+    try {
+        var parsed = new URL(value, window.location.origin);
+        if (parsed.hostname === 'storage.googleapis.com' && parsed.pathname.indexOf('/images.imbaweb.com/') === 0) {
+            return '/api/game-thumb?src=' + encodeURIComponent(parsed.toString());
+        }
+    } catch (error) {}
+    return value;
+}
+
 function getFilteredGames() {
     return currentFilter === 'all'
         ? currentGames.slice(3)
@@ -1150,7 +1163,7 @@ function renderTop3() {
     var medals = ['👑', '🥈', '🥉'], classes = ['gold', 'silver', 'bronze'];
     var html = '<h3 class="top3-heading">🏆 Top 3 Game Terpanas</h3><div class="top3-cards">';
     top3.forEach(function(game, i) {
-        html += '<div class="top3-card top3-' + classes[i] + '" style="animation-delay:' + (i * 0.15) + 's"><span class="top3-medal">' + medals[i] + '</span><div class="top3-thumb"><img loading="lazy" src="' + escapeHtml(game.img) + '" alt="' + escapeHtml(game.name) + '" onerror="this.onerror=null; this.src=window.getFallbackImage(this.alt)"></div><span class="top3-name">' + escapeHtml(game.name) + '</span>' + createRtpGauge(game.rtp, 50) + '<span class="top3-status top3-status-' + game.status + '">' + escapeHtml(getStatusLabel(game.status)) + '</span></div>';
+        html += '<div class="top3-card top3-' + classes[i] + '" style="animation-delay:' + (i * 0.15) + 's"><span class="top3-medal">' + medals[i] + '</span><div class="top3-thumb"><img loading="lazy" src="' + escapeHtml(getGameThumbnailUrl(game.img)) + '" alt="' + escapeHtml(game.name) + '" onerror="this.onerror=null; this.src=window.getFallbackImage(this.alt)"></div><span class="top3-name">' + escapeHtml(game.name) + '</span>' + createRtpGauge(game.rtp, 50) + '<span class="top3-status top3-status-' + game.status + '">' + escapeHtml(getStatusLabel(game.status)) + '</span></div>';
     });
     section.innerHTML = html + '</div>';
 }
@@ -1196,7 +1209,7 @@ function renderGames() {
         card.className = 'game-card ' + game.status;
         card.style.animationDelay = (index * 0.04) + 's';
         var rankNum = currentFilter === 'all' ? index + 4 : index + 1;
-        card.innerHTML = '<div class="game-rank">#' + rankNum + '</div><div class="game-thumb"><img loading="lazy" src="' + escapeHtml(game.img) + '" alt="' + escapeHtml(game.name) + '" onerror="this.onerror=null; this.src=window.getFallbackImage(this.alt)"></div><div class="game-info"><div class="game-name">' + escapeHtml(game.name) + '</div><div class="game-provider-name">' + escapeHtml(game.provider) + '</div><div class="game-rtp-bar"><div class="game-rtp-fill ' + game.status + '" style="width:0%"></div></div></div><div class="game-rtp-value">' + createRtpGauge(game.rtp, 48) + '<span class="rtp-label ' + game.status + '">' + getStatusEmoji(game.status) + ' ' + escapeHtml(game.status.toUpperCase()) + '</span></div>';
+        card.innerHTML = '<div class="game-rank">#' + rankNum + '</div><div class="game-thumb"><img loading="lazy" src="' + escapeHtml(getGameThumbnailUrl(game.img)) + '" alt="' + escapeHtml(game.name) + '" onerror="this.onerror=null; this.src=window.getFallbackImage(this.alt)"></div><div class="game-info"><div class="game-name">' + escapeHtml(game.name) + '</div><div class="game-provider-name">' + escapeHtml(game.provider) + '</div><div class="game-rtp-bar"><div class="game-rtp-fill ' + game.status + '" style="width:0%"></div></div></div><div class="game-rtp-value">' + createRtpGauge(game.rtp, 48) + '<span class="rtp-label ' + game.status + '">' + getStatusEmoji(game.status) + ' ' + escapeHtml(game.status.toUpperCase()) + '</span></div>';
         gameList.appendChild(card);
         setTimeout(function() { var fill = card.querySelector('.game-rtp-fill'); if (fill) fill.style.width = Math.max(0, Math.min(100, ((game.rtp - 25) / 75) * 100)) + '%'; }, 100 + index * 60);
     });

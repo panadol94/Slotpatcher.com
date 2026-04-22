@@ -13,6 +13,12 @@ const ICON_CACHE_TTL_MS = 1000 * 60 * 60;
 const ICON_CACHE_MAX_ENTRIES = 200;
 const ICON_FETCH_TIMEOUT_MS = 6000;
 const ICON_MAX_BYTES = 256 * 1024;
+const GAME_THUMB_CACHE_TTL_MS = 1000 * 60 * 60 * 24;
+const GAME_THUMB_CACHE_MAX_ENTRIES = 600;
+const GAME_THUMB_FETCH_TIMEOUT_MS = 8000;
+const GAME_THUMB_MAX_BYTES = 512 * 1024;
+const GAME_THUMB_ALLOWED_HOST = 'storage.googleapis.com';
+const GAME_THUMB_ALLOWED_PATH_PREFIX = '/images.imbaweb.com/';
 const TRUSTED_COMPANIES_API_URL = 'https://api.tipsmega888.com/api/companies';
 const TRUSTED_COMPANIES_CACHE_TTL_MS = 1000 * 60 * 5;
 const TRUSTED_COMPANY_FALLBACK_LINKS = [
@@ -22,6 +28,7 @@ const TRUSTED_COMPANY_FALLBACK_LINKS = [
   'https://masuk10.com/Aiplay'
 ];
 const iconCache = new Map();
+const gameThumbCache = new Map();
 let trustedOriginsCache = { expiresAt: 0, origins: new Set() };
 
 const MIME_TYPES = {
@@ -231,6 +238,111 @@ function pruneIconCache() {
   if (oldestKey) iconCache.delete(oldestKey);
 }
 
+function pruneGameThumbCache() {
+  if (gameThumbCache.size < GAME_THUMB_CACHE_MAX_ENTRIES) return;
+  const oldestKey = gameThumbCache.keys().next().value;
+  if (oldestKey) gameThumbCache.delete(oldestKey);
+}
+
+function cacheKeyForGameThumb(targetUrl) {
+  return targetUrl.toString();
+}
+
+function validateGameThumbnailTarget(targetValue) {
+  let parsed;
+  try {
+    parsed = new URL(targetValue);
+  } catch {
+    throw new Error('Invalid thumbnail URL');
+  }
+
+  const { protocol, hostname, pathname, username, password } = parsed;
+  if (protocol !== 'http:' && protocol !== 'https:') {
+    throw new Error('Unsupported thumbnail URL scheme');
+  }
+
+  if (username || password) {
+    throw new Error('Credentials in thumbnail URL are not allowed');
+  }
+
+  if (hostname.toLowerCase() !== GAME_THUMB_ALLOWED_HOST) {
+    throw new Error('Thumbnail host is not allowlisted');
+  }
+
+  if (!pathname.startsWith(GAME_THUMB_ALLOWED_PATH_PREFIX)) {
+    throw new Error('Thumbnail path is not allowlisted');
+  }
+
+  if (!/\.(png|jpe?g|webp|gif|avif)$/i.test(pathname)) {
+    throw new Error('Thumbnail file type is not allowed');
+  }
+
+  return parsed;
+}
+
+async function fetchGameThumbnail(targetUrl, redirectDepth = 0) {
+  if (redirectDepth > 2) {
+    throw new Error('Too many thumbnail redirects');
+  }
+
+  const key = cacheKeyForGameThumb(targetUrl);
+  const cached = gameThumbCache.get(key);
+  if (cached && cached.expiresAt > Date.now()) {
+    return cached;
+  }
+
+  const response = await fetch(targetUrl, {
+    method: 'GET',
+    redirect: 'manual',
+    signal: AbortSignal.timeout(GAME_THUMB_FETCH_TIMEOUT_MS),
+    headers: {
+      'User-Agent': 'SlotpatcherGameThumbProxy/1.0 (+https://slotpatcher.com)',
+      'Accept': 'image/avif,image/webp,image/apng,image/*,*/*;q=0.8'
+    }
+  });
+
+  if (response.status >= 300 && response.status < 400) {
+    const location = response.headers.get('location');
+    if (!location) {
+      throw new Error('Thumbnail redirect target missing');
+    }
+    const redirectedUrl = validateGameThumbnailTarget(new URL(location, targetUrl).toString());
+    return fetchGameThumbnail(redirectedUrl, redirectDepth + 1);
+  }
+
+  if (!response.ok) {
+    throw new Error('Thumbnail unavailable');
+  }
+
+  const contentType = response.headers.get('content-type') || '';
+  if (!contentType.toLowerCase().startsWith('image/')) {
+    throw new Error('Thumbnail response is not an image');
+  }
+
+  const declaredLength = Number(response.headers.get('content-length') || '0');
+  if (declaredLength && declaredLength > GAME_THUMB_MAX_BYTES) {
+    throw new Error('Thumbnail too large');
+  }
+
+  const body = Buffer.from(await response.arrayBuffer());
+  if (!body.length) {
+    throw new Error('Thumbnail body empty');
+  }
+
+  if (body.length > GAME_THUMB_MAX_BYTES) {
+    throw new Error('Thumbnail too large');
+  }
+
+  const cachedResult = {
+    body,
+    contentType,
+    expiresAt: Date.now() + GAME_THUMB_CACHE_TTL_MS
+  };
+  pruneGameThumbCache();
+  gameThumbCache.set(key, cachedResult);
+  return cachedResult;
+}
+
 async function fetchTrustedIconCandidate(candidateUrl, redirectDepth = 0) {
   if (redirectDepth > 3) {
     throw new Error('Too many redirects');
@@ -349,6 +461,36 @@ async function handleTrustedIcon(req, res, requestUrl) {
   }
 }
 
+async function handleGameThumbnail(req, res, requestUrl) {
+  if (req.method !== 'GET' && req.method !== 'HEAD') {
+    send(res, 405, { error: 'Method not allowed' }, { 'Content-Type': 'application/json; charset=utf-8' });
+    return;
+  }
+
+  const src = requestUrl.searchParams.get('src');
+  if (!src) {
+    send(res, 400, { error: 'Missing thumbnail source URL' }, { 'Content-Type': 'application/json; charset=utf-8' });
+    return;
+  }
+
+  try {
+    const targetUrl = validateGameThumbnailTarget(src);
+    const thumbnail = await fetchGameThumbnail(targetUrl);
+    res.writeHead(200, {
+      'Content-Type': thumbnail.contentType,
+      'Cache-Control': 'public, max-age=86400, stale-while-revalidate=604800',
+      'X-Content-Type-Options': 'nosniff'
+    });
+    if (req.method === 'HEAD') {
+      res.end();
+      return;
+    }
+    res.end(thumbnail.body);
+  } catch (error) {
+    send(res, 404, { error: error.message || 'Game thumbnail unavailable' }, { 'Content-Type': 'application/json; charset=utf-8' });
+  }
+}
+
 async function handleStatic(req, res, requestUrl) {
   const filePath = await resolveStaticFile(requestUrl.pathname);
   if (!filePath) {
@@ -377,6 +519,10 @@ const server = http.createServer(async (req, res) => {
     const requestUrl = new URL(req.url || '/', `http://${req.headers.host || 'localhost'}`);
     if (requestUrl.pathname === '/api/trusted-icon') {
       await handleTrustedIcon(req, res, requestUrl);
+      return;
+    }
+    if (requestUrl.pathname === '/api/game-thumb') {
+      await handleGameThumbnail(req, res, requestUrl);
       return;
     }
     await handleStatic(req, res, requestUrl);
