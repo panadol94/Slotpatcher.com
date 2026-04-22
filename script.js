@@ -345,7 +345,7 @@ function goToSlide(index) {
     if (carouselTotal === 0) return;
     carouselCurrent = ((index % carouselTotal) + carouselTotal) % carouselTotal;
     var track = document.getElementById('carouselTrack');
-    track.style.transform = 'translateX(-' + (carouselCurrent * (100 / carouselTotal)) + '%)';
+    track.style.transform = 'translateX(-' + (carouselCurrent * 100) + '%)';
 
     var dots = document.querySelectorAll('.carousel-dot');
     dots.forEach(function(d, i) {
