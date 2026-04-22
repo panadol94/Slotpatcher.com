@@ -314,25 +314,53 @@ function initCarousel() {
 }
 
 function initEnhancements() {
-    if (window.AOS) {
-        window.AOS.init({
-            duration: 700,
-            once: true,
-            offset: 20,
-            easing: 'ease-out-cubic'
-        });
+    document.body.classList.add('homepage-lite-effects');
+    initHomepageStatusStrip();
+    initHomepageTelemetry();
+}
+
+function initHomepageStatusStrip() {
+    var sessEl = document.getElementById('secSession');
+    var nodeEl = document.getElementById('secNode');
+    if (sessEl) {
+        var h = '0123456789ABCDEF', id = '0x';
+        for (var i = 0; i < 8; i++) id += h.charAt(Math.floor(Math.random() * 16));
+        sessEl.textContent = id;
     }
-    if (window.gsap) {
-        window.gsap.from('.topbar', { y: -18, opacity: 0, duration: 0.55, ease: 'power2.out' });
-        window.gsap.from('.hero-title, .hero-text, .hero-actions', {
-            y: 20,
-            opacity: 0,
-            duration: 0.7,
-            stagger: 0.08,
-            ease: 'power2.out',
-            delay: 0.1
-        });
+    if (nodeEl) {
+        var nodes = ['SG-2', 'SG-4', 'MY-1', 'MY-3', 'KL-7', 'JKT-2'];
+        nodeEl.textContent = nodes[Math.floor(Math.random() * nodes.length)];
     }
+}
+
+function initHomepageTelemetry() {
+    var scansEl = document.getElementById('telScans');
+    var winEl = document.getElementById('telWin');
+    var usersEl = document.getElementById('telUsers');
+    var nodesEl = document.getElementById('telNodes');
+    if (!scansEl) return;
+
+    var scans = 47200 + Math.floor(Math.random() * 800);
+    var totalWin = 8400000 + Math.floor(Math.random() * 600000);
+    var users = 12800 + Math.floor(Math.random() * 400);
+    var activeNodes = 22 + Math.floor(Math.random() * 4);
+    var totalNodes = 25;
+
+    function fmtN(n) { return n.toLocaleString('en-US'); }
+    function fmtRM(n) {
+        if (n >= 1000000) return 'RM ' + (n / 1000000).toFixed(2) + 'M';
+        if (n >= 1000) return 'RM ' + (n / 1000).toFixed(1) + 'K';
+        return 'RM ' + n;
+    }
+    function fmtUsers(n) {
+        if (n >= 1000) return (n / 1000).toFixed(1) + 'K';
+        return String(n);
+    }
+
+    scansEl.textContent = fmtN(scans);
+    if (winEl) winEl.textContent = fmtRM(totalWin);
+    if (usersEl) usersEl.textContent = fmtUsers(users);
+    if (nodesEl) nodesEl.textContent = activeNodes + '/' + totalNodes;
 }
 
 function goToSlide(index) {
@@ -1470,168 +1498,3 @@ function shareResults(method) {
 window.startScan = startScan;
 window.shareResults = shareResults;
 console.log('%c Slotpatcher Live Scanner ', 'background: linear-gradient(135deg, #D4AF37, #FFD700); color: #1A0A2E; font-weight: bold; padding: 5px 10px; border-radius: 5px;');
-
-// ==========================================
-// PREMIUM HACKER LAYER (boot, matrix, session, telemetry)
-// ==========================================
-(function premiumHackerLayer() {
-    function onReady(fn) {
-        if (document.readyState !== 'loading') fn();
-        else document.addEventListener('DOMContentLoaded', fn);
-    }
-
-    // A: Boot overlay (once per session)
-    onReady(function bootOverlay() {
-        var overlay = document.getElementById('bootOverlay');
-        if (!overlay) return;
-        try {
-            if (sessionStorage.getItem('sp_boot_shown')) {
-                overlay.remove();
-                return;
-            }
-            sessionStorage.setItem('sp_boot_shown', '1');
-        } catch (e) { /* storage blocked — still run */ }
-
-        var log = document.getElementById('bootLog');
-        var lines = [
-            '> SLOTPATCHER OS v2.0.1',
-            '> Booting kernel............ [ OK ]',
-            '> Mounting RTP database..... [ OK ]',
-            '> Connecting secure node.... [ OK ]',
-            '> Encryption handshake...... AES-256',
-            '> Authenticating session.... [ OK ]',
-            '> ACCESS GRANTED',
-            '> Loading UI...'
-        ];
-        var cursor = document.createElement('span');
-        cursor.className = 'boot-cursor';
-        log.appendChild(cursor);
-
-        var dismissed = false;
-        function dismiss() {
-            if (dismissed) return;
-            dismissed = true;
-            overlay.classList.add('is-done');
-            setTimeout(function() { if (overlay.parentNode) overlay.remove(); }, 500);
-        }
-        overlay.addEventListener('click', dismiss);
-
-        var lineIdx = 0;
-        function typeNext() {
-            if (dismissed) return;
-            if (lineIdx >= lines.length) {
-                setTimeout(dismiss, 380);
-                return;
-            }
-            var line = lines[lineIdx++];
-            var charIdx = 0;
-            (function typeChar() {
-                if (dismissed) return;
-                if (charIdx >= line.length) {
-                    log.insertBefore(document.createTextNode('\n'), cursor);
-                    setTimeout(typeNext, 70);
-                    return;
-                }
-                log.insertBefore(document.createTextNode(line.charAt(charIdx++)), cursor);
-                setTimeout(typeChar, 14 + Math.random() * 10);
-            })();
-        }
-        typeNext();
-    });
-
-    // B: Matrix rain
-    onReady(function matrixRain() {
-        var canvas = document.getElementById('matrixRain');
-        if (!canvas) return;
-        var ctx = canvas.getContext('2d');
-        if (!ctx) return;
-        var fontSize = 14;
-        var drops = [];
-        function resize() {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
-            var cols = Math.ceil(canvas.width / fontSize);
-            drops = [];
-            for (var i = 0; i < cols; i++) drops.push(Math.random() * canvas.height / fontSize);
-        }
-        resize();
-        var resizeTimer;
-        window.addEventListener('resize', function() {
-            clearTimeout(resizeTimer);
-            resizeTimer = setTimeout(resize, 180);
-        });
-
-        var chars = 'アイウエオカキクケコサシスセソタチツABCDEF0123456789$%&#@';
-        function draw() {
-            ctx.fillStyle = 'rgba(11, 13, 15, 0.12)';
-            ctx.fillRect(0, 0, canvas.width, canvas.height);
-            ctx.font = fontSize + 'px "SF Mono", Consolas, monospace';
-            for (var i = 0; i < drops.length; i++) {
-                var text = chars.charAt(Math.floor(Math.random() * chars.length));
-                ctx.fillStyle = Math.random() > 0.92 ? '#22c55e' : '#950606';
-                ctx.fillText(text, i * fontSize, drops[i] * fontSize);
-                if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) drops[i] = 0;
-                drops[i]++;
-            }
-        }
-        setInterval(draw, 70);
-    });
-
-    // D: Session ID + node
-    onReady(function sessionBadges() {
-        var sessEl = document.getElementById('secSession');
-        var nodeEl = document.getElementById('secNode');
-        if (sessEl) {
-            var h = '0123456789ABCDEF', id = '0x';
-            for (var i = 0; i < 8; i++) id += h.charAt(Math.floor(Math.random() * 16));
-            sessEl.textContent = id;
-        }
-        if (nodeEl) {
-            var nodes = ['SG-2', 'SG-4', 'MY-1', 'MY-3', 'KL-7', 'JKT-2'];
-            nodeEl.textContent = nodes[Math.floor(Math.random() * nodes.length)];
-        }
-    });
-
-    // E: Telemetry counters
-    onReady(function telemetry() {
-        var scansEl = document.getElementById('telScans');
-        var winEl   = document.getElementById('telWin');
-        var usersEl = document.getElementById('telUsers');
-        var nodesEl = document.getElementById('telNodes');
-        if (!scansEl) return;
-        var scans = 47200 + Math.floor(Math.random() * 800);
-        var totalWin = 8400000 + Math.floor(Math.random() * 600000);
-        var users = 12800 + Math.floor(Math.random() * 400);
-        var totalNodes = 25;
-
-        function fmtN(n) { return n.toLocaleString('en-US'); }
-        function fmtRM(n) {
-            if (n >= 1000000) return 'RM ' + (n / 1000000).toFixed(2) + 'M';
-            if (n >= 1000)    return 'RM ' + (n / 1000).toFixed(1) + 'K';
-            return 'RM ' + n;
-        }
-        function fmtUsers(n) {
-            if (n >= 1000) return (n / 1000).toFixed(1) + 'K';
-            return String(n);
-        }
-        function bump(el) {
-            if (!el) return;
-            el.classList.remove('just-ticked');
-            void el.offsetWidth;
-            el.classList.add('just-ticked');
-        }
-        function tick(first) {
-            scans    += first ? 0 : (1 + Math.floor(Math.random() * 3));
-            totalWin += first ? 0 : Math.floor(Math.random() * 1800);
-            users    += first ? 0 : (Math.random() < 0.35 ? 1 : 0);
-            var nodes = 22 + Math.floor(Math.random() * 4);
-            scansEl.textContent = fmtN(scans);
-            if (winEl)   winEl.textContent   = fmtRM(totalWin);
-            if (usersEl) usersEl.textContent = fmtUsers(users);
-            if (nodesEl) nodesEl.textContent = nodes + '/' + totalNodes;
-            if (!first) { bump(scansEl); bump(winEl); bump(usersEl); }
-        }
-        tick(true);
-        setInterval(tick, 3200);
-    });
-})();
