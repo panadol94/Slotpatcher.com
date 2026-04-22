@@ -7,7 +7,12 @@
 // DATA SOURCE
 // ==========================================
 var GAME_DATABASE = window.SQUEEN668_GAME_DATABASE || {};
-var PROVIDER_ORDER = window.SQUEEN668_PROVIDER_ORDER || Object.keys(GAME_DATABASE);
+window.SQUEEN668_GAME_DATABASE = GAME_DATABASE;
+var PROVIDER_MANIFEST = window.SQUEEN668_PROVIDER_MANIFEST || {};
+var PROVIDER_ORDER = window.SQUEEN668_PROVIDER_ORDER || (Object.keys(PROVIDER_MANIFEST).length ? Object.keys(PROVIDER_MANIFEST) : Object.keys(GAME_DATABASE));
+var DEFAULT_PROVIDER = window.SQUEEN668_DEFAULT_PROVIDER || PROVIDER_ORDER[0] || '';
+var PROVIDER_DATA_VERSION = 'provider-split-1';
+var providerDataLoadPromises = {};
 
 // ==========================================
 // TIME-SEEDED PRNG
@@ -51,6 +56,58 @@ var scanModalTimer = null;
 var currentRtpChart = null;
 var providerLogoWarmCache = [];
 var providerLogosWarmed = false;
+
+function getProviderMeta(key) {
+    return GAME_DATABASE[key] || PROVIDER_MANIFEST[key] || null;
+}
+
+function hasProviderGamesLoaded(key) {
+    var provider = GAME_DATABASE[key];
+    return !!(provider && Array.isArray(provider.games));
+}
+
+function isProviderDataLoading(key) {
+    return !!providerDataLoadPromises[key];
+}
+
+function getProviderDataPath(key) {
+    var provider = PROVIDER_MANIFEST[key] || {};
+    return provider.dataPath || ('provider-data/' + encodeURIComponent(key) + '.json?v=' + PROVIDER_DATA_VERSION);
+}
+
+function ensureProviderDataLoaded(key) {
+    var provider = getProviderMeta(key);
+    if (!provider) {
+        return Promise.reject(new Error('Provider metadata missing'));
+    }
+    if (hasProviderGamesLoaded(key)) {
+        return Promise.resolve(GAME_DATABASE[key]);
+    }
+    if (providerDataLoadPromises[key]) {
+        return providerDataLoadPromises[key];
+    }
+    providerDataLoadPromises[key] = fetch(getProviderDataPath(key), {
+        credentials: 'same-origin'
+    }).then(function(response) {
+        if (!response.ok) {
+            throw new Error('Provider data unavailable');
+        }
+        return response.json();
+    }).then(function(payload) {
+        var merged = Object.assign({}, PROVIDER_MANIFEST[key] || {}, payload || {});
+        if (!Array.isArray(merged.games)) {
+            throw new Error('Provider games payload invalid');
+        }
+        GAME_DATABASE[key] = merged;
+        window.SQUEEN668_GAME_DATABASE[key] = merged;
+        return merged;
+    }).finally(function() {
+        delete providerDataLoadPromises[key];
+        updateScanButtonState();
+    });
+    updateScanButtonState();
+    return providerDataLoadPromises[key];
+}
 
 // ==========================================
 // FLOW STEPPER
@@ -173,6 +230,13 @@ document.addEventListener('DOMContentLoaded', function() {
     buildProviderGrid();
     buildFeaturedProviders();
     warmProviderLogos();
+    if (DEFAULT_PROVIDER) {
+        if (typeof window.requestIdleCallback === 'function') {
+            window.requestIdleCallback(function() { ensureProviderDataLoaded(DEFAULT_PROVIDER).catch(function() {}); }, { timeout: 1400 });
+        } else {
+            window.setTimeout(function() { ensureProviderDataLoaded(DEFAULT_PROVIDER).catch(function() {}); }, 400);
+        }
+    }
     initFilterTabs();
     initSortSelect();
     initGameListLoadMore();
@@ -300,7 +364,7 @@ function buildProviderGrid() {
     if (!grid) return;
     grid.innerHTML = '';
     PROVIDER_ORDER.forEach(function(key) {
-        var p = GAME_DATABASE[key];
+        var p = getProviderMeta(key);
         if (!p) return;
         var btn = document.createElement('button');
         btn.className = 'provider-card' + (currentProvider === key ? ' active' : '');
@@ -318,7 +382,7 @@ function buildFeaturedProviders() {
     if (!grid) return;
     grid.innerHTML = '';
     PROVIDER_ORDER.slice(0, 3).forEach(function(key) {
-        var p = GAME_DATABASE[key];
+        var p = getProviderMeta(key);
         if (!p) return;
         var btn = document.createElement('button');
         btn.className = 'featured-provider-card' + (currentProvider === key ? ' active' : '');
@@ -337,7 +401,7 @@ function warmProviderLogos() {
     var preload = function() {
         providerLogoWarmCache = [];
         PROVIDER_ORDER.forEach(function(key) {
-            var provider = GAME_DATABASE[key];
+            var provider = getProviderMeta(key);
             if (!provider || !provider.logo) return;
             var img = new Image();
             img.decoding = 'async';
@@ -354,24 +418,34 @@ function warmProviderLogos() {
 
 function selectProvider(key) {
     var resultsSection = document.getElementById('resultsSection');
-    if (isScanning || !GAME_DATABASE[key]) return;
+    var provider = getProviderMeta(key);
+    if (isScanning || !provider) return;
     currentProvider = key;
     document.querySelectorAll('.provider-card, .featured-provider-card').forEach(function(card) {
         card.classList.toggle('active', card.getAttribute('data-provider') === key);
     });
     if (resultsSection) resultsSection.style.display = 'none';
     setFlowStep('provider');
-    updateScanButtonState();
-    updateProviderHint();
     updatePickerTrigger();
+    updateProviderHint();
+    updateScanButtonState();
     updateBottomNavVisibility();
     closeProviderModal();
+    ensureProviderDataLoaded(key).then(function() {
+        if (currentProvider !== key) return;
+        updateProviderHint();
+        updateScanButtonState();
+    }).catch(function() {
+        if (currentProvider !== key) return;
+        updateProviderHint('Gagal sediakan data ' + provider.name + '. Tekan SCAN untuk cuba lagi.', true);
+        updateScanButtonState();
+    });
 }
 
 function updatePickerTrigger() {
     var trigger = document.getElementById('providerPickerBtn');
     var value = document.getElementById('providerPickerValue');
-    var provider = GAME_DATABASE[currentProvider];
+    var provider = getProviderMeta(currentProvider);
     if (value) {
         value.textContent = provider ? provider.name : 'Tap untuk pilih provider casino';
     }
@@ -420,9 +494,13 @@ function initProviderEntryLinks() {
 function updateScanButtonState() {
     var scanButton = document.getElementById('scanButton');
     var scanButtonLabel = document.getElementById('scanButtonLabel');
-    var provider = GAME_DATABASE[currentProvider];
+    var provider = getProviderMeta(currentProvider);
     if (!scanButton || !scanButtonLabel) return;
-    if (provider) {
+    if (provider && isProviderDataLoading(currentProvider)) {
+        scanButton.classList.add('disabled');
+        scanButtonLabel.textContent = 'PREPARE';
+        scanButton.setAttribute('aria-label', 'Sedang sediakan catalog ' + provider.name);
+    } else if (provider) {
         scanButton.classList.remove('disabled');
         scanButtonLabel.textContent = 'SCAN';
         scanButton.setAttribute('aria-label', 'Patcher Slot ready untuk scan ' + provider.name);
@@ -435,16 +513,22 @@ function updateScanButtonState() {
 
 function updateProviderHint(message, isError) {
     var hint = document.getElementById('providerHint');
-    var provider = GAME_DATABASE[currentProvider];
+    var provider = getProviderMeta(currentProvider);
     if (!hint) return;
     hint.classList.toggle('error', !!isError);
     if (message) {
         hint.textContent = message;
         return;
     }
-    hint.textContent = provider
-        ? 'Provider dipilih: ' + provider.name + '. Tekan SCAN untuk mula scan.'
-        : 'Sila pilih provider dulu, lepas tu tekan SCAN untuk mula scan.';
+    if (!provider) {
+        hint.textContent = 'Sila pilih provider dulu, lepas tu tekan SCAN untuk mula scan.';
+        return;
+    }
+    if (isProviderDataLoading(currentProvider)) {
+        hint.textContent = 'Provider dipilih: ' + provider.name + '. Sedang sediakan catalog ' + (provider.gameCount || 'game') + ' game...';
+        return;
+    }
+    hint.textContent = 'Provider dipilih: ' + provider.name + '. Tekan SCAN untuk mula scan.';
 }
 
 function escapeHtml(value) {
@@ -663,7 +747,7 @@ function tweenScanValue(options) {
 }
 
 function createProviderScanSnapshot(providerKey) {
-    var provider = GAME_DATABASE[providerKey];
+    var provider = getProviderMeta(providerKey);
     var results = generateResults(providerKey);
     var totalTitles = results.length;
     var topBand = results.slice(0, Math.min(8, results.length));
@@ -1043,8 +1127,8 @@ function runScanProgress(scanData, onComplete) {
 // ==========================================
 // SCANNING FLOW
 // ==========================================
-function startScan() {
-    var provider = GAME_DATABASE[currentProvider];
+async function startScan() {
+    var provider = getProviderMeta(currentProvider);
     if (isScanning) return;
     if (!provider) {
         updateProviderHint('Sila pilih provider dulu sebelum mula scan.', true);
@@ -1052,8 +1136,21 @@ function startScan() {
         return;
     }
 
-    var scanData = createProviderScanSnapshot(currentProvider);
     isScanning = true;
+    try {
+        updateProviderHint('Sedang sediakan catalog ' + provider.name + '...', false);
+        updateScanButtonState();
+        await ensureProviderDataLoaded(currentProvider);
+    } catch (error) {
+        isScanning = false;
+        updateScanButtonState();
+        updateProviderHint('Gagal load data ' + provider.name + '. Cuba scan lagi.', true);
+        showToast('Gagal load data provider. Cuba lagi.', 'error');
+        return;
+    }
+
+    provider = getProviderMeta(currentProvider);
+    var scanData = createProviderScanSnapshot(currentProvider);
     clearScanRuntime();
     document.body.classList.add('scanning-active');
     setFlowStep('scan');
@@ -1109,8 +1206,8 @@ function isNonSlotGame(rawName) {
 }
 
 function generateResults(providerKey) {
-    var provider = GAME_DATABASE[providerKey];
-    if (!provider) return [];
+    var provider = GAME_DATABASE[providerKey] || getProviderMeta(providerKey);
+    if (!provider || !Array.isArray(provider.games)) return [];
     var allGames = provider.games.filter(function(g) { return !isNonSlotGame(g.name); });
     var seed = getTimeSeed(providerKey, SCANNER_CONFIG.seedInterval);
     var rand = seededRandom(seed);
@@ -1347,7 +1444,7 @@ function shareResults(method) {
         showToast('Belum ada result untuk share. Scan dulu.', 'error');
         return;
     }
-    var pName = GAME_DATABASE[currentProvider] ? GAME_DATABASE[currentProvider].name : currentProvider;
+    var pName = getProviderMeta(currentProvider) ? getProviderMeta(currentProvider).name : currentProvider;
     var now = new Date().toLocaleString('ms-MY');
     var top5 = currentGames.slice(0, 5);
     var text = '🛡️ *SLOTPATCHER SCAN RESULT*\n🎮 Provider: ' + pName + '\n📅 ' + now + '\n────────────────────\n\n🏆 *TOP 5 GAME:*\n\n';
