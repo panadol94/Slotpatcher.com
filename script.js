@@ -54,6 +54,7 @@ var isScanning = false;
 var currentDeviceIntel = null;
 var scanModalTimer = null;
 var currentRtpChart = null;
+var chartLibraryLoadPromise = null;
 var providerLogoWarmCache = [];
 var providerLogosWarmed = false;
 
@@ -267,29 +268,6 @@ var carouselTotal = 0;
 var carouselTimer = null;
 
 function initCarousel() {
-    var carousel = document.getElementById('heroSwiper');
-    if (carousel && window.Swiper) {
-        new window.Swiper(carousel, {
-            loop: true,
-            speed: 700,
-            autoplay: {
-                delay: 4200,
-                disableOnInteraction: false
-            },
-            pagination: {
-                el: '#carouselDots',
-                clickable: true,
-                bulletClass: 'carousel-dot',
-                bulletActiveClass: 'active'
-            },
-            navigation: {
-                nextEl: '#carouselNext',
-                prevEl: '#carouselPrev'
-            }
-        });
-        return;
-    }
-
     var track = document.getElementById('carouselTrack');
     var dotsContainer = document.getElementById('carouselDots');
     if (!track || !dotsContainer) return;
@@ -1341,9 +1319,43 @@ function renderGames() {
     updateGameListLoadMore(filtered.length, visibleGames.length);
 }
 
+function ensureChartLibraryLoaded() {
+    if (window.Chart) {
+        return Promise.resolve(window.Chart);
+    }
+    if (chartLibraryLoadPromise) {
+        return chartLibraryLoadPromise;
+    }
+    chartLibraryLoadPromise = new Promise(function(resolve, reject) {
+        var script = document.createElement('script');
+        script.src = 'https://cdn.jsdelivr.net/npm/chart.js';
+        script.async = true;
+        script.onload = function() {
+            if (window.Chart) {
+                resolve(window.Chart);
+                return;
+            }
+            chartLibraryLoadPromise = null;
+            reject(new Error('Chart library unavailable'));
+        };
+        script.onerror = function() {
+            chartLibraryLoadPromise = null;
+            reject(new Error('Chart library failed to load'));
+        };
+        document.head.appendChild(script);
+    });
+    return chartLibraryLoadPromise;
+}
+
 function renderRtpChart() {
     var canvas = document.getElementById('rtpChart');
-    if (!canvas || !window.Chart) return;
+    if (!canvas) return;
+    if (!window.Chart) {
+        ensureChartLibraryLoaded().then(function() {
+            renderRtpChart();
+        }).catch(function() {});
+        return;
+    }
     var source = currentFilter === 'all'
         ? currentGames.slice(0, 8)
         : currentGames.filter(function(g) { return g.status === currentFilter; }).slice(0, 8);
