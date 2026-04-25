@@ -14,7 +14,8 @@ export default defineConfig({
     rollupOptions: {
       input: {
         main: resolve(process.cwd(), 'index.html'),
-        trusted: resolve(process.cwd(), 'trusted/index.html')
+        trusted: resolve(process.cwd(), 'trusted/index.html'),
+        tutorial: resolve(process.cwd(), 'tutorial/index.html')
       }
     }
   }
