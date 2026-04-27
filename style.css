@@ -4580,7 +4580,17 @@ select:focus-visible,
     border: 1px solid rgba(255, 255, 255, 0.05);
     background: linear-gradient(160deg, rgba(8, 10, 14, 0.98), rgba(12, 15, 22, 0.98));
     box-shadow: 0 20px 46px rgba(0, 0, 0, 0.28);
-    transition: transform 0.24s ease, border-color 0.24s ease, box-shadow 0.24s ease, background 0.24s ease;
+    opacity: 0;
+    transform: translateY(18px) scale(0.985);
+    transition: transform 0.56s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.42s ease, border-color 0.24s ease, box-shadow 0.24s ease, background 0.24s ease;
+    transition-delay: var(--trusted-card-delay, 0ms);
+    will-change: transform, opacity;
+}
+
+.trusted-company-card.is-visible,
+.trusted-company-review-card.is-visible {
+    opacity: 1;
+    transform: translateY(0) scale(1);
 }
 
 .trusted-company-card::before,
@@ -4603,9 +4613,9 @@ select:focus-visible,
     pointer-events: none;
 }
 
-.trusted-company-card:hover,
-.trusted-company-review-card:hover {
-    transform: translateY(-3px);
+.trusted-company-card.is-visible:hover,
+.trusted-company-review-card.is-visible:hover {
+    transform: translateY(-3px) scale(1.008);
     border-color: rgba(240, 181, 72, 0.2);
     box-shadow: 0 26px 56px rgba(0, 0, 0, 0.34);
     background: linear-gradient(160deg, rgba(10, 13, 18, 0.99), rgba(15, 18, 26, 0.99));
@@ -4760,6 +4770,20 @@ select:focus-visible,
     background: linear-gradient(180deg, rgba(197, 31, 31, 0.12), rgba(197, 31, 31, 0.04));
     border: 1px solid rgba(240, 181, 72, 0.12);
     box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04), 0 10px 22px rgba(0, 0, 0, 0.16);
+    animation: trustedThumbFloat 5.8s ease-in-out infinite;
+    animation-delay: var(--trusted-card-delay, 0ms);
+}
+
+.trusted-company-thumb::after {
+    content: '';
+    position: absolute;
+    inset: -28%;
+    z-index: 2;
+    background: linear-gradient(115deg, transparent 24%, rgba(255, 239, 202, 0.24) 48%, transparent 70%);
+    transform: translateX(-120%) rotate(8deg);
+    animation: trustedThumbSheen 4.8s ease-in-out infinite;
+    animation-delay: calc(var(--trusted-card-delay, 0ms) + 420ms);
+    pointer-events: none;
 }
 
 .trusted-company-thumb-image {
@@ -4839,6 +4863,7 @@ select:focus-visible,
     border-radius: 50%;
     background: #22c55e;
     box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.46);
+    animation: trustedSignalPulse 1.9s ease-out infinite;
 }
 
 .trusted-company-main {
@@ -5029,6 +5054,39 @@ select:focus-visible,
 
 .trusted-disclaimer a:hover {
     text-decoration: underline;
+}
+
+@keyframes trustedThumbFloat {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(-4px) rotate(-0.8deg); }
+}
+
+@keyframes trustedThumbSheen {
+    0%, 58% { transform: translateX(-120%) rotate(8deg); opacity: 0; }
+    66% { opacity: 1; }
+    86%, 100% { transform: translateX(120%) rotate(8deg); opacity: 0; }
+}
+
+@keyframes trustedSignalPulse {
+    0% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.46); }
+    72%, 100% { box-shadow: 0 0 0 8px rgba(34, 197, 94, 0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .trusted-company-card,
+    .trusted-company-review-card,
+    .trusted-company-thumb,
+    .trusted-company-thumb::after,
+    .trusted-company-signal-dot {
+        animation: none !important;
+        transition-delay: 0ms !important;
+    }
+
+    .trusted-company-card,
+    .trusted-company-review-card {
+        opacity: 1;
+        transform: none;
+    }
 }
 
 @media (max-width: 768px) {
