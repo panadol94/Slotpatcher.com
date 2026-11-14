@@ -1214,7 +1214,8 @@ function isNonSlotGame(rawName) {
 function generateResults(providerKey) {
     var provider = GAME_DATABASE[providerKey] || getProviderMeta(providerKey);
     if (!provider || !Array.isArray(provider.games)) return [];
-    var allGames = provider.games.filter(function(g) { return !isNonSlotGame(g.name); });
+    // Explicit catalogue types take priority over broad legacy name heuristics.
+    var allGames = provider.games.filter(function(g) { return g.type === 'slots' || !isNonSlotGame(g.name); });
     var seed = getTimeSeed(providerKey, SCANNER_CONFIG.seedInterval);
     var rand = seededRandom(seed);
     var cfg = SCANNER_CONFIG;
