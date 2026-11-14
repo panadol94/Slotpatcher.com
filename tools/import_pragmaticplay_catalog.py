@@ -65,6 +65,7 @@ def main():
     parser.add_argument('--identity', type=Path, required=True)
     parser.add_argument('--aliases', type=Path, required=True)
     parser.add_argument('--version', required=True)
+    parser.add_argument('--baseline-commit', help='Rebuild from a verified pre-import PP catalogue when correcting an import')
     args = parser.parse_args()
     root = Path(__file__).resolve().parent.parent
     source = json.loads(args.catalogue.read_text())
@@ -73,13 +74,22 @@ def main():
     assert source['pagination_complete'] and not artwork['errors'] and not aliases['errors']
     assert source['source_url'] == 'https://www.pragmaticplay.com/en/games/'
     assert source['released_count'] == len(source['games']) == artwork['count']
+    excluded = source.get('excluded_non_slots', [])
+    excluded_ids = {game['source_id'] for game in excluded}
+    assert all(game['type'] == 'scratchcard' and game['official_description_confirmed'] for game in excluded)
+    assert not excluded_ids.intersection(game['source_id'] for game in source['games']), 'Verified non-slots must be removed before import'
+    assert all(game.get('type') == 'slots' for game in source['games'])
     symbols = {}
     for line in args.identity.read_text().splitlines():
         item = json.loads(line)
         if not item.get('error'):
             symbols[item['source_id']] = item['game_code']
     images = {g['source_id']: g for g in artwork['artwork']}
-    old_payload = json.loads((root / 'provider-data/pp.json').read_text())
+    if args.baseline_commit:
+        assert re.fullmatch(r'[0-9a-f]{40}', args.baseline_commit), 'Baseline must be an exact verified commit SHA'
+        old_payload = json.loads(subprocess.check_output(['git', 'show', args.baseline_commit + ':provider-data/pp.json'], cwd=root, text=True))
+    else:
+        old_payload = json.loads((root / 'provider-data/pp.json').read_text())
     existing = old_payload['games']
     names = {name_key(g['name']): i for i, g in enumerate(existing)}
     codes = {game_code(g): i for i, g in enumerate(existing) if game_code(g)}
@@ -129,12 +139,13 @@ def main():
     manifest_text = replace_provider(manifest_path.read_text(), 'window.SQUEEN668_PROVIDER_MANIFEST', meta)
     counts = {'existing_total': len(existing), 'official_released': len(official), 'matched_existing': len(used),
               'verified_name_aliases': len(aliases['verified_aliases']), 'new_games': added,
-              'preserved_legacy': len(legacy), 'merged_total': len(merged), 'excluded_upcoming': len(source['upcoming'])}
+              'preserved_legacy': len(legacy), 'merged_total': len(merged), 'excluded_upcoming': len(source['upcoming']),
+              'excluded_non_slots': len(excluded)}
     provenance = {'source_url': source['source_url'], 'observed_at_utc': source['observed_at_utc'],
                   'pagination_complete': True, 'terminal_page': source['terminal_page'], 'version': args.version,
-                  'baseline_commit': subprocess.check_output(['git', 'rev-parse', 'HEAD'], cwd=root, text=True).strip(),
+                  'baseline_commit': args.baseline_commit or subprocess.check_output(['git', 'rev-parse', 'HEAD'], cwd=root, text=True).strip(),
                   'counts': counts, 'games': official, 'preserved_legacy': legacy,
-                  'upcoming': source['upcoming'], 'aliases': aliases['verified_aliases']}
+                  'upcoming': source['upcoming'], 'aliases': aliases['verified_aliases'], 'excluded_non_slots': excluded}
     (root / 'data-sources').mkdir(exist_ok=True)
     (root / 'data-sources/pragmaticplay-official.json').write_text(json.dumps(provenance, ensure_ascii=False, indent=2) + '\n')
     (root / 'provider-data/pp.json').write_text(json.dumps(payload, ensure_ascii=False, separators=(',', ':')) + '\n')

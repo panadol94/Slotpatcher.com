@@ -3726,30 +3726,6 @@ window.SQUEEN668_GAME_DATABASE = {
         "gameCode": "vs25goldrush"
       },
       {
-        "name": "Wolf Gold Scratchcard",
-        "img": "assets/pragmaticplay/wolf-gold-scratchcard.webp",
-        "type": "slots",
-        "gameCode": "scwolfgold"
-      },
-      {
-        "name": "Gold Rush Scratchcard",
-        "img": "assets/pragmaticplay/gold-rush-scratchcard.webp",
-        "type": "slots",
-        "gameCode": "scgoldrush"
-      },
-      {
-        "name": "Queen of Gold Scratchcard",
-        "img": "assets/pragmaticplay/queen-of-gold-scratchcard.webp",
-        "type": "slots",
-        "gameCode": "scqog"
-      },
-      {
-        "name": "Diamond Strike Scratchcard",
-        "img": "assets/pragmaticplay/diamond-strike-scratchcard.webp",
-        "type": "slots",
-        "gameCode": "scdiamond"
-      },
-      {
         "name": "Monkey Madness™",
         "img": "assets/pragmaticplay/monkey-madness-slot.webp",
         "type": "slots",

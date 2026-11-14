@@ -3,17 +3,18 @@
   "observed_at_utc": "2026-11-14T21:12:19.938193+00:00",
   "pagination_complete": true,
   "terminal_page": 75,
-  "version": "pragmatic-official-20261114",
+  "version": "pragmatic-official-20261114-r2",
   "baseline_commit": "a41238fa16eff60c8363e78c02731917a1b66d22",
   "counts": {
     "existing_total": 557,
-    "official_released": 667,
+    "official_released": 663,
     "matched_existing": 482,
     "verified_name_aliases": 17,
-    "new_games": 185,
+    "new_games": 181,
     "preserved_legacy": 75,
-    "merged_total": 742,
-    "excluded_upcoming": 2
+    "merged_total": 738,
+    "excluded_upcoming": 2,
+    "excluded_non_slots": 4
   },
   "games": [
     {
@@ -7457,54 +7458,6 @@
       "height": 180
     },
     {
-      "name": "Wolf Gold Scratchcard",
-      "source_id": "wolf-gold-scratchcard",
-      "source_url": "https://www.pragmaticplay.com/en/games/wolf-gold-scratchcard/",
-      "source_image": "https://www.pragmaticplay.com/wp-content/uploads/2017/12/thumbs-pt-site_330x140px.png",
-      "local_image": "assets/pragmaticplay/wolf-gold-scratchcard.webp",
-      "game_code": "scwolfgold",
-      "identity_basis": "official_game_symbol",
-      "sha256": "f5ac3653daa221ea25d755a640cee6ab3a8f80ab68fe6c91a2f4aac0b4a7c32c",
-      "width": 339,
-      "height": 180
-    },
-    {
-      "name": "Gold Rush Scratchcard",
-      "source_id": "gold-rush-scratchcard",
-      "source_url": "https://www.pragmaticplay.com/en/games/gold-rush-scratchcard/",
-      "source_image": "https://www.pragmaticplay.com/wp-content/uploads/2017/12/thumbs-pt-site_330x140px-1.png",
-      "local_image": "assets/pragmaticplay/gold-rush-scratchcard.webp",
-      "game_code": "scgoldrush",
-      "identity_basis": "official_game_symbol",
-      "sha256": "e3e31aeeaea38c319a4a86d8f1eb9cb931c0a872374127d3fdce801784141669",
-      "width": 339,
-      "height": 180
-    },
-    {
-      "name": "Queen of Gold Scratchcard",
-      "source_id": "queen-of-gold-scratchcard",
-      "source_url": "https://www.pragmaticplay.com/en/games/queen-of-gold-scratchcard/",
-      "source_image": "https://www.pragmaticplay.com/wp-content/uploads/2017/12/thumbs-pt-site_330x140px-3.png",
-      "local_image": "assets/pragmaticplay/queen-of-gold-scratchcard.webp",
-      "game_code": "scqog",
-      "identity_basis": "official_game_symbol",
-      "sha256": "b0d4fa3fd967f172014eb5351a805545c67827cb8da82f82dc8ebe827214e002",
-      "width": 339,
-      "height": 180
-    },
-    {
-      "name": "Diamond Strike Scratchcard",
-      "source_id": "diamond-strike-scratchcard",
-      "source_url": "https://www.pragmaticplay.com/en/games/diamond-strike-scratchcard/",
-      "source_image": "https://www.pragmaticplay.com/wp-content/uploads/2017/12/thumbs-pt-site_330x140px-2.png",
-      "local_image": "assets/pragmaticplay/diamond-strike-scratchcard.webp",
-      "game_code": "scdiamond",
-      "identity_basis": "official_game_symbol",
-      "sha256": "69065b6a9d3df9994d83c7fc2d5cb8ad9413947bf90dc44eb4c54acf5f7ab2fc",
-      "width": 339,
-      "height": 180
-    },
-    {
       "name": "Monkey Madness™",
       "source_id": "monkey-madness-slot",
       "source_url": "https://www.pragmaticplay.com/en/games/monkey-madness-slot/",
@@ -8479,20 +8432,22 @@
       "img": "https://www.pragmaticplay.com/wp-content/uploads/2026/10/Zeus-vs-Hades-POP_339x180_B.png",
       "source_url": null,
       "source_id": null,
-      "release_label": "",
+      "release_label": "17th November 2026",
       "studio": "",
       "availability": "upcoming",
-      "type": "slots"
+      "type": "slots",
+      "release_date": "2026-11-17"
     },
     {
       "name": "Big Bass Christmas Blast 1000",
       "img": "https://www.pragmaticplay.com/wp-content/uploads/2026/10/Big-Bass-Christmas-Blast-1000_339x180-1.png",
       "source_url": null,
       "source_id": null,
-      "release_label": "",
+      "release_label": "16th November 2026",
       "studio": "",
       "availability": "upcoming",
-      "type": "slots"
+      "type": "slots",
+      "release_date": "2026-11-16"
     }
   ],
   "aliases": [
@@ -8614,6 +8569,40 @@
       "official_source_id": "wild-gladiators-slot",
       "game_code": "vs25gladiator",
       "source_url": "https://www.pragmaticplay.com/en/games/wild-gladiators-slot/"
+    }
+  ],
+  "excluded_non_slots": [
+    {
+      "name": "Wolf Gold Scratchcard",
+      "source_id": "wolf-gold-scratchcard",
+      "source_url": "https://www.pragmaticplay.com/en/games/wolf-gold-scratchcard/",
+      "type": "scratchcard",
+      "official_description_confirmed": true,
+      "currently_in_catalogue": true
+    },
+    {
+      "name": "Gold Rush Scratchcard",
+      "source_id": "gold-rush-scratchcard",
+      "source_url": "https://www.pragmaticplay.com/en/games/gold-rush-scratchcard/",
+      "type": "scratchcard",
+      "official_description_confirmed": true,
+      "currently_in_catalogue": true
+    },
+    {
+      "name": "Queen of Gold Scratchcard",
+      "source_id": "queen-of-gold-scratchcard",
+      "source_url": "https://www.pragmaticplay.com/en/games/queen-of-gold-scratchcard/",
+      "type": "scratchcard",
+      "official_description_confirmed": true,
+      "currently_in_catalogue": true
+    },
+    {
+      "name": "Diamond Strike Scratchcard",
+      "source_id": "diamond-strike-scratchcard",
+      "source_url": "https://www.pragmaticplay.com/en/games/diamond-strike-scratchcard/",
+      "type": "scratchcard",
+      "official_description_confirmed": true,
+      "currently_in_catalogue": true
     }
   ]
 }

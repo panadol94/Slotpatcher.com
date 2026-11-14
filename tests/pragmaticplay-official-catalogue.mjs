@@ -25,6 +25,10 @@ assert.equal(provenance.games.length + provenance.preserved_legacy.length, paylo
 const canonical = (name) => name.replace(/[™®©]/g, '').normalize('NFKC').toLowerCase().replace(/[^\p{L}\p{N}]/gu, '');
 assert.equal(new Set(payload.games.map((g) => canonical(g.name))).size, payload.games.length, 'no duplicate canonical game names');
 const byName = new Map(payload.games.map((g) => [g.name, g]));
+const scratchcardNames = ['Wolf Gold Scratchcard', 'Gold Rush Scratchcard', 'Queen of Gold Scratchcard', 'Diamond Strike Scratchcard'];
+for (const name of scratchcardNames) assert.ok(!byName.has(name), `verified scratchcard must not enter the slot scanner: ${name}`);
+assert.equal(provenance.excluded_non_slots.length, scratchcardNames.length);
+assert.ok(provenance.excluded_non_slots.every((g) => g.type === 'scratchcard' && g.official_description_confirmed));
 for (const game of provenance.games) {
   const actual = byName.get(game.name);
   assert.ok(actual, `official raw title missing: ${game.name}`);
